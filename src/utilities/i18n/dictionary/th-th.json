@@ -1,0 +1,61 @@
+{
+  "label": {
+    "sport": "กีฬา",
+    "inplay": "กำลังแข่ง",
+    "incoming": "เร็วๆ นี้",
+    "today": "วันนี้",
+    "early": "ตลาดล่วงหน้า",
+    "parlay": "พาร์เลย์",
+    "outright": "แชมป์เปียน",
+    "downloadApp": "ดาวน์โหลด APP"
+  },
+  "common": {
+    "memberCenter": "ศูนย์สมาชิก",
+    "login": "เข้าสู่ระบบ"
+  },
+  "6686": { "mine": { "IM": "Live Plaza" } },
+  "menu": { "downloadApp": "Unduh APP" },
+  "6789bet": {
+    "header": {
+      "registered": "ลงทะเบียน",
+      "login": "เข้าสู่ระบบ"
+    },
+    "downloadAppBanner": {
+      "description": "เกมน่าตื่นเต้นรอคุณอยู่ โหลด APP มือถือ"
+    }
+  },
+  "tabNavigation": {
+    "casino": "คาสิโน"
+  },
+  "hg9393": { "tabNavigation": { "home": "หน้าหลัก", "inplay": "กำลังแข่ง", "record": "ประวัติ", "mine": "ฉัน" } },
+  "sponsor": "ผู้สนับสนุน",
+  "promotions": {
+    "promotion": "โปรโมชั่น"
+  },
+  "downloadAppBanner": {
+    "logo_name": "{owner} APP"
+  },
+  "header": {
+    "download": "ดาวน์โหลดตอนนี้"
+  },
+  "vd000": {
+    "mine": {
+      "setting": {
+        "lang": {
+          "en_US": "English",
+          "id_ID": "Bahasa Indonesia",
+          "ms_MY": "Bahasa Malaysia",
+          "vi_VN": "Tiếng Việt",
+          "zh_CN": "简体中文",
+          "zh_HK": "繁體中文",
+          "ja_JP": "日本語",
+          "ko_KR": "한국어",
+          "th_TH": "ไทย",
+          "hi_IN": "हिन्दी",
+          "pt_PT": "Português",
+          "es_ES": "Español"
+        }
+      }
+    }
+  }
+}

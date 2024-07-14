@@ -1,0 +1,11 @@
+@import 'variables';
+@import 'mixins';
+@import 'animation';
+@import 'utilities';
+@import 'library';
+@import 'reset';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'general';
+@import 'root';

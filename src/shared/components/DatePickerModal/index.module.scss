@@ -1,0 +1,6 @@
+// !class for specific component or page should follow BEM rule
+.component-date-picker-modal {
+  &__selector-area {
+    box-shadow: 2px 2px 6px 0 rgba(0,0,0,.1);
+  }
+}

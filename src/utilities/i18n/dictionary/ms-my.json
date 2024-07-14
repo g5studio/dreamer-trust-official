@@ -1,0 +1,61 @@
+{
+  "label": {
+    "sport": "Sports",
+    "inplay": "Live",
+    "incoming": "Akan Datang",
+    "today": "Hari Ini",
+    "early": "Awal",
+    "parlay": "Parlay",
+    "outright": "Juara",
+    "downloadApp": "APP"
+  },
+  "common": {
+    "memberCenter": "Pusat Member",
+    "login": "Log Masuk"
+  },
+  "6686": { "mine": { "IM": "Live Plaza" } },
+  "menu": { "downloadApp": "Muat Turun APP" },
+  "6789bet": {
+    "header": {
+      "registered": "Daftar",
+      "login": "Masuk"
+    },
+    "downloadAppBanner": {
+      "description": "Download APP for more games"
+    }
+  },
+  "tabNavigation": {
+    "casino": "Kasino"
+  },
+  "hg9393": { "tabNavigation": { "home": "Laman Utama", "inplay": "Live", "record": "Sejarah", "mine": "Saya" } },
+  "sponsor": "Tajaan",
+  "promotions": {
+    "promotion": "Promosi"
+  },
+  "downloadAppBanner": {
+    "logo_name": "{owner} APP"
+  },
+  "header": {
+    "download": "Download"
+  },
+  "vd000": {
+    "mine": {
+      "setting": {
+        "lang": {
+          "en_US": "English",
+          "id_ID": "Bahasa Indonesia",
+          "ms_MY": "Bahasa Malaysia",
+          "vi_VN": "Tiếng Việt",
+          "zh_CN": "简体中文",
+          "zh_HK": "繁體中文",
+          "ja_JP": "日本語",
+          "ko_KR": "한국어",
+          "th_TH": "ไทย",
+          "hi_IN": "हिन्दी",
+          "pt_PT": "Português",
+          "es_ES": "Español"
+        }
+      }
+    }
+  }
+}

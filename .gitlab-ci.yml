@@ -1,0 +1,4 @@
+include:
+  - project: "devops/pipeline/cicd-template"
+    ref: main
+    file: "/projects/$CI_PROJECT_PATH/generate.gitlab-ci.yml"

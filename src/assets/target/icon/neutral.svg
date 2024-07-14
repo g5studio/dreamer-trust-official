@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  width="1em"
+  height="1em"
+  viewBox="0 0 20 21"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g transform="translate(0 1)" fill="none" fillRule="evenodd">
+    <rect fill="#80B100" y="2" width="20" height="16" rx="4" />
+    <path
+      fill="#FFF"
+      d="M7 6h1.311l3.955 5.77h.045V6h1.322v8h-1.277l-4-5.849h-.045V14H7z"
+    />
+  </g>
+</svg>

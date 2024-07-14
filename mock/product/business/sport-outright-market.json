@@ -1,0 +1,296 @@
+{
+  "msg": "",
+  "code": 0,
+  "data": {
+    "sports": [
+      {
+        "sid": 1,
+        "tid": 72584,
+        "priority": 10003,
+        "cid": 81,
+        "name": "UEFA Nations League A",
+        "count": 5,
+        "vd": "a",
+        "markets": [
+          {
+            "kickoff": 1749438000000,
+            "subtitle": "UEFA Nations League A 2024/2025 - Outrights",
+            "subMarkets": [
+              {
+                "name": "Winner",
+                "iid": 7890087,
+                "odds": [
+                  {
+                    "k": "France",
+                    "o": "4.00"
+                  },
+                  {
+                    "k": "Germany",
+                    "o": "7.00"
+                  },
+                  {
+                    "k": "Spain",
+                    "o": "7.00"
+                  },
+                  {
+                    "k": "Portugal",
+                    "o": "8.00"
+                  },
+                  {
+                    "k": "Belgium",
+                    "o": "11.0"
+                  },
+                  {
+                    "k": "Netherlands",
+                    "o": "11.0"
+                  },
+                  {
+                    "k": "Italy",
+                    "o": "13.0"
+                  },
+                  {
+                    "k": "Croatia",
+                    "o": "18.0"
+                  },
+                  {
+                    "k": "Denmark",
+                    "o": "18.0"
+                  },
+                  {
+                    "k": "Switzerland",
+                    "o": "36.0"
+                  },
+                  {
+                    "k": "Hungary",
+                    "o": "41.0"
+                  },
+                  {
+                    "k": "Poland",
+                    "o": "41.0"
+                  },
+                  {
+                    "k": "Serbia",
+                    "o": "41.0"
+                  },
+                  {
+                    "k": "Bosnia and Herzegovina",
+                    "o": "51.0"
+                  },
+                  {
+                    "k": "Scotland",
+                    "o": "51.0"
+                  },
+                  {
+                    "k": "Israel",
+                    "o": "131"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kickoff": 1749438000000,
+            "subtitle": "UEFA Nations League A 2024/2025 - Group 1 Specials",
+            "subMarkets": [
+              {
+                "name": "Group 1 Winner",
+                "iid": 7890178,
+                "odds": [
+                  {
+                    "k": "Portugal",
+                    "o": "1.57"
+                  },
+                  {
+                    "k": "Croatia",
+                    "o": "3.00"
+                  },
+                  {
+                    "k": "Poland",
+                    "o": "11.0"
+                  },
+                  {
+                    "k": "Scotland",
+                    "o": "16.0"
+                  }
+                ]
+              },
+              {
+                "name": "Group 1 Rock Bottom",
+                "iid": 7890178,
+                "odds": [
+                  {
+                    "k": "Scotland",
+                    "o": "1.61"
+                  },
+                  {
+                    "k": "Poland",
+                    "o": "2.75"
+                  },
+                  {
+                    "k": "Croatia",
+                    "o": "11.0"
+                  },
+                  {
+                    "k": "Portugal",
+                    "o": "21.0"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kickoff": 1749438000000,
+            "subtitle": "UEFA Nations League A 2024/2025 - Group 2 Specials",
+            "subMarkets": [
+              {
+                "name": "Group 2 Winner",
+                "iid": 7890179,
+                "odds": [
+                  {
+                    "k": "France",
+                    "o": "1.44"
+                  },
+                  {
+                    "k": "Belgium",
+                    "o": "4.50"
+                  },
+                  {
+                    "k": "Italy",
+                    "o": "5.50"
+                  },
+                  {
+                    "k": "Israel",
+                    "o": "81.0"
+                  }
+                ]
+              },
+              {
+                "name": "Group 2 Rock Bottom",
+                "iid": 7890179,
+                "odds": [
+                  {
+                    "k": "Israel",
+                    "o": "1.13"
+                  },
+                  {
+                    "k": "Italy",
+                    "o": "8.00"
+                  },
+                  {
+                    "k": "Belgium",
+                    "o": "10.0"
+                  },
+                  {
+                    "k": "France",
+                    "o": "41.0"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kickoff": 1749438000000,
+            "subtitle": "UEFA Nations League A 2024/2025 - Group 3 Specials",
+            "subMarkets": [
+              {
+                "name": "Group 3 Winner",
+                "iid": 7890180,
+                "odds": [
+                  {
+                    "k": "Germany",
+                    "o": "1.73"
+                  },
+                  {
+                    "k": "Netherlands",
+                    "o": "3.50"
+                  },
+                  {
+                    "k": "Hungary",
+                    "o": "8.00"
+                  },
+                  {
+                    "k": "Bosnia and Herzegovina",
+                    "o": "9.00"
+                  }
+                ]
+              },
+              {
+                "name": "Group 3 Rock Bottom",
+                "iid": 7890180,
+                "odds": [
+                  {
+                    "k": "Bosnia and Herzegovina",
+                    "o": "2.00"
+                  },
+                  {
+                    "k": "Hungary",
+                    "o": "2.25"
+                  },
+                  {
+                    "k": "Netherlands",
+                    "o": "11.0"
+                  },
+                  {
+                    "k": "Germany",
+                    "o": "13.0"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kickoff": 1749438000000,
+            "subtitle": "UEFA Nations League A 2024/2025 - Group 4 Specials",
+            "subMarkets": [
+              {
+                "name": "Group 4 Winner",
+                "iid": 7890181,
+                "odds": [
+                  {
+                    "k": "Spain",
+                    "o": "1.15"
+                  },
+                  {
+                    "k": "Denmark",
+                    "o": "10.0"
+                  },
+                  {
+                    "k": "Serbia",
+                    "o": "13.0"
+                  },
+                  {
+                    "k": "Switzerland",
+                    "o": "13.0"
+                  }
+                ]
+              },
+              {
+                "name": "Group 4 Rock Bottom",
+                "iid": 7890181,
+                "odds": [
+                  {
+                    "k": "Switzerland",
+                    "o": "2.25"
+                  },
+                  {
+                    "k": "Serbia",
+                    "o": "2.75"
+                  },
+                  {
+                    "k": "Denmark",
+                    "o": "3.50"
+                  },
+                  {
+                    "k": "Spain",
+                    "o": "41.0"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "time": 1715589968079
+}

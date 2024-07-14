@@ -1,0 +1,43 @@
+{
+  "create-query": {
+    "prefix": "$query",
+    "body": [
+      "createCustomizeQuery<${2:ApiResponse}>({",
+      "query: createQuery(() => ({...queryConfigs.${3:queryConfig}()})),",
+      "//! normally we need ignore all default error handler when load page initial data",
+      "errorHandleType: ErrorHandleType.None,",
+      "onSuccess: (response: ${2:ApiResponse}) => {\n//! you should initialize a model or set a model here",
+      "${0}\n},",
+      "onError: () => {}",
+      "});"
+    ],
+    "description": "generate query template"
+  },
+  "create-mutation": {
+    "prefix": "$mutation",
+    "body": [
+      "const { mutation: {mutate: ${3:mutationName}} } = createCustomizeMutation<${1:ApiResponse}, ${2:ApiRequest}>({",
+      "mutation: mutationConfigs.${3:mutationName}(),",
+      "//! normally we need handle all error in service layer",
+      "errorHandleType: ErrorHandleType.All,",
+      "onError: () => {},onSettled: () => {},onSuccess: (response: ${1:ApiResponse}) => {},",
+      "});"
+    ],
+    "description": "generate mutation template"
+  },
+  "format-classes": {
+    "prefix": "$classes",
+    "body": "class={formatClasses('${1}',{${0:\n//! add classList here or remove this params\n}})}",
+    "description": "use format helper to merge your customize classes and conditional statement classes"
+  },
+  "routes-register": {
+    "prefix": "$routes-register",
+    "body": "{\nkey: Page.${1},\npath: '${2}',\ncomponent: lazy(() => import('@modules${3}')),\n},",
+    "description": "quick register routes config by snippet"
+  },
+  "get-timestamp": {
+    "prefix": "$get-timestamp",
+    "body": "getTimeStamp(${0}, getTimezoneOffset(system.displayTimezone?.GMT ?? ''))",
+    "description": "quick get timestamp"
+  }
+}

@@ -1,0 +1,75 @@
+:root {
+  @include generateCssVariables;
+  [data-empty]:empty {
+    display: none !important;
+  }
+}
+
+* {
+  line-height: 1.5em;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+  font-size: 16px;
+  @include generateBaseStyle;
+}
+
+body {
+  font-family: 'PingFang', 'Roboto', Helvetica, Arial, 'Microsoft JhengHei', '微軟正黑體';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: getColorVariable(--color-layer-1);
+  color: getColorVariable(--color-black-1);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+input {
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
+  }
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: getColorVariable(--color-black-1);
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+@each $level in map-keys($grid-breakpoints) {
+  @include generateStyleByBreakpoint($level) {
+    .main-container {
+      box-sizing: content-box;
+      max-width: getContainerWidth($level, $container-max-widths);
+      margin: 0 auto;
+    }
+
+    .sport-container {
+      box-sizing: content-box;
+      max-width: getContainerWidth($level, $sport-container-max-widths);
+      margin: 0 auto;
+    }
+  }
+}
+
+@include generateStyleByBreakpoint('xl') {
+  main {
+    height: calc(100vh - $headerHeight) !important;
+  }
+}
+
+@include generateStyleByBreakpoint('lg') {
+  .sport-container {
+    @include generateScrollBar;
+  }
+}

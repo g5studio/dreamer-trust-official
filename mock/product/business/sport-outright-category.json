@@ -1,0 +1,289 @@
+{
+  "msg": "",
+  "code": 0,
+  "data": {
+    "sports": [
+      {
+        "sid": 1,
+        "cid": 20,
+        "name": "England",
+        "count": 3,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 26726,
+            "cid": 0,
+            "name": "English Premier League",
+            "priority": 10000,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 26326,
+            "cid": 0,
+            "name": "English League Championship",
+            "priority": 10001,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 32938,
+            "cid": 0,
+            "name": "English Women Super League",
+            "priority": 10002,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 81,
+        "name": "International",
+        "count": 6,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 72584,
+            "cid": 0,
+            "name": "UEFA Nations League A",
+            "priority": 10003,
+            "count": 5
+          },
+          {
+            "sid": 1,
+            "tid": 38741,
+            "cid": 0,
+            "name": "UEFA Euro 2024 (In Germany)",
+            "priority": 10004,
+            "count": 31
+          },
+          {
+            "sid": 1,
+            "tid": 39439,
+            "cid": 0,
+            "name": "Copa America 2024 (In USA)",
+            "priority": 10005,
+            "count": 5
+          },
+          {
+            "sid": 1,
+            "tid": 29269,
+            "cid": 0,
+            "name": "World Cup 2026 South America Qualifiers",
+            "priority": 10006,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 72585,
+            "cid": 0,
+            "name": "UEFA Nations League B",
+            "priority": 10007,
+            "count": 4
+          },
+          {
+            "sid": 1,
+            "tid": 27609,
+            "cid": 0,
+            "name": "World Cup 2026 (In Canada, Mexico ＆ USA)",
+            "priority": 10008,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 35,
+        "name": "Asia",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 29366,
+            "cid": 0,
+            "name": "AFC Champions League",
+            "priority": 10009,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 23,
+        "name": "Australia",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 26272,
+            "cid": 0,
+            "name": "Australia A League",
+            "priority": 10010,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 46,
+        "name": "Japan",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 26713,
+            "cid": 0,
+            "name": "Japan J1 League",
+            "priority": 10011,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 18,
+        "name": "Belgium",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 26664,
+            "cid": 0,
+            "name": "Belgium First Division A",
+            "priority": 10013,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 11,
+        "name": "Brazil",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 28573,
+            "cid": 0,
+            "name": "Brazil Cup",
+            "priority": 10020,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 70,
+        "name": "Europe",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 26232,
+            "cid": 0,
+            "name": "UEFA Women Champions League",
+            "priority": 10022,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 54,
+        "name": "North America",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 29106,
+            "cid": 0,
+            "name": "CONCACAF Champions Cup",
+            "priority": 10015,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 43,
+        "name": "Republic of Ireland",
+        "count": 2,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 26526,
+            "cid": 0,
+            "name": "Ireland Premier Division",
+            "priority": 10016,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 28487,
+            "cid": 0,
+            "name": "Ireland First Division",
+            "priority": 10017,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 85,
+        "name": "Russia",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 27691,
+            "cid": 0,
+            "name": "Russia Premier League",
+            "priority": 10014,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 69,
+        "name": "South America",
+        "count": 2,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 28777,
+            "cid": 0,
+            "name": "Copa Libertadores",
+            "priority": 10018,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 26649,
+            "cid": 0,
+            "name": "Copa Sudamericana",
+            "priority": 10019,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 12,
+        "name": "United States",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 26862,
+            "cid": 0,
+            "name": "USA Major League Soccer",
+            "priority": 10012,
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  "time": 1715588850792
+}

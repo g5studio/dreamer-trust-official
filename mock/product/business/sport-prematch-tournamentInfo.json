@@ -1,0 +1,111 @@
+{
+  "msg": "",
+  "code": 0,
+  "data": [
+    {
+      "sid": 1,
+      "tid": 362,
+      "cid": 70,
+      "name": "歐洲足球錦標賽2024(在德國)",
+      "priority": 10001,
+      "count": 12
+    },
+    {
+      "sid": 1,
+      "tid": 22519,
+      "cid": 70,
+      "name": "歐洲冠軍聯賽",
+      "priority": 20003,
+      "count": 1
+    },
+    {
+      "sid": 1,
+      "tid": 8343,
+      "cid": 107,
+      "name": "美洲杯",
+      "priority": 20010,
+      "count": 8
+    },
+    {
+      "sid": 1,
+      "tid": 169,
+      "cid": 20,
+      "name": "英格蘭超級聯賽",
+      "priority": 20011,
+      "count": 14
+    },
+    {
+      "sid": 1,
+      "tid": 564,
+      "cid": 5,
+      "name": "德國甲組聯賽",
+      "priority": 20013,
+      "count": 9
+    },
+    {
+      "sid": 1,
+      "tid": 196,
+      "cid": 13,
+      "name": "西班牙甲組聯賽",
+      "priority": 20015,
+      "count": 9
+    },
+    {
+      "sid": 1,
+      "tid": 70,
+      "cid": 44,
+      "name": "意大利甲組聯賽",
+      "priority": 20017,
+      "count": 12
+    },
+    {
+      "sid": 1,
+      "tid": 390,
+      "cid": 70,
+      "name": "歐洲聯賽",
+      "priority": 40003,
+      "count": 1
+    },
+    {
+      "sid": 1,
+      "tid": 473,
+      "cid": 68,
+      "name": "中國超級聯賽",
+      "priority": 50003,
+      "count": 6
+    },
+    {
+      "sid": 1,
+      "tid": 430,
+      "cid": 20,
+      "name": "英格蘭足總杯",
+      "priority": 50005,
+      "count": 1
+    },
+    {
+      "sid": 2,
+      "tid": 7067,
+      "cid": 12,
+      "name": "NBA美國職業籃球聯賽",
+      "priority": 10003,
+      "count": 3
+    },
+    {
+      "sid": 3,
+      "tid": 7511,
+      "cid": 718,
+      "name": "ATP 意大利羅馬公開賽 - 男單",
+      "priority": 50051,
+      "count": 12
+    },
+    {
+      "sid": 4,
+      "tid": 23739,
+      "cid": 12,
+      "name": "美國職業棒球大聯盟",
+      "priority": 10001,
+      "count": 6
+    }
+  ],
+  "time": 1715588220934
+}

@@ -1,0 +1,41 @@
+{
+  "api": {
+    "prefix": "$api",
+    "body": [
+      "/**\n * @description $1\n * @return\n * @external\n */",
+      "export const ${2|fetch,update,delete|}$3 = async ():Promise<AxiosResponse<IBaseApiResponse<${4:any}>>> => {return ${5|platformClient,sportClient|}.${6|get,post,delete,put,patch|}<IBaseApiResponse<${4:any}>>(${0:``});};"
+    ],
+    "description": "generate platform http request template"
+  },
+  "create-query": {
+    "prefix": "$query",
+    "body": [
+      "createCustomizeQuery<${2:ApiResponse}>({",
+      "query: createQuery(() => ({...queryConfigs.${3:queryConfig}()})),",
+      "//! normally we need ignore all default error handler when load page initial data",
+      "errorHandleType: ErrorHandleType.None,",
+      "onSuccess: (response: ${2:ApiResponse}) => {\n//! you should initialize a model or set a model here",
+      "${0}\n},",
+      "onError: () => {}",
+      "});"
+    ],
+    "description": "generate query template"
+  },
+  "create-mutation": {
+    "prefix": "$mutation",
+    "body": [
+      "const { mutation: {mutate: ${3:mutationName}} } = createCustomizeMutation<${1:ApiResponse}, ${2:ApiRequest}>({",
+      "mutation: mutationConfigs.${3:mutationName}(),",
+      "//! normally we need handle all error in service layer",
+      "errorHandleType: ErrorHandleType.All,",
+      "onError: () => {},onSettled: () => {},onSuccess: (response: ${1:ApiResponse}) => {},",
+      "});"
+    ],
+    "description": "generate mutation template"
+  },
+  "get-timestamp": {
+    "prefix": "$get-timestamp",
+    "body": "getTimeStamp(${0}, getTimezoneOffset(system.displayTimezone?.GMT ?? ''))",
+    "description": "quick get timestamp"
+  }
+}

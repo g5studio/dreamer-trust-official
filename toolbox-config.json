@@ -1,0 +1,6 @@
+{
+  "framework": "solid",
+  "testTool": "vitest",
+  "styleModule": true,
+  "autoRegister": false
+}

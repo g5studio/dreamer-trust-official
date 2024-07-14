@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "types": ["vite/client"],
+    "noEmit": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "baseUrl": "src",
+    "skipLibCheck": true,
+    "paths": {
+      "@modules/*": ["./modules/*"],
+      "@shared/*": ["./shared/*"],
+      "@enums/*": ["./shared/enums/*"],
+      "@interfaces/*": ["./shared/interfaces/*"],
+      "@components/*": ["./shared/components/*"],
+      "@hooks/*": ["./shared/hooks/*"],
+      "@utilities/*": ["./utilities/*"],
+      "@assetsTarget/*": ["./assets/target/*"],
+    },
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.json"],
+  "exclude": ["node_modules", "src/assets/**/*.json"]
+}

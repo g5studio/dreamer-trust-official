@@ -1,0 +1,17 @@
+@mixin generateStyleByBreakpoint($break-point: 'md') {
+  @media screen and (min-width: map-get($grid-breakpoints, $break-point)) {
+    @content;
+  }
+}
+
+@mixin generateStyleByMaxBreakpoint($break-point: 'md') {
+  @media screen and (max-width: calc(map-get($grid-breakpoints, $break-point) - 1px)) {
+    @content;
+  }
+}
+
+@mixin generateThemeStyle($theme: 'light') {
+  *[theme='#{$theme}'] {
+    @content;
+  }
+}

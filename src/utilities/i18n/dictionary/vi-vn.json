@@ -1,0 +1,63 @@
+{
+  "label": {
+    "sport": "Thể Thao",
+    "inplay": "Trong Trận",
+    "incoming": "Sắp Diễn Ra",
+    "today": "Hôm Nay",
+    "early": "Sớm",
+    "parlay": "Cược Xâu",
+    "outright": "Chung Cuộc",
+    "downloadApp": "APP"
+  },
+  "common": {
+    "memberCenter": "Trung Tâm Thành Viên",
+    "login": "Đăng Nhập"
+  },
+  "6686": { "mine": { "IM": "Đại Sảnh" } },
+  "menu": { "downloadApp": "Tải APP" },
+  "6789bet": {
+    "header": {
+      "registered": "Đăng Ký",
+      "login": "Đăng Nhập"
+    },
+    "downloadAppBanner": {
+      "description": "Nhiều trò chơi thú vị đang chờ bạn"
+    }
+  },
+  "tabNavigation": {
+    "casino": "Casino"
+  },
+  "hg9393": {
+    "tabNavigation": { "home": "Trang Chủ", "inplay": "Trong Trận", "record": "Lịch Sử", "mine": "Tài Khoản" }
+  },
+  "sponsor": "Tài Trợ",
+  "promotions": {
+    "promotion": "Khuyến Mãi"
+  },
+  "downloadAppBanner": {
+    "logo_name": "{owner} APP"
+  },
+  "header": {
+    "download": "Tải Ngay"
+  },
+  "vd000": {
+    "mine": {
+      "setting": {
+        "lang": {
+          "en_US": "English",
+          "id_ID": "Bahasa Indonesia",
+          "ms_MY": "Bahasa Malaysia",
+          "vi_VN": "Tiếng Việt",
+          "zh_CN": "简体中文",
+          "zh_HK": "繁體中文",
+          "ja_JP": "日本語",
+          "ko_KR": "한국어",
+          "th_TH": "ไทย",
+          "hi_IN": "हिन्दी",
+          "pt_PT": "Português",
+          "es_ES": "Español"
+        }
+      }
+    }
+  }
+}

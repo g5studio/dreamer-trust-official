@@ -1,0 +1,133 @@
+@mixin generateCssVariables {
+  @each $theme, $color-map in $general-colors {
+    @each $key, $value in $color-map {
+      --color-#{$theme}-#{$key}: #{$value};
+    }
+  }
+}
+
+@mixin generateStyleByPseudoElement {
+  @each $pseudo-element in 'before', 'after', 'placeholder' {
+    &__#{$pseudo-element} {
+      &::#{$pseudo-element} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin generateStyleByPseudoClass {
+  @each $class in $pseudo-class {
+    &--#{$class}:#{$class} {
+      @content;
+    }
+  }
+}
+
+@mixin generateScrollBar {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 2px;
+    background: #f2f2f2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: rgba(141, 150, 160, 0.6);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.9);
+  }
+}
+
+@mixin generateText {
+  @each $key, $value in $text-level {
+    #{$key} {
+      font-size: $value;
+      @if ($key != 'p' and $key != 'small' and $key != 'span') {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+@mixin generateBaseStyle {
+  @include generateText();
+  @include generateAnimation();
+  @include generateNoScrollbar();
+  @include generateThinScrollBar();
+  @include generateDropdownScrollBar();
+}
+
+@mixin generateAnimation() {
+  .animation {
+    @each $animation in $animations {
+      &-#{$animation} {
+        animation: #{$animation} 0.5s forwards;
+        @include generateStyleByPseudoClass {
+          animation: #{$animation} 0.5s forwards;
+        }
+      }
+    }
+  }
+}
+
+@mixin generateNoScrollbar() {
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin generateThinScrollBar {
+  .thin-scrollbar {
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+      border-radius: 10px;
+    }
+  
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 5px;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: getColorVariable(--color-black-5);
+      border-radius: 10px;
+    }
+  }
+}
+
+@mixin generateDropdownScrollBar {
+  .dropdown-scrollbar {
+    &::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background: getColorVariable(--color-black-6);
+      border: 2.5px solid getColorVariable(--color-black-7);
+    }
+  
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: getColorVariable(--color-black-7); 
+      border-radius: 0 10px 10px 0;
+    }
+  }
+}

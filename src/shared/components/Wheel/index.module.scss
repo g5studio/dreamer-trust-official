@@ -1,0 +1,11 @@
+// !class for specific component or page should follow BEM rule
+.component-wheel {
+  &__mask {
+    background-image: linear-gradient(180deg,hsla(0,0%,100%,.95),hsla(0,0%,100%,.6)),linear-gradient(0deg,hsla(0,0%,100%,.95),hsla(0,0%,100%,.6));
+    background-position: top, bottom;
+    background-repeat: no-repeat;
+    /* TODO: 102px here is because the widget height is 238px, it should be able to customize later, but we keep it fixed at this moment */
+    /* 2.125rem 是 Wheel 單一 item 高度 */
+    background-size: 100% calc((100% - 2.125rem)/2);
+  }
+}

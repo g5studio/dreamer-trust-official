@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>58272E7B-1E24-49E6-B2BF-81A11044E280</title>
+    <g id="5.2-充值" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5.2.4.1_銀行卡-選擇銀行資料" transform="translate(-156.000000, -190.000000)">
+            <g id="Group-2" transform="translate(10.000000, 103.000000)">
+                <g id="card-copy" transform="translate(88.000000, 29.000000)">
+                    <g id="Group" transform="translate(58.000000, 58.000000)">
+                        <path d="M22,0 L22,12 C22,17.5228475 17.5228475,22 12,22 L0,22 L0,22 L22,0 Z" id="Rectangle" fill="#4E9CEA"></path>
+                        <g id="check" transform="translate(8.000000, 8.000000)" fill="#FFFFFF">
+                            <path d="M2.35355339,6.14644661 C2.15829124,5.95118446 1.84170876,5.95118446 1.64644661,6.14644661 C1.45118446,6.34170876 1.45118446,6.65829124 1.64644661,6.85355339 L4.14644661,9.35355339 C4.34170876,9.54881554 4.65829124,9.54881554 4.85355339,9.35355339 L10.3535534,3.85355339 C10.5488155,3.65829124 10.5488155,3.34170876 10.3535534,3.14644661 C10.1582912,2.95118446 9.84170876,2.95118446 9.64644661,3.14644661 L4.5,8.29289322 L2.35355339,6.14644661 Z"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

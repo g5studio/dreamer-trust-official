@@ -1,0 +1,95 @@
+{
+  "msg": "",
+  "code": 0,
+  "data": {
+    "webTitle": "u65b0u516d(DEV)",
+    "customerServiceUrl": ["https://9393f4.com/", "https://wfzgrh.app/"],
+    "android": {
+      "incoming": false,
+      "login": false,
+      "urls": []
+    },
+    "ios": {
+      "incoming": false,
+      "login": false,
+      "urls": []
+    },
+    "webDomain": ["en-vd004-tiger-portal.innodev.site"],
+    "customerServicePhone": [
+      {
+        "order": "1",
+        "name": "0901119191"
+      },
+      {
+        "order": "2",
+        "name": "0901119191"
+      },
+      {
+        "order": "3",
+        "name": "123456"
+      }
+    ],
+    "email": [
+      {
+        "order": "1",
+        "name": "test@mail.com"
+      },
+      {
+        "order": "2",
+        "name": "test2@mail.com"
+      },
+      {
+        "order": "3",
+        "name": "test3@mail.com"
+      }
+    ],
+    "complainPhone": [
+      {
+        "order": "1",
+        "name": "0901119191"
+      },
+      {
+        "order": "2",
+        "name": "0901119191"
+      },
+      {
+        "order": "3",
+        "name": "0901119191"
+      }
+    ],
+    "customerServiceAppDownloadUrl": "http://en-vd003-tiger-admin.innodev.site",
+    "address": "www.nba.com.tw",
+    "customerServiceQRCode": "https://www.google.com",
+    "smsOtpModeRegister": 1,
+    "smsOtpModeLogin": 1,
+    "smsOtpModeForgetPW": 1,
+    "smsOtpModeWithdrew": 1,
+    "smsOtpModeDeposit": 1,
+    "googleVerifyModeLogin": 1,
+    "bindPhoneModeWithdraw": 1,
+    "smsQuickLogin": false,
+    "smsDifferentLocationLogin": 1,
+    "batchesWithdrawMinAmount": "1000",
+    "batchesWithdrawSwitch": "1",
+    "brandName": "u65b0u516d(DEV)",
+    "publicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCHQc7lyMLTALLmgYBmK8V39wzBCgdY77GR5jKQmR5JdYjK79ZLVmfeABwNEMavxkNBhzn+oWCYKgki8m4ADX0XQY8QuqY/Q21m1jVH6KXb8VISds9RNQQzXWWTofSwFRMhfdrB9Bk4VksUMpFT/kn1AQhFWqFEawth2EhGZOektwIDAQAB",
+    "roleSpinEnable": false,
+    "liveSport": true,
+    "liveSportNeedQualifyPC": true,
+    "liveSportNeedQualifyWAP": true,
+    "liveSportNeedQualifyAPP": true,
+    "liveSportQualifyType": 1,
+    "reviewStatus": false,
+    "smsOtpModeTransfer": "",
+    "liveScoreEntrance": false,
+    "squareEntrance": false,
+    "worldCupEnable": false,
+    "worldCupPopEnable": false,
+    "outOfDownloadLimit": false,
+    "appDownloadTimeByDay": "",
+    "ctcNotificationFetchInterval": 60,
+    "ctcTransactionFetchInterval": 60
+  },
+  "time": 1698975123257,
+  "traceId": "4a6eb1754472a4e49b76e8294cd1dcf4"
+}

@@ -1,0 +1,12 @@
+// !class for specific component or page should follow BEM rule
+.component-card {
+  &__backdrop {
+    &--active {
+      box-shadow: rgba(0, 0, 0, 10%) 2px 2px 6px;
+    }
+
+    &--hover:hover {
+      box-shadow: rgba(0, 0, 0, 10%) 2px 2px 6px;
+    }
+  }
+}

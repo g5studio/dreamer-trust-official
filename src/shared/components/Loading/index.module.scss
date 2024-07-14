@@ -1,0 +1,19 @@
+@import '@styles/library';
+
+.component-loading {
+  &__spinner-container {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke: getColorVariable(--color-black-6);
+    animation-duration: 1.5s !important;
+    animation-timing-function: ease-in-out !important;
+    animation-iteration-count: infinite !important;
+    stroke-linecap: round;
+  }
+
+  &__spinner {
+    animation-duration: 2s !important;
+    animation-timing-function: linear !important;
+    animation-iteration-count: infinite !important;
+  }
+}

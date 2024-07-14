@@ -1,0 +1,36 @@
+@function str-split($string, $separator) {
+  $split-arr: ();
+  $index: str-index($string, $separator);
+  @while $index != null {
+    $item: str-slice($string, 1, $index - 1);
+    $split-arr: append($split-arr, $item, comma);
+    $string: str-slice($string, $index + 1);
+    $index: str-index($string, $separator);
+  }
+  $split-arr: append($split-arr, $string, comma);
+
+  @return $split-arr;
+}
+
+@function join($lists, $separator: ',') {
+  $result: '';
+  @each $list in $lists {
+    @if ($result == '') {
+      $result: $list;
+    } @else {
+      $result: #{$result + $separator + $list};
+    }
+  }
+  @return $result;
+}
+
+@function getContainerWidth($break-point, $map) {
+  @if (map-has-key($map, $break-point)) {
+    @return map-get($map, $break-point);
+  }
+  @return null;
+}
+
+@function getColorVariable($css-variable, $opacity: 1) {
+  @return rgba(var($css-variable) / $opacity);
+}

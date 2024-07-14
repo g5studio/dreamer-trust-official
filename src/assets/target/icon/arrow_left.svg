@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon/官方合作/arrow_left</title>
+    <defs>
+        <linearGradient x1="-6.08319257%" y1="16.7024834%" x2="100%" y2="76.2747377%" id="linearGradient-1">
+            <stop stop-color="#081F58" offset="0%"></stop>
+            <stop stop-color="#4697C0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="arrow_drop-down" fill="url(#linearGradient-1)" transform="translate(-0.500000, 0.000000)">
+            <polygon id="arrow_left" transform="translate(7.500000, 10.500000) scale(1, -1) rotate(-90.000000) translate(-7.500000, -10.500000) " points="7.5 3 17.5 18 -2.5 18"></polygon>
+        </g>
+    </g>
+</svg>

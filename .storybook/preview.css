@@ -1,0 +1,11 @@
+body {
+  overflow: auto !important;
+}
+
+body,
+html,
+#storybook-root {
+  width: 100%;
+  height: 100%;
+}
+

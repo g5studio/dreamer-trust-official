@@ -1,0 +1,16 @@
+.absolute-position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 程式碼片段樣式
+.code-snippet {
+  color: map-get($orange-colors, 1);
+  background-color: map-get($black-colors, 5);
+  border: 1px map-get($black-colors, 4) solid;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  margin: 0 0.25rem;
+}

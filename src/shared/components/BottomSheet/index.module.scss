@@ -1,0 +1,15 @@
+// !class for specific component or page should follow BEM rule
+.component-bottom-sheet {
+  -webkit-tab-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  overscroll-behavior: none;
+  // will-change: height;
+
+  &__content {
+    -webkit-tap-highlight-color: revert;
+    -webkit-touch-callout: revert;
+    -ms-scroll-chaining: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

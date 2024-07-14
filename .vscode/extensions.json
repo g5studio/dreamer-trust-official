@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "jebbs.plantuml",
+    "aaron-bond.better-comments",
+    "streetsidesoftware.code-spell-checker",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "swyphcosmo.spellchecker",
+    "csstools.postcss",
+    "solidjs-community.solid-snippets",
+    "rebornix.project-snippets",
+    "ms-vsliveshare.vsliveshare"
+  ]
+}

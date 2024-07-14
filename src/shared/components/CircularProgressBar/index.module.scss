@@ -1,0 +1,17 @@
+// !class for specific component or page should follow BEM rule
+.component-circular-progress-bar {
+  &__trail {
+    /* Used when trail is not full diameter, i.e. when props.circleRatio is set */
+    // stroke-linecap: butt;
+  }
+
+  &__path {
+    // stroke-linecap: butt;
+    transition: stroke-dashoffset 0.5s ease 0s;
+  }
+
+  &__text {
+    dominant-baseline: middle;
+    text-anchor: middle;
+  }
+}

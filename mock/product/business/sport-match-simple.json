@@ -1,0 +1,1254 @@
+{
+  "msg": "",
+  "code": 0,
+  "data": {
+    "tournaments": [
+      {
+        "sid": 1,
+        "tid": 7191,
+        "cid": 77,
+        "name": "烏拉圭乙組聯賽",
+        "favorite": false,
+        "priority": 150036,
+        "count": 1,
+        "matches": [
+          {
+            "sid": 1,
+            "cid": 77,
+            "tid": 7191,
+            "iid": 9907621,
+            "countdown": 0,
+            "state": "",
+            "series": "",
+            "vd": "f",
+            "streaming": 0,
+            "chatMid": 0,
+            "gifMid": 0,
+            "graphMid": 49958161,
+            "inplay": true,
+            "video": false,
+            "nv": false,
+            "scoreId": "",
+            "tnName": "烏拉圭乙組聯賽",
+            "tnPriority": 150036,
+            "home": {
+              "id": 188658,
+              "cid": 77,
+              "name": "切立多",
+              "jersey": {
+                "base": "ffff00",
+                "sleeve": "ffff00",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "short",
+                "sleeveDetails": "008040"
+              }
+            },
+            "away": {
+              "id": 390794,
+              "cid": 77,
+              "name": "庫柏蒙得維的亞",
+              "jersey": {
+                "base": "",
+                "sleeve": "",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "",
+                "sleeveDetails": ""
+              }
+            },
+            "round": {
+              "roundType": "group",
+              "roundName": "segunda division",
+              "roundGroup": "Segunda Division",
+              "roundGroupName": "segunda division",
+              "roundNumber": "1"
+            },
+            "marketInfo": {
+              "cr": false,
+              "ot": false,
+              "pk": false,
+              "otcr": false,
+              "ad": false,
+              "redCard": false,
+              "otRedCard": false
+            },
+            "mids": {
+              "fmid": 128192,
+              "bmid": 49958161,
+              "amid": 0,
+              "cmid": 0,
+              "dmid": 0,
+              "jmid": 0
+            },
+            "gifs": [],
+            "videos": [],
+            "anchors": [],
+            "name": "切立多-vs-庫柏蒙得維的亞",
+            "kickoffTime": 1715561100
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "tid": 25121,
+        "cid": 12,
+        "name": "美國MLS NEXT職業聯賽",
+        "favorite": false,
+        "priority": 150045,
+        "count": 1,
+        "matches": [
+          {
+            "sid": 1,
+            "cid": 12,
+            "tid": 25121,
+            "iid": 9913903,
+            "countdown": 0,
+            "state": "",
+            "series": "",
+            "vd": "f",
+            "streaming": 0,
+            "chatMid": 0,
+            "gifMid": 0,
+            "graphMid": 47770877,
+            "inplay": true,
+            "video": false,
+            "nv": false,
+            "scoreId": "",
+            "tnName": "美國MLS NEXT職業聯賽",
+            "tnPriority": 150045,
+            "home": {
+              "id": 335046,
+              "cid": 12,
+              "name": "城之隊",
+              "jersey": {
+                "base": "",
+                "sleeve": "",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "",
+                "sleeveDetails": ""
+              }
+            },
+            "away": {
+              "id": 182182,
+              "cid": 12,
+              "name": "北德克薩斯",
+              "jersey": {
+                "base": "",
+                "sleeve": "",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "",
+                "sleeveDetails": ""
+              }
+            },
+            "round": {
+              "roundType": "group",
+              "roundName": "mls next pro",
+              "roundGroup": "Western",
+              "roundGroupName": "mls next pro",
+              "roundNumber": "1"
+            },
+            "marketInfo": {
+              "cr": false,
+              "ot": false,
+              "pk": false,
+              "otcr": false,
+              "ad": false,
+              "redCard": false,
+              "otRedCard": false
+            },
+            "mids": {
+              "fmid": 128822,
+              "bmid": 47770877,
+              "amid": 8219396,
+              "cmid": 0,
+              "dmid": 0,
+              "jmid": 0
+            },
+            "gifs": [],
+            "videos": [
+              {
+                "source": "A7",
+                "type": "url",
+                "info": "https://live1.jiatianxiazhuangshi.com/live/8219396_09be74b1f74b91392417dee7adfc2486.m3u8?auth_key=1715578567-0-0-b7d31665622b6daaf34ad683dba7872b"
+              },
+              {
+                "source": "A1",
+                "type": "url",
+                "info": "https://live2.xmqkx.com/live/8219396_09be74b1f74b91392417dee7adfc2486.m3u8?auth_key=1715574943-0-0-22daed446b35e9acea082cef5bb0de89"
+              },
+              {
+                "source": "A2",
+                "type": "url",
+                "info": "https://live1.lashmjs.com/live/8219396_09be74b1f74b91392417dee7adfc2486.m3u8?auth_key=1715578566-0-0-786793421b25e368bf69746e788f84c8"
+              }
+            ],
+            "anchors": [],
+            "name": "城之隊-vs-北德克薩斯",
+            "kickoffTime": 1715558400
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "tid": 366,
+        "cid": 55,
+        "name": "墨西哥超級聯賽 - 附加賽",
+        "favorite": false,
+        "priority": 150049,
+        "count": 1,
+        "matches": [
+          {
+            "sid": 1,
+            "cid": 55,
+            "tid": 366,
+            "iid": 9911681,
+            "countdown": 0,
+            "state": "",
+            "series": "",
+            "vd": "f",
+            "streaming": 0,
+            "chatMid": 0,
+            "gifMid": 0,
+            "graphMid": 49924341,
+            "inplay": true,
+            "video": false,
+            "nv": false,
+            "scoreId": "",
+            "tnName": "墨西哥超級聯賽 - 附加賽",
+            "tnPriority": 150049,
+            "home": {
+              "id": 10098,
+              "cid": 55,
+              "name": "阿蘇爾",
+              "jersey": {
+                "base": "0d56a8",
+                "sleeve": "0d56a8",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "short",
+                "sleeveDetails": ""
+              }
+            },
+            "away": {
+              "id": 7365,
+              "cid": 55,
+              "name": "普馬斯",
+              "jersey": {
+                "base": "ccb98f",
+                "sleeve": "122c5d",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "short",
+                "sleeveDetails": "122c5d"
+              }
+            },
+            "round": {
+              "roundType": "cup",
+              "roundName": "quarterfinal",
+              "roundGroup": "",
+              "roundGroupName": "quarterfinal",
+              "roundNumber": ""
+            },
+            "marketInfo": {
+              "cr": true,
+              "ot": false,
+              "pk": false,
+              "otcr": false,
+              "ad": false,
+              "redCard": false,
+              "otRedCard": false
+            },
+            "mids": {
+              "fmid": 127615,
+              "bmid": 49924341,
+              "amid": 8215567,
+              "cmid": 11039727,
+              "dmid": 0,
+              "jmid": 0
+            },
+            "gifs": [
+              {
+                "source": "c",
+                "type": "id",
+                "info": "11039727"
+              }
+            ],
+            "videos": [
+              {
+                "source": "A7",
+                "type": "url",
+                "info": "https://live2.jiatianxiazhuangshi.com/live/8215567_a9ef7411d0bd7fd6d2cd9aea1b340837.m3u8?auth_key=1715578566-0-0-2e62c56eeb6f550dcc18133b870b04c8"
+              },
+              {
+                "source": "A1",
+                "type": "url",
+                "info": "https://live2.xmqkx.com/live/8215567_a9ef7411d0bd7fd6d2cd9aea1b340837.m3u8?auth_key=1715574942-0-0-3c7e9c1bd17b9fdaca0617d017204dd2"
+              },
+              {
+                "source": "A2",
+                "type": "url",
+                "info": "https://live2.lashmjs.com/live/8215567_a9ef7411d0bd7fd6d2cd9aea1b340837.m3u8?auth_key=1715578568-0-0-671bb8f9fe6f535af09a3dc99daf5fe7"
+              }
+            ],
+            "anchors": [],
+            "name": "阿蘇爾-vs-普馬斯",
+            "kickoffTime": 1715562000
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "tid": 193,
+        "cid": 27,
+        "name": "智利甲組聯賽",
+        "favorite": false,
+        "priority": 150050,
+        "count": 1,
+        "matches": [
+          {
+            "sid": 1,
+            "cid": 27,
+            "tid": 193,
+            "iid": 9882377,
+            "countdown": 0,
+            "state": "",
+            "series": "",
+            "vd": "f",
+            "streaming": 0,
+            "chatMid": 0,
+            "gifMid": 0,
+            "graphMid": 47119025,
+            "inplay": true,
+            "video": false,
+            "nv": false,
+            "scoreId": "",
+            "tnName": "智利甲組聯賽",
+            "tnPriority": 150050,
+            "home": {
+              "id": 7639,
+              "cid": 27,
+              "name": "伊庫伊奎",
+              "jersey": {
+                "base": "00ffff",
+                "sleeve": "000000",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "",
+                "sleeveDetails": ""
+              }
+            },
+            "away": {
+              "id": 5386,
+              "cid": 27,
+              "name": "紐柏萊斯",
+              "jersey": {
+                "base": "ff8ffb",
+                "sleeve": "fd8fff",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "short",
+                "sleeveDetails": "000000"
+              }
+            },
+            "round": {
+              "roundType": "group",
+              "roundName": "primera division",
+              "roundGroup": "",
+              "roundGroupName": "primera division",
+              "roundNumber": "12"
+            },
+            "marketInfo": {
+              "cr": true,
+              "ot": false,
+              "pk": false,
+              "otcr": false,
+              "ad": false,
+              "redCard": false,
+              "otRedCard": false
+            },
+            "mids": {
+              "fmid": 124975,
+              "bmid": 47119025,
+              "amid": 8201516,
+              "cmid": 10775389,
+              "dmid": 0,
+              "jmid": 0
+            },
+            "gifs": [
+              {
+                "source": "c",
+                "type": "id",
+                "info": "10775389"
+              }
+            ],
+            "videos": [
+              {
+                "source": "A7",
+                "type": "url",
+                "info": "https://live.jiatianxiazhuangshi.com/live/8201516_9346dca2ff870efe904cfd0bfc9e2d05.m3u8?auth_key=1715578567-0-0-062c7170767ee02495a92157de992691"
+              },
+              {
+                "source": "A1",
+                "type": "url",
+                "info": "https://live.xmqkx.com/live/8201516_9346dca2ff870efe904cfd0bfc9e2d05.m3u8?auth_key=1715574943-0-0-1fe9d67019105d599aaabd9e2c0b7b01"
+              },
+              {
+                "source": "A2",
+                "type": "url",
+                "info": "https://live.lashmjs.com/live/8201516_9346dca2ff870efe904cfd0bfc9e2d05.m3u8?auth_key=1715578569-0-0-2e0367679ab268843288165fa395ecfd"
+              }
+            ],
+            "anchors": [],
+            "name": "伊庫伊奎-vs-紐柏萊斯",
+            "kickoffTime": 1715558400
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "tid": 128,
+        "cid": 55,
+        "name": "墨西哥乙組聯賽甲級 - 附加賽",
+        "favorite": false,
+        "priority": 150063,
+        "count": 1,
+        "matches": [
+          {
+            "sid": 1,
+            "cid": 55,
+            "tid": 128,
+            "iid": 9912497,
+            "countdown": 0,
+            "state": "",
+            "series": "",
+            "vd": "f",
+            "streaming": 0,
+            "chatMid": 0,
+            "gifMid": 0,
+            "graphMid": 49943945,
+            "inplay": true,
+            "video": false,
+            "nv": false,
+            "scoreId": "",
+            "tnName": "墨西哥乙組聯賽甲級 - 附加賽",
+            "tnPriority": 150063,
+            "home": {
+              "id": 6110,
+              "cid": 55,
+              "name": "西瑪羅雷斯索諾拉II隊",
+              "jersey": null
+            },
+            "away": {
+              "id": 5406,
+              "cid": 55,
+              "name": "弗雷斯尼約",
+              "jersey": null
+            },
+            "round": {
+              "roundType": "cup",
+              "roundName": "final",
+              "roundGroup": "",
+              "roundGroupName": "final",
+              "roundNumber": ""
+            },
+            "marketInfo": {
+              "cr": false,
+              "ot": false,
+              "pk": false,
+              "otcr": false,
+              "ad": false,
+              "redCard": false,
+              "otRedCard": false
+            },
+            "mids": {
+              "fmid": 128230,
+              "bmid": 49943945,
+              "amid": 0,
+              "cmid": 11038899,
+              "dmid": 0,
+              "jmid": 0
+            },
+            "gifs": [
+              {
+                "source": "c",
+                "type": "id",
+                "info": "11038899"
+              }
+            ],
+            "videos": [],
+            "anchors": [],
+            "name": "西瑪羅雷斯索諾拉II隊-vs-弗雷斯尼約",
+            "kickoffTime": 1715562000
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "tid": 25560,
+        "cid": 74,
+        "name": "薩爾瓦多甲組聯賽",
+        "favorite": false,
+        "priority": 150091,
+        "count": 1,
+        "matches": [
+          {
+            "sid": 1,
+            "cid": 74,
+            "tid": 25560,
+            "iid": 9910151,
+            "countdown": 0,
+            "state": "",
+            "series": "",
+            "vd": "f",
+            "streaming": 0,
+            "chatMid": 0,
+            "gifMid": 0,
+            "graphMid": 49959683,
+            "inplay": true,
+            "video": false,
+            "nv": false,
+            "scoreId": "",
+            "tnName": "薩爾瓦多甲組聯賽",
+            "tnPriority": 150091,
+            "home": {
+              "id": 2430,
+              "cid": 74,
+              "name": "慕尼奇博爾立米諾",
+              "jersey": {
+                "base": "ffff00",
+                "sleeve": "ffff00",
+                "style": "horizontal",
+                "styleColor": "3300ff",
+                "shirtType": "",
+                "sleeveDetails": ""
+              }
+            },
+            "away": {
+              "id": 306643,
+              "cid": 74,
+              "name": "薩卡特科盧卡",
+              "jersey": null
+            },
+            "round": {
+              "roundType": "cup",
+              "roundName": "quarterfinal",
+              "roundGroup": "",
+              "roundGroupName": "quarterfinal",
+              "roundNumber": ""
+            },
+            "marketInfo": {
+              "cr": false,
+              "ot": false,
+              "pk": false,
+              "otcr": false,
+              "ad": false,
+              "redCard": false,
+              "otRedCard": false
+            },
+            "mids": {
+              "fmid": 127438,
+              "bmid": 49959683,
+              "amid": 0,
+              "cmid": 11038868,
+              "dmid": 0,
+              "jmid": 0
+            },
+            "gifs": [
+              {
+                "source": "c",
+                "type": "id",
+                "info": "11038868"
+              }
+            ],
+            "videos": [],
+            "anchors": [],
+            "name": "慕尼奇博爾立米諾-vs-薩卡特科盧卡",
+            "kickoffTime": 1715562420
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "tid": 492,
+        "cid": 98,
+        "name": "牙買加超級聯賽 - 附加賽",
+        "favorite": false,
+        "priority": 160019,
+        "count": 1,
+        "matches": [
+          {
+            "sid": 1,
+            "cid": 98,
+            "tid": 492,
+            "iid": 9902807,
+            "countdown": 0,
+            "state": "",
+            "series": "",
+            "vd": "f",
+            "streaming": 0,
+            "chatMid": 0,
+            "gifMid": 0,
+            "graphMid": 49831539,
+            "inplay": true,
+            "video": false,
+            "nv": false,
+            "scoreId": "",
+            "tnName": "牙買加超級聯賽 - 附加賽",
+            "tnPriority": 160019,
+            "home": {
+              "id": 2546,
+              "cid": 98,
+              "name": "卡瓦立爾",
+              "jersey": {
+                "base": "ffffff",
+                "sleeve": "006600",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "",
+                "sleeveDetails": ""
+              }
+            },
+            "away": {
+              "id": 672,
+              "cid": 98,
+              "name": "阿內特加登斯",
+              "jersey": {
+                "base": "ff0000",
+                "sleeve": "000000",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "",
+                "sleeveDetails": ""
+              }
+            },
+            "round": {
+              "roundType": "cup",
+              "roundName": "semifinal",
+              "roundGroup": "",
+              "roundGroupName": "semifinal",
+              "roundNumber": ""
+            },
+            "marketInfo": {
+              "cr": false,
+              "ot": false,
+              "pk": false,
+              "otcr": false,
+              "ad": false,
+              "redCard": false,
+              "otRedCard": false
+            },
+            "mids": {
+              "fmid": 128370,
+              "bmid": 49831539,
+              "amid": 8218887,
+              "cmid": 11029465,
+              "dmid": 0,
+              "jmid": 0
+            },
+            "gifs": [
+              {
+                "source": "b",
+                "type": "id",
+                "info": "49831539"
+              },
+              {
+                "source": "c",
+                "type": "id",
+                "info": "11029465"
+              }
+            ],
+            "videos": [
+              {
+                "source": "A7",
+                "type": "url",
+                "info": "https://live.jiatianxiazhuangshi.com/live/8218887_094252656b895184b6175a78d296b6a6.m3u8?auth_key=1715578248-0-0-7c3c94ed03a05a0199b33f12d01a1668"
+              },
+              {
+                "source": "A1",
+                "type": "url",
+                "info": "https://live.xmqkx.com/live/8218887_094252656b895184b6175a78d296b6a6.m3u8?auth_key=1715574573-0-0-47e7a51858aa562d476a1b273b6a5634"
+              },
+              {
+                "source": "A2",
+                "type": "url",
+                "info": "https://live.lashmjs.com/live/8218887_094252656b895184b6175a78d296b6a6.m3u8?auth_key=1715578238-0-0-e1d73447fe5744b7801f8aa0d27b96e5"
+              }
+            ],
+            "anchors": [],
+            "name": "卡瓦立爾-vs-阿內特加登斯",
+            "kickoffTime": 1715562000
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "tid": 509,
+        "cid": 10,
+        "name": "哥倫比亞甲組聯賽 - 附加賽",
+        "favorite": false,
+        "priority": 160048,
+        "count": 1,
+        "matches": [
+          {
+            "sid": 1,
+            "cid": 10,
+            "tid": 509,
+            "iid": 9896419,
+            "countdown": 0,
+            "state": "",
+            "series": "",
+            "vd": "f",
+            "streaming": 0,
+            "chatMid": 0,
+            "gifMid": 0,
+            "graphMid": 49824475,
+            "inplay": true,
+            "video": false,
+            "nv": false,
+            "scoreId": "",
+            "tnName": "哥倫比亞甲組聯賽 - 附加賽",
+            "tnPriority": 160048,
+            "home": {
+              "id": 6747,
+              "cid": 10,
+              "name": "托利馬",
+              "jersey": {
+                "base": "800000",
+                "sleeve": "800000",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "short",
+                "sleeveDetails": "c4c400"
+              }
+            },
+            "away": {
+              "id": 5572,
+              "cid": 10,
+              "name": "卡爾打斯",
+              "jersey": {
+                "base": "00000a",
+                "sleeve": "030303",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "short",
+                "sleeveDetails": "000000"
+              }
+            },
+            "round": {
+              "roundType": "group",
+              "roundName": "primera a, apertura, group b",
+              "roundGroup": "B",
+              "roundGroupName": "primera a, apertura, group b",
+              "roundNumber": "2"
+            },
+            "marketInfo": {
+              "cr": true,
+              "ot": false,
+              "pk": false,
+              "otcr": false,
+              "ad": false,
+              "redCard": false,
+              "otRedCard": false
+            },
+            "mids": {
+              "fmid": 124984,
+              "bmid": 49824475,
+              "amid": 8201459,
+              "cmid": 11025861,
+              "dmid": 0,
+              "jmid": 0
+            },
+            "gifs": [
+              {
+                "source": "c",
+                "type": "id",
+                "info": "11025861"
+              }
+            ],
+            "videos": [
+              {
+                "source": "A7",
+                "type": "url",
+                "info": "https://live.jiatianxiazhuangshi.com/live/8201459_967c755ffd6f7d8deece215a857b64fb.m3u8?auth_key=1715578566-0-0-3af81c24e0b6a8c901e9b3b67d753b02"
+              },
+              {
+                "source": "A1",
+                "type": "url",
+                "info": "https://live.xmqkx.com/live/8201459_967c755ffd6f7d8deece215a857b64fb.m3u8?auth_key=1715574942-0-0-dfa48957bdf213a7f663d118d309b7c9"
+              },
+              {
+                "source": "A2",
+                "type": "url",
+                "info": "https://live.lashmjs.com/live/8201459_967c755ffd6f7d8deece215a857b64fb.m3u8?auth_key=1715578568-0-0-73b37c6b866527adb5f9b413ce594ccd"
+              }
+            ],
+            "anchors": [],
+            "name": "托利馬-vs-卡爾打斯",
+            "kickoffTime": 1715560200
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "tid": 378,
+        "cid": 12,
+        "name": "美國國家獨立足球聯合聯賽",
+        "favorite": false,
+        "priority": 160148,
+        "count": 1,
+        "matches": [
+          {
+            "sid": 1,
+            "cid": 12,
+            "tid": 378,
+            "iid": 9912558,
+            "countdown": 0,
+            "state": "",
+            "series": "",
+            "vd": "f",
+            "streaming": 0,
+            "chatMid": 0,
+            "gifMid": 0,
+            "graphMid": 48388733,
+            "inplay": true,
+            "video": false,
+            "nv": false,
+            "scoreId": "",
+            "tnName": "美國國家獨立足球聯合聯賽",
+            "tnPriority": 160148,
+            "home": {
+              "id": 427897,
+              "cid": 12,
+              "name": "亞利桑那季風",
+              "jersey": {
+                "base": "",
+                "sleeve": "",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "",
+                "sleeveDetails": ""
+              }
+            },
+            "away": {
+              "id": 10332,
+              "cid": 12,
+              "name": "洛杉磯動力",
+              "jersey": {
+                "base": "",
+                "sleeve": "",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "",
+                "sleeveDetails": ""
+              }
+            },
+            "round": {
+              "roundType": "group",
+              "roundName": "national independent soccer association",
+              "roundGroup": "West",
+              "roundGroupName": "national independent soccer association",
+              "roundNumber": "1"
+            },
+            "marketInfo": {
+              "cr": false,
+              "ot": false,
+              "pk": false,
+              "otcr": false,
+              "ad": false,
+              "redCard": false,
+              "otRedCard": false
+            },
+            "mids": {
+              "fmid": 128297,
+              "bmid": 48388733,
+              "amid": 8219462,
+              "cmid": 0,
+              "dmid": 0,
+              "jmid": 0
+            },
+            "gifs": [],
+            "videos": [],
+            "anchors": [],
+            "name": "亞利桑那季風-vs-洛杉磯動力",
+            "kickoffTime": 1715558400
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "tid": 22773,
+        "cid": 10,
+        "name": "哥倫比亞女子甲組聯賽",
+        "favorite": false,
+        "priority": 170096,
+        "count": 2,
+        "matches": [
+          {
+            "sid": 1,
+            "cid": 10,
+            "tid": 22773,
+            "iid": 9910149,
+            "countdown": 0,
+            "state": "",
+            "series": "",
+            "vd": "f",
+            "streaming": 0,
+            "chatMid": 0,
+            "gifMid": 0,
+            "graphMid": 47739229,
+            "inplay": true,
+            "video": false,
+            "nv": false,
+            "scoreId": "",
+            "tnName": "哥倫比亞女子甲組聯賽",
+            "tnPriority": 170096,
+            "home": {
+              "id": 334452,
+              "cid": null,
+              "name": "皇家桑坦德(女)",
+              "jersey": null
+            },
+            "away": {
+              "id": 305775,
+              "cid": null,
+              "name": "卡利體育會(女)",
+              "jersey": null
+            },
+            "round": {
+              "roundType": "group",
+              "roundName": "liga femenina",
+              "roundGroup": "Liga Femenina",
+              "roundGroupName": "liga femenina",
+              "roundNumber": "11"
+            },
+            "marketInfo": {
+              "cr": false,
+              "ot": false,
+              "pk": false,
+              "otcr": false,
+              "ad": false,
+              "redCard": false,
+              "otRedCard": false
+            },
+            "mids": {
+              "fmid": 128231,
+              "bmid": 47739229,
+              "amid": 0,
+              "cmid": 11041674,
+              "dmid": 0,
+              "jmid": 0
+            },
+            "gifs": [
+              {
+                "source": "c",
+                "type": "id",
+                "info": "11041674"
+              }
+            ],
+            "videos": [
+              {
+                "source": "A7",
+                "type": "url",
+                "info": "https://live1.jiatianxiazhuangshi.com/live/47739229_cdae9194648a7a461ca8f816758c067a.m3u8?auth_key=1715578566-0-0-d897fbec6dfbf8073bc80b3d0cf9897a"
+              },
+              {
+                "source": "A1",
+                "type": "url",
+                "info": "https://live1.xmqkx.com/live/47739229_cdae9194648a7a461ca8f816758c067a.m3u8?auth_key=1715574942-0-0-27ffa578ecc10951ae94d6c662d884cf"
+              },
+              {
+                "source": "A2",
+                "type": "url",
+                "info": "https://live1.lashmjs.com/live/47739229_cdae9194648a7a461ca8f816758c067a.m3u8?auth_key=1715578568-0-0-4fa8f5f3fb1e28cc0af1e881cad1d733"
+              }
+            ],
+            "anchors": [],
+            "name": "皇家桑坦德(女)-vs-卡利體育會(女)",
+            "kickoffTime": 1715560200
+          },
+          {
+            "sid": 1,
+            "cid": 10,
+            "tid": 22773,
+            "iid": 9906139,
+            "countdown": 0,
+            "state": "",
+            "series": "",
+            "vd": "f",
+            "streaming": 0,
+            "chatMid": 0,
+            "gifMid": 0,
+            "graphMid": 47739231,
+            "inplay": true,
+            "video": false,
+            "nv": false,
+            "scoreId": "",
+            "tnName": "哥倫比亞女子甲組聯賽",
+            "tnPriority": 170096,
+            "home": {
+              "id": 334547,
+              "cid": 10,
+              "name": "拉伊奎達德(女)",
+              "jersey": null
+            },
+            "away": {
+              "id": 303097,
+              "cid": 10,
+              "name": "曼特寧獨立(女)",
+              "jersey": null
+            },
+            "round": {
+              "roundType": "group",
+              "roundName": "liga femenina",
+              "roundGroup": "Liga Femenina",
+              "roundGroupName": "liga femenina",
+              "roundNumber": "11"
+            },
+            "marketInfo": {
+              "cr": false,
+              "ot": false,
+              "pk": false,
+              "otcr": false,
+              "ad": false,
+              "redCard": false,
+              "otRedCard": false
+            },
+            "mids": {
+              "fmid": 128232,
+              "bmid": 47739231,
+              "amid": 0,
+              "cmid": 11041676,
+              "dmid": 0,
+              "jmid": 0
+            },
+            "gifs": [
+              {
+                "source": "c",
+                "type": "id",
+                "info": "11041676"
+              }
+            ],
+            "videos": [
+              {
+                "source": "A7",
+                "type": "url",
+                "info": "https://live1.jiatianxiazhuangshi.com/live/47739231_bdea47cf32bd9998b89f238b7d80338b.m3u8?auth_key=1715578566-0-0-4f7db62ccbb9a9fd7e611c69b816cf1f"
+              },
+              {
+                "source": "A1",
+                "type": "url",
+                "info": "https://live1.xmqkx.com/live/47739231_bdea47cf32bd9998b89f238b7d80338b.m3u8?auth_key=1715574941-0-0-2ba9bf728eacd162ef64408b322e262b"
+              },
+              {
+                "source": "A2",
+                "type": "url",
+                "info": "https://live1.lashmjs.com/live/47739231_bdea47cf32bd9998b89f238b7d80338b.m3u8?auth_key=1715578568-0-0-cc66b7c05c89c77f1be5eb443ec17082"
+              }
+            ],
+            "anchors": [],
+            "name": "拉伊奎達德(女)-vs-曼特寧獨立(女)",
+            "kickoffTime": 1715562000
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "tid": 25510,
+        "cid": 55,
+        "name": "墨西哥女子超級聯賽 - 附加賽",
+        "favorite": false,
+        "priority": 170153,
+        "count": 1,
+        "matches": [
+          {
+            "sid": 1,
+            "cid": 55,
+            "tid": 25510,
+            "iid": 9909554,
+            "countdown": 0,
+            "state": "",
+            "series": "",
+            "vd": "f",
+            "streaming": 0,
+            "chatMid": 0,
+            "gifMid": 0,
+            "graphMid": 0,
+            "inplay": true,
+            "video": false,
+            "nv": false,
+            "scoreId": "",
+            "tnName": "墨西哥女子超級聯賽 - 附加賽",
+            "tnPriority": 170153,
+            "home": {
+              "id": 4826,
+              "cid": 55,
+              "name": "帕丘卡(女)",
+              "jersey": {
+                "base": "e65ab5",
+                "sleeve": "000099",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "short",
+                "sleeveDetails": ""
+              }
+            },
+            "away": {
+              "id": 5680,
+              "cid": 55,
+              "name": "利昂(女)",
+              "jersey": {
+                "base": "204120",
+                "sleeve": "339933",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "short",
+                "sleeveDetails": ""
+              }
+            },
+            "round": {
+              "roundType": "cup",
+              "roundName": "quarterfinal",
+              "roundGroup": "",
+              "roundGroupName": "quarterfinal",
+              "roundNumber": ""
+            },
+            "marketInfo": {
+              "cr": true,
+              "ot": false,
+              "pk": false,
+              "otcr": false,
+              "ad": false,
+              "redCard": false,
+              "otRedCard": false
+            },
+            "mids": {
+              "fmid": 128257,
+              "bmid": 0,
+              "amid": 0,
+              "cmid": 0,
+              "dmid": 0,
+              "jmid": 0
+            },
+            "gifs": [],
+            "videos": [
+              {
+                "source": "A7",
+                "type": "url",
+                "info": "https://live.jiatianxiazhuangshi.com/live/49938719_df9cc465cd12ca68986caf1f1c3559e7.m3u8?auth_key=1715578566-0-0-cee80f43fe84a761d8466e304eb3737a"
+              },
+              {
+                "source": "A1",
+                "type": "url",
+                "info": "https://live.xmqkx.com/live/49938719_df9cc465cd12ca68986caf1f1c3559e7.m3u8?auth_key=1715574942-0-0-1e594b7100baf16b39f695941f32b640"
+              },
+              {
+                "source": "A2",
+                "type": "url",
+                "info": "https://live.lashmjs.com/live/49938719_df9cc465cd12ca68986caf1f1c3559e7.m3u8?auth_key=1715578568-0-0-5ad7beeede3559405e5fc10230914d47"
+              }
+            ],
+            "anchors": [],
+            "name": "帕丘卡(女)-vs-利昂(女)",
+            "kickoffTime": 1715562360
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "tid": 1612,
+        "cid": 274,
+        "name": "巴拿馬乙級全國聯賽",
+        "favorite": false,
+        "priority": 180232,
+        "count": 1,
+        "matches": [
+          {
+            "sid": 1,
+            "cid": 274,
+            "tid": 1612,
+            "iid": 9913846,
+            "countdown": 0,
+            "state": "",
+            "series": "",
+            "vd": "f",
+            "streaming": 0,
+            "chatMid": 0,
+            "gifMid": 0,
+            "graphMid": 0,
+            "inplay": true,
+            "video": false,
+            "nv": false,
+            "scoreId": "",
+            "tnName": "巴拿馬乙級全國聯賽",
+            "tnPriority": 180232,
+            "home": {
+              "id": 286447,
+              "cid": -1,
+              "name": "烏德拉斯",
+              "jersey": {
+                "base": "",
+                "sleeve": "",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "",
+                "sleeveDetails": ""
+              }
+            },
+            "away": {
+              "id": 288029,
+              "cid": -1,
+              "name": "馬里奧門德斯學院",
+              "jersey": {
+                "base": "",
+                "sleeve": "",
+                "style": "",
+                "styleColor": "",
+                "shirtType": "",
+                "sleeveDetails": ""
+              }
+            },
+            "round": {
+              "roundType": "",
+              "roundName": "",
+              "roundGroup": "",
+              "roundGroupName": "",
+              "roundNumber": ""
+            },
+            "marketInfo": {
+              "cr": false,
+              "ot": false,
+              "pk": false,
+              "otcr": false,
+              "ad": false,
+              "redCard": false,
+              "otRedCard": false
+            },
+            "mids": {
+              "fmid": 128840,
+              "bmid": 0,
+              "amid": 0,
+              "cmid": 11052731,
+              "dmid": 0,
+              "jmid": 0
+            },
+            "gifs": [
+              {
+                "source": "c",
+                "type": "id",
+                "info": "11052731"
+              }
+            ],
+            "videos": [],
+            "anchors": [],
+            "name": "烏德拉斯-vs-馬里奧門德斯學院",
+            "kickoffTime": 1715560200
+          }
+        ]
+      }
+    ]
+  },
+  "time": 1715564470063
+}

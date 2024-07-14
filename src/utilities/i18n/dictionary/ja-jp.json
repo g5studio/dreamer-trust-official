@@ -1,0 +1,61 @@
+{
+  "label": {
+    "sport": "スポーツ",
+    "inplay": "ライブ",
+    "incoming": "近日公開",
+    "today": "本日",
+    "early": "初期オッズ",
+    "parlay": "パーレイ",
+    "outright": "優勝",
+    "downloadApp": "アプリをダウンロードする"
+  },
+  "common": {
+    "memberCenter": "会員センター",
+    "login": "ログイン"
+  },
+  "6686": { "mine": { "IM": "生放送広場" } },
+  "menu": { "downloadApp": "アプリをダウンロードする" },
+  "6789bet": {
+    "header": {
+      "registered": "新規登録",
+      "login": "ログイン"
+    },
+    "downloadAppBanner": {
+      "description": "エクセレントゲームダウンロード"
+    }
+  },
+  "tabNavigation": {
+    "casino": "カジノ"
+  },
+  "hg9393": { "tabNavigation": { "home": "ホームページ", "inplay": "ライブ", "record": "履歴", "mine": "私の" } },
+  "sponsor": "スポンサー",
+  "promotions": {
+    "promotion": "プロモーション"
+  },
+  "downloadAppBanner": {
+    "logo_name": "{owner} APP"
+  },
+  "header": {
+    "download": "ダウンロード"
+  },
+  "vd000": {
+    "mine": {
+      "setting": {
+        "lang": {
+          "en_US": "English",
+          "id_ID": "Bahasa Indonesia",
+          "ms_MY": "Bahasa Malaysia",
+          "vi_VN": "Tiếng Việt",
+          "zh_CN": "简体中文",
+          "zh_HK": "繁體中文",
+          "ja_JP": "日本語",
+          "ko_KR": "한국어",
+          "th_TH": "ไทย",
+          "hi_IN": "हिन्दी",
+          "pt_PT": "Português",
+          "es_ES": "Español"
+        }
+      }
+    }
+  }
+}

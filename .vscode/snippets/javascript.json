@@ -1,0 +1,9 @@
+{
+  "api": {
+    "prefix": "$vendor-setting",
+    "body": [
+      "const ${0} = {vd001: '',vd002: '',vd003: '',vd004: '',vd005: '',vd006: '',vd007: '',vd008: '',vd009: '',vd010: '',vd011: '',vd099: ''}"
+    ],
+    "description": "vendor enviroment config template"
+  }
+}

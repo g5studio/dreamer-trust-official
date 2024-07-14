@@ -1,0 +1,977 @@
+{
+  "msg": "",
+  "code": 0,
+  "data": {
+    "categories": [
+      {
+        "sid": 1,
+        "cid": 20,
+        "name": "英格蘭",
+        "count": 3,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 169,
+            "cid": 20,
+            "name": "英格蘭超級聯賽",
+            "priority": 20011,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 21077,
+            "cid": 20,
+            "name": "英格蘭超級聯賽 U21",
+            "priority": 100049,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 26511,
+            "cid": 20,
+            "name": "英格蘭職業聯賽 U21",
+            "priority": 120055,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 13,
+        "name": "西班牙",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 196,
+            "cid": 13,
+            "name": "西班牙甲組聯賽",
+            "priority": 20015,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 44,
+        "name": "義大利",
+        "count": 3,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 70,
+            "cid": 44,
+            "name": "意大利甲組聯賽",
+            "priority": 20017,
+            "count": 2
+          },
+          {
+            "sid": 1,
+            "tid": 267,
+            "cid": 44,
+            "name": "意大利女子甲組聯賽 - 附加賽",
+            "priority": 170103,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 48,
+        "name": "瑞典",
+        "count": 8,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 3646,
+            "cid": 48,
+            "name": "瑞典超級聯賽",
+            "priority": 50050,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 6767,
+            "cid": 48,
+            "name": "瑞典南部甲組聯賽",
+            "priority": 70068,
+            "count": 3
+          },
+          {
+            "sid": 1,
+            "tid": 6900,
+            "cid": 48,
+            "name": "瑞典女子超級聯賽",
+            "priority": 160036,
+            "count": 4
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 19,
+        "name": "荷蘭",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 572,
+            "cid": 19,
+            "name": "荷蘭甲組聯賽",
+            "priority": 50052,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 38,
+        "name": "阿根廷",
+        "count": 8,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 22719,
+            "cid": 38,
+            "name": "阿根廷職業聯賽",
+            "priority": 60097,
+            "count": 2
+          },
+          {
+            "sid": 1,
+            "tid": 27372,
+            "cid": 38,
+            "name": "阿根廷全國聯賽",
+            "priority": 160031,
+            "count": 3
+          },
+          {
+            "sid": 1,
+            "tid": 399,
+            "cid": 38,
+            "name": "阿根廷乙組曼特波里頓聯賽",
+            "priority": 160124,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 27464,
+            "cid": 38,
+            "name": "阿根廷丙組聯賽",
+            "priority": 160125,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 23,
+        "name": "澳洲",
+        "count": 3,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 21378,
+            "cid": 23,
+            "name": "澳大利亞維多利亞超級聯賽1",
+            "priority": 100044,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 21470,
+            "cid": 23,
+            "name": "澳大利亞維多利亞超級聯賽1 U23",
+            "priority": 150114,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 25190,
+            "cid": 23,
+            "name": "澳大利亞新南威爾斯聯賽2",
+            "priority": 170158,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 82,
+        "name": "孟加拉",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 3620,
+            "cid": 82,
+            "name": "孟加拉國女子超級聯賽",
+            "priority": 190783,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 18,
+        "name": "比利時",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 318,
+            "cid": 18,
+            "name": "比利時甲組聯賽A - 附加賽",
+            "priority": 50064,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 418,
+        "name": "不丹",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 7056,
+            "cid": 418,
+            "name": "不丹超級聯賽",
+            "priority": 180488,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 92,
+        "name": "玻利維亞",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 310,
+            "cid": 92,
+            "name": "玻利維亞甲組聯賽",
+            "priority": 160023,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 185,
+        "name": "波斯尼亞和黑賽哥維那",
+        "count": 2,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 215,
+            "cid": 185,
+            "name": "波士尼亞與赫塞哥維納超級聯賽",
+            "priority": 100059,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 11,
+        "name": "巴西",
+        "count": 4,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 49,
+            "cid": 11,
+            "name": "巴西甲組聯賽",
+            "priority": 50091,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 7153,
+            "cid": 11,
+            "name": "巴西丙組聯賽",
+            "priority": 150020,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 7518,
+            "cid": 11,
+            "name": "巴西丁組聯賽",
+            "priority": 150038,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 355,
+            "cid": 11,
+            "name": "巴西女子甲組聯賽",
+            "priority": 170122,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 32,
+        "name": "保加利亞",
+        "count": 3,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 52,
+            "cid": 32,
+            "name": "保加利亞乙組聯賽",
+            "priority": 90009,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 250,
+            "cid": 32,
+            "name": "保加利亞甲組聯賽 - 附加賽",
+            "priority": 100050,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 27,
+        "name": "智利",
+        "count": 3,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 193,
+            "cid": 27,
+            "name": "智利甲組聯賽",
+            "priority": 150050,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 4474,
+            "cid": 27,
+            "name": "智利乙組聯賽",
+            "priority": 160141,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 10,
+        "name": "哥倫比亞",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 22773,
+            "cid": 10,
+            "name": "哥倫比亞女子甲組聯賽",
+            "priority": 170096,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 51,
+        "name": "哥斯大黎加",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 27507,
+            "cid": 51,
+            "name": "哥斯達黎加乙組聯賽 - 附加賽",
+            "priority": 160145,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 33,
+        "name": "捷克",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 21205,
+            "cid": 33,
+            "name": "捷克國家聯賽",
+            "priority": 120060,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 56,
+        "name": "丹麥",
+        "count": 2,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 118,
+            "cid": 56,
+            "name": "丹麥甲組聯賽 - 附加賽",
+            "priority": 50096,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 26687,
+            "cid": 56,
+            "name": "丹麥未來盃 U21",
+            "priority": 110085,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 30,
+        "name": "厄瓜多爾",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 493,
+            "cid": 30,
+            "name": "厄瓜多爾甲組聯賽",
+            "priority": 150056,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 276,
+        "name": "法羅群島",
+        "count": 3,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 4070,
+            "cid": 276,
+            "name": "法羅群島超級聯賽",
+            "priority": 70056,
+            "count": 3
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 3,
+        "name": "芬蘭",
+        "count": 5,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 27009,
+            "cid": 3,
+            "name": "芬蘭甲組聯賽",
+            "priority": 50104,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 33258,
+            "cid": 3,
+            "name": "芬蘭乙組聯賽",
+            "priority": 60004,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 1446,
+            "cid": 3,
+            "name": "芬蘭丙組聯賽",
+            "priority": 100054,
+            "count": 3
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 5,
+        "name": "德國",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 316,
+            "cid": 5,
+            "name": "德國女子甲組聯賽",
+            "priority": 140064,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 37,
+        "name": "匈牙利",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 80,
+            "cid": 37,
+            "name": "匈牙利乙組聯賽",
+            "priority": 130045,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 61,
+        "name": "印度",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 22808,
+            "cid": 61,
+            "name": "印度拉賈斯坦邦甲級聯賽",
+            "priority": 180513,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 91,
+        "name": "伊朗",
+        "count": 3,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 304,
+            "cid": 91,
+            "name": "伊朗超級聯賽",
+            "priority": 90026,
+            "count": 3
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 306,
+        "name": "象牙海岸",
+        "count": 2,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 8397,
+            "cid": 306,
+            "name": "象牙海岸甲組聯賽",
+            "priority": 180389,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 45,
+        "name": "科威特",
+        "count": 2,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 28188,
+            "cid": 45,
+            "name": "科威特超級聯賽 - 附加賽",
+            "priority": 70066,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 101,
+        "name": "立陶宛",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 4146,
+            "cid": 101,
+            "name": "立陶宛乙組聯賽",
+            "priority": 170107,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 305,
+        "name": "盧森堡",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 1391,
+            "cid": 305,
+            "name": "盧森堡甲組聯賽",
+            "priority": 160010,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 55,
+        "name": "墨西哥",
+        "count": 2,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 25510,
+            "cid": 55,
+            "name": "墨西哥女子超級聯賽 - 附加賽",
+            "priority": 170153,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 16,
+        "name": "挪威",
+        "count": 7,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 6975,
+            "cid": 16,
+            "name": "挪威乙組聯賽",
+            "priority": 100063,
+            "count": 2
+          },
+          {
+            "sid": 1,
+            "tid": 9026,
+            "cid": 16,
+            "name": "挪威丙組聯賽",
+            "priority": 130063,
+            "count": 5
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 25,
+        "name": "巴拉圭",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 248,
+            "cid": 25,
+            "name": "巴拉圭甲組聯賽",
+            "priority": 160009,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 50,
+        "name": "秘魯",
+        "count": 3,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 21301,
+            "cid": 50,
+            "name": "秘魯甲組聯賽",
+            "priority": 160020,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 4184,
+            "cid": 50,
+            "name": "秘魯乙組聯賽",
+            "priority": 160024,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 86,
+        "name": "波蘭",
+        "count": 3,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 4823,
+            "cid": 86,
+            "name": "波蘭超級聯賽",
+            "priority": 50088,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 496,
+            "cid": 86,
+            "name": "波蘭甲組聯賽",
+            "priority": 60100,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 21088,
+            "cid": 86,
+            "name": "波蘭乙組聯賽",
+            "priority": 90015,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 15,
+        "name": "葡萄牙",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 405,
+            "cid": 15,
+            "name": "葡萄牙甲組聯賽",
+            "priority": 60101,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 36,
+        "name": "卡達",
+        "count": 2,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 21164,
+            "cid": 36,
+            "name": "卡塔爾埃米爾盃",
+            "priority": 60042,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 43,
+        "name": "愛爾蘭",
+        "count": 2,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 93,
+            "cid": 43,
+            "name": "愛爾蘭甲組聯賽",
+            "priority": 60008,
+            "count": 1
+          },
+          {
+            "sid": 1,
+            "tid": 242,
+            "cid": 43,
+            "name": "愛爾蘭芒斯特高級聯賽高级组",
+            "priority": 130061,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 9,
+        "name": "羅馬尼亞",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 28467,
+            "cid": 9,
+            "name": "羅馬尼亞甲組聯賽 - 附加賽",
+            "priority": 70064,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 47,
+        "name": "沙烏地阿拉伯",
+        "count": 3,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 135,
+            "cid": 47,
+            "name": "沙特甲組聯賽",
+            "priority": 130034,
+            "count": 3
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 279,
+        "name": "塞內加爾",
+        "count": 2,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 1590,
+            "cid": 279,
+            "name": "塞內加爾超級聯賽",
+            "priority": 180001,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 76,
+        "name": "塞爾維亞",
+        "count": 7,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 375,
+            "cid": 76,
+            "name": "塞爾維亞超級聯賽 - 附加賽",
+            "priority": 80056,
+            "count": 4
+          },
+          {
+            "sid": 1,
+            "tid": 28464,
+            "cid": 76,
+            "name": "塞爾維亞甲組聯賽 - 附加賽",
+            "priority": 100051,
+            "count": 3
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 291,
+        "name": "坦尚尼亞",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 1169,
+            "cid": 291,
+            "name": "坦桑尼亞超級聯賽",
+            "priority": 180128,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 79,
+        "name": "泰國",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 472,
+            "cid": 79,
+            "name": "泰國甲組聯賽",
+            "priority": 100057,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 49,
+        "name": "阿拉伯聯合大公國",
+        "count": 3,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 406,
+            "cid": 49,
+            "name": "阿聯酋超級聯賽",
+            "priority": 120059,
+            "count": 3
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 90,
+        "name": "烏克蘭",
+        "count": 3,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 278,
+            "cid": 90,
+            "name": "烏克蘭超級聯賽",
+            "priority": 80050,
+            "count": 2
+          },
+          {
+            "sid": 1,
+            "tid": 30615,
+            "cid": 90,
+            "name": "烏克蘭女子超級聯賽",
+            "priority": 199519,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 12,
+        "name": "美國",
+        "count": 1,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 25121,
+            "cid": 12,
+            "name": "美國MLS NEXT職業聯賽",
+            "priority": 150045,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "sid": 1,
+        "cid": 41,
+        "name": "越南",
+        "count": 4,
+        "tournaments": [
+          {
+            "sid": 1,
+            "tid": 3632,
+            "cid": 41,
+            "name": "越南甲組聯賽",
+            "priority": 80015,
+            "count": 4
+          }
+        ]
+      }
+    ]
+  },
+  "time": 1715577313888
+}

@@ -1,0 +1,11 @@
+.arrow {
+  &__up {
+    transform: rotate(0);
+    transition: transform .2s;
+  }
+
+  &__down {
+    transform: rotate(180deg);
+    transition: transform .2s;
+  }
+}

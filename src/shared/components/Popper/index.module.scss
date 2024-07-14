@@ -1,0 +1,92 @@
+// !class for specific component or page should follow BEM rule
+.component-popper {
+
+  &__text-open {
+    animation: text-box-open 1s;
+  }
+
+  // Text animation
+  &__text-delay {
+    // opacity need to define here to avoid tailwind important override it
+    opacity: 0;
+    animation: appear 500ms linear 500ms 1 normal forwards;
+  }
+
+  // indicator animation
+  &__indicator-upward {
+    opacity: 0;
+    animation: move-upward 500ms linear 1000ms 1 normal forwards;
+  }
+
+  &__indicator-downward {
+    opacity: 0;
+    animation: move-downward 500ms linear 1000ms 1 normal forwards;
+  }
+
+  // Point animation
+  &__point-scale-up{
+    opacity: 0;
+    animation: scale-up 500ms linear 1500ms 1 normal forwards;
+  }
+}
+
+
+@keyframes text-box-open {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes move-upward {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes move-downward {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes scale-up {
+  0% {
+    opacity: 0.5;
+    scale: 0.3;
+  }
+  20% {
+    opacity: 0.6;
+    scale: 0.5;
+  }
+  60% {
+    opacity: 0.7;
+    scale: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+    scale: 1.2;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+  }
+}

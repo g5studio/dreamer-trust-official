@@ -1,0 +1,61 @@
+{
+  "label": {
+    "sport": "खेल",
+    "inplay": "खेल में",
+    "incoming": "आगामी",
+    "today": "आज",
+    "early": "सुबह",
+    "parlay": "बाज़ी",
+    "outright": "प्रत्यक्ष",
+    "downloadApp": "APP"
+  },
+  "common": {
+    "memberCenter": "सदस्य केंद्र",
+    "login": "लॉग इन करें"
+  },
+  "6686": { "mine": { "IM": "वर्ग" } },
+  "menu": { "downloadApp": "एपीपी डाउनलोड करें" },
+  "6789bet": {
+    "header": {
+      "registered": "साइन अप करें",
+      "login": "लॉग इन करें"
+    },
+    "downloadAppBanner": {
+      "description": "खेलों के लिए एपीपी डाउनलोड करें"
+    }
+  },
+  "tabNavigation": {
+    "casino": "कैसीनो"
+  },
+  "hg9393": { "tabNavigation": { "home": "घर", "inplay": "खेल में", "record": "रिकॉर्डिंग", "mine": "मेरी" } },
+  "sponsor": "प्रायोजक",
+  "promotions": {
+    "promotion": "छूट"
+  },
+  "downloadAppBanner": {
+    "logo_name": "{owner} APP"
+  },
+  "header": {
+    "download": "डाउनलोड"
+  },
+  "vd000": {
+    "mine": {
+      "setting": {
+        "lang": {
+          "en_US": "English",
+          "id_ID": "Bahasa Indonesia",
+          "ms_MY": "Bahasa Malaysia",
+          "vi_VN": "Tiếng Việt",
+          "zh_CN": "简体中文",
+          "zh_HK": "繁體中文",
+          "ja_JP": "日本語",
+          "ko_KR": "한국어",
+          "th_TH": "ไทย",
+          "hi_IN": "हिन्दी",
+          "pt_PT": "Português",
+          "es_ES": "Español"
+        }
+      }
+    }
+  }
+}
