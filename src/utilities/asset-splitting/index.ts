@@ -6,4 +6,5 @@ export const assetModules: Record<
 > = {
   icon: () => import('./icon'),
   shared: () => import('./shared'),
+  home: () => import('./home'),
 };
