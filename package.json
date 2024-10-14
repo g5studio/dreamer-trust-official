@@ -1,6 +1,6 @@
 {
-  "name": "fluid",
-  "version": "5.11.0",
+  "name": "dreamergroup-official-website",
+  "version": "0.0.1",
   "description": "",
   "scripts": {
     "start": "vite",

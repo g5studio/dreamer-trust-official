@@ -1,7 +1,9 @@
 import { lazy } from 'solid-js';
-import { RouteModule } from '@shared/enums';
+import { Page, RouteModule } from '@shared/enums';
 import { setOutsideRoutesConfig, setRoutesConfig } from '@utilities/helpers/routes.helper';
 import { OutsideRouteConfig, RouteConfig } from '@shared/interfaces/route.interface';
+import HomePage from '@modules/common/pages/HomePage';
+import Redirect from '@shared/components/Redirect';
 
 /**
  * ![重要]: 新增路由配置時需至api enum內查詢當前路由是否須設置內站代碼
@@ -9,6 +11,14 @@ import { OutsideRouteConfig, RouteConfig } from '@shared/interfaces/route.interf
 const routesConfig: Partial<Record<RouteModule, RouteConfig>> = {
   [RouteModule.Platform]: {
     path: '',
+    component: () => <Redirect url={'home'} />,
+    children: [
+      {
+        path: 'home',
+        key: Page.Home,
+        component: HomePage,
+      },
+    ],
   },
 };
 

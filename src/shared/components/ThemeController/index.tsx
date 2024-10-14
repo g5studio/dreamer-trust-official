@@ -4,22 +4,6 @@ import { overrideVendorColorSetting } from '@utilities/config/vendor-colors';
 import { getLocalStorage, setLocalStorage } from '@utilities/helpers/storage.helper';
 import { createEffect, on, onCleanup } from 'solid-js';
 
-// const changeNavigatorThemeColor = (color: string) => {
-//   ['theme-color', 'apple-mobile-web-app-status-bar-style'].forEach((name) => {
-//     let meta: HTMLMetaElement | null = document.querySelector(`meta[name=${name}]`);
-//     if (meta) {
-//       if (meta.content !== color) {
-//         meta.setAttribute('content', color);
-//       }
-//     } else {
-//       meta = document.createElement('meta');
-//       meta.name = name;
-//       meta.content = color;
-//       document.head.appendChild(meta);
-//     }
-//   });
-// };
-
 /**
  * 網頁主題控制
  * @description 動態調整系統主題相關設定

@@ -1,8 +1,6 @@
 import { Page, RouteModule, TabNavigationType } from '@shared/enums';
 import { formatAbsolutePathname, formatPurePathname } from '@utilities/helpers/format.helper';
 import { FlatRouterConfig, RouteConfig } from '@shared/interfaces/route.interface';
-import { toggleMessage } from '@shared/hooks/use-overlay';
-import { translate } from '@shared/hooks/use-translation';
 import { isNullOrUndefined, memo } from './utilities.helper';
 
 type RoutesMap = Partial<Record<RouteModule, RouteConfig>>;
@@ -129,8 +127,6 @@ export const getCurrentRouteModule = (pathname: string): RouteModule => {
   switch (module as RouteModule) {
     case RouteModule.Guideline:
       return RouteModule.Guideline;
-    case RouteModule.Sport:
-      return RouteModule.Sport;
     default:
       return RouteModule.Platform;
   }
@@ -229,12 +225,8 @@ export const getRelativePathByKey = (
   const routeConfig = getRouteConfigByKey(key, routesMap);
   return (
     (variables && routeConfig?.path ? replacePathWithParams(routeConfig.path, variables) : routeConfig?.path) ??
-    getRelativePathByRouteModule(RouteModule.Sport, [Page.SportMain])
+    getRelativePathByRouteModule(RouteModule.Platform, [Page.Home])
   );
-};
-
-export const gotoSScore = () => {
-  toggleMessage({ message: translate('downloadSscore') });
 };
 
 /**

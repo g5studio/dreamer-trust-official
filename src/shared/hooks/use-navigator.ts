@@ -7,7 +7,7 @@ import {
   formatRelativePathname,
 } from '@utilities/helpers/format.helper';
 import { Log } from '@utilities/helpers/log.helper';
-import { getRelativePathByKey, getRouteConfigWithAllRoutes } from '@utilities/helpers/routes.helper';
+import { getRelativePathByKey } from '@utilities/helpers/routes.helper';
 import { batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
@@ -172,7 +172,7 @@ export const getForwardPath = (index: number): string | undefined =>
  * @param replace 是否取代當前路由
  * @param redirect 退回路由不存在時自動跳轉路徑，預設為主頁
  */
-export const back = (to: number, replace = false, redirect = getRelativePathByKey(Page.SportMain)) => {
+export const back = (to: number, replace = false, redirect = getRelativePathByKey(Page.Home)) => {
   const target = getForwardPath(to);
   if (typeof target === 'string') {
     batch(() => {
@@ -205,27 +205,7 @@ export const back = (to: number, replace = false, redirect = getRelativePathByKe
  */
 export const toMainPage = <NavigatorState extends object = object>(
   options?: NavigateOption<NavigatorState>['options'],
-) => navigate(getRelativePathByKey(Page.SportMain), options);
-
-/**
- * 重新定向至系統內
- * @description 如果要導回的路徑需要登入或是是從註冊/客服頁來的或是無上一頁的路徑，皆會導回首頁。其餘則回上一頁。
- */
-export const backWithHomeFallback = () => {
-  const previous = getForwardPath(1);
-  const previousRouteConfig = previous ? getRouteConfigWithAllRoutes(previous) : undefined;
-  if (
-    previous &&
-    (!previousRouteConfig?.allowGuest ||
-      previousRouteConfig?.key === Page.Registered ||
-      previousRouteConfig?.key === Page.CustomerService ||
-      previousRouteConfig?.key === Page.ForgetPassword)
-  ) {
-    toMainPage();
-  } else {
-    back(1);
-  }
-};
+) => navigate(getRelativePathByKey(Page.Home), options);
 
 export const goBack = () => {
   if (navigator.history.length > 1) {

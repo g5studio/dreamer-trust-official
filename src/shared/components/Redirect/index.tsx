@@ -22,7 +22,7 @@ const Redirect = (props: IRedirectProps) => {
   const location = useLocation();
 
   onMount(() => {
-    const mainPageUrl = formatRelativePathname(getRelativePathByKey(Page.SportMain));
+    const mainPageUrl = formatRelativePathname(getRelativePathByKey(Page.Home));
     const currentRouteConfig = getRouteConfig(location.pathname, props.routesMap);
     const redirectUrl = props.url ?? mainPageUrl;
     if (props.url || !currentRouteConfig) {

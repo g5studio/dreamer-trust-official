@@ -1,13 +1,10 @@
 import { errorMessageMap } from '@shared/constants/error-message.constants';
-import { Page, ServerErrorCode } from '@shared/enums';
-import { navigate } from '@shared/hooks/use-navigator';
-import { BaseTask, HintPopup, closeAllOverlay, toggleHintPopup } from '@shared/hooks/use-overlay';
+import { ServerErrorCode } from '@shared/enums';
+import { BaseTask, HintPopup, toggleHintPopup } from '@shared/hooks/use-overlay';
 import { IBaseApiResponse, Slot } from '@shared/interfaces';
 import { I18nKey } from '@shared/models/translation.model';
 import { Log } from '@utilities/helpers/log.helper';
-import { getRelativePathByKey } from '@utilities/helpers/routes.helper';
 import { AxiosError, HttpStatusCode } from 'axios';
-import { translate } from '@shared/hooks/use-translation';
 
 interface IErrorPopupProps
   extends Pick<HintPopup, 'render' | 'handleOnClose' | 'errorCode'>,
@@ -108,8 +105,6 @@ const friendlyServerErrorList: ServerErrorCode[] = [
   ServerErrorCode.MemberBetAmountInGoalMatchNotEnough,
   ServerErrorCode.OperationTimeout,
 ];
-
-const reLoginModalId = 'error-common-reLogin';
 
 export const getErrorMessage = (code: ServerErrorCode): I18nKey => {
   const i18nKey: I18nKey = errorMessageMap[code] || 'error.common.10000';
@@ -233,8 +228,7 @@ export const toggleFriendlyTipsPopup = ({
  * @description 非特殊錯誤處理邏輯為使用error code比對有無存在翻譯內容，若無則使用預設訊息彈窗
  * @external https://innotech.atlassian.net/browse/PRF-1011
  */
-/* eslint-disable complexity */
-export const serverErrorHandler = ({ code, title, msg = '' }: ErrorHandlerArgs, handleOnClose?: () => void) => {
+export const serverErrorHandler = ({ code }: ErrorHandlerArgs, handleOnClose?: () => void) => {
   if (!ignoreServerErrorList.includes(code)) {
     Log.system({
       msg: 'Toggle general server error handler',
@@ -247,82 +241,12 @@ export const serverErrorHandler = ({ code, title, msg = '' }: ErrorHandlerArgs, 
         errorMessage: i18nKey,
         handleOnClose,
       });
-    } else {
-      switch (code) {
-        case ServerErrorCode.PermissionDenied:
-          toggleFriendlyTipsPopup({
-            title: 'errorCodeMsg.title.remind',
-            errorCode: code,
-            errorMessage: /Authorization/.test(msg) ? i18nKey : msg,
-            handleOnClose,
-          });
-          break;
-        case ServerErrorCode.TokenExpiry:
-        case ServerErrorCode.TokenInvalid:
-          closeAllOverlay();
-          toggleFriendlyTipsPopup({
-            taskId: reLoginModalId,
-            errorCode: code,
-            errorMessage: 'error.common.reLogin',
-            handleOnClose,
-            disableCloseAfterRouteChanged: true,
-          });
-          break;
-        case ServerErrorCode.BankcardAlreadyBoundBySelf:
-        case ServerErrorCode.BankcardDuplicated:
-          toggleFriendlyTipsPopup({
-            errorCode: code,
-            errorMessage: i18nKey,
-            buttonText: '6686.onlineService',
-            cancelButtonText: 'common.cancel',
-            onConfirm: () => {
-              navigate(getRelativePathByKey(Page.CustomerService), { replace: true });
-            },
-          });
-          break;
-        case ServerErrorCode.ThirdPartyPaymentOrderFailed:
-        case ServerErrorCode.BankcardExceedLimit:
-          toggleFriendlyTipsPopup({
-            errorCode: code,
-            errorMessage: i18nKey,
-            buttonText: '6789bet.customerService.contact',
-            cancelButtonText: 'common.continueDeposit',
-            onConfirm: () => {
-              navigate(getRelativePathByKey(Page.CustomerService), { replace: true });
-            },
-            onCancel: () => {
-              navigate(getRelativePathByKey(Page.Deposit), { replace: true });
-            },
-          });
-          break;
-        case ServerErrorCode.AccountLocked:
-          toggleFriendlyTipsPopup({
-            errorCode: code,
-            errorMessage: i18nKey,
-            buttonText: 'foobar.onlineService',
-            cancelButtonText: 'common.cancel',
-            outlineButtonClasses: 'opacity-100',
-            onConfirm: () => {
-              navigate(getRelativePathByKey(Page.CustomerService), { replace: true });
-            },
-          });
-          break;
-        default:
-          toggleErrorPopup({
-            errorMessage: i18nKey,
-            errorCode: code,
-            handleOnClose,
-            title,
-          });
-          break;
-      }
     }
   }
 };
 
 /**
  * 連線錯誤統一處理
- * @external https://innotech.atlassian.net/browse/IN-31510
  */
 export const networkErrorHandler = (error: AxiosError) => {
   const { response } = error;
@@ -339,29 +263,4 @@ export const networkErrorHandler = (error: AxiosError) => {
 // !提供QA與開發人員快速重現指定error code情境，為避免開發人員誤用，不加入全局定義內
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/**
- * @external https://innotech.atlassian.net/browse/PRF-1364
- */
 (window as any).serverErrorHandler = serverErrorHandler;
-
-/**
- * SMS驗證特殊錯誤處理
- */
-export function onVerifySMSErrors(error: IBaseApiResponse, processName?: I18nKey) {
-  switch (error.code) {
-    case ServerErrorCode.IpOverSendSmsLimit:
-    case ServerErrorCode.PhoneNumberOverSendSmsLimit:
-      toggleErrorPopup({
-        backgroundClose: false,
-        errorCode: error.code,
-        errorMessage: translate('userSendOtpSms.otpNotYet', { type: translate(processName ?? '') }),
-        onConfirm: () => {
-          navigate(getRelativePathByKey(Page.CustomerService));
-        },
-      });
-      break;
-    default:
-      serverErrorHandler(error);
-      break;
-  }
-}

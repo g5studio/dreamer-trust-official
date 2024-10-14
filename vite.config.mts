@@ -16,79 +16,6 @@ import cssInjectedByJs from 'vite-plugin-css-injected-by-js';
 
 dns.setDefaultResultOrder('verbatim');
 
-const brandDataMap = {
-  vd001: {
-    name: '8xBet',
-    short_name: '8xBet',
-    description: '8xBet',
-    // theme_color: '#4C9EEA',
-    theme_color: '#FFFFFF',
-  },
-  vd002: {
-    name: '333体育',
-    short_name: '333体育',
-    description: '333体育',
-    // theme_color: '#0C186C',
-    theme_color: '#FFFFFF',
-  },
-  vd003: {
-    name: '678',
-    short_name: '678',
-    description: '678',
-    // theme_color: '#0C186C',
-    theme_color: '#FFFFFF',
-  },
-  vd004: {
-    name: '6686',
-    short_name: '6686',
-    description: '6686',
-    // theme_color: '#4C9EEA',
-    theme_color: '#FFFFFF',
-  },
-  vd006: {
-    name: '8868',
-    short_name: '8868',
-    description: '8868',
-    // theme_color: '#0C186C',
-    theme_color: '#FFFFFF',
-  },
-  vd007: {
-    name: '1919',
-    short_name: '1919',
-    description: '1919',
-    // theme_color: '#4C9EEA',
-    theme_color: '#FFFFFF',
-  },
-  vd008: {
-    name: '1717',
-    short_name: '1717',
-    description: '1717',
-    // theme_color: '#0C186C',
-    theme_color: '#FFFFFF',
-  },
-  vd009: {
-    name: '2121',
-    short_name: '2121',
-    description: '2121',
-    // theme_color: '#4C9EEA',
-    theme_color: '#FFFFFF',
-  },
-  vd010: {
-    name: '皇冠',
-    short_name: '皇冠',
-    description: '皇冠',
-    // theme_color: '#0C186C',
-    theme_color: '#FFFFFF',
-  },
-  vd011: {
-    name: 'HelloBet',
-    short_name: 'HelloBet',
-    description: 'HelloBet',
-    // theme_color: '#4C9EEA',
-    theme_color: '#FFFFFF',
-  },
-};
-
 async function fetchTranslation(locale) {
   const res = await fetch(
     `https://i18n-querier-prod-internal.service-station.link/api/v2/i18n/PROD/snapshot/fluid/${locale}`,
@@ -100,34 +27,15 @@ async function fetchTranslation(locale) {
   };
 }
 
-function getLocalIpAddress(): string | undefined {
-  const nets = networkInterfaces();
-  for (const netList of Object.values(nets)) {
-    if (!netList) continue;
-    for (const net of netList) {
-      const familyV4Value = typeof net.family === 'string' ? 'IPv4' : 4;
-      if (net.family === familyV4Value && !net.internal) {
-        return net.address;
-      }
-    }
-  }
-}
-
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   // only start mock server in dev mode and not in test mode
   const isMock = env.VITE_ENV_NAME === 'mock' && env.TEST !== 'true' && env.VITEST !== 'true';
-  const appEnv = env.VITE_ENV_NAME || 'dev';
   const brandCode = env.VITE_BRAND || 'vd004';
   const brandCodeNumber = parseInt(brandCode.replace('vd', ''), 10);
   let output = false;
-  const { name, short_name: shortName, description, theme_color: themeColor } = brandDataMap[brandCode] || {};
-  const swFallbackUrl = 'https://redirectgetter-appgetter-uavelonsnx.cn-shenzhen.fcapp.run';
   const isDev = env.NODE_ENV === 'development';
-  const isServeTest = env.VITE_SERVE_TEST === 'true';
   const isBuildWatchMode = env.VITE_BUILD_WATCH === 'true';
-  const isProxy = env.VITE_PROXY === 'true';
-  const proxyReferer = `https://en-${brandCode}-tiger-portal.inno${appEnv}.site`;
 
   return {
     plugins: [
@@ -206,47 +114,6 @@ export default defineConfig(({ mode }) => {
           },
         },
       },
-      // Disable VitePWA in dev mode
-      VitePWA({
-        includeAssets: ['favicon.ico', 'apple-touch-icon-180x180.png', 'maskable-icon-512x512.png'],
-        manifest: {
-          name,
-          short_name: shortName,
-          description,
-          theme_color: themeColor,
-          display: 'standalone',
-          icons: [
-            {
-              src: 'pwa-64x64.png',
-              sizes: '64x64',
-              type: 'image/png',
-            },
-            {
-              src: 'pwa-192x192.png',
-              sizes: '192x192',
-              type: 'image/png',
-            },
-            {
-              src: 'pwa-512x512.png',
-            },
-            {
-              src: 'maskable-icon-512x512.png',
-              sizes: '512x512',
-              type: 'image/png',
-              purpose: 'maskable',
-            },
-          ],
-        },
-        registerType: 'autoUpdate',
-        devOptions: {
-          enabled: false,
-        },
-        strategies: 'injectManifest',
-        injectManifest: {
-          minify: true,
-          globPatterns: ['**/*.{js,css,woff,woff2,ttf,eot}'],
-        },
-      }),
       {
         name: 'mock-dynamic-imports',
         enforce: 'pre',
