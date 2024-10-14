@@ -71,29 +71,6 @@ export default defineConfig(({ mode }) => {
           targets: ['defaults', 'not IE 11'],
         }),
       {
-        name: 'copy-pwa-assets',
-        apply: 'build',
-        buildEnd() {
-          // reset for watch mode
-          output = false;
-        },
-        async writeBundle() {
-          // run copy only once even if multiple bundles are generated
-          if (output) {
-            return;
-          }
-          output = true;
-
-          // copy the files from the target folder to dist folder
-          const targetFolder = `vendor-public/${brandCode}`;
-          const distFolder = 'dist';
-          const files = fs.readdirSync(targetFolder);
-          for (const file of files) {
-            fs.copyFileSync(`${targetFolder}/${file}`, `${distFolder}/${file}`);
-          }
-        },
-      },
-      {
         name: 'css-cors',
         transformIndexHtml: {
           enforce: 'post',
