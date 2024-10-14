@@ -48,130 +48,17 @@ export enum LocalStorageItem {
    */
   Language = 'locale',
   /**
-   * 簡易登入密碼
+   * Device info
    */
-  SimpleCode = 'simple-code',
-  /**
-   * 是否已完成VIP中心教程
-   */
-  TutorialFinished = 'tutorial-finished',
-  /**
-   * 當前幣種
-   */
-  Currency = 'currency',
-  /**
-   * 上一次用戶沒有登入時按紅包的時間
-   */
-  UnauthorizedClickedRedEnvelopeTime = 'unauthorized-clicked-red-envelope-time',
-  /**
-   * 登入時是否勾選記住帳號的設定
-   */
-  RememberMeSetting = 'remember-me',
-  /**
-   * 登入時是否勾選記住手機號的設定
-   */
-  RememberPhoneSetting = 'remember-phone',
-  /**
-   * 登入時是否勾選記住郵件地址的設定
-   */
-  RememberEmailSetting = 'remember-email',
-  /**
-   * 用戶帳號以及加密過後的密碼用來快速登入
-   */
-  Credentials = 'credentials',
-  /**
-   * 系統顯示時區
-   */
-  Timezone = 'timezone-version-1',
-  /**
-   * 體育賽事搜尋紀錄
-   */
-  SportSearchHistory = 'sport-search-history',
-  /**
-   * 當前翻譯版本
-   */
-  I18nVersion = 'i18n-version',
-  /**
-   * tutorial的觀看狀態
-   */
-  Tutorial = 'tutorial',
-  /**
-   * 球版盤口設計
-   */
-  SportSimpleType = 'sport-simple-type',
-  /**
-   * 體育投注設置
-   */
-  SportMarketType = 'sport-market-type',
-  /**
-   * 體育盤口模樣
-   */
-  SportMatchMode = 'sport-match-mode',
+  DeviceInfo = 'device-info',
   /**
    * 播放器聲音
    */
   VideoMuted = 'video-muted',
   /**
-   * @description 因應系統需求，若當前瀏覽器開新頁籤時需自動登入，故平台token改存入local-storage
-   */
-  PlatformToken = 'access-token',
-  /**
-   * @description 自動登入時因未使用帳號密碼，後端不會返回正確的refresh token，導致後續silent refresh機制異常，需將refresh token改存入local storage
-   * @external https://innotech.atlassian.net/browse/PRF-3252
-   */
-  RefreshToken = 'refresh-token',
-  /**
-   * 聊天室翻譯功能的狀態
-   */
-  ImAllowTranslate = 'imAllowTranslate',
-  /**
-   * IM VIP鑰匙解鎖通知的當前時間
-   */
-  ImVIPNotifyCurrentTimestamp = 'imVIPNotifyCurrentTimestamp',
-  /**
-   * 體育購物車注單列表
-   */
-  SportCartTicketList = 'sport-cart-ticket-list',
-  /**
-   * VIP 專家區塊是否顯示鑰匙領取泡泡
-   */
-  ShowVIPExpertTutorial = 'showVIPExpertTutorial',
-  /**
-   * 登入後彈窗一日內不重現設置
-   */
-  AnnouncementSetting = 'announcement',
-  /**
-   * 總盤播放器Pin的狀態
-   */
-  SportExhaustiveVideoPinned = 'sport-exhaustive-video-pinned',
-  /**
-   * 體育 market summary
-   */
-  SportMarketSummary = 'sport-market-summary',
-  /**
-   * Device info
-   */
-  DeviceInfo = 'device-info',
-  /**
    * Visitor id
    */
   VisitorId = 'visitorId',
-  /**
-   * Maintenance whitelist keycode
-   */
-  MaintenanceWhitelistKeycode = 'owen',
-  /**
-   * Global Limit Option
-   */
-  GlobalLimitOption = 'global-limit-option',
-  /**
-   * Global Bet Match Limit
-   */
-  GlobalBetMatchLimit = 'global-bet-match-limit',
-  /**
-   * Guard
-   */
-  Guard = 'guard',
   /**
    * 系統主題
    */
@@ -179,10 +66,6 @@ export enum LocalStorageItem {
 }
 
 export enum SessionStorageItem {
-  LotteryUserInfo = 'userInfo',
-  ChatroomLastReadId = 'chatroom-last-read-id',
-  SimpleViewingPosition = 'simple-viewing-position',
-  HomeViewingPosition = 'home-viewing-position',
   UxEventLogFirstClick = 'ux-event-log-first-click',
 }
 
