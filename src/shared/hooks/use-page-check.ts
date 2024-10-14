@@ -13,6 +13,14 @@ interface IPageCheckHook {
   isRegisterPage: CheckFn;
   /** 是否為登入頁 */
   isLoginPage: CheckFn;
+  /** 是否為關於我們頁 */
+  isAboutPage: CheckFn;
+  /** 是否為解決方案頁 */
+  isSolutionsPage: CheckFn;
+  isInsightsUpdatesPage: CheckFn;
+  isSeminarPage: CheckFn;
+  /** 是否為聯繫我們頁 */
+  isContactUsPage: CheckFn;
 }
 
 const usePlatformPageCheck = ({
@@ -21,13 +29,15 @@ const usePlatformPageCheck = ({
   currentRoute: () => FlatRouterConfig | undefined;
   currentPage: () => Page | undefined;
 }) => {
-  const isHomePage = () => currentPage() === Page.Home;
-  const isRegisterPage = () => currentPage() === Page.Registered;
-
   return {
-    isRegisterPage,
-    isHomePage,
+    isRegisterPage: () => currentPage() === Page.Registered,
+    isHomePage: () => currentPage() === Page.Home,
+    isAboutPage: () => currentPage() === Page.AboutUs,
     isLoginPage: () => currentPage() === Page.Login,
+    isSolutionsPage: () => currentPage() === Page.Solutions,
+    isInsightsUpdatesPage: () => currentPage() === Page.InsightsUpdates,
+    isSeminarPage: () => currentPage() === Page.Seminar,
+    isContactUsPage: () => currentPage() === Page.ContactUs,
   };
 };
 
@@ -49,12 +59,26 @@ export const usePageCheck = (args?: PageCheckHookArgs): IPageCheckHook => {
     getRouteConfig(args?.pathname?.() ?? location.pathname, getOutsideRoutesConfig());
   const currentPage = (): Page | undefined => currentRoute()?.key;
   // !平台
-  const { isRegisterPage, isLoginPage, isHomePage } = usePlatformPageCheck({ currentRoute, currentPage });
+  const {
+    isRegisterPage,
+    isLoginPage,
+    isHomePage,
+    isAboutPage,
+    isSolutionsPage,
+    isInsightsUpdatesPage,
+    isSeminarPage,
+    isContactUsPage,
+  } = usePlatformPageCheck({ currentRoute, currentPage });
 
   return {
     currentRoute,
     isHomePage,
+    isAboutPage,
     isRegisterPage,
     isLoginPage,
+    isSolutionsPage,
+    isInsightsUpdatesPage,
+    isSeminarPage,
+    isContactUsPage,
   };
 };

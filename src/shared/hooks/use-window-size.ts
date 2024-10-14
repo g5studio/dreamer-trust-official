@@ -27,7 +27,7 @@ export default windowSize;
  */
 export const isMobile = () => windowSize.breakpoint === Breakpoint.Middle;
 /**
- * @description > 600px, < 1024px
+ * @description > 600px, < 1440px
  */
 export const isTablet = () => windowSize.breakpoint === Breakpoint.Large;
 /**
@@ -35,14 +35,10 @@ export const isTablet = () => windowSize.breakpoint === Breakpoint.Large;
  */
 export const isPad = () => isTablet() && windowSize.width >= 900;
 /**
- * @description > 1024px
+ * @description > 1440px
  */
 export const isPC = () => windowSize.breakpoint === Breakpoint.XLarge;
 /**
  * @description > 1200px
  */
 export const isLargePC = () => windowSize.width >= 1200;
-/**
- * @description > 1440px
- */
-export const isXLargePC = () => windowSize.width >= 1440;

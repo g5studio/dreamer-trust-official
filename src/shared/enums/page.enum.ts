@@ -20,4 +20,12 @@ export enum Page {
    * 首頁
    */
   Home,
+  /**
+   * 關於我們
+   */
+  AboutUs,
+  Solutions,
+  InsightsUpdates,
+  Seminar,
+  ContactUs,
 }

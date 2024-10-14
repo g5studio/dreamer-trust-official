@@ -18,6 +18,36 @@ const routesConfig: Partial<Record<RouteModule, RouteConfig>> = {
         key: Page.Home,
         component: HomePage,
       },
+      {
+        i18n: 'menu.aboutUs',
+        path: 'about-us',
+        key: Page.AboutUs,
+        component: HomePage,
+      },
+      {
+        i18n: 'menu.ourSolutions',
+        path: 'solutions',
+        key: Page.Solutions,
+        component: HomePage,
+      },
+      {
+        i18n: 'menu.insightsUpdates',
+        path: 'insights-and-updates',
+        key: Page.InsightsUpdates,
+        component: HomePage,
+      },
+      {
+        i18n: 'menu.seminar',
+        path: 'seminar',
+        key: Page.Seminar,
+        component: HomePage,
+      },
+      {
+        i18n: 'menu.contactUs',
+        path: 'contact-us',
+        key: Page.ContactUs,
+        component: HomePage,
+      },
     ],
   },
 };

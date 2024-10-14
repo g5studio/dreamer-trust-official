@@ -1,63 +1,67 @@
 {
-  "label": {
-    "sport": "Thể Thao",
-    "inplay": "Trong Trận",
-    "incoming": "Sắp Diễn Ra",
-    "today": "Hôm Nay",
-    "early": "Sớm",
-    "parlay": "Cược Xâu",
-    "outright": "Chung Cuộc",
-    "downloadApp": "APP"
-  },
-  "common": {
-    "memberCenter": "Trung Tâm Thành Viên",
-    "login": "Đăng Nhập"
-  },
-  "6686": { "mine": { "IM": "Đại Sảnh" } },
-  "menu": { "downloadApp": "Tải APP" },
-  "6789bet": {
-    "header": {
-      "registered": "Đăng Ký",
-      "login": "Đăng Nhập"
+  "home": {
+    "top-1": {
+      "title": "Reliable. Secure. Trusted.",
+      "content": "We safeguard your assets and ensure your legacy thrives for generations to come."
     },
-    "downloadAppBanner": {
-      "description": "Nhiều trò chơi thú vị đang chờ bạn"
+    "top-2": {
+      "title": "Seminar Event.",
+      "content": "Annual Trust Conference",
+      "time": "Time",
+      "location": "Location",
+      "details": "Details"
+    },
+    "top-3": {
+      "title": "Our Strategic Solutions.",
+      "content": "We offer a range of solutions, including Trust Services, Estate Planning, Asset Management, and Corporate Services, to meet your diverse financial needs.",
+      "learnMore": "Learn More"
+    },
+    "solutions": {
+      "title": "Our Solutions",
+      "subTitle": "Solutions Crafted to Fit Your Goals",
+      "solution-1": {
+        "title": "Trust Services",
+        "content": "Our comprehensive trust services cover personal, family, investment, property, insurance, business value protection, charitable, foreign grantor solutions."
+      },
+      "solution-2": {
+        "title": "Estate Planning",
+        "content": "Our estate planning services include tailored will drafting and seamless probate administration, ensuring your wishes are carried out with ease."
+      },
+      "solution-3": {
+        "title": "Asset Management",
+        "content": "Our asset management services include family office, private trust company formation, and escrow agent services to safeguard and manage your wealth effectively."
+      },
+      "solution-4": {
+        "title": "Corporate Service",
+        "content": "Our cap table management service ensures accurate tracking of ownership, equity distribution, and make informed decisions during fundraising or equity events."
+      }
+    },
+    "advantages": {
+      "title": "Our Advantages",
+      "subTitle": "What Sets Us Apart",
+      "advantage-1": {
+        "contnet": "Tackle the challenges of integrating cross-border business."
+      },
+      "advantage-2": {
+        "content": "Tailored solutions to meet each client's needs."
+      }
     }
   },
-  "tabNavigation": {
-    "casino": "Casino"
-  },
-  "hg9393": {
-    "tabNavigation": { "home": "Trang Chủ", "inplay": "Trong Trận", "record": "Lịch Sử", "mine": "Tài Khoản" }
-  },
-  "sponsor": "Tài Trợ",
-  "promotions": {
-    "promotion": "Khuyến Mãi"
-  },
-  "downloadAppBanner": {
-    "logo_name": "{owner} APP"
-  },
-  "header": {
-    "download": "Tải Ngay"
-  },
-  "vd000": {
-    "mine": {
-      "setting": {
-        "lang": {
-          "en_US": "English",
-          "id_ID": "Bahasa Indonesia",
-          "ms_MY": "Bahasa Malaysia",
-          "vi_VN": "Tiếng Việt",
-          "zh_CN": "简体中文",
-          "zh_HK": "繁體中文",
-          "ja_JP": "日本語",
-          "ko_KR": "한국어",
-          "th_TH": "ไทย",
-          "hi_IN": "हिन्दी",
-          "pt_PT": "Português",
-          "es_ES": "Español"
-        }
-      }
+  "common": {},
+  "setting": {
+    "lang": {
+      "en_US": "English",
+      "id_ID": "Bahasa Indonesia",
+      "ms_MY": "Bahasa Malaysia",
+      "vi_VN": "Tiếng Việt",
+      "zh_CN": "简体中文",
+      "zh_HK": "繁體中文",
+      "ja_JP": "日本語",
+      "ko_KR": "한국어",
+      "th_TH": "ไทย",
+      "hi_IN": "हिन्दी",
+      "pt_PT": "Português",
+      "es_ES": "Español"
     }
   }
 }

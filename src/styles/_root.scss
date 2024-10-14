@@ -53,23 +53,5 @@ input {
       max-width: getContainerWidth($level, $container-max-widths);
       margin: 0 auto;
     }
-
-    .sport-container {
-      box-sizing: content-box;
-      max-width: getContainerWidth($level, $sport-container-max-widths);
-      margin: 0 auto;
-    }
-  }
-}
-
-@include generateStyleByBreakpoint('xl') {
-  main {
-    height: calc(100vh - $headerHeight) !important;
-  }
-}
-
-@include generateStyleByBreakpoint('lg') {
-  .sport-container {
-    @include generateScrollBar;
   }
 }

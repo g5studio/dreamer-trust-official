@@ -1,61 +1,67 @@
 {
-  "label": {
-    "sport": "體育",
-    "inplay": "滾球",
-    "incoming": "即將",
-    "today": "今日",
-    "early": "早盤",
-    "parlay": "串場",
-    "outright": "冠軍",
-    "downloadApp": "下載APP"
-  },
-  "common": {
-    "memberCenter": "會員中心",
-    "login": "登入"
-  },
-  "6686": { "mine": { "IM": "廣場" } },
-  "menu": { "downloadApp": "APP下載" },
-  "6789bet": {
-    "header": {
-      "registered": "註冊",
-      "login": "登入"
+  "home": {
+    "top-1": {
+      "title": "可靠。安全。值得信賴。",
+      "content": "我們保護您的資產，確保您的傳承能夠世世代代延續下去"
     },
-    "downloadAppBanner": {
-      "description": "更多精彩遊戲，請下載手機APP"
+    "top-2": {
+      "title": "Seminar Event.",
+      "content": "Annual Trust Conference",
+      "time": "Time",
+      "location": "Location",
+      "details": "Details"
+    },
+    "top-3": {
+      "title": "Our Strategic Solutions.",
+      "content": "We offer a range of solutions, including Trust Services, Estate Planning, Asset Management, and Corporate Services, to meet your diverse financial needs.",
+      "learnMore": "Learn More"
+    },
+    "solutions": {
+      "title": "Our Solutions",
+      "subTitle": "Solutions Crafted to Fit Your Goals",
+      "solution-1": {
+        "title": "Trust Services",
+        "content": "Our comprehensive trust services cover personal, family, investment, property, insurance, business value protection, charitable, foreign grantor solutions."
+      },
+      "solution-2": {
+        "title": "Estate Planning",
+        "content": "Our estate planning services include tailored will drafting and seamless probate administration, ensuring your wishes are carried out with ease."
+      },
+      "solution-3": {
+        "title": "Asset Management",
+        "content": "Our asset management services include family office, private trust company formation, and escrow agent services to safeguard and manage your wealth effectively."
+      },
+      "solution-4": {
+        "title": "Corporate Service",
+        "content": "Our cap table management service ensures accurate tracking of ownership, equity distribution, and make informed decisions during fundraising or equity events."
+      }
+    },
+    "advantages": {
+      "title": "Our Advantages",
+      "subTitle": "What Sets Us Apart",
+      "advantage-1": {
+        "contnet": "Tackle the challenges of integrating cross-border business."
+      },
+      "advantage-2": {
+        "content": "Tailored solutions to meet each client's needs."
+      }
     }
   },
-  "tabNavigation": {
-    "casino": "娛樂城"
-  },
-  "hg9393": { "tabNavigation": { "home": "首頁", "inplay": "滾球", "record": "記錄", "mine": "我的" } },
-  "sponsor": "贊助",
-  "promotions": {
-    "promotion": "優惠"
-  },
-  "downloadAppBanner": {
-    "logo_name": "{owner} APP"
-  },
-  "header": {
-    "download": "立即下載"
-  },
-  "vd000": {
-    "mine": {
-      "setting": {
-        "lang": {
-          "en_US": "English",
-          "id_ID": "Bahasa Indonesia",
-          "ms_MY": "Bahasa Malaysia",
-          "vi_VN": "Tiếng Việt",
-          "zh_CN": "简体中文",
-          "zh_HK": "繁體中文",
-          "ja_JP": "日本語",
-          "ko_KR": "한국어",
-          "th_TH": "ไทย",
-          "hi_IN": "हिन्दी",
-          "pt_PT": "Português",
-          "es_ES": "Español"
-        }
-      }
+  "common": {},
+  "setting": {
+    "lang": {
+      "en_US": "English",
+      "id_ID": "Bahasa Indonesia",
+      "ms_MY": "Bahasa Malaysia",
+      "vi_VN": "Tiếng Việt",
+      "zh_CN": "简体中文",
+      "zh_HK": "繁體中文",
+      "ja_JP": "日本語",
+      "ko_KR": "한국어",
+      "th_TH": "ไทย",
+      "hi_IN": "हिन्दी",
+      "pt_PT": "Português",
+      "es_ES": "Español"
     }
   }
 }

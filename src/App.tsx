@@ -1,3 +1,4 @@
+import Header from '@modules/common/components/Header';
 import OverlayContainer from '@modules/common/components/OverlayContainer';
 import NestRoute from '@shared/components/NestRoute';
 import { RouteModule } from '@shared/enums';
@@ -24,11 +25,14 @@ const App: Component = () => {
   return (
     <>
       <OverlayContainer />
-      <Routes>
-        <Show when={isRouteReady()}>
-          <For each={routesMap()}>{(config) => <Route path={config.path} component={config.component} />}</For>
-        </Show>
-      </Routes>
+      <Header />
+      <main class="main-container">
+        <Routes>
+          <Show when={isRouteReady()}>
+            <For each={routesMap()}>{(config) => <Route path={config.path} component={config.component} />}</For>
+          </Show>
+        </Routes>
+      </main>
     </>
   );
 };
