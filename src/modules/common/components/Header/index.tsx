@@ -1,5 +1,6 @@
 import Picture from '@shared/components/Picture';
 import { Page } from '@shared/enums';
+import { NavigateHookFn, useNavigate } from '@shared/hooks/use-navigate';
 import { usePageCheck } from '@shared/hooks/use-page-check';
 import { translate, translation } from '@shared/hooks/use-translation';
 import { isMobile } from '@shared/hooks/use-window-size';
@@ -9,43 +10,44 @@ import { For } from 'solid-js';
 
 type MenuItem = {
   key: Page;
-  handleOnClick: ArrowFn<void, void>;
+  handleOnClick: NavigateHookFn;
   isActive: CheckFn;
 };
 
 const Header = () => {
   const { isAboutPage, isSolutionsPage, isInsightsUpdatesPage, isSeminarPage, isContactUsPage } = usePageCheck();
+  const navigate = useNavigate();
   const menuItems = (): MenuItem[] => [
     {
       key: Page.AboutUs,
-      handleOnClick: isAboutPage,
+      handleOnClick: navigate()[Page.AboutUs],
       isActive: isAboutPage,
     },
     {
       key: Page.Solutions,
-      handleOnClick: isSolutionsPage,
+      handleOnClick: navigate()[Page.Solutions],
       isActive: isSolutionsPage,
     },
     {
       key: Page.InsightsUpdates,
-      handleOnClick: isInsightsUpdatesPage,
+      handleOnClick: navigate()[Page.InsightsUpdates],
       isActive: isInsightsUpdatesPage,
     },
     {
       key: Page.Seminar,
-      handleOnClick: isSeminarPage,
+      handleOnClick: navigate()[Page.Seminar],
       isActive: isSeminarPage,
     },
     {
       key: Page.ContactUs,
-      handleOnClick: isContactUsPage,
+      handleOnClick: navigate()[Page.ContactUs],
       isActive: isContactUsPage,
     },
   ];
   return (
     <header
       data-testid="app-header"
-      class={formatClasses('shadow-header flex h-20 flex-row space-x-18 px-12 py-4', {
+      class={formatClasses('flex h-20 flex-row space-x-18 px-12 py-4 shadow-header', {
         'h-15': isMobile(),
       })}>
       <Picture classes="max-h-12_5" src={`common/logo_${translation.language}.png`} />

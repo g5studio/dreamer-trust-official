@@ -16,11 +16,11 @@ type AvailablePage = Exclude<
   | Page.GuidelineTimeHelperUsage
 >;
 
-type NavigateHookFnArgs = { [key: string]: string } & {
-  options: NavigateOption['options'];
-};
+type NavigateHookFnArgs = { [key: string]: string } & Pick<NavigateOption, 'options'>;
 
-type NavigateHook = Record<AvailablePage, ArrowFn<NavigateHookFnArgs>>;
+export type NavigateHookFn = (args?: Nullable<NavigateHookFnArgs>) => void;
+
+type NavigateHook = Record<AvailablePage, NavigateHookFn>;
 
 const availablePageList: AvailablePage[] = [
   Page.AboutUs,
@@ -36,12 +36,12 @@ const availablePageList: AvailablePage[] = [
 export const useNavigate = (): Accessor<NavigateHook> => {
   const to =
     (key: Page) =>
-    ({ options, ...variables }: NavigateHookFnArgs) => {
+    ({ options, ...variables }: NavigateHookFnArgs = {}) => {
       navigate(getRelativePathByKey(key, variables), options);
     };
 
   const returnValue: Accessor<NavigateHook> = createMemo(() =>
-    availablePageList.reduce((value, key) => ({ ...value, key: to(key) }), {} as NavigateHook),
+    availablePageList.reduce((value, key) => ({ ...value, [key]: to(key) }), {} as NavigateHook),
   );
 
   return returnValue;
