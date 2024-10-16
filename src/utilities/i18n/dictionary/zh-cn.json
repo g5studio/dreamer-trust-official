@@ -14,8 +14,8 @@
     "top-2": {
       "title": "研讨会信息",
       "content": "年度信托会议",
-      "time": "时间",
-      "location": "地点",
+      "time": "时间: {dateTime}",
+      "location": "地点: {location}",
       "details": "详情"
     },
     "top-3": {

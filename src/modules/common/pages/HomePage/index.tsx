@@ -1,3 +1,4 @@
+import Button from '@shared/components/Button';
 import CarouselContainer from '@shared/components/CarouselContainer';
 import ContentLayout from '@shared/components/ContentLayout';
 import Picture from '@shared/components/Picture';
@@ -49,44 +50,93 @@ const HomePage = () => (
               class={formatClasses('w-full space-y-4', {
                 'w-145': isPC(),
               })}>
-              <h1 class="text-16 leading-20 font-normal">{translate('home.top-1.title')}</h1>
+              <h1
+                class={formatClasses('text-16 leading-20 font-normal', {
+                  'text-12 leading-14_5': !isPC(),
+                })}>
+                {translate('home.top-1.title')}
+              </h1>
               <p class="text-lg leading-7">{translate('home.top-1.content')}</p>
             </article>
-            <Picture classes="h-75" fallbackSrc="home/home_top" src="home/home_top.png" />
+            <Picture
+              pictureClasses={formatClasses({
+                'border-box w-full px-6': !isPC(),
+              })}
+              classes={formatClasses({
+                'h-75': isPC(),
+              })}
+              src="home/home-top-1@3x.png"
+            />
           </section>
+          {/* 研討會資訊 */}
           <section
             class={formatClasses('flex min-w-full ', {
-              'flex-row justify-center space-x-25 py-30_5': isPC(),
-              'flex-col justify-start space-y-12': !isPC(),
+              'flex-row justify-center space-x-25': isPC(),
+              'flex-col-reverse justify-end': !isPC(),
+            })}>
+            <Picture
+              classes={formatClasses({
+                'h-136 min-w-190': isPC(),
+                'min-h-63 mt-6 w-full ': !isPC(),
+              })}
+              src="home/home-top-2@3x.png"
+            />
+            <article
+              class={formatClasses('w-full space-y-4', {
+                'grow py-22_5': isPC(),
+              })}>
+              <h1
+                class={formatClasses('text-16 leading-20 font-normal', {
+                  'text-12 leading-14_5': !isPC(),
+                })}>
+                {translate('home.top-2.title')}
+              </h1>
+              <div class="space-y-2">
+                <p class="text-lg font-bold leading-7">{translate('home.top-2.content')}</p>
+                <div>
+                  <p>{translate('home.top-2.time', { dateTime: '2024.11.06 7:00 PM PST' })}</p>
+                  <p>{translate('home.top-2.location', { location: 'Moscone Center, San Francisco' })}</p>
+                </div>
+              </div>
+              <Button class="mt-6" testId="home-event-detail-btn" onClick={() => {}} variant="primary">
+                {translate('home.top-2.details')}
+              </Button>
+            </article>
+          </section>
+          {/* 我們的方案 */}
+          <section
+            class={formatClasses('flex min-w-full ', {
+              'flex-row justify-center space-x-25': isPC(),
+              'flex-col justify-start space-y-6': !isPC(),
             })}>
             <article
               class={formatClasses('w-full space-y-4', {
-                'w-145': isPC(),
+                'grow px-25 py-22_5': isPC(),
               })}>
-              <h1 class="text-16 leading-20 font-normal">{translate('home.top-1.title')}</h1>
-              <p class="text-lg leading-7">{translate('home.top-1.content')}</p>
+              <h1 class={formatClasses('text-16 leading-20 font-normal', { 'text-12 leading-14_5': !isPC() })}>
+                {translate('home.top-3.title')}
+              </h1>
+              <div class={formatClasses('space-y-10', { 'space-y-6': !isPC() })}>
+                <p class="text-lg leading-7">{translate('home.top-3.content')}</p>
+                <Button class="mt-6" testId="home-event-detail-btn" onClick={() => {}} variant="primary">
+                  {translate('home.top-3.learnMore')}
+                </Button>
+              </div>
             </article>
-            <Picture classes="h-75" fallbackSrc="home/home_top" src="home/home_top.png" />
-          </section>
-          <section
-            class={formatClasses('flex min-w-full ', {
-              'flex-row justify-center space-x-25 py-30_5': isPC(),
-              'flex-col justify-start space-y-12': !isPC(),
-            })}>
-            <article
-              class={formatClasses('w-full space-y-4', {
-                'w-145': isPC(),
-              })}>
-              <h1 class="text-16 leading-20 font-normal">{translate('home.top-1.title')}</h1>
-              <p class="text-lg leading-7">{translate('home.top-1.content')}</p>
-            </article>
-            <Picture classes="h-75" fallbackSrc="home/home_top" src="home/home_top.png" />
+            <Picture
+              classes={formatClasses({
+                'h-136 min-w-190': isPC(),
+                'min-h-63 w-full ': !isPC(),
+              })}
+              src="home/home-top-3@3x.png"
+            />
           </section>
         </div>
       )}
     </CarouselContainer>
     {/* 我們的解決方案 */}
-    <article class={formatClasses('relative flex flex-col items-center text-center', { 'px-6': !isPC() })}>
+    <article
+      class={formatClasses('relative flex flex-col items-center text-center', { 'px-12': isPC(), 'px-6': !isPC() })}>
       <Show when={isPC()}>
         <DoubleArrowDownIcon classes="absolute left-1/2 top-[-75px] translate-x-[-50%]" />
       </Show>
@@ -101,7 +151,7 @@ const HomePage = () => (
         <For each={Array.from({ length: 4 }).map((_, i) => i + 1)}>
           {(index) => (
             <article class={formatClasses('shrink grow basis-1/4 rounded-8 bg-black-7 pb-3')}>
-              <Picture src={`home/solution-${index}.png`} classes="w-full" />
+              <Picture src={`home/solution-${index}@3x.png`} classes="w-full" />
               <section class="px-6_5 pt-3">
                 <h5 class={formatClasses('text-5_5', { 'text-lg': !isPC() })}>
                   {translate(`home.solutions.solution-${index}.title`)}
@@ -116,7 +166,11 @@ const HomePage = () => (
       </section>
     </article>
     {/* 我們的優勢 */}
-    <article class={formatClasses('relative flex flex-col items-center text-center text-center', { 'px-6': !isPC() })}>
+    <article
+      class={formatClasses('relative flex flex-col items-center text-center text-center', {
+        'px-12': isPC(),
+        'px-6': !isPC(),
+      })}>
       <h5 class="text-5_5 text-primary-3">{translate('home.advantages.title')}</h5>
       <h1 class="text-7 text-primary-3">{translate('home.advantages.subTitle')}</h1>
       <span class="mt-2 h-4 w-16 rounded-[99px] bg-primary-3" />

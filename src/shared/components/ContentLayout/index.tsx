@@ -32,7 +32,6 @@ const ContentLayout = (props: IContentLayoutProps) => {
       class={formatClasses(
         'relative w-full grow',
         {
-          'px-12': !props.hidePadding && isPC(),
           'min-h-full': !isPC(),
         },
         props.classes,

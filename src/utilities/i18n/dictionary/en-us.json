@@ -14,8 +14,8 @@
     "top-2": {
       "title": "Seminar Event.",
       "content": "Annual Trust Conference",
-      "time": "Time",
-      "location": "Location",
+      "time": "Time: {dateTime}",
+      "location": "Location: {location}",
       "details": "Details"
     },
     "top-3": {
