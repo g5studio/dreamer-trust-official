@@ -24,9 +24,9 @@ const App: Component = () => {
   );
 
   return (
-    <section class="flex min-h-screen flex-col">
+    <section class="relative flex min-h-screen flex-col">
       <OverlayContainer />
-      <Header classes="w-full" />
+      <Header classes="sticky top-0 z-priority w-full" />
       <main class="main-container flex w-full grow flex-col">
         <Routes>
           <Show when={isRouteReady()}>

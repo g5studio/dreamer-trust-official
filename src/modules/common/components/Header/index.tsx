@@ -14,7 +14,7 @@ const Header = (props: IBaseComponentProps) => {
     <header
       data-testid="app-header"
       class={formatClasses(
-        'h-20 px-12 py-4 text-lg shadow-header',
+        'h-20 bg-black-8 px-12 py-4 text-lg shadow-header',
         {
           'h-15': isMobile(),
         },
