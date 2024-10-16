@@ -16,10 +16,9 @@ html {
 }
 
 body {
-  font-family: 'PingFang', 'Roboto', Helvetica, Arial, 'Microsoft JhengHei', '微軟正黑體';
+  font-family: 'Noto Sans', 'PingFang', 'Roboto', Helvetica, Arial, 'Microsoft JhengHei', '微軟正黑體';
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: getColorVariable(--color-layer-1);
+  -moz-osx-font-smoothing: grayscale; 
   color: getColorVariable(--color-black-1);
 }
 
