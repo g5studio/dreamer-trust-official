@@ -12,45 +12,45 @@
       "content": "我們保護您的資產，確保您的傳承能夠世世代代延續下去"
     },
     "top-2": {
-      "title": "Seminar Event.",
-      "content": "Annual Trust Conference",
-      "time": "Time",
-      "location": "Location",
-      "details": "Details"
+      "title": "研討會資訊",
+      "content": "年度信託會議",
+      "time": "時間",
+      "location": "地點",
+      "details": "詳細資料"
     },
     "top-3": {
-      "title": "Our Strategic Solutions.",
-      "content": "We offer a range of solutions, including Trust Services, Estate Planning, Asset Management, and Corporate Services, to meet your diverse financial needs.",
-      "learnMore": "Learn More"
+      "title": "我們的方案",
+      "content": "我們提供一系列解決方案，包括信託服務、遺產管理、財產規劃和企業服務，以滿足您多樣化的財務需求。",
+      "learnMore": "了解更多"
     },
     "solutions": {
-      "title": "Our Solutions",
-      "subTitle": "Solutions Crafted to Fit Your Goals",
+      "title": "我們的解決方案",
+      "subTitle": "量身打造的解決方案以滿足您的目標",
       "solution-1": {
-        "title": "Trust Services",
-        "content": "Our comprehensive trust services cover personal, family, investment, property, insurance, business value protection, charitable, foreign grantor solutions."
+        "title": "信託服務",
+        "content": "涵蓋個人、家庭、投資、財產、保險、商業價值保護、慈善及外國贈與人等方案。"
       },
       "solution-2": {
-        "title": "Estate Planning",
-        "content": "Our estate planning services include tailored will drafting and seamless probate administration, ensuring your wishes are carried out with ease."
+        "title": "遺產規劃",
+        "content": "包括擬定量身定製的遺囑和無縫接軌的遺產管理，確保您的願望能夠輕鬆實現。"
       },
       "solution-3": {
-        "title": "Asset Management",
-        "content": "Our asset management services include family office, private trust company formation, and escrow agent services to safeguard and manage your wealth effectively."
+        "title": "資產管理",
+        "content": "包括家族辦公室、私人信託公司成立以及保管代理服務，以有效地保護和管理您的財富。"
       },
       "solution-4": {
-        "title": "Corporate Service",
-        "content": "Our cap table management service ensures accurate tracking of ownership, equity distribution, and make informed decisions during fundraising or equity events."
+        "title": "企業服務",
+        "content": "我們的股權結構管理服務確保準確紀錄每一次所有權的變更和股權的分配，提供完整資訊做於籌資或股權變更決策的參考。我們的股權結構管理服務確保準確紀錄每一次所有權的變更和股權的分配，提供完整資訊做於籌資或股權變更決策的參考。"
       }
     },
     "advantages": {
-      "title": "Our Advantages",
-      "subTitle": "What Sets Us Apart",
+      "title": "我們的優勢",
+      "subTitle": "讓我們與眾不同的地方",
       "advantage-1": {
-        "content": "Tackle the challenges of integrating cross-border business."
+        "content": "應對跨境業務整合的挑戰。"
       },
       "advantage-2": {
-        "content": "Tailored solutions to meet each client's needs."
+        "content": "提供量身定製的解決方案，滿足每位客戶的需求。"
       }
     }
   },

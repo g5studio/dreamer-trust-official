@@ -8,49 +8,49 @@
   },
   "home": {
     "top-1": {
-      "title": "Reliable. Secure. Trusted.",
-      "content": "We safeguard your assets and ensure your legacy thrives for generations to come."
+      "title": "可靠、安全、值得信赖。",
+      "content": "我们会照顾好您的资产，让您的遗产代代相传、持续繁荣。"
     },
     "top-2": {
-      "title": "Seminar Event.",
-      "content": "Annual Trust Conference",
-      "time": "Time",
-      "location": "Location",
-      "details": "Details"
+      "title": "研讨会信息",
+      "content": "年度信托会议",
+      "time": "时间",
+      "location": "地点",
+      "details": "详情"
     },
     "top-3": {
-      "title": "Our Strategic Solutions.",
-      "content": "We offer a range of solutions, including Trust Services, Estate Planning, Asset Management, and Corporate Services, to meet your diverse financial needs.",
-      "learnMore": "Learn More"
+      "title": "我们的方案",
+      "content": "我们提供一系列解决方案，包括信托服务、遗产规划、资产管理和企业服务，以满足您多样化的财务需求。",
+      "learnMore": "了解更多"
     },
     "solutions": {
-      "title": "Our Solutions",
-      "subTitle": "Solutions Crafted to Fit Your Goals",
+      "title": "我们的解决方案",
+      "subTitle": "量身定制的解决方案以满足您的目标",
       "solution-1": {
-        "title": "Trust Services",
-        "content": "Our comprehensive trust services cover personal, family, investment, property, insurance, business value protection, charitable, foreign grantor solutions."
+        "title": "信托服务",
+        "content": "涵盖个人、家庭、投资、财产、保险、商业价值保护、慈善及外国赠与人等方案。"
       },
       "solution-2": {
-        "title": "Estate Planning",
-        "content": "Our estate planning services include tailored will drafting and seamless probate administration, ensuring your wishes are carried out with ease."
+        "title": "遗产规划",
+        "content": "包括拟定量身定制的遗嘱和无缝接轨的遗产管理，确保您的愿望能够轻松实现。"
       },
       "solution-3": {
-        "title": "Asset Management",
-        "content": "Our asset management services include family office, private trust company formation, and escrow agent services to safeguard and manage your wealth effectively."
+        "title": "资产管理",
+        "content": "包括家族办公室、私人信托公司成立以及保管代理服务，以有效地保护和管理您的财富。"
       },
       "solution-4": {
-        "title": "Corporate Service",
-        "content": "Our cap table management service ensures accurate tracking of ownership, equity distribution, and make informed decisions during fundraising or equity events."
+        "title": "企业服务",
+        "content": "我们的股权结构管理服务确保准确纪录每一次所有权的变更和股权的分配，提供完整信息做于筹资或股权变更决策的参考。"
       }
     },
     "advantages": {
-      "title": "Our Advantages",
-      "subTitle": "What Sets Us Apart",
+      "title": "我们的优势",
+      "subTitle": "我们的独特之处",
       "advantage-1": {
-        "content": "Tackle the challenges of integrating cross-border business."
+        "content": "应对跨境业务整合的挑战。"
       },
       "advantage-2": {
-        "content": "Tailored solutions to meet each client's needs."
+        "content": "提供量身定制的解决方案，满足每位客户的需求。"
       }
     }
   },

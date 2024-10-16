@@ -74,6 +74,7 @@ const config: Config = {
       full: '100%',
     },
     zIndex: {
+      bg: '-1',
       none: '0',
       normal: '1',
       cover: '2',

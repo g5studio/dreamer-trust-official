@@ -39,10 +39,10 @@ const ContentLayout = (props: IContentLayoutProps) => {
       )}>
       {props.children}
       <Show when={isPC()}>
-        <Picture classes="absolute left-[50%] top-[646px] translate-x-[-50%]" src="shared/bg-1.png" />
+        <Picture classes="z-bg absolute left-[50%] top-[646px] translate-x-[-50%]" src="shared/bg-1.png" />
       </Show>
       <Show when={isPC()}>
-        <Picture classes="absolute right-0 top-[1887px]" src="shared/bg-2.png" />
+        <Picture classes="z-bg absolute right-0 top-[1887px]" src="shared/bg-2.png" />
       </Show>
     </section>
   );

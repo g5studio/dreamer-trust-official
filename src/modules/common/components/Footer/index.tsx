@@ -18,7 +18,7 @@ const Footer = (props: IFooterProps) => {
     <footer
       data-testid="app-footer"
       class={formatClasses(
-        'shadow-footer px-26 py-18_5',
+        'shadow-footer bg-black-8 px-26 py-18_5',
         {
           'p-6 pt-2': !isPC(),
         },
