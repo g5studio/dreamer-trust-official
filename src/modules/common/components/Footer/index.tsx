@@ -3,7 +3,8 @@ import { translate } from '@shared/hooks/use-translation';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { getRouteConfigByKey } from '@utilities/helpers/routes.helper';
-import { For } from 'solid-js';
+import { For, Show } from 'solid-js';
+import { isPC } from '@shared/hooks/use-window-size';
 import PrimaryLogo from '../PrimaryLogo';
 
 interface IFooterProps extends IBaseComponentProps {}
@@ -14,14 +15,36 @@ interface IFooterProps extends IBaseComponentProps {}
 const Footer = (props: IFooterProps) => {
   const { menuItems } = useMenu();
   return (
-    <footer data-testid="app-footer" class={formatClasses('shadow-footer px-26 py-18_5', props.classes)}>
-      <section class={formatClasses('main-container box-border flex h-full w-full flex-col space-y-12')}>
-        <div class={formatClasses('flex flex-row items-center justify-between')}>
-          <PrimaryLogo classes="h-19_25" />
-          <ul class="flex flex-row items-center space-x-15 text-lg font-bold  text-primary-2">
+    <footer
+      data-testid="app-footer"
+      class={formatClasses(
+        'shadow-footer px-26 py-18_5',
+        {
+          'p-6 pt-2': !isPC(),
+        },
+        props.classes,
+      )}>
+      <section
+        class={formatClasses('main-container box-border flex h-full w-full flex-col space-y-12', {
+          'space-y-4': !isPC(),
+        })}>
+        <div
+          class={formatClasses('flex flex-col', {
+            'flex-row items-center justify-between': isPC(),
+          })}>
+          <Show when={isPC()}>
+            <PrimaryLogo classes="h-19_25" />
+          </Show>
+          <ul
+            class={formatClasses('flex flex-col text-sm font-bold  text-primary-2', {
+              'flex-row items-center space-x-15 text-lg': isPC(),
+            })}>
             <For each={menuItems()}>
               {({ key, handleOnClick }) => (
-                <li class="text-nowrap">
+                <li
+                  class={formatClasses('text-nowrap', {
+                    'border-grey-7 border-b-0_25 py-4': !isPC(),
+                  })}>
                   <button type="button" data-testid={`header-item-${key}`} onClick={() => handleOnClick()}>
                     {translate(getRouteConfigByKey(key)?.i18n)}
                   </button>
@@ -31,14 +54,32 @@ const Footer = (props: IFooterProps) => {
           </ul>
         </div>
         <div class={formatClasses('flex flex-col space-y-6')}>
-          <article class="border-y-0_25 border-black-1 py-6">test</article>
-          <div class="flex flex-row items-center justify-between">
-            <span>Copyright © 2024 DREAMER GROUP. All Rights Reserved</span>
+          <article
+            class={formatClasses('border-y-0_25 border-black-1', {
+              'border-t-0 pb-4': !isPC(),
+              'py-6': isPC(),
+            })}>
+            test
+          </article>
+          <div
+            class={formatClasses('flex', {
+              'flex-row items-center justify-between': isPC(),
+              'flex-col-reverse items-center text-xs': !isPC(),
+            })}>
+            <span class={formatClasses({ 'mt-2_5': !isPC() })}>
+              Copyright © 2024 DREAMER GROUP. All Rights Reserved
+            </span>
             <ul class="flex flex-row items-center">
-              <li class="border-r-0_25 border-black-1 pr-12">
+              <li
+                class={formatClasses('border-r-0_25 border-black-1 pr-12', {
+                  'pr-6': !isPC(),
+                })}>
                 <button type="button">Privacy Policy</button>
               </li>
-              <li class="pl-12">
+              <li
+                class={formatClasses('pl-12', {
+                  'pl-6': !isPC(),
+                })}>
                 <button type="button">Terms of Use</button>
               </li>
             </ul>
