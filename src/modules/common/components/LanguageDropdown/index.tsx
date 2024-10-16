@@ -1,4 +1,5 @@
 import DropdownContainer from '@shared/components/DropdownContainer';
+import { languageList } from '@shared/constants/language.constant';
 import { LocaleDash } from '@shared/enums';
 import { changeLanguage, translate, translation } from '@shared/hooks/use-translation';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
@@ -23,7 +24,7 @@ const LanguageDropdown = (props: ILanguageDropdownProps) => {
         </button>
       )}
       align="right"
-      itemList={[LocaleDash.zh_CN, LocaleDash.zh_HK, LocaleDash.en_US]}
+      itemList={languageList}
       childrenContainerClasses={'bg-layer-3 shadow mt-4_25 rounded-md px-6 py-4 space-y-6 bg-black-8'}
       itemSlot={({ item }) => (
         <button

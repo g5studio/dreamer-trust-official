@@ -13,12 +13,13 @@ interface IPopoverRenderProps {
   togglePopover: () => void;
 }
 
-interface IPopoverProps extends Omit<IBaseComponentProps, 'ref'> {
+export interface IPopoverProps extends Omit<IBaseComponentProps, 'ref'> {
   triggerSlot?: (props: IPopoverRenderProps) => JSX.Element;
   align?: 'left' | 'right';
   outsideBehavior?: 'close' | 'none';
   outsideClickThrough?: boolean;
   childrenContainerClasses?: string;
+  childrenContainerStyle?: JSX.CSSProperties;
   popoverSlot: (props: IPopoverRenderProps) => JSX.Element;
   ref?: Setter<IPopover | undefined>;
   onOutsideClick?: (e: Event) => void;
@@ -96,6 +97,7 @@ const Popover = (props: IPopoverProps) => {
           style={{
             left: props.left ? `${props.left}px` : undefined,
             top: props.top ? `${props.top}px` : undefined,
+            ...props.childrenContainerStyle,
           }}
           use:clickOutside={(e) => {
             if (mergedProps.outsideClickThrough && clickOutsideToClose()) {

@@ -4,17 +4,19 @@ import { createStore } from 'solid-js/store';
 
 type WindowSize = {
   breakpoint: Breakpoint;
-} & Pick<DOMRect, 'width'>;
+} & Pick<DOMRect, 'width' | 'height'>;
 
 const [windowSize, setWindowSize] = createStore<WindowSize>({
   breakpoint: getBreakpointByWindowSize(),
   width: window.innerWidth,
+  height: window.innerHeight,
 });
 
 const onWindowResize = () => {
   setWindowSize({
     breakpoint: getBreakpointByWindowSize(),
     width: window.innerWidth,
+    height: window.innerHeight,
   });
 };
 

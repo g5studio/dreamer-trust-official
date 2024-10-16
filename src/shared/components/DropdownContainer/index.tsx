@@ -3,7 +3,7 @@ import { For, JSX, Show } from 'solid-js';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { I18nKey } from '@shared/models/translation.model';
 import { clickOutside } from '@utilities/directives/click-outside-directive';
-import Popover from '../Popover';
+import Popover, { IPopoverProps } from '../Popover';
 
 registerDirective(clickOutside);
 
@@ -32,14 +32,20 @@ export interface IDropdownContainerItemRenderProps<T = IDropdownContainerOption>
   item: T;
 }
 
-export interface IDropdownContainerProps<T = IDropdownContainerOption> extends Omit<IBaseComponentProps, 'ref'> {
+export interface IDropdownContainerProps<T = IDropdownContainerOption>
+  extends Omit<IBaseComponentProps, 'ref'>,
+    Pick<
+      IPopoverProps,
+      | 'childrenContainerStyle'
+      | 'childrenContainerClasses'
+      | 'outsideClickThrough'
+      | 'align'
+      | 'outsideBehavior'
+      | 'onOutsideClick'
+    > {
   triggerSlot: (props: IDropdownContainerRenderProps) => JSX.Element;
   headerSlot?: (props: IDropdownContainerRenderProps) => JSX.Element;
   footerSlot?: (props: IDropdownContainerRenderProps) => JSX.Element;
-  align?: 'left' | 'right';
-  outsideBehavior?: 'close' | 'none';
-  outsideClickThrough?: boolean;
-  childrenContainerClasses?: string;
   itemSlot: (props: IDropdownContainerItemRenderProps<T>) => JSX.Element;
   itemList: T[];
 }

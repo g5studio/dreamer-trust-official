@@ -2,7 +2,7 @@ import { Page } from '@shared/enums';
 import { NavigateHookFn, useNavigate } from './use-navigate';
 import { usePageCheck } from './use-page-check';
 
-type MenuItem = {
+export type MenuItem = {
   key: Page;
   handleOnClick: NavigateHookFn;
   isActive: CheckFn;

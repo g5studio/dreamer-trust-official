@@ -25,7 +25,7 @@ const config: Config = {
       // 14px
       sm: '0.875rem',
 
-      base: '1rem',
+      md: '1rem',
       lg: '1.125rem',
       // 20px
       lgx: '1.25rem',
@@ -111,6 +111,8 @@ const config: Config = {
         'orange-1': 'rgb(var(--color-orange-1) / <alpha-value>)',
         'orange-2': 'rgb(var(--color-orange-2) / <alpha-value>)',
         'orange-3': 'rgb(var(--color-orange-3) / <alpha-value>)',
+        'grey-3': 'rgb(var(--color-grey-3) / <alpha-value>)',
+        'grey-7': 'rgb(var(--color-grey-7) / <alpha-value>)',
       },
       borderRadius: {
         none: '0',
