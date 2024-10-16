@@ -1,5 +1,5 @@
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
-import { onMount } from 'solid-js';
+import { onMount, Show } from 'solid-js';
 import { Log } from '@utilities/helpers/log.helper';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { useNavigateHandler } from '@shared/hooks/use-navigate-handler';
@@ -7,6 +7,7 @@ import { closeAllOverlay } from '@shared/hooks/use-overlay';
 import { usePageCheck } from '@shared/hooks/use-page-check';
 import { isPC } from '@shared/hooks/use-window-size';
 import navigator from '@shared/hooks/use-navigator';
+import Picture from '../Picture';
 
 interface IContentLayoutProps extends IBaseComponentProps {
   hidePadding?: boolean;
@@ -29,7 +30,7 @@ const ContentLayout = (props: IContentLayoutProps) => {
     <section
       data-testid={props.testId}
       class={formatClasses(
-        'w-full grow',
+        'relative w-full grow',
         {
           'px-12': !props.hidePadding && isPC(),
           'min-h-full': !isPC(),
@@ -37,6 +38,12 @@ const ContentLayout = (props: IContentLayoutProps) => {
         props.classes,
       )}>
       {props.children}
+      <Show when={isPC()}>
+        <Picture classes="absolute left-[50%] top-[646px] translate-x-[-50%]" src="shared/bg-1.png" />
+      </Show>
+      <Show when={isPC()}>
+        <Picture classes="absolute right-0 top-[1887px]" src="shared/bg-2.png" />
+      </Show>
     </section>
   );
 };
