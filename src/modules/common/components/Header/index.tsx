@@ -1,5 +1,3 @@
-import Picture from '@shared/components/Picture';
-import { LocaleDash } from '@shared/enums';
 import { translate } from '@shared/hooks/use-translation';
 import { isMobile } from '@shared/hooks/use-window-size';
 import { formatClasses } from '@utilities/helpers/format.helper';
@@ -8,6 +6,7 @@ import { For } from 'solid-js';
 import { IBaseComponentProps } from '@shared/interfaces';
 import { useMenu } from '@shared/hooks/use-menu';
 import LanguageDropdown from '../LanguageDropdown';
+import PrimaryLogo from '../PrimaryLogo';
 
 const Header = (props: IBaseComponentProps) => {
   const { menuItems } = useMenu();
@@ -23,7 +22,7 @@ const Header = (props: IBaseComponentProps) => {
       )}>
       <section class="main-container flex h-full w-full flex-row justify-between space-x-18">
         <div class="flex h-full flex-row">
-          <Picture classes="h-12_5" src={`common/logo_${LocaleDash.en_US}.png`} />
+          <PrimaryLogo classes="h-12_5" />
           <ul class="flex flex-row items-center space-x-8">
             <For each={menuItems()}>
               {({ key, handleOnClick, isActive }) => (

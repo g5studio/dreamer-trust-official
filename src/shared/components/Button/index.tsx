@@ -55,8 +55,8 @@ type InitAttr = {
 };
 
 const defaultStyle = 'relative overflow-hidden disabled:cursor-not-allowed';
-const common = 'h-14 rounded-12';
-const primary = 'bg-primary text-white active:bg-primary-btn-bg-active disabled:bg-black-5';
+const common = 'px-12 py-3 rounded-[99px]';
+const primary = 'bg-primary-2 text-black-8 disabled:bg-black-5';
 
 const variants: Record<ButtonVariantType, InitAttr> = {
   primary: {
@@ -77,7 +77,7 @@ const variants: Record<ButtonVariantType, InitAttr> = {
       defaultStyle,
       common,
       'active:border-primary active:text-primary',
-      'border border-black-5 bg-layer-3 text-black-3 opacity-50 disabled:text-black-5',
+      'bg-layer-3 border border-black-5 text-black-3 opacity-50 disabled:text-black-5',
     ),
     rippleTailwindColorClass: 'bg-primary',
   },
@@ -86,11 +86,11 @@ const variants: Record<ButtonVariantType, InitAttr> = {
     rippleTailwindColorClass: 'bg-black-5',
   },
   block: {
-    className: customTwMerge(defaultStyle, 'rounded-10 bg-layer-3 text-black-1 shadow'),
+    className: customTwMerge(defaultStyle, 'bg-layer-3 rounded-10 text-black-1 shadow'),
     rippleTailwindColorClass: 'bg-primary-btn-ripple-block',
   },
   'active-outline': {
-    className: customTwMerge(defaultStyle, common, 'border border-primary bg-layer-3 text-primary'),
+    className: customTwMerge(defaultStyle, common, 'border-primary bg-layer-3 text-primary border'),
     rippleTailwindColorClass: 'bg-layer-3',
   },
   custom: {
@@ -105,7 +105,7 @@ const Button = (props: IButton) => {
     <button
       use:rippleEffect={{
         rippleTailwindColorClass: variants[props.variant].rippleTailwindColorClass,
-        disabled: props.disableRipple,
+        disabled: props.disableRipple ?? true,
       }}
       data-testid={props.testId}
       type={props.type}

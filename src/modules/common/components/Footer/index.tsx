@@ -1,11 +1,10 @@
-import Picture from '@shared/components/Picture';
-import { LocaleDash } from '@shared/enums';
 import { useMenu } from '@shared/hooks/use-menu';
 import { translate } from '@shared/hooks/use-translation';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { getRouteConfigByKey } from '@utilities/helpers/routes.helper';
 import { For } from 'solid-js';
+import PrimaryLogo from '../PrimaryLogo';
 
 interface IFooterProps extends IBaseComponentProps {}
 
@@ -18,7 +17,7 @@ const Footer = (props: IFooterProps) => {
     <footer data-testid="app-footer" class={formatClasses('shadow-footer px-26 py-18_5', props.classes)}>
       <section class={formatClasses('main-container box-border flex h-full w-full flex-col space-y-12')}>
         <div class={formatClasses('flex flex-row items-center justify-between')}>
-          <Picture classes="h-19_25" src={`common/logo_${LocaleDash.en_US}.png`} />
+          <PrimaryLogo classes="h-19_25" />
           <ul class="flex flex-row items-center space-x-15 text-lg font-bold  text-primary-2">
             <For each={menuItems()}>
               {({ key, handleOnClick }) => (
