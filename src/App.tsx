@@ -1,3 +1,4 @@
+import Footer from '@modules/common/components/Footer';
 import Header from '@modules/common/components/Header';
 import OverlayContainer from '@modules/common/components/OverlayContainer';
 import NestRoute from '@shared/components/NestRoute';
@@ -23,17 +24,18 @@ const App: Component = () => {
   );
 
   return (
-    <>
+    <section class="flex min-h-screen flex-col">
       <OverlayContainer />
-      <Header />
-      <main class="main-container">
+      <Header classes="w-full" />
+      <main class="main-container flex w-full grow flex-col">
         <Routes>
           <Show when={isRouteReady()}>
             <For each={routesMap()}>{(config) => <Route path={config.path} component={config.component} />}</For>
           </Show>
         </Routes>
       </main>
-    </>
+      <Footer classes="w-full" />
+    </section>
   );
 };
 
