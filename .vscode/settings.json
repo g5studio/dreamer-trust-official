@@ -45,6 +45,7 @@
     "asroma",
     "astropay",
     "Avia",
+    "Bahasa",
     "bankcardmanagement",
     "BBIN",
     "beton",
@@ -166,6 +167,7 @@
     "Pinduoduo",
     "Platfrom",
     "Pngquant",
+    "Português",
     "precache",
     "precaching",
     "prematch",
@@ -213,6 +215,7 @@
     "thisbeyond",
     "Thrid",
     "tids",
+    "Tiếng",
     "tiktok",
     "timepoint",
     "TOPAY",
@@ -223,6 +226,7 @@
     "UniKey",
     "unionpay",
     "VENDERID",
+    "Việt",
     "VietcomBank",
     "vietinbank",
     "VietinbankiPay",
@@ -242,7 +246,8 @@
     "YOPLAY",
     "yoyo",
     "Zalo",
-    "zalopay"
+    "zalopay",
+    "हिन्दी"
   ],
   "editor.tabCompletion": "on",
   "spellchecker.ignoreWordsList": [

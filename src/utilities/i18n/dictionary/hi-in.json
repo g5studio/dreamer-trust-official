@@ -1,4 +1,11 @@
 {
+  "menu": {
+    "aboutUs": "About Us",
+    "ourSolutions": "Our Solutions",
+    "insightsUpdates": "Insights & Updates",
+    "seminar": "Seminar",
+    "contactUs": "Contact Us"
+  },
   "home": {
     "top-1": {
       "title": "Reliable. Secure. Trusted.",
@@ -40,7 +47,7 @@
       "title": "Our Advantages",
       "subTitle": "What Sets Us Apart",
       "advantage-1": {
-        "contnet": "Tackle the challenges of integrating cross-border business."
+        "content": "Tackle the challenges of integrating cross-border business."
       },
       "advantage-2": {
         "content": "Tailored solutions to meet each client's needs."

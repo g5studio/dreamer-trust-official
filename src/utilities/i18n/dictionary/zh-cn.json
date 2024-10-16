@@ -1,4 +1,11 @@
 {
+  "menu": {
+    "aboutUs": "关于我们",
+    "ourSolutions": "解决方案",
+    "insightsUpdates": "洞察更新",
+    "seminar": "讲座活动",
+    "contactUs": "联系我们"
+  },
   "home": {
     "top-1": {
       "title": "Reliable. Secure. Trusted.",
@@ -40,7 +47,7 @@
       "title": "Our Advantages",
       "subTitle": "What Sets Us Apart",
       "advantage-1": {
-        "contnet": "Tackle the challenges of integrating cross-border business."
+        "content": "Tackle the challenges of integrating cross-border business."
       },
       "advantage-2": {
         "content": "Tailored solutions to meet each client's needs."

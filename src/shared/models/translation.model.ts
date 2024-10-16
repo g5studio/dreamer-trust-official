@@ -95,6 +95,7 @@ export const getTranslation = (): ITranslation => {
         localDictionary[metaData.language]?.(i18nKey) ??
         i18nKey
       : '';
+
     return Translation.replaceTranslationWithOptions(content, params);
   };
 
