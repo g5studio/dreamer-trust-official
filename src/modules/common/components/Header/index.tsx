@@ -1,12 +1,13 @@
 import Picture from '@shared/components/Picture';
-import { Page } from '@shared/enums';
+import { LocaleDash, Page } from '@shared/enums';
 import { NavigateHookFn, useNavigate } from '@shared/hooks/use-navigate';
 import { usePageCheck } from '@shared/hooks/use-page-check';
-import { translate, translation } from '@shared/hooks/use-translation';
+import { translate } from '@shared/hooks/use-translation';
 import { isMobile } from '@shared/hooks/use-window-size';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { getRouteConfigByKey } from '@utilities/helpers/routes.helper';
 import { For } from 'solid-js';
+import LanguageDropdown from '../LanguageDropdown';
 
 type MenuItem = {
   key: Page;
@@ -47,27 +48,32 @@ const Header = () => {
   return (
     <header
       data-testid="app-header"
-      class={formatClasses('flex h-20 flex-row space-x-18 px-12 py-4 shadow-header', {
+      class={formatClasses('flex h-20 flex-row justify-between space-x-18 px-12 py-4 text-lg shadow-header', {
         'h-15': isMobile(),
       })}>
-      <Picture classes="max-h-12_5" src={`common/logo_${translation.language}.png`} />
-      <ul class="flex flex-row items-center space-x-8">
-        <For each={menuItems()}>
-          {({ key, handleOnClick, isActive }) => (
-            <li>
-              <button
-                class={formatClasses('text-black-4', {
-                  'font-bold text-black-1': isActive(),
-                })}
-                type="button"
-                data-testid={`header-item-${key}`}
-                onClick={() => handleOnClick()}>
-                {translate(getRouteConfigByKey(key)?.i18n)}
-              </button>
-            </li>
-          )}
-        </For>
-      </ul>
+      <div class="flex h-full flex-row">
+        <Picture classes="h-12_5" src={`common/logo_${LocaleDash.en_US}.png`} />
+        <ul class="flex flex-row items-center space-x-8">
+          <For each={menuItems()}>
+            {({ key, handleOnClick, isActive }) => (
+              <li class="text-nowrap">
+                <button
+                  class={formatClasses('text-black-4', {
+                    'font-bold text-black-1': isActive(),
+                  })}
+                  type="button"
+                  data-testid={`header-item-${key}`}
+                  onClick={() => handleOnClick()}>
+                  {translate(getRouteConfigByKey(key)?.i18n)}
+                </button>
+              </li>
+            )}
+          </For>
+        </ul>
+      </div>
+      <div class="flex h-full flex-row">
+        <LanguageDropdown />
+      </div>
     </header>
   );
 };
