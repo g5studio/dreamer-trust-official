@@ -26,11 +26,14 @@ const LanguageDropdown = (props: ILanguageDropdownProps) => {
       align="right"
       itemList={languageList}
       childrenContainerClasses={'bg-layer-3 shadow mt-4_25 rounded-md px-6 py-4 space-y-6 bg-black-8'}
-      itemSlot={({ item }) => (
+      itemSlot={({ item, toggleDropdown }) => (
         <button
           class={formatClasses('w-full text-nowrap text-black-4')}
           type="button"
-          onClick={() => changeLanguage(item)}>
+          onClick={() => {
+            changeLanguage(item);
+            toggleDropdown();
+          }}>
           {translate(`setting.lang.${formatLocale(item)}`)}
         </button>
       )}
