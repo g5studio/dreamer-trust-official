@@ -1,5 +1,5 @@
 import { translate } from '@shared/hooks/use-translation';
-import { isMobile, isPC } from '@shared/hooks/use-window-size';
+import { isPC } from '@shared/hooks/use-window-size';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { getRouteConfigByKey } from '@utilities/helpers/routes.helper';
 import { For, Show } from 'solid-js';
@@ -17,7 +17,7 @@ const Header = (props: IBaseComponentProps) => {
       class={formatClasses(
         'h-20 bg-black-8 px-12 py-4 text-lg shadow-header',
         {
-          'h-15 px-6': isMobile(),
+          'h-15 px-6': !isPC(),
         },
         props.classes,
       )}>

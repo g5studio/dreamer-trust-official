@@ -1,7 +1,7 @@
 import DropdownContainer from '@shared/components/DropdownContainer';
 import { languageList } from '@shared/constants/language.constant';
 import { MenuItem, useMenu } from '@shared/hooks/use-menu';
-import { changeLanguage, translate } from '@shared/hooks/use-translation';
+import { changeLanguage, translate, translation } from '@shared/hooks/use-translation';
 import windowSize from '@shared/hooks/use-window-size';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
 import { formatClasses, formatLocale } from '@utilities/helpers/format.helper';
@@ -9,12 +9,16 @@ import { getRouteConfigByKey } from '@utilities/helpers/routes.helper';
 import { CancelIcon } from '@utilities/svg-components/CancelIcon';
 import LanguageSettingIcon from '@utilities/svg-components/LanguageSettingIcon';
 import MobileMenuIcon from '@utilities/svg-components/shared/MobileMenuIcon';
-import { For, Show } from 'solid-js';
+import { createSignal, For, Show } from 'solid-js';
 
 interface IMobileMenuButtonProps extends IBaseComponentProps {}
 
+/**
+ * @external https://www.figma.com/design/Yu8CUgYbtdP8V5GyEvdYSR/01_Website-Exploration?node-id=362-21070&t=17qqUj8WzTGNmJ5r-4
+ */
 const MobileMenuButton = (props: IMobileMenuButtonProps) => {
   const { menuItems } = useMenu();
+  const [isLanguageMenuOpen, setLanguageMenuOpen] = createSignal<boolean>(false);
   return (
     <DropdownContainer<MenuItem>
       classes={formatClasses(props.classes)}
@@ -43,14 +47,26 @@ const MobileMenuButton = (props: IMobileMenuButtonProps) => {
       footerSlot={() => (
         <section class="flex grow flex-col justify-end">
           <div class="flex flex-row items-center space-x-2 pt-4">
-            <LanguageSettingIcon fillClasses="fill-primary-2" />
-            <For each={languageList}>
-              {(item) => (
-                <button type="button" class="text-primary-2" onClick={() => changeLanguage(item)}>
-                  {translate(`setting.lang.${formatLocale(item)}`)}
-                </button>
-              )}
-            </For>
+            <button
+              type="button"
+              onClick={() => {
+                setLanguageMenuOpen((pre) => !pre);
+              }}>
+              <LanguageSettingIcon fillClasses="fill-primary-2" />
+            </button>
+            <Show
+              when={isLanguageMenuOpen()}
+              fallback={
+                <span class="text-primary-2">{translate(`setting.lang.${formatLocale(translation.language)}`)}</span>
+              }>
+              <For each={languageList}>
+                {(item) => (
+                  <button type="button" class="text-primary-2" onClick={() => changeLanguage(item)}>
+                    {translate(`setting.lang.${formatLocale(item)}`)}
+                  </button>
+                )}
+              </For>
+            </Show>
           </div>
         </section>
       )}
