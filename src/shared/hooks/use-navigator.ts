@@ -11,7 +11,7 @@ import { getRelativePathByKey } from '@utilities/helpers/routes.helper';
 import { batch } from 'solid-js';
 import { createStore } from 'solid-js/store';
 
-type NavigateOption<NavigatorState extends object = object> = {
+export type NavigateOption<NavigatorState extends object = object> = {
   to: string;
   options?: Partial<
     Omit<NavigateOptions<NavigatorState>, 'replace'> & {
