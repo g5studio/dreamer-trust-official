@@ -78,12 +78,28 @@ const HomePage = () => {
                 class={formatClasses('w-full space-y-4', {
                   'w-145': isPC(),
                 })}>
-                <h1
-                  class={formatClasses('text-16 leading-20 font-normal', {
-                    'text-12 leading-14_5': !isPC(),
-                  })}>
-                  {translate('home.top-1.title')}
-                </h1>
+                <div class="flex flex-col">
+                  <div class="flex flex-col xl:flex-col">
+                    <h1
+                      class={formatClasses('text-16 leading-20 font-normal', {
+                        'text-12 leading-14_5': !isPC(),
+                      })}>
+                      {translate('home.top-1.title')}
+                    </h1>
+                    <h1
+                      class={formatClasses('text-16 leading-20 font-normal', {
+                        'text-12 leading-14_5': !isPC(),
+                      })}>
+                      {translate('home.top-1.title-2')}
+                    </h1>
+                  </div>
+                  <h1
+                    class={formatClasses('text-16 leading-20 font-["PT_Serif"] font-normal italic', {
+                      'text-12 leading-14_5': !isPC(),
+                    })}>
+                    {translate('home.top-1.subTitle')}
+                  </h1>
+                </div>
                 <p class="text-lg leading-7">{translate('home.top-1.content')}</p>
               </article>
               <Picture
@@ -114,12 +130,20 @@ const HomePage = () => {
                   class={formatClasses('w-full space-y-4', {
                     'grow py-22_5': isPC(),
                   })}>
-                  <h1
-                    class={formatClasses('text-16 leading-20 font-normal', {
-                      'text-12 leading-14_5': !isPC(),
-                    })}>
-                    {translate('home.top-2.title')}
-                  </h1>
+                  <div class="flex flex-col">
+                    <h1
+                      class={formatClasses('text-16 leading-20 font-normal', {
+                        'text-12 leading-14_5': !isPC(),
+                      })}>
+                      {translate('home.top-2.title')}
+                    </h1>
+                    <h1
+                      class={formatClasses('text-16 leading-20 font-["PT_Serif"] font-normal italic', {
+                        'text-12 leading-14_5': !isPC(),
+                      })}>
+                      {translate('home.top-2.subTitle')}
+                    </h1>
+                  </div>
                   <div class="space-y-2">
                     <p class="text-lg font-bold leading-7">{translate('home.top-2.content')}</p>
                     <div>
@@ -149,9 +173,20 @@ const HomePage = () => {
                 class={formatClasses('w-full space-y-4', {
                   'grow px-25 py-22_5': isPC(),
                 })}>
-                <h1 class={formatClasses('text-16 leading-20 font-normal', { 'text-12 leading-14_5': !isPC() })}>
-                  {translate('home.top-3.title')}
-                </h1>
+                <div class="flex flex-col">
+                  <h1
+                    class={formatClasses('text-16 leading-20 font-normal', {
+                      'text-12 leading-14_5': !isPC(),
+                    })}>
+                    {translate('home.top-3.title')}
+                  </h1>
+                  <h1
+                    class={formatClasses('text-16 leading-20 font-["PT_Serif"] font-normal italic', {
+                      'text-12 leading-14_5': !isPC(),
+                    })}>
+                    {translate('home.top-3.subTitle')}
+                  </h1>
+                </div>
                 <div class={formatClasses('space-y-10', { 'space-y-6': !isPC() })}>
                   <p class="text-lg leading-7">{translate('home.top-3.content')}</p>
                   <Button

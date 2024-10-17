@@ -4,6 +4,7 @@ import { setOutsideRoutesConfig, setRoutesConfig } from '@utilities/helpers/rout
 import { OutsideRouteConfig, RouteConfig } from '@shared/interfaces/route.interface';
 import HomePage from '@modules/common/pages/HomePage';
 import Redirect from '@shared/components/Redirect';
+import AboutUsPage from '@modules/common/pages/AboutUsPage';
 
 /**
  * ![重要]: 新增路由配置時需至api enum內查詢當前路由是否須設置內站代碼
@@ -22,7 +23,7 @@ const routesConfig: Partial<Record<RouteModule, RouteConfig>> = {
         i18n: 'menu.aboutUs',
         path: 'about-us',
         key: Page.AboutUs,
-        component: HomePage,
+        component: AboutUsPage,
       },
       {
         i18n: 'menu.ourSolutions',

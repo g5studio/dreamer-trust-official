@@ -8,18 +8,22 @@
   },
   "home": {
     "top-1": {
-      "title": "可靠。安全。值得信賴。",
+      "title": "可靠、",
+      "title-2": "安全、",
+      "subTitle": "值得信賴。",
       "content": "我們保護您的資產，確保您的傳承能夠世世代代延續下去"
     },
     "top-2": {
-      "title": "研討會資訊",
+      "title": "研討會",
+      "subTitle": "資訊。",
       "content": "年度信託會議",
       "time": "時間: {dateTime}",
       "location": "地點: {location}",
       "details": "詳細資料"
     },
     "top-3": {
-      "title": "我們的方案",
+      "title": "我們的",
+      "subTitle": "解決方案。",
       "content": "我們提供一系列解決方案，包括信託服務、遺產管理、財產規劃和企業服務，以滿足您多樣化的財務需求。",
       "learnMore": "了解更多"
     },

@@ -8,18 +8,22 @@
   },
   "home": {
     "top-1": {
-      "title": "可靠、安全、值得信赖。",
+      "title": "可靠、",
+      "title-2": "安全、",
+      "subTitle": "值得信赖。",
       "content": "我们会照顾好您的资产，让您的遗产代代相传、持续繁荣。"
     },
     "top-2": {
-      "title": "研讨会信息",
+      "title": "研讨会",
+      "subTitle": "信息。",
       "content": "年度信托会议",
       "time": "时间: {dateTime}",
       "location": "地点: {location}",
       "details": "详情"
     },
     "top-3": {
-      "title": "我们的方案",
+      "title": "我们的",
+      "subTitle": "解決方案。",
       "content": "我们提供一系列解决方案，包括信托服务、遗产规划、资产管理和企业服务，以满足您多样化的财务需求。",
       "learnMore": "了解更多"
     },

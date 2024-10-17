@@ -8,18 +8,22 @@
   },
   "home": {
     "top-1": {
-      "title": "Reliable. Secure. Trusted.",
+      "title": "Reliable. ",
+      "title-2": "Secure.",
+      "subTitle": "Trusted.",
       "content": "We safeguard your assets and ensure your legacy thrives for generations to come."
     },
     "top-2": {
-      "title": "Seminar Event.",
+      "title": "Seminar",
+      "subTitle": "Event.",
       "content": "Annual Trust Conference",
       "time": "Time: {dateTime}",
       "location": "Location: {location}",
       "details": "Details"
     },
     "top-3": {
-      "title": "Our Strategic Solutions.",
+      "title": "Our Strategic",
+      "subTitle": "Solutions.",
       "content": "We offer a range of solutions, including Trust Services, Estate Planning, Asset Management, and Corporate Services, to meet your diverse financial needs.",
       "learnMore": "Learn More"
     },
@@ -52,6 +56,12 @@
       "advantage-2": {
         "content": "Tailored solutions to meet each client's needs."
       }
+    }
+  },
+  "aboutUs": {
+    "top-1": {
+      "title": "Reliable. Secure. Trusted.",
+      "content": "We safeguard your assets and ensure your legacy thrives for generations to come."
     }
   },
   "common": {},
