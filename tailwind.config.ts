@@ -6,11 +6,10 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     screens: {
-      md: '375px',
-      lg: '600px',
-      lgx: '900px',
-      xl: '1024px',
-      xxl: '1440px',
+      xs: '393px',
+      sm: '450px',
+      md: '768px',
+      xl: '1440px',
     },
     fontSize: {
       // !due to twMerge cannot detect the custom key, if you added any custom key, please add it to utilities/helpers/format.helper.ts

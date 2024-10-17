@@ -58,6 +58,14 @@
       }
     }
   },
+  "aboutUs": {
+    "top-1": {
+      "title": "关于",
+      "title-2": "梦想家",
+      "title-3": "集团。",
+      "content": "可信赖的资产保护和传承伙伴。"
+    }
+  },
   "common": {},
   "setting": {
     "lang": {

@@ -70,7 +70,7 @@ const HomePage = () => {
         {() => (
           <div class="flex w-full flex-row flex-nowrap">
             <section
-              class={formatClasses('flex min-w-full ', {
+              class={formatClasses('flex min-w-full', {
                 'flex-row justify-center space-x-25 py-30_5': isPC(),
                 'flex-col justify-start space-y-12': !isPC(),
               })}>
@@ -79,7 +79,7 @@ const HomePage = () => {
                   'w-145': isPC(),
                 })}>
                 <div class="flex flex-col">
-                  <div class="flex flex-col xl:flex-col">
+                  <div class="sm:flex-row flex flex-col">
                     <h1
                       class={formatClasses('text-16 leading-20 font-normal', {
                         'text-12 leading-14_5': !isPC(),

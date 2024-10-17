@@ -8,7 +8,7 @@
   },
   "home": {
     "top-1": {
-      "title": "Reliable. ",
+      "title": "Reliable.",
       "title-2": "Secure.",
       "subTitle": "Trusted.",
       "content": "We safeguard your assets and ensure your legacy thrives for generations to come."
@@ -60,8 +60,10 @@
   },
   "aboutUs": {
     "top-1": {
-      "title": "Reliable. Secure. Trusted.",
-      "content": "We safeguard your assets and ensure your legacy thrives for generations to come."
+      "title": "About",
+      "title-2": "Dreamer",
+      "title-3": "Group.",
+      "content": "Your Trusted Partner in Financial Protection and Legacy Building."
     }
   },
   "common": {},
