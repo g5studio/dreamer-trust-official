@@ -37,7 +37,7 @@ const Header = (props: IBaseComponentProps) => {
         class={formatClasses('flex h-full w-full flex-row justify-between space-x-18', {
           'main-container': isPC(),
         })}>
-        <div class="flex h-full flex-row">
+        <div class="flex h-full flex-row space-x-12">
           <PrimaryLogo
             classes={formatClasses('h-12_5', {
               'h-8': !isPC(),
