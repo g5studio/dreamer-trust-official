@@ -204,6 +204,16 @@ export default defineConfig(({ mode }) => {
       port: 5173,
       open: true,
       host: '0.0.0.0',
+      proxy: {
+        '/api': {
+          target: 'http://www.dreamertrust.com',
+          changeOrigin: true,
+          rewrite: (path) => {
+            console.log(path);
+            return path;
+          },
+        },
+      },
     },
     build: {
       target: 'esnext',

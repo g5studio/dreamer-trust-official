@@ -232,8 +232,7 @@ export const getDefaultGMTOffset = (): string => `GMT${dayjs().format('Z')}`;
  * @description 主機時區固定為UTC-4
  * @param input 默認為主機時區
  */
-export const getTimezoneOffset = (input = estGmt): number =>
-  +input.replace(/^(UTC|GMT)/, '').replace(/:[0-9]+$/, '') ?? 0;
+export const getTimezoneOffset = (input = estGmt): number => +input.replace(/^(UTC|GMT)/, '').replace(/:[0-9]+$/, '');
 
 /**
  * 取得當前系統時區指定日期時間戳記
@@ -267,7 +266,7 @@ export const getTimeStringToTimeStamp = (
     [DateFormatType.SimpleTimes]: [60 * 1000, 1000],
   };
 
-  return timeUnits.reduce((total, unit, index) => total + unit * timeMultipliers[formatType][index] ?? 0, 0);
+  return timeUnits.reduce((total, unit, index) => total + unit * timeMultipliers[formatType][index], 0);
 };
 
 /**

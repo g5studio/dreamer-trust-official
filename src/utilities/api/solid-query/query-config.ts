@@ -1,3 +1,12 @@
-// enum Query {}
+import { fetchEventList } from '../http/endpoint/event-api.endpoint';
 
-export const queryConfigs = {};
+enum Query {
+  FetchEventList = 'fetchEventList',
+}
+
+export const queryConfigs = {
+  [Query.FetchEventList]: () => ({
+    queryKey: ['event', 'list'],
+    queryFn: fetchEventList,
+  }),
+};

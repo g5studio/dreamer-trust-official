@@ -38,7 +38,7 @@ export const generateHttpClient = (config: HttpClientConfig) => {
   let header: HttpClientConfig['header'] = {};
   switch (config.type) {
     default:
-      baseURL = window.$env.apiUrl;
+      baseURL = `${window.$env.apiUrl}/api`;
       header = defaultHeader;
       break;
   }

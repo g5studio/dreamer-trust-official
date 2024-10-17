@@ -1,6 +1,4 @@
-import { ServerErrorCode } from '@shared/enums/server-error.enum';
 import { TimeStamp } from '@shared/interfaces';
-import { IBaseApiResponse } from '@shared/interfaces/api.interface';
 import { MutationFunction, createMutation } from '@tanstack/solid-query';
 import { AxiosError, AxiosResponse } from 'axios';
 import { batch } from 'solid-js';
@@ -8,16 +6,16 @@ import { createStore, unwrap } from 'solid-js/store';
 import { IApiResponseHandlerHookProps, useApiResponseHandler } from './use-api-response-handler';
 
 type CustomizeMutationConfig<ApiResponse, ApiRequest> = {
-  mutation: { mutationFn: MutationFunction<AxiosResponse<IBaseApiResponse<ApiResponse>>, ApiRequest> };
+  mutation: { mutationFn: MutationFunction<AxiosResponse<ApiResponse>, ApiRequest> };
   /**
    * only execute when api response code is 0
    * @param data api response
    */
-  onSuccess?: (data: ApiResponse, time: TimeStamp, variable: ApiRequest) => void;
+  onSuccess?: (data: ApiResponse, variable: ApiRequest, time?: TimeStamp) => void;
   /**
    * api有打通無論結果為何都會執行
    */
-  onSettled?: (data: IBaseApiResponse<ApiResponse> | undefined) => void;
+  onSettled?: (data: ApiResponse | undefined) => void;
   retry?: boolean | number;
 } & IApiResponseHandlerHookProps<ApiResponse>;
 
@@ -60,7 +58,7 @@ const createCustomizeMutation = <ApiResponse, ApiRequest>({
     disableGeneralServerErrorHandle,
   });
 
-  const mutation = createMutation<AxiosResponse<IBaseApiResponse<ApiResponse>>, AxiosError, ApiRequest>(() => ({
+  const mutation = createMutation<AxiosResponse<ApiResponse>, AxiosError, ApiRequest>(() => ({
     mutationFn,
     retry,
     onMutate: () => {
@@ -69,7 +67,7 @@ const createCustomizeMutation = <ApiResponse, ApiRequest>({
         setState('isSettled', false);
       });
     },
-    onError: (error: AxiosError<IBaseApiResponse<ApiResponse>>) => {
+    onError: (error: AxiosError<ApiResponse>) => {
       setState('isError', true);
       if (isNeedCheckNetworkError()) {
         handleNetworkError(error);
@@ -87,11 +85,12 @@ const createCustomizeMutation = <ApiResponse, ApiRequest>({
     },
     onSuccess: (data, variable) => {
       setState('isError', false);
-      if (data.data.code === ServerErrorCode.None) {
-        onSuccess(unwrap(data.data.data), data.data.time, variable);
-      } else if (isNeedCheckServerError()) {
-        handleServerError(data.data);
-      }
+      onSuccess(unwrap(data.data), variable);
+      // if (data.data.code === ServerErrorCode.None) {
+      //   onSuccess(unwrap(data.data.data), data.data.time, variable);
+      // } else if (isNeedCheckServerError()) {
+      //   handleServerError(data.data);
+      // }
     },
   }));
   return {

@@ -1,35 +1,29 @@
-import { ServerErrorCode } from '@shared/enums/server-error.enum';
 import { TimeStamp } from '@shared/interfaces';
-import { IBaseApiResponse } from '@shared/interfaces/api.interface';
 import { CreateQueryResult } from '@tanstack/solid-query';
-import { ErrorHandlerArgs } from '@utilities/api/http/error-handler';
 import { deepClone } from '@utilities/helpers/utilities.helper';
 import { AxiosError, AxiosResponse } from 'axios';
 import { createEffect, on } from 'solid-js';
 import { IApiResponseHandlerHookProps, useApiResponseHandler } from './use-api-response-handler';
 
 type CustomizeQueryConfig<ApiResponse> = {
-  query: CreateQueryResult<AxiosResponse<IBaseApiResponse<ApiResponse>>, AxiosError<IBaseApiResponse>>;
+  query: CreateQueryResult<AxiosResponse<ApiResponse>, AxiosError<ApiResponse>>;
   /**
    * only execute when api response code is 0
    * @description map API response to frontend model
    * @param data api response
    */
-  onSuccess: (data: ApiResponse, time: TimeStamp) => void;
+  onSuccess: (data: ApiResponse, time?: TimeStamp) => void;
   /**
    * api有打通無論結果為何都會執行
    */
-  onSettled?: (data: IBaseApiResponse<ApiResponse> | undefined) => void;
+  onSettled?: (data: ApiResponse | undefined) => void;
   /**
    * query請求過程中enabled條件改變導致請求被取消時處理
    */
   onCanceled?: () => void;
 } & IApiResponseHandlerHookProps<ApiResponse>;
 
-type CustomizeQueryResponse<ApiResponse> = CreateQueryResult<
-  AxiosResponse<IBaseApiResponse<ApiResponse>>,
-  AxiosError<ErrorHandlerArgs>
->;
+type CustomizeQueryResponse<ApiResponse> = CreateQueryResult<AxiosResponse<ApiResponse>, AxiosError>;
 
 const retryOptions = {
   retry: 5,
@@ -73,7 +67,7 @@ const createCustomizeQuery = <ApiResponse>({
           }
           // ! 服務層處理
           if (isNotAcceptableServerError(query.error) && isNeedCheckServerError()) {
-            handleServerError(query.error.response!.data as IBaseApiResponse<ApiResponse>);
+            handleServerError(query.error.response as ApiResponse);
           }
         }
       },
@@ -85,11 +79,12 @@ const createCustomizeQuery = <ApiResponse>({
       () => query.isSuccess && query.data?.data,
       () => {
         if (query.isSuccess) {
-          if (query.data.data.code === ServerErrorCode.None) {
-            onSuccess(deepClone(query.data.data.data), query.data.data.time);
-          } else if (isNeedCheckServerError()) {
-            handleServerError(query.data.data);
-          }
+          onSuccess(deepClone(query.data.data));
+          // if (query.data.data.code === ServerErrorCode.None) {
+          //   onSuccess(deepClone(query.data.data.data), query.data.data.time);
+          // } else if (isNeedCheckServerError()) {
+          //   handleServerError(query.data);
+          // }
         }
       },
     ),

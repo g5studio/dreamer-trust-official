@@ -1,12 +1,11 @@
 import { ErrorHandleType, ErrorType } from '@shared/enums';
-import { IBaseApiResponse } from '@shared/interfaces';
-import { networkErrorHandler, serverErrorHandler } from '@utilities/api/http/error-handler';
+import { networkErrorHandler } from '@utilities/api/http/error-handler';
 import { AxiosError, HttpStatusCode } from 'axios';
 
 interface IApiResponseHandlerHook<ApiResponse> {
   isNeedCheckNetworkError: () => boolean;
   isNeedCheckServerError: () => boolean;
-  handleServerError: (response: IBaseApiResponse<ApiResponse>) => void;
+  handleServerError: (response: ApiResponse) => void;
   handleNetworkError: (error: AxiosError) => void;
   /**
    * 是否為網路層回報的server error
@@ -29,11 +28,11 @@ export interface IApiResponseHandlerHookProps<ApiResponse> {
   /**
    * 預期內的系統錯誤處理
    */
-  onServerError?: (data: IBaseApiResponse<ApiResponse>) => void;
+  onServerError?: (data: ApiResponse) => void;
   /**
    * 任何錯誤處理
    */
-  onError?: (type: ErrorType.Network | ErrorType.Server, error: AxiosError | IBaseApiResponse<ApiResponse>) => void;
+  onError?: (type: ErrorType.Network | ErrorType.Server, error: AxiosError | ApiResponse) => void;
   disableGeneralNetworkErrorHandle?: boolean;
   disableGeneralServerErrorHandle?: boolean;
 }
@@ -55,9 +54,9 @@ export const useApiResponseHandler = <ApiResponse>({
   const isNeedCheckNetworkError = (): boolean =>
     errorHandleType === ErrorHandleType.Network || errorHandleType === ErrorHandleType.All;
 
-  const handleServerError = (response: IBaseApiResponse<ApiResponse>) => {
+  const handleServerError = (response: ApiResponse) => {
     if (!disableGeneralServerErrorHandle) {
-      serverErrorHandler(response);
+      // serverErrorHandler(response);
     }
     onServerError?.(response);
     onError?.(ErrorType.Server, response);
