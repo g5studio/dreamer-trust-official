@@ -629,6 +629,7 @@ const config: Config = {
         '65/100': '65%',
         '99/100': '99%',
         full: '100%',
+        screen: '100vw',
       },
       borderWidth: {
         '1/2': '0.5px',
