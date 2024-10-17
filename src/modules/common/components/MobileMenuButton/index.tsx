@@ -4,6 +4,7 @@ import { MenuItem, useMenu } from '@shared/hooks/use-menu';
 import { changeLanguage, translate, translation } from '@shared/hooks/use-translation';
 import windowSize from '@shared/hooks/use-window-size';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
+import { useLayoutContext } from '@utilities/context/layout-context';
 import { formatClasses, formatLocale } from '@utilities/helpers/format.helper';
 import { getRouteConfigByKey } from '@utilities/helpers/routes.helper';
 import { CancelIcon } from '@utilities/svg-components/CancelIcon';
@@ -18,6 +19,7 @@ interface IMobileMenuButtonProps extends IBaseComponentProps {}
  */
 const MobileMenuButton = (props: IMobileMenuButtonProps) => {
   const { menuItems } = useMenu();
+  const [{ headerAreaHeight }] = useLayoutContext();
   const [isLanguageMenuOpen, setLanguageMenuOpen] = createSignal<boolean>(false);
   return (
     <DropdownContainer<MenuItem>
@@ -41,7 +43,7 @@ const MobileMenuButton = (props: IMobileMenuButtonProps) => {
       align="right"
       itemList={menuItems()}
       childrenContainerStyle={{
-        height: `${windowSize.height - 60}px`,
+        height: `${windowSize.height - headerAreaHeight()}px`,
       }}
       childrenContainerClasses={'flex flex-col bg-black-5 mt-4 w-screen translate-x-6 text-md p-6 pt-0'}
       footerSlot={() => (

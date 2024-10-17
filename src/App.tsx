@@ -4,11 +4,14 @@ import OverlayContainer from '@modules/common/components/OverlayContainer';
 import NestRoute from '@shared/components/NestRoute';
 import { RouteModule } from '@shared/enums';
 import { Route, Routes } from '@solidjs/router';
+import { useLayoutContext } from '@utilities/context/layout-context';
 import { getRoutesConfig } from '@utilities/helpers/routes.helper';
-import { Component, createMemo, For, Show } from 'solid-js';
+import { Component, createMemo, For, onMount, Show } from 'solid-js';
 import 'styles/_index.scss';
 
 const App: Component = () => {
+  const [, { setMainScrollRef }] = useLayoutContext();
+
   const isRouteReady = () => Object.values(getRoutesConfig()).length > 0;
 
   const routesMap = createMemo(() =>
@@ -22,6 +25,10 @@ const App: Component = () => {
         [],
       ),
   );
+
+  onMount(() => {
+    setMainScrollRef(window);
+  });
 
   return (
     <section class="relative flex min-h-screen flex-col">

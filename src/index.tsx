@@ -5,6 +5,7 @@ import { Router } from '@solidjs/router';
 import ThemeController from '@shared/components/ThemeController';
 import { render } from 'solid-js/web';
 import { preloadRoutes } from '@utilities/config/routes';
+import { LayoutProvider } from '@utilities/context/layout-context';
 
 import App from './App';
 import './index.css';
@@ -23,12 +24,14 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 if (root) {
   render(
     () => (
-      <Router>
-        <ThemeController />
-        <QueryClientProvider client={queryClient}>
-          <App />
-        </QueryClientProvider>
-      </Router>
+      <LayoutProvider>
+        <Router>
+          <ThemeController />
+          <QueryClientProvider client={queryClient}>
+            <App />
+          </QueryClientProvider>
+        </Router>
+      </LayoutProvider>
     ),
     root,
   );

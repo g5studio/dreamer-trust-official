@@ -11,14 +11,17 @@ import { getEvent } from '@shared/models/event.model';
 import { createQuery } from '@tanstack/solid-query';
 import { IApiEvent } from '@utilities/api/http/schema/event-api.schema';
 import { queryConfigs } from '@utilities/api/solid-query';
+import { useLayoutContext } from '@utilities/context/layout-context';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import AdvantageOneIcon from '@utilities/svg-components/common/AdvantageOneIcon';
 import AdvantageTwoIcon from '@utilities/svg-components/common/AdvantageTwoIcon';
 import DoubleArrowDownIcon from '@utilities/svg-components/shared/DoubleArrowDownIcon';
-import { For, Match, Show, Switch } from 'solid-js';
+import { createSignal, For, Match, Show, Switch } from 'solid-js';
 
 const HomePage = () => {
   const { metaData, initialize } = getEvent();
+  const [solutionRef, setSolutionRef] = createSignal<HTMLElement>();
+  const [{ mainScrollRef, headerAreaHeight }] = useLayoutContext();
   const navigate = useNavigate();
 
   createCustomizeQuery<IApiEvent[]>({
@@ -175,9 +178,19 @@ const HomePage = () => {
       </CarouselContainer>
       {/* 我們的解決方案 */}
       <article
+        ref={(_) => setSolutionRef(_)}
         class={formatClasses('relative flex flex-col items-center text-center', { 'px-12': isPC(), 'px-6': !isPC() })}>
         <Show when={isPC()}>
-          <DoubleArrowDownIcon classes="absolute left-1/2 top-[-75px] translate-x-[-50%]" />
+          <button
+            type="button"
+            onClick={() => {
+              mainScrollRef()?.scrollTo({
+                top: solutionRef()?.offsetTop ?? 0 - headerAreaHeight(),
+                behavior: 'smooth',
+              });
+            }}>
+            <DoubleArrowDownIcon classes="absolute left-1/2 top-[-75px] translate-x-[-50%]" />
+          </button>
         </Show>
         <h5 class="text-5_5 text-primary-3">{translate('home.solutions.title')}</h5>
         <h1 class="text-7 text-primary-3">{translate('home.solutions.subTitle')}</h1>

@@ -5,14 +5,26 @@ import { getRouteConfigByKey } from '@utilities/helpers/routes.helper';
 import { For, Show } from 'solid-js';
 import { IBaseComponentProps } from '@shared/interfaces';
 import { useMenu } from '@shared/hooks/use-menu';
+import { useLayoutContext } from '@utilities/context/layout-context';
+import { domProperty, DomPropertyCbParams } from '@utilities/directives/dom-property-directive';
+import { registerDirective } from '@utilities/helpers/directive.helper';
 import LanguageDropdown from '../LanguageDropdown';
 import PrimaryLogo from '../PrimaryLogo';
 import MobileMenuButton from '../MobileMenuButton';
 
+registerDirective(domProperty);
+
 const Header = (props: IBaseComponentProps) => {
   const { menuItems } = useMenu();
+  const [, { setHeaderAreaHeight }] = useLayoutContext();
   return (
     <header
+      use:domProperty={{
+        keyList: ['domRectHeight'],
+        cb: ([height]: DomPropertyCbParams<['domRectHeight']>) => {
+          setHeaderAreaHeight(height);
+        },
+      }}
       data-testid="app-header"
       class={formatClasses(
         'h-20 bg-black-6 px-12 py-4 text-lg shadow-header',
