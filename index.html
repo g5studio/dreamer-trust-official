@@ -1,31 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" theme="">
   <head>
     <title></title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover" />
-    <meta name="description" content="<%= description %>">
-    <link rel="icon" href="/favicon.ico">
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover" />
+    <meta name="description" content="<%= description %>" />
+    <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root">
-      
-    </div>
+    <div id="root"></div>
+    <script>
+      var env = '<%= env %>';
+      var isDev = env === 'development';
+    </script>
     <script>
       try {
-        window._version = "<%= version %>";
-      } catch (error) {
-      }
+        window._version = '<%= version %>';
+      } catch (error) {}
       try {
         // console current version with style
         console.log(
           `version: %c${window._version}`,
-          'color: #fff; background: #007bff; padding: 2px 5px; border-radius: 3px;'
+          'color: #fff; background: #007bff; padding: 2px 5px; border-radius: 3px;',
         );
-      } catch (error) {
-      }
+      } catch (error) {}
     </script>
-    <script src="/src/index.tsx" type="module"></script>    
+    <script src="/src/index.tsx" type="module"></script>
   </body>
 </html>

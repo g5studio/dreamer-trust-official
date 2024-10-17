@@ -111,6 +111,24 @@ export default defineConfig(({ mode }) => {
         },
       },
       {
+        name: 'env-config',
+        enforce: 'pre',
+        transformIndexHtml: {
+          transform(html) {
+            const { npm_package_version, NODE_ENV } = process.env;
+            let temp = html;
+            if (NODE_ENV) {
+              temp = temp.replace(/<%= env %>/, NODE_ENV);
+            }
+            if (npm_package_version) {
+              temp = temp.replace(/<%= version %>/, npm_package_version);
+            }
+
+            return temp;
+          },
+        },
+      },
+      {
         name: 'brand-logo',
         enforce: 'pre',
         transform(code, id) {
@@ -145,27 +163,6 @@ export default defineConfig(({ mode }) => {
           const base64 = data.toString('base64');
 
           return `export default '${base64}';`;
-        },
-      },
-      {
-        name: 'css-cors',
-        transformIndexHtml: {
-          enforce: 'post',
-          transform(html) {
-            // find all css link first
-            const cssLink = html.match(/<link[^>]+rel="stylesheet"[^>]+>/g);
-            if (!cssLink) {
-              return html;
-            }
-            // add crossorigin attribute to css link
-            return html.replace(/<link[^>]+rel="stylesheet"[^>]+>/g, (match) => {
-              const href = match.match(/href="([^"]+)"/)?.[1];
-              if (!href) {
-                return match;
-              }
-              return match.replace(href, `${href}" crossorigin="anonymous`);
-            });
-          },
         },
       },
       {
