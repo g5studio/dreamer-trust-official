@@ -118,8 +118,8 @@ const HomePage = () => {
                   <div class="space-y-2">
                     <p class="text-lg font-bold leading-7">{translate('home.top-2.content')}</p>
                     <div>
-                      <p>{translate('home.top-2.time', { dateTime: '2024.11.06 7:00 PM PST' })}</p>
-                      <p>{translate('home.top-2.location', { location: 'Moscone Center, San Francisco' })}</p>
+                      <p>{translate('home.top-2.time', { dateTime: metaData.displayStartTime })}</p>
+                      <p>{translate('home.top-2.location', { location: metaData.location })}</p>
                     </div>
                   </div>
                   <Button class="mt-6" testId="home-event-detail-btn" onClick={() => {}} variant="primary">

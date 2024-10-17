@@ -16,6 +16,7 @@ export enum DateFormatType {
   CalendarDateTime = 'YYYY-MM-DD HH:mm:ss',
   CalendarDateTimeWithoutSecond = 'YYYY-MM-DD HH:mm',
   CalendarSimpleMonthDateHourMinutes = 'MM/DD HH:mm',
+  EventDateTime = 'YYYY.MM.DD hh:mm A',
   // !Customize format type
   /**
    * 體育賽事時間特殊格式
