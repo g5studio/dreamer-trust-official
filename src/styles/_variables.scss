@@ -11,15 +11,14 @@ $pseudo-class:
 ;
 
 $grid-breakpoints: (
+  sm: 393px,
+  md: 768px,
   // xl以下皆為手機版
   xl: 1440px,
 );
 
 $container-max-widths: (
-  xl: 1440px,
-);
-
-$sport-container-max-widths: (
+  md: 768px,
   xl: 1440px,
 );
 

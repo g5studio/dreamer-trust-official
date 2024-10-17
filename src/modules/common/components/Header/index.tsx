@@ -21,7 +21,10 @@ const Header = (props: IBaseComponentProps) => {
         },
         props.classes,
       )}>
-      <section class="main-container flex h-full w-full flex-row justify-between space-x-18">
+      <section
+        class={formatClasses('flex h-full w-full flex-row justify-between space-x-18', {
+          'main-container': isPC(),
+        })}>
         <div class="flex h-full flex-row">
           <PrimaryLogo
             classes={formatClasses('h-12_5', {
