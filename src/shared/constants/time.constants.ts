@@ -49,3 +49,8 @@ export const calendarZhMonths = [
   '十一月',
   '十二月',
 ];
+
+export const oneSecondWithMileSeconds = 1000;
+export const oneMinuteWithMileSeconds = 60 * oneSecondWithMileSeconds;
+export const oneHourWithMileSeconds = 60 * oneMinuteWithMileSeconds;
+export const oneDayWithMileSeconds = 24 * oneHourWithMileSeconds;
