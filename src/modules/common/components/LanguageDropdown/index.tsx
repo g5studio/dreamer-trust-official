@@ -17,18 +17,18 @@ const LanguageDropdown = (props: ILanguageDropdownProps) => {
     <DropdownContainer<LocaleDash>
       testId={props.testId}
       triggerSlot={({ toggleDropdown }) => (
-        <button class="flex h-full flex-row items-center space-x-2 text-black-4" type="button" onClick={toggleDropdown}>
-          <LanguageSettingIcon fillClasses="fill-black-4" />
+        <button class="flex h-full flex-row items-center space-x-2 text-black-3" type="button" onClick={toggleDropdown}>
+          <LanguageSettingIcon fillClasses="fill-black-3" />
           <span>{translate(`setting.lang.${formatLocale(translation.language)}`)}</span>
-          <ArrowDownIcon fillClasses="fill-black-4" />
+          <ArrowDownIcon fillClasses="fill-black-3" />
         </button>
       )}
       align="right"
       itemList={languageList}
-      childrenContainerClasses={'bg-layer-3 shadow mt-4_25 rounded-md px-6 py-4 space-y-6 bg-black-8'}
+      childrenContainerClasses={'bg-layer-3 shadow mt-4_25 rounded-md px-6 py-4 space-y-6 bg-black-6'}
       itemSlot={({ item, toggleDropdown }) => (
         <button
-          class={formatClasses('w-full text-nowrap text-black-4')}
+          class={formatClasses('w-full text-nowrap text-black-3')}
           type="button"
           onClick={() => {
             changeLanguage(item);

@@ -18,7 +18,7 @@ const Footer = (props: IFooterProps) => {
     <footer
       data-testid="app-footer"
       class={formatClasses(
-        'shadow-footer bg-black-8 px-26 py-18_5',
+        'shadow-footer bg-black-6 px-26 py-18_5',
         {
           'p-6 pt-2': !isPC(),
         },
@@ -43,7 +43,7 @@ const Footer = (props: IFooterProps) => {
               {({ key, handleOnClick }) => (
                 <li
                   class={formatClasses('text-nowrap', {
-                    'border-grey-7 border-b-0_25 py-4': !isPC(),
+                    'border-b-0_25 border-black-2 py-4': !isPC(),
                   })}>
                   <button type="button" data-testid={`header-item-${key}`} onClick={() => handleOnClick()}>
                     {translate(getRouteConfigByKey(key)?.i18n)}

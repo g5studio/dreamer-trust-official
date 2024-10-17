@@ -56,7 +56,7 @@ type InitAttr = {
 
 const defaultStyle = 'relative overflow-hidden disabled:cursor-not-allowed';
 const common = 'px-12 py-3 rounded-[99px]';
-const primary = 'bg-primary-2 text-black-8 disabled:bg-black-5';
+const primary = 'bg-primary-2 text-black-6 disabled:bg-black-5';
 
 const variants: Record<ButtonVariantType, InitAttr> = {
   primary: {

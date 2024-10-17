@@ -15,7 +15,7 @@ const Header = (props: IBaseComponentProps) => {
     <header
       data-testid="app-header"
       class={formatClasses(
-        'h-20 bg-black-8 px-12 py-4 text-lg shadow-header',
+        'h-20 bg-black-6 px-12 py-4 text-lg shadow-header',
         {
           'h-15 px-6': !isPC(),
         },
@@ -37,7 +37,7 @@ const Header = (props: IBaseComponentProps) => {
                 {({ key, handleOnClick, isActive }) => (
                   <li class="text-nowrap">
                     <button
-                      class={formatClasses('text-black-4', {
+                      class={formatClasses('text-black-3', {
                         'font-bold text-black-1': isActive(),
                       })}
                       type="button"

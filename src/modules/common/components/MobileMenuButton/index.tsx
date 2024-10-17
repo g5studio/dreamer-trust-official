@@ -43,7 +43,7 @@ const MobileMenuButton = (props: IMobileMenuButtonProps) => {
       childrenContainerStyle={{
         height: `${windowSize.height - 60}px`,
       }}
-      childrenContainerClasses={'flex flex-col bg-black-7 mt-4 w-screen translate-x-6 text-md p-6 pt-0'}
+      childrenContainerClasses={'flex flex-col bg-black-5 mt-4 w-screen translate-x-6 text-md p-6 pt-0'}
       footerSlot={() => (
         <section class="flex grow flex-col justify-end">
           <div class="flex flex-row items-center space-x-2 pt-4">
@@ -76,7 +76,7 @@ const MobileMenuButton = (props: IMobileMenuButtonProps) => {
             item.handleOnClick();
             toggleDropdown();
           }}
-          class={formatClasses('border-grey-3 text-grey-7 border-b-0_25 py-4 text-start', {
+          class={formatClasses('border-b-0_25 border-black-4 py-4 text-start text-black-2', {
             'border-none': menuItems().findIndex(({ key }) => key === item.key) === menuItems().length - 1,
           })}
           type="button">

@@ -55,8 +55,8 @@ const HomePage = () => {
             <For each={Array.from({ length: carouselCount() })}>
               {(_, id) => (
                 <li
-                  class={formatClasses('h-4 w-4 rounded-circle bg-black-5', {
-                    'bg-black-2': currentIndex() === id(),
+                  class={formatClasses('h-4 w-4 rounded-circle bg-black-4', {
+                    'bg-black-3': currentIndex() === id(),
                   })}>
                   <button onClick={() => changeIndex(id())} class="h-full w-full" type="button" />
                 </li>
@@ -189,13 +189,13 @@ const HomePage = () => {
           })}>
           <For each={Array.from({ length: 4 }).map((_, i) => i + 1)}>
             {(index) => (
-              <article class={formatClasses('shrink grow basis-1/4 rounded-8 bg-black-7 pb-3')}>
+              <article class={formatClasses('shrink grow basis-1/4 rounded-8 bg-black-5 pb-3')}>
                 <Picture src={`home/solution-${index}@3x.png`} classes="w-full" />
                 <section class="px-6_5 pt-3">
                   <h5 class={formatClasses('text-5_5', { 'text-lg': !isPC() })}>
                     {translate(`home.solutions.solution-${index}.title`)}
                   </h5>
-                  <p class="text-grey-7 mt-2_5 text-start text-lg">
+                  <p class="mt-2_5 text-start text-lg text-black-2">
                     {translate(`home.solutions.solution-${index}.content`)}
                   </p>
                 </section>

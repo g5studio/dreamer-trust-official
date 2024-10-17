@@ -1,17 +1,10 @@
 $black-colors: (
   1: #1E1E1E,
-  2: #565656,
-  3: #7D7D7D,
-  4: #A7A7A7,
-  5: #CBCBCB,
-  6: #E5E5E5,
-  7: #F4F4F4,
-  8: #FFFFFF,
-);
-
-$grey-colors: (
-  3: #D4D4D4,
-  7: #777777,
+  2: #777777,
+  3: #A7A7A7,
+  4: #D4D4D4,
+  5: #EFEFEF,
+  6: #FFFFFF,
 );
 
 $primary-colors: (
@@ -30,5 +23,4 @@ $general-colors: (
   'black': $black-colors,
   'orange': $orange-colors,
   'primary': $primary-colors,
-  'grey': $grey-colors
 );
