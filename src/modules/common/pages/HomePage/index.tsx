@@ -2,8 +2,9 @@ import Button from '@shared/components/Button';
 import CarouselContainer from '@shared/components/CarouselContainer';
 import ContentLayout from '@shared/components/ContentLayout';
 import Picture from '@shared/components/Picture';
-import { Direction, ErrorHandleType } from '@shared/enums';
+import { Direction, ErrorHandleType, Page } from '@shared/enums';
 import { createCustomizeQuery } from '@shared/hooks/create-customize-query';
+import { useNavigate } from '@shared/hooks/use-navigate';
 import { translate } from '@shared/hooks/use-translation';
 import { isPC } from '@shared/hooks/use-window-size';
 import { getEvent } from '@shared/models/event.model';
@@ -18,6 +19,7 @@ import { For, Match, Show, Switch } from 'solid-js';
 
 const HomePage = () => {
   const { metaData, initialize } = getEvent();
+  const navigate = useNavigate();
 
   createCustomizeQuery<IApiEvent[]>({
     query: createQuery(() => ({ ...queryConfigs.fetchEventList() })),
@@ -122,7 +124,13 @@ const HomePage = () => {
                       <p>{translate('home.top-2.location', { location: metaData.location })}</p>
                     </div>
                   </div>
-                  <Button class="mt-6" testId="home-event-detail-btn" onClick={() => {}} variant="primary">
+                  <Button
+                    class="mt-6"
+                    testId="home-event-detail-btn"
+                    onClick={() => {
+                      navigate()[Page.Seminar]();
+                    }}
+                    variant="primary">
                     {translate('home.top-2.details')}
                   </Button>
                 </article>
@@ -143,7 +151,13 @@ const HomePage = () => {
                 </h1>
                 <div class={formatClasses('space-y-10', { 'space-y-6': !isPC() })}>
                   <p class="text-lg leading-7">{translate('home.top-3.content')}</p>
-                  <Button class="mt-6" testId="home-event-detail-btn" onClick={() => {}} variant="primary">
+                  <Button
+                    class="mt-6"
+                    testId="home-event-detail-btn"
+                    onClick={() => {
+                      navigate()[Page.Solutions]();
+                    }}
+                    variant="primary">
                     {translate('home.top-3.learnMore')}
                   </Button>
                 </div>
