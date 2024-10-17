@@ -194,7 +194,7 @@ const HomePage = () => {
         </Show>
         <h5 class="text-5_5 text-primary-3">{translate('home.solutions.title')}</h5>
         <h1 class="text-7 text-primary-3">{translate('home.solutions.subTitle')}</h1>
-        <span class="mt-2 h-4 w-16 rounded-[99px] bg-primary-3" />
+        <span class="mt-2 h-2 w-8 rounded-[99px] bg-primary-3" />
         <section
           class={formatClasses('mt-10 flex', {
             'flex-row space-x-6': isPC(),
