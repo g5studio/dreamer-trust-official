@@ -1,4 +1,4 @@
-import { Locale, LocaleDash } from '@shared/enums';
+import { Language, Locale, LocaleDash } from '@shared/enums';
 import { extendTailwindMerge } from 'tailwind-merge';
 
 const arbitraryValueRegex = /^\[(?:([a-z-]+):)?(.+)\]$/i;
@@ -283,6 +283,16 @@ export const formatLocale = (localDash: LocaleDash): Locale => {
     Object.values(LocaleDash).findIndex((value) => value === localDash)
   ] as Locale;
   return Locale[key];
+};
+
+export const formatLanguage = (localeDash: LocaleDash): Language | undefined => {
+  const key: Locale = Object.keys(LocaleDash)[
+    Object.values(LocaleDash).findIndex((value) => value === localeDash)
+  ] as Locale;
+  if ([Locale.en_US, Locale.zh_HK, Locale.zh_CN].includes(key)) {
+    return Language[key] as Language;
+  }
+  return undefined;
 };
 
 export const formatToKebabCase = (str: string): string => {

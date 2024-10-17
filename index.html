@@ -15,6 +15,9 @@
     <script>
       var env = '<%= env %>';
       var isDev = env === 'development';
+      window.$env = {
+        apiUrl: isDev ? 'http://www.dreamertrust.com' : window.location.origin,
+      };
     </script>
     <script>
       try {

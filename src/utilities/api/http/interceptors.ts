@@ -1,7 +1,7 @@
 import { AxiosInstance, InternalAxiosRequestConfig } from 'axios';
-import { HttpClientHeaderItem, LocalStorageItem, LocaleDash, OS } from '@shared/enums';
+import { HttpClientHeaderItem, Language, LocalStorageItem, OS } from '@shared/enums';
 import { IDeviceInfoType, getDeviceInfo, getFingerPrintInfo } from '@utilities/helpers/device.helper';
-import { formatLocale } from '@utilities/helpers/format.helper';
+import { formatLanguage } from '@utilities/helpers/format.helper';
 import { translation } from '@shared/hooks/use-translation';
 import { getLocalStorage, getParsedLocalStorage, setLocalStorage } from '@utilities/helpers/storage.helper';
 import { isMobile } from '@shared/hooks/use-window-size';
@@ -55,14 +55,9 @@ const setDeviceInfoHeader = (config: InternalAxiosRequestConfig<unknown>) => {
  */
 const setDynamicHeader = (config: InternalAxiosRequestConfig<unknown>, type: HttpClientType) => {
   switch (type) {
-    case HttpClientType.I18n:
-      break;
     default:
       if (!config.headers.has(HttpClientHeaderItem.Language)) {
-        config.headers.set(
-          HttpClientHeaderItem.Language,
-          (type === HttpClientType.Im ? formatLocale(translation.language) : translation.language) ?? LocaleDash.zh_CN,
-        );
+        config.headers.set(HttpClientHeaderItem.Language, formatLanguage(translation.language) ?? Language.zh_CN);
       }
       if (!config.headers.has(HttpClientHeaderItem.Timezone)) {
         config.headers.set(HttpClientHeaderItem.Timezone, '');
@@ -91,13 +86,7 @@ export const responseInterceptor = (axios: AxiosInstance) => {
 export const requestInterceptor = (axios: AxiosInstance, { type, header, guestMode }: HttpClientConfig) => {
   axios.interceptors.request.use((config) => {
     const JWT: string = '';
-    switch (type) {
-      case HttpClientType.Sport:
-        // JWT = user?.token.sport ?? '';
-        break;
-      default:
-      // JWT = user?.token.platform ?? '';
-    }
+
     Object.keys(header ?? {}).forEach((headerName) => {
       if (!config.headers.has(headerName)) {
         config.headers.set(headerName, `${header?.[headerName]}`);

@@ -1,9 +1,6 @@
 export enum Environment {
-  Dev = 'dev',
-  QA = 'qa',
-  STG = 'stg',
-  UAT = 'uat',
-  Prod = 'prod',
+  Dev = 'development',
+  Prod = 'production',
 }
 
 export enum ErrorType {
@@ -191,6 +188,12 @@ export enum LocaleDash {
    * 西文
    */
   es_ES = 'es-es',
+}
+
+export enum Language {
+  en_US = 'en',
+  zh_HK = 'zh_Hant',
+  zh_CN = 'zh_Hans',
 }
 
 /**

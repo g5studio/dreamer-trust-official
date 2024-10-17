@@ -7,7 +7,12 @@ type PartialRecord<K, T> = Partial<Record<K, T>>;
 type DomSize = Pick<DOMRect, 'height' | 'width' | 'top' | 'left'>;
 type Nullable<T> = T | null | undefined;
 
+type EnvConfig = {
+  apiUrl: string;
+};
+
 declare interface Window {
+  $env: EnvConfig;
   gtag?: MultipleArgsArrowFn<unknown[], void>;
   fbq?: MultipleArgsArrowFn<unknown[], void>;
   subscribeIsOnline?: (callback: (isOnline: boolean) => void) => () => void;
