@@ -52,14 +52,7 @@ dayjs.extend(duration);
  */
 dayjs.extend(timezone);
 
-type CustomizeLocale = Extract<
-  LocaleDash,
-  LocaleDash.zh_CN | LocaleDash.ja_JP | LocaleDash.ko_KR | LocaleDash.en_US | LocaleDash.zh_HK | LocaleDash.vi_VN
->;
-type CustomizeTimezoneLocale = Extract<
-  LocaleDash,
-  LocaleDash.zh_CN | LocaleDash.ja_JP | LocaleDash.ko_KR | LocaleDash.en_US | LocaleDash.vi_VN
->;
+type CustomizeLocale = Extract<LocaleDash, LocaleDash.zh_CN | LocaleDash.en_US | LocaleDash.zh_HK>;
 
 const localeLib: Record<LocaleDash, ILocale> = {
   [LocaleDash.zh_CN]: cn,
@@ -77,93 +70,13 @@ const localeLib: Record<LocaleDash, ILocale> = {
 };
 
 const customizeLocaleFormat: Record<CustomizeLocale, string> = {
-  [LocaleDash.zh_CN]: 'DD-MM',
-  [LocaleDash.zh_HK]: 'DD-MM',
-  [LocaleDash.vi_VN]: 'DD-MM',
-  [LocaleDash.ja_JP]: 'M月 D日',
-  [LocaleDash.ko_KR]: 'M월 D일',
-  [LocaleDash.en_US]: 'DD MMM',
-};
-
-/**
- * 時區設置頁面特殊格式
- */
-const customizeTimezoneLocaleFormat: Record<CustomizeTimezoneLocale, string> = {
-  [LocaleDash.zh_CN]: 'DD-MM (dddd)',
-  [LocaleDash.vi_VN]: 'DD-MM (dddd)',
-  [LocaleDash.ja_JP]: 'MMMDo (dddd)',
-  [LocaleDash.ko_KR]: 'MMMDo (dddd)',
-  [LocaleDash.en_US]: 'DD MMM (ddd)',
-};
-
-/**
- * 賽果頁面特殊格式
- * 月 日 星期Ｘ
- */
-const customizeResultLocaleFormat: Record<CustomizeLocale, string> = {
-  [LocaleDash.zh_CN]: '(dddd)',
-  [LocaleDash.zh_HK]: '(dddd)',
-  [LocaleDash.vi_VN]: '(dddd)',
-  [LocaleDash.ja_JP]: '(dddd)',
-  [LocaleDash.ko_KR]: '(dddd)',
-  [LocaleDash.en_US]: '(ddd)',
-};
-
-/**
- * 紀錄模組特殊格式
- */
-const customizeRecordLocaleFormat: Record<CustomizeLocale, string> = {
-  [LocaleDash.zh_CN]: 'DD-MM HH:mm',
-  [LocaleDash.zh_HK]: 'DD-MM HH:mm',
-  [LocaleDash.vi_VN]: 'DD-MM HH:mm',
-  [LocaleDash.ja_JP]: 'MMM Do HH:mm',
-  [LocaleDash.ko_KR]: 'MMM Do HH:mm',
-  [LocaleDash.en_US]: 'DD MMM HH:mm',
-};
-
-/**
- * 紀錄聯賽頁模組特殊格式
- */
-const customizeLeagueDateLocaleFormat: Record<CustomizeLocale, string> = {
-  [LocaleDash.zh_CN]: 'DD-MM',
-  [LocaleDash.zh_HK]: 'DD MMM',
-  [LocaleDash.vi_VN]: 'DD MMM',
-  [LocaleDash.ja_JP]: 'MMM Do',
-  [LocaleDash.ko_KR]: 'MMM Do',
-  [LocaleDash.en_US]: 'DD MMM',
-};
-
-/**
- * 體育時間選單特殊格式
- */
-const customizeSportDateFilterLocaleFormat: Record<CustomizeTimezoneLocale, string> = {
-  [LocaleDash.zh_CN]: 'DD-MM\ndddd',
-  [LocaleDash.en_US]: 'DD MMM\nddd',
-  [LocaleDash.vi_VN]: 'DD-MM\ndddd',
-  [LocaleDash.ja_JP]: 'MM月DD日\ndddd',
-  [LocaleDash.ko_KR]: 'MM월DD일\ndddd',
-};
-
-/**
- * 紀錄模組特殊格式
- */
-const customizeSportFilterLocaleFormat: Record<CustomizeLocale, string> = {
-  [LocaleDash.zh_CN]: '(dddd)',
-  [LocaleDash.zh_HK]: '(ddd)',
-  [LocaleDash.vi_VN]: '(ddd)',
-  [LocaleDash.ja_JP]: '(dddd)',
-  [LocaleDash.ko_KR]: '(dddd)',
-  [LocaleDash.en_US]: '(ddd)',
+  [LocaleDash.zh_CN]: 'YYYY年MM月DD日 hh:mm A',
+  [LocaleDash.zh_HK]: 'YYYY年MM月DD日 hh:mm A',
+  [LocaleDash.en_US]: 'MMMM DD, YYYY hh:mm A',
 };
 
 const customizeFormatMap: Partial<Record<DateFormatType, Partial<Record<LocaleDash, string>>>> = {
   [DateFormatType.CustomizeLocaleFormat]: customizeLocaleFormat,
-  [DateFormatType.CustomizeTimezoneLocaleFormat]: customizeTimezoneLocaleFormat,
-  [DateFormatType.CustomizeResultLocaleFormat]: customizeResultLocaleFormat,
-  [DateFormatType.CustomizeRecordLocaleFormat]: customizeRecordLocaleFormat,
-  [DateFormatType.CustomizeSportFilterLocaleFormat]: customizeSportFilterLocaleFormat,
-  [DateFormatType.CustomizeLeagueDateLocaleFormat]: customizeLeagueDateLocaleFormat,
-  [DateFormatType.CustomizeSportDateFilterLocaleFormat]: customizeSportDateFilterLocaleFormat,
 };
 
 const dateCodeMap: () => Record<DateCode, dayjs.Dayjs> = () => ({

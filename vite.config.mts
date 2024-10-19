@@ -208,10 +208,6 @@ export default defineConfig(({ mode }) => {
         '/api': {
           target: 'http://www.dreamertrust.com',
           changeOrigin: true,
-          rewrite: (path) => {
-            console.log(path);
-            return path;
-          },
         },
       },
     },

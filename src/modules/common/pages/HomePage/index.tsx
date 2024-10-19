@@ -2,10 +2,10 @@ import Button from '@shared/components/Button';
 import CarouselContainer from '@shared/components/CarouselContainer';
 import ContentLayout from '@shared/components/ContentLayout';
 import Picture from '@shared/components/Picture';
-import { Direction, ErrorHandleType, Page } from '@shared/enums';
+import { DateFormatType, Direction, ErrorHandleType, Page } from '@shared/enums';
 import { createCustomizeQuery } from '@shared/hooks/create-customize-query';
 import { useNavigate } from '@shared/hooks/use-navigate';
-import { translate } from '@shared/hooks/use-translation';
+import { translate, translation } from '@shared/hooks/use-translation';
 import { isPC } from '@shared/hooks/use-window-size';
 import { getEvent } from '@shared/models/event.model';
 import { createQuery } from '@tanstack/solid-query';
@@ -13,6 +13,7 @@ import { IApiEvent } from '@utilities/api/http/schema/event-api.schema';
 import { queryConfigs } from '@utilities/api/solid-query';
 import { useLayoutContext } from '@utilities/context/layout-context';
 import { formatClasses } from '@utilities/helpers/format.helper';
+import { transform } from '@utilities/helpers/time.helper';
 import AdvantageOneIcon from '@utilities/svg-components/common/AdvantageOneIcon';
 import AdvantageTwoIcon from '@utilities/svg-components/common/AdvantageTwoIcon';
 import DoubleArrowDownIcon from '@utilities/svg-components/shared/DoubleArrowDownIcon';
@@ -147,7 +148,16 @@ const HomePage = () => {
                   <div class="space-y-2">
                     <p class="text-lg font-bold leading-7">{translate('home.top-2.content')}</p>
                     <div>
-                      <p>{translate('home.top-2.time', { dateTime: metaData.displayStartTime })}</p>
+                      <p>
+                        {translate('home.top-2.time', {
+                          dateTime: transform({
+                            locale: translation.language,
+                            timestamp: metaData.startTime,
+                            formatType: DateFormatType.CustomizeLocaleFormat,
+                            offset: -(new Date().getTimezoneOffset() / 60),
+                          }),
+                        })}
+                      </p>
                       <p>{translate('home.top-2.location', { location: metaData.location })}</p>
                     </div>
                   </div>

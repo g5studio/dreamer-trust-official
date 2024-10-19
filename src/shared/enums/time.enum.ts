@@ -19,31 +19,9 @@ export enum DateFormatType {
   EventDateTime = 'YYYY.MM.DD hh:mm A',
   // !Customize format type
   /**
-   * 體育賽事時間特殊格式
+   * 時間特殊格式
    */
   CustomizeLocaleFormat = 'customize-locale',
-  /**
-   * 時區設置頁面特殊格式
-   */
-  CustomizeTimezoneLocaleFormat = 'customize-tz-locale',
-  /**
-   * 賽果頁面特殊格式
-   */
-  CustomizeResultLocaleFormat = 'customize-result-locale',
-  /**
-   * 紀錄模組特殊格式
-   */
-  CustomizeRecordLocaleFormat = 'customize-record-locale',
-  /** 聯賽日期列表特殊格式 */
-  CustomizeLeagueDateLocaleFormat = 'customize-league-date-locale-format',
-  /**
-   * 體育時間選單特殊格式
-   */
-  CustomizeSportDateFilterLocaleFormat = 'customize-sport-date-filter-locale',
-  /**
-   * 體育賽事篩選特殊格式
-   */
-  CustomizeSportFilterLocaleFormat = 'customize-sport-filter-locale',
   CustomSimpleDate = 'DD/MM/YYYY',
   CustomSimpleMonth = 'MM/YYYY',
   CustomCalendarDate = 'DD-MM-YYYY',
