@@ -157,6 +157,7 @@ const HomePage = () => {
                             offset: -(new Date().getTimezoneOffset() / 60),
                           }),
                         })}
+                        <span> CST</span>
                       </p>
                       <p>{translate('home.top-2.location', { location: metaData.location })}</p>
                     </div>
