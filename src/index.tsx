@@ -2,10 +2,13 @@
 import { QueryClientProvider } from '@tanstack/solid-query';
 import { queryClient } from '@utilities/api/solid-query';
 import { Router } from '@solidjs/router';
-import ThemeController from '@shared/components/ThemeController';
+import ThemeController from '@utilities/controller/ThemeController';
 import { render } from 'solid-js/web';
 import { preloadRoutes } from '@utilities/config/routes';
 import { LayoutProvider } from '@utilities/context/layout-context';
+import OnlineStatusController from '@utilities/controller/OnlineStatusController';
+import EventListController from '@utilities/controller/EventListController';
+import { EventListProvider } from '@utilities/context/event-list-context';
 
 import App from './App';
 import './index.css';
@@ -25,12 +28,16 @@ if (root) {
   render(
     () => (
       <LayoutProvider>
-        <Router>
-          <ThemeController />
-          <QueryClientProvider client={queryClient}>
-            <App />
-          </QueryClientProvider>
-        </Router>
+        <EventListProvider>
+          <Router>
+            <QueryClientProvider client={queryClient}>
+              <ThemeController />
+              <OnlineStatusController />
+              <EventListController />
+              <App />
+            </QueryClientProvider>
+          </Router>
+        </EventListProvider>
       </LayoutProvider>
     ),
     root,

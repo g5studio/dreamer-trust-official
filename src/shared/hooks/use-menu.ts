@@ -1,4 +1,5 @@
 import { Page } from '@shared/enums';
+import { useEventListContext } from '@utilities/context/event-list-context';
 import { NavigateHookFn, useNavigate } from './use-navigate';
 import { usePageCheck } from './use-page-check';
 
@@ -10,6 +11,7 @@ export type MenuItem = {
 
 export const useMenu = () => {
   const { isAboutPage, isSolutionsPage, isInsightsUpdatesPage, isSeminarPage, isContactUsPage } = usePageCheck();
+  const [{ haveEvents }] = useEventListContext();
   const navigate = useNavigate();
   const menuItems = (): MenuItem[] => [
     {
@@ -27,11 +29,15 @@ export const useMenu = () => {
       handleOnClick: navigate()[Page.InsightsUpdates],
       isActive: isInsightsUpdatesPage,
     },
-    {
-      key: Page.Seminar,
-      handleOnClick: navigate()[Page.Seminar],
-      isActive: isSeminarPage,
-    },
+    ...(haveEvents()
+      ? [
+          {
+            key: Page.Seminar,
+            handleOnClick: navigate()[Page.Seminar],
+            isActive: isSeminarPage,
+          },
+        ]
+      : []),
     {
       key: Page.ContactUs,
       handleOnClick: navigate()[Page.ContactUs],

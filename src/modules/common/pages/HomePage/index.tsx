@@ -2,15 +2,11 @@ import Button from '@shared/components/Button';
 import CarouselContainer from '@shared/components/CarouselContainer';
 import ContentLayout from '@shared/components/ContentLayout';
 import Picture from '@shared/components/Picture';
-import { DateFormatType, Direction, ErrorHandleType, Page } from '@shared/enums';
-import { createCustomizeQuery } from '@shared/hooks/create-customize-query';
+import { DateFormatType, Direction, Page } from '@shared/enums';
 import { useNavigate } from '@shared/hooks/use-navigate';
 import { translate, translation } from '@shared/hooks/use-translation';
 import { isPC } from '@shared/hooks/use-window-size';
-import { getEvent } from '@shared/models/event.model';
-import { createQuery } from '@tanstack/solid-query';
-import { IApiEvent } from '@utilities/api/http/schema/event-api.schema';
-import { queryConfigs } from '@utilities/api/solid-query';
+import { useEventListContext } from '@utilities/context/event-list-context';
 import { useLayoutContext } from '@utilities/context/layout-context';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { transform } from '@utilities/helpers/time.helper';
@@ -20,25 +16,15 @@ import DoubleArrowDownIcon from '@utilities/svg-components/shared/DoubleArrowDow
 import { createSignal, For, Match, Show, Switch } from 'solid-js';
 
 const HomePage = () => {
-  const { metaData, initialize } = getEvent();
   const [solutionRef, setSolutionRef] = createSignal<HTMLElement>();
   const [{ mainScrollRef, headerAreaHeight }] = useLayoutContext();
+  const [{ firstEvent, haveEvents }] = useEventListContext();
   const navigate = useNavigate();
-
-  createCustomizeQuery<IApiEvent[]>({
-    query: createQuery(() => ({ ...queryConfigs.fetchEventList() })),
-    errorHandleType: ErrorHandleType.None,
-    onSuccess: (response: IApiEvent[]) => {
-      if (response.length > 1) {
-        initialize(response[0]);
-      }
-    },
-  });
 
   /**
    * @description 無研討會資料時不顯示研討會輪播區塊
    */
-  const carouselCount = () => (metaData.id ? 3 : 2);
+  const carouselCount = () => (haveEvents() ? 3 : 2);
 
   return (
     <ContentLayout
@@ -114,7 +100,7 @@ const HomePage = () => {
               />
             </section>
             {/* 研討會資訊 */}
-            <Show when={metaData.id}>
+            <Show when={haveEvents()}>
               <section
                 class={formatClasses('flex min-w-full ', {
                   'flex-row justify-center space-x-25': isPC(),
@@ -152,14 +138,14 @@ const HomePage = () => {
                         {translate('home.top-2.time', {
                           dateTime: transform({
                             locale: translation.language,
-                            timestamp: metaData.startTime,
+                            timestamp: firstEvent()!.startTime,
                             formatType: DateFormatType.CustomizeLocaleFormat,
                             offset: -(new Date().getTimezoneOffset() / 60),
                           }),
                         })}
                         <span> CST</span>
                       </p>
-                      <p>{translate('home.top-2.location', { location: metaData.location })}</p>
+                      <p>{translate('home.top-2.location', { location: firstEvent()!.location })}</p>
                     </div>
                   </div>
                   <Button
