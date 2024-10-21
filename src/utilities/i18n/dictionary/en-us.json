@@ -68,6 +68,47 @@
     "introduce": {
       "title": "Expertise You Can Trust",
       "content": "Our mission at Dreamer Trust is to safeguard our clients' financial futures by providing expert trust management, estate planning, and asset protection services. We are dedicated to upholding the highest ethical standards, delivering transparent communication, and prioritizing the best interests of our clients in every decision we make."
+    },
+    "ourValue": {
+      "title": "Our Value",
+      "subTitle": "The Value We Deliver",
+      "integrity": {
+        "title": "Integrity",
+        "content": "We operate with honesty and transparency, ensuring that every action is in the best interest of our clients."
+      },
+      "clientCentric": {
+        "title": "Client-Centric",
+        "content": "We prioritize personalized service, tailoring our trust and estate planning solutions to meet the unique needs and goals of each client."
+      },
+      "trustworthy": {
+        "title": "Trustworthy",
+        "content": "We earn the trust of our clients through our long-standing reputation for competence, reliability, and ethical business practices."
+      },
+      "compliance": {
+        "title": "Compliance",
+        "content": "We adhere strictly to all legal and regulatory requirements, ensuring the smooth and secure management of our clients' financial affairs."
+      },
+      "accountability": {
+        "title": "Accountability",
+        "content": "We hold ourselves accountable for the decisions we make and the service we provide, continuously striving to meet and exceed our clients' expectations."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "content": "Our team is committed to delivering high-quality services, with precision and care, to safeguard your assets and ensure financial security."
+      }
+    },
+    "ourMission": {
+      "title": "Our Mission",
+      "subTitle": "Our Commitment to Excellence",
+      "mission-1": {
+        "content": "Our mission is to provide customized trust solutions that protect and enhance our clients' wealth, ensuring their legacies endure for generations."
+      },
+      "mission-2": {
+        "content": "We are committed to solving our clients' unique challenges with personalized service, putting their needs above all else."
+      },
+      "mission-3": {
+        "content": "Guided by integrity, professionalism, and trust, we strive to deliver peace of mind and long-term financial security for families and businesses."
+      }
     }
   },
   "common": {},
