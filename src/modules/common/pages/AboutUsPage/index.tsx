@@ -9,6 +9,9 @@ import { createSignal, For } from 'solid-js';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { domProperty, DomPropertyCbParams } from '@utilities/directives/dom-property-directive';
 import ArticleContainer from '@shared/components/ArticleContainer';
+import OurMissionOneIcon from '@utilities/svg-components/common/OurMissionOneIcon';
+import OurMissionTwoIcon from '@utilities/svg-components/common/OurMissionTwoIcon';
+import OurMissionThreeIcon from '@utilities/svg-components/common/OurMissionThreeIcon';
 
 registerDirective(domProperty);
 
@@ -160,10 +163,21 @@ const AboutUsPage = () => {
         titleI18nKey="aboutUs.ourMission.title"
         subTitleI18nKey="aboutUs.ourMission.subTitle"
         sectionClasses={formatClasses({
-          'space-x-6': isPC(),
+          'grid grid-cols-3 gap-24': isPC(),
           'space-y-6': !isPC(),
         })}>
-        test
+        <For each={[OurMissionOneIcon, OurMissionTwoIcon, OurMissionThreeIcon]}>
+          {(Icon, index) => (
+            <article class={formatClasses('flex flex-col items-center  space-y-10', { 'space-y-2': !isPC() })}>
+              <div class="flex h-31_5 w-31_5 items-center justify-center">
+                <Icon />
+              </div>
+              <p class="text-start text-xs text-black-2 xl:text-lg">
+                {translate(`aboutUs.ourMission.mission-${index() + 1}.content`)}
+              </p>
+            </article>
+          )}
+        </For>
       </ArticleContainer>
     </ContentLayout>
   );
