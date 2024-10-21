@@ -1,3 +1,4 @@
+import ArticleContainer from '@shared/components/ArticleContainer';
 import Button from '@shared/components/Button';
 import CarouselContainer from '@shared/components/CarouselContainer';
 import ContentLayout from '@shared/components/ContentLayout';
@@ -209,77 +210,68 @@ const HomePage = () => {
         )}
       </CarouselContainer>
       {/* 我們的解決方案 */}
-      <article
-        ref={(_) => setSolutionRef(_)}
-        class={formatClasses('relative flex flex-col items-center text-center', { 'px-12': isPC(), 'px-6': !isPC() })}>
-        <Show when={isPC()}>
-          <button
-            type="button"
-            onClick={() => {
-              mainScrollRef()?.scrollTo({
-                top: solutionRef()?.offsetTop ?? 0 - headerAreaHeight(),
-                behavior: 'smooth',
-              });
-            }}>
-            <DoubleArrowDownIcon classes="absolute left-1/2 top-[-75px] translate-x-[-50%]" />
-          </button>
-        </Show>
-        <h5 class="text-5_5 text-primary-3">{translate('home.solutions.title')}</h5>
-        <h1 class="text-7 text-primary-3">{translate('home.solutions.subTitle')}</h1>
-        <span class="mt-2 h-2 w-8 rounded-[99px] bg-primary-3" />
-        <section
-          class={formatClasses('mt-10 flex', {
-            'flex-row space-x-6': isPC(),
-            'flex-col space-y-6': !isPC(),
-          })}>
-          <For each={Array.from({ length: 4 }).map((_, i) => i + 1)}>
-            {(index) => (
-              <article class={formatClasses('shrink grow basis-1/4 rounded-8 bg-black-5 pb-3')}>
-                <Picture src={`home/solution-${index}@3x.png`} classes="w-full" />
-                <section class="px-6_5 pt-3">
-                  <h5 class={formatClasses('text-5_5', { 'text-lg': !isPC() })}>
-                    {translate(`home.solutions.solution-${index}.title`)}
-                  </h5>
-                  <p class="mt-2_5 text-start text-lg text-black-2">
-                    {translate(`home.solutions.solution-${index}.content`)}
-                  </p>
-                </section>
-              </article>
-            )}
-          </For>
-        </section>
-      </article>
+      <ArticleContainer
+        ref={setSolutionRef}
+        titleI18nKey="home.solutions.title"
+        subTitleI18nKey="home.solutions.subTitle"
+        sectionClasses={formatClasses({
+          'space-x-6': isPC(),
+          'space-y-6': !isPC(),
+        })}
+        firstChildrenSlot={() => (
+          <Show when={isPC()}>
+            <button
+              type="button"
+              onClick={() => {
+                mainScrollRef()?.scrollTo({
+                  top: solutionRef()?.offsetTop ?? 0 - headerAreaHeight(),
+                  behavior: 'smooth',
+                });
+              }}>
+              <DoubleArrowDownIcon classes="absolute left-1/2 top-[-75px] translate-x-[-50%]" />
+            </button>
+          </Show>
+        )}>
+        <For each={Array.from({ length: 4 }).map((_, i) => i + 1)}>
+          {(index) => (
+            <article class={formatClasses('shrink grow basis-1/4 rounded-8 bg-black-5 pb-3')}>
+              <Picture src={`home/solution-${index}@3x.png`} classes="w-full" />
+              <section class="px-6_5 pt-3">
+                <h5 class={formatClasses('text-5_5', { 'text-lg': !isPC() })}>
+                  {translate(`home.solutions.solution-${index}.title`)}
+                </h5>
+                <p class="mt-2_5 text-start text-lg text-black-2">
+                  {translate(`home.solutions.solution-${index}.content`)}
+                </p>
+              </section>
+            </article>
+          )}
+        </For>
+      </ArticleContainer>
       {/* 我們的優勢 */}
-      <article
-        class={formatClasses('relative flex flex-col items-center text-center text-center', {
-          'px-12': isPC(),
-          'px-6': !isPC(),
+      <ArticleContainer
+        titleI18nKey="home.advantages.title"
+        subTitleI18nKey="home.advantages.subTitle"
+        sectionClasses={formatClasses({
+          'space-x-40': isPC(),
+          'space-y-10': !isPC(),
         })}>
-        <h5 class="text-5_5 text-primary-3">{translate('home.advantages.title')}</h5>
-        <h1 class="text-7 text-primary-3">{translate('home.advantages.subTitle')}</h1>
-        <span class="mt-2 h-2 w-8 rounded-[99px] bg-primary-3" />
-        <section
-          class={formatClasses('mt-10 flex', {
-            'flex-row space-x-40': isPC(),
-            'flex-col space-y-10': !isPC(),
-          })}>
-          <For each={Array.from({ length: 2 }).map((_, i) => i + 1)}>
-            {(index) => (
-              <article class="flex w-55 flex-col items-center space-y-10">
-                <Switch>
-                  <Match when={index === 1}>
-                    <AdvantageOneIcon />
-                  </Match>
-                  <Match when={index === 2}>
-                    <AdvantageTwoIcon />
-                  </Match>
-                </Switch>
-                <p class="text-lg text-black-1">{translate(`home.advantages.advantage-${index}.content`)}</p>
-              </article>
-            )}
-          </For>
-        </section>
-      </article>
+        <For each={Array.from({ length: 2 }).map((_, i) => i + 1)}>
+          {(index) => (
+            <article class="flex w-55 flex-col items-center space-y-10">
+              <Switch>
+                <Match when={index === 1}>
+                  <AdvantageOneIcon />
+                </Match>
+                <Match when={index === 2}>
+                  <AdvantageTwoIcon />
+                </Match>
+              </Switch>
+              <p class="text-lg text-black-1">{translate(`home.advantages.advantage-${index}.content`)}</p>
+            </article>
+          )}
+        </For>
+      </ArticleContainer>
     </ContentLayout>
   );
 };

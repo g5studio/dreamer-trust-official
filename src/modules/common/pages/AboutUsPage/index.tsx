@@ -5,9 +5,10 @@ import CarouselContainer from '@shared/components/CarouselContainer';
 import { Direction, LocaleDash } from '@shared/enums';
 import { translate, translation } from '@shared/hooks/use-translation';
 import Picture from '@shared/components/Picture';
-import { createSignal } from 'solid-js';
+import { createSignal, For } from 'solid-js';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { domProperty, DomPropertyCbParams } from '@utilities/directives/dom-property-directive';
+import ArticleContainer from '@shared/components/ArticleContainer';
 
 registerDirective(domProperty);
 
@@ -116,14 +117,54 @@ const AboutUsPage = () => {
               'p-6': !isPC(),
               'h-full px-26 py-34': isPC(),
             })}>
-            <h2 class='flex flex-row items-center space-x-3 font-["PT_Serif"] text-8 font-normal italic'>
+            <h2
+              class={formatClasses('flex flex-row items-center space-x-3 font-["PT_Serif"] text-8 font-normal italic', {
+                'text-xxl': !isPC(),
+              })}>
               <span class="h-0_5 w-10 rounded-16 bg-black-6" />
               <span>{translate('aboutUs.introduce.title')}</span>
             </h2>
-            <p class="text-lg">{translate('aboutUs.introduce.content')}</p>
+            <p
+              class={formatClasses('text-lg', {
+                'text-xs': !isPC(),
+              })}>
+              {translate('aboutUs.introduce.content')}
+            </p>
           </article>
         </div>
       </section>
+      {/* 我們的價值 */}
+      <ArticleContainer
+        titleI18nKey="aboutUs.ourValue.title"
+        subTitleI18nKey="aboutUs.ourValue.subTitle"
+        sectionClasses={formatClasses({
+          'grid grid-cols-3 gap-20': isPC(),
+          'space-y-10': !isPC(),
+        })}>
+        <For each={['integrity', 'clientCentric', 'trustworthy', 'compliance', 'accountability', 'excellence']}>
+          {(key) => (
+            <article class={formatClasses('space-y-4')}>
+              <h5
+                class={formatClasses('border-b-0_25 border-black-3 pb-4 text-start text-5_5', { 'text-sm': !isPC() })}>
+                {translate(`aboutUs.ourValue.${key}.title`)}
+              </h5>
+              <p class="mt-2_5 text-start text-xs text-black-2 xl:text-lg">
+                {translate(`aboutUs.ourValue.${key}.content`)}
+              </p>
+            </article>
+          )}
+        </For>
+      </ArticleContainer>
+      {/* 我們的使命 */}
+      <ArticleContainer
+        titleI18nKey="aboutUs.ourMission.title"
+        subTitleI18nKey="aboutUs.ourMission.subTitle"
+        sectionClasses={formatClasses({
+          'space-x-6': isPC(),
+          'space-y-6': !isPC(),
+        })}>
+        test
+      </ArticleContainer>
     </ContentLayout>
   );
 };
