@@ -25,11 +25,11 @@ window.addEventListener('resize', onWindowResize);
 export default windowSize;
 
 /**
- * @description < 600px
+ * @description < 1024px
  */
 export const isMobile = () => windowSize.breakpoint === Breakpoint.Middle;
 /**
- * @description > 600px, < 1440px
+ * @description >= 1024x, < 1344px
  */
 export const isTablet = () => windowSize.breakpoint === Breakpoint.Large;
 /**
@@ -37,10 +37,6 @@ export const isTablet = () => windowSize.breakpoint === Breakpoint.Large;
  */
 export const isPad = () => isTablet() && windowSize.width >= 900;
 /**
- * @description > 1440px
+ * @description >= 1344px
  */
 export const isPC = () => windowSize.breakpoint === Breakpoint.XLarge;
-/**
- * @description > 1200px
- */
-export const isLargePC = () => windowSize.width >= 1200;

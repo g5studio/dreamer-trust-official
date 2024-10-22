@@ -1,7 +1,7 @@
 import { Breakpoint, CustomEventType } from '@shared/enums';
 
 export const getBreakpointByWindowSize = (): Breakpoint =>
-  window.innerWidth >= 1440 ? Breakpoint.XLarge : window.innerWidth >= 600 ? Breakpoint.Large : Breakpoint.Middle;
+  window.innerWidth >= 1344 ? Breakpoint.XLarge : window.innerWidth >= 1024 ? Breakpoint.Large : Breakpoint.Middle;
 
 export const openLink = (url: string, target?: '_blank' | '_parent' | '_self' | '_top') => {
   window.open(url, target);

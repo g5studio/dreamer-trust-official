@@ -7,9 +7,9 @@ const config: Config = {
   theme: {
     screens: {
       xs: '393px',
-      sm: '450px',
-      md: '768px',
-      xl: '1440px',
+      sm: '768px',
+      md: '1024px',
+      xl: '1344px',
     },
     fontSize: {
       // !due to twMerge cannot detect the custom key, if you added any custom key, please add it to utilities/helpers/format.helper.ts

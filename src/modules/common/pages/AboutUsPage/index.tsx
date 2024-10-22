@@ -59,8 +59,8 @@ const AboutUsPage = () => {
                     {translate('aboutUs.top-1.title')}
                   </h1>
                   <div
-                    class={formatClasses('sm:flex-row flex flex-col', {
-                      'sm:space-x-4 xl:space-x-8':
+                    class={formatClasses('flex flex-col md:flex-row', {
+                      'md:space-x-4 xl:space-x-8':
                         translation.language !== LocaleDash.zh_HK && translation.language !== LocaleDash.zh_CN,
                     })}>
                     <h1

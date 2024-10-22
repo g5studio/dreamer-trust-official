@@ -67,7 +67,7 @@ const HomePage = () => {
                   'w-145': isPC(),
                 })}>
                 <div class="flex flex-col">
-                  <div class="sm:flex-row flex flex-col">
+                  <div class="flex flex-col md:flex-row">
                     <h1
                       class={formatClasses('text-16 leading-20 font-normal', {
                         'text-12 leading-14_5': !isPC(),
