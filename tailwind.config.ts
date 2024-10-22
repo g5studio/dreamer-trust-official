@@ -6,9 +6,9 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     screens: {
-      xs: '393px',
-      sm: '768px',
-      md: '1024px',
+      sm: '393px',
+      md: '768px',
+      lg: '1024px',
       xl: '1344px',
     },
     fontSize: {
@@ -323,6 +323,7 @@ const config: Config = {
         '43_5': '10.875rem',
         '43_75': '10.9375rem',
         '45': '11.25rem',
+        '46': '11.5rem',
         '47_25': '11.8125rem',
         '47_5': '11.875rem',
         '47_75': '11.9375rem',
@@ -381,6 +382,7 @@ const config: Config = {
         '99': '24.75rem',
         '100': '25rem',
         '102_5': '25.625rem',
+        '104_25': '26.0625rem',
         '108_75': '27.1875rem',
         '110': '27.5rem',
         '112_5': '28.125rem',

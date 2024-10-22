@@ -2,9 +2,7 @@ import { lazy } from 'solid-js';
 import { Page, RouteModule } from '@shared/enums';
 import { setOutsideRoutesConfig, setRoutesConfig } from '@utilities/helpers/routes.helper';
 import { OutsideRouteConfig, RouteConfig } from '@shared/interfaces/route.interface';
-import HomePage from '@modules/common/pages/HomePage';
 import Redirect from '@shared/components/Redirect';
-import AboutUsPage from '@modules/common/pages/AboutUsPage';
 
 /**
  * ![重要]: 新增路由配置時需至api enum內查詢當前路由是否須設置內站代碼
@@ -17,37 +15,37 @@ const routesConfig: Partial<Record<RouteModule, RouteConfig>> = {
       {
         path: 'home',
         key: Page.Home,
-        component: HomePage,
+        component: lazy(() => import('@modules/common/pages/HomePage')),
       },
       {
         i18n: 'menu.aboutUs',
         path: 'about-us',
         key: Page.AboutUs,
-        component: AboutUsPage,
+        component: lazy(() => import('@modules/common/pages/AboutUsPage')),
       },
       {
         i18n: 'menu.ourSolutions',
         path: 'solutions',
         key: Page.Solutions,
-        component: HomePage,
+        component: lazy(() => import('@modules/common/pages/HomePage')),
       },
       {
         i18n: 'menu.insightsUpdates',
         path: 'insights-and-updates',
         key: Page.InsightsUpdates,
-        component: HomePage,
+        component: lazy(() => import('@modules/common/pages/HomePage')),
       },
       {
         i18n: 'menu.seminar',
         path: 'seminar',
         key: Page.Seminar,
-        component: HomePage,
+        component: lazy(() => import('@modules/common/pages/SeminarsPage')),
       },
       {
         i18n: 'menu.contactUs',
         path: 'contact-us',
         key: Page.ContactUs,
-        component: HomePage,
+        component: lazy(() => import('@modules/common/pages/HomePage')),
       },
     ],
   },

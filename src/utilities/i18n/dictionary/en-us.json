@@ -111,6 +111,14 @@
       }
     }
   },
+  "seminars": {
+    "top-1": {
+      "title": "Wealth",
+      "title-2": "Strategy",
+      "title-3": "Seminars.",
+      "content": "Join our expert-led seminars to gain valuable insights on trust and estate planning, with strategies to protect your wealth and secure your legacy."
+    }
+  },
   "common": {},
   "setting": {
     "lang": {

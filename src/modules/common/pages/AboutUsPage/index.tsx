@@ -1,5 +1,5 @@
 import ContentLayout from '@shared/components/ContentLayout';
-import { isPC } from '@shared/hooks/use-window-size';
+import { isLargePC, isMobile, isPC } from '@shared/hooks/use-window-size';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import CarouselContainer from '@shared/components/CarouselContainer';
 import { Direction, LocaleDash } from '@shared/enums';
@@ -25,7 +25,8 @@ const AboutUsPage = () => {
       })}>
       <CarouselContainer
         classes={formatClasses({
-          'px-10 pb-13 pt-6': !isPC(),
+          'flex h-[544px] w-full items-center justify-center px-10': !isMobile(),
+          'px-10 pb-13 pt-6': isMobile(),
         })}
         replayMode="forward"
         testId="about-us-page-top-carousel"
@@ -35,15 +36,16 @@ const AboutUsPage = () => {
           <div class="flex w-full flex-row flex-nowrap">
             <section
               class={formatClasses('flex min-w-full', {
-                'flex-row justify-center space-x-25 py-30_5': isPC(),
-                'flex-col-reverse justify-start': !isPC(),
+                'flex-row items-center justify-center space-x-25': !isMobile(),
+                'flex-col-reverse justify-start': isMobile(),
               })}>
               <Picture
                 pictureClasses={formatClasses({
-                  'border-box mt-12 w-full': !isPC(),
+                  'item-center mt-12 flex justify-center': isMobile(),
                 })}
                 classes={formatClasses({
-                  'h-75': isPC(),
+                  'min-w-104_25 h-75': isPC(),
+                  'h-53_5 min-w-75': !isPC(),
                 })}
                 src="about-us/about-us-top-1@3x.png"
               />
@@ -53,31 +55,37 @@ const AboutUsPage = () => {
                 })}>
                 <div class="flex flex-col">
                   <h1
-                    class={formatClasses('text-16 leading-20 font-normal', {
-                      'text-12 leading-14_5': !isPC(),
+                    class={formatClasses('text-12 leading-14_5 font-normal', {
+                      'text-16 leading-20': isLargePC(),
                     })}>
                     {translate('aboutUs.top-1.title')}
                   </h1>
                   <div
-                    class={formatClasses('flex flex-col md:flex-row', {
-                      'md:space-x-4 xl:space-x-8':
+                    class={formatClasses('flex flex-col', {
+                      'flex-row': isPC(),
+                      'lg:space-x-4 xl:space-x-8':
                         translation.language !== LocaleDash.zh_HK && translation.language !== LocaleDash.zh_CN,
                     })}>
                     <h1
-                      class={formatClasses('text-16 leading-20 font-["PT_Serif"] font-normal italic', {
-                        'text-12 leading-14_5': !isPC(),
+                      class={formatClasses('text-12 leading-14_5 font-["PT_Serif"] font-normal italic', {
+                        'text-16 leading-20': isLargePC(),
                       })}>
                       {translate('aboutUs.top-1.title-2')}
                     </h1>
                     <h1
-                      class={formatClasses('text-16 leading-20 font-["PT_Serif"] font-normal italic', {
-                        'text-12 leading-14_5': !isPC(),
+                      class={formatClasses('text-12 leading-14_5 font-["PT_Serif"] font-normal italic', {
+                        'text-16 leading-20': isLargePC(),
                       })}>
                       {translate('aboutUs.top-1.title-3')}
                     </h1>
                   </div>
                 </div>
-                <p class="text-lg leading-7">{translate('aboutUs.top-1.content')}</p>
+                <p
+                  class={formatClasses('text-lg leading-7', {
+                    'text-md': !isPC(),
+                  })}>
+                  {translate('aboutUs.top-1.content')}
+                </p>
               </article>
             </section>
           </div>

@@ -1,5 +1,5 @@
 import { translate } from '@shared/hooks/use-translation';
-import { isPC } from '@shared/hooks/use-window-size';
+import { isLargePC } from '@shared/hooks/use-window-size';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { getRouteConfigByKey } from '@utilities/helpers/routes.helper';
 import { For, Show } from 'solid-js';
@@ -29,21 +29,21 @@ const Header = (props: IBaseComponentProps) => {
       class={formatClasses(
         'h-20 bg-black-6 px-12 py-4 text-lg shadow-header',
         {
-          'h-15 px-6': !isPC(),
+          'h-15 px-6': !isLargePC(),
         },
         props.classes,
       )}>
       <section
         class={formatClasses('flex h-full w-full flex-row justify-between space-x-18', {
-          'main-container': isPC(),
+          'main-container': isLargePC(),
         })}>
         <div class="flex h-full flex-row space-x-12">
           <PrimaryLogo
             classes={formatClasses('h-12_5', {
-              'h-8': !isPC(),
+              'h-8': !isLargePC(),
             })}
           />
-          <Show when={isPC()}>
+          <Show when={isLargePC()}>
             <ul class="flex flex-row items-center space-x-8">
               <For each={menuItems()}>
                 {({ key, handleOnClick, isActive }) => (
@@ -65,9 +65,9 @@ const Header = (props: IBaseComponentProps) => {
         </div>
         <div
           class={formatClasses('flex h-full flex-row', {
-            'items-center': !isPC(),
+            'items-center': !isLargePC(),
           })}>
-          <Show when={isPC()} fallback={<MobileMenuButton />}>
+          <Show when={isLargePC()} fallback={<MobileMenuButton />}>
             <LanguageDropdown />
           </Show>
         </div>
