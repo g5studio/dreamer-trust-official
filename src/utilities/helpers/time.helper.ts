@@ -75,8 +75,15 @@ const customizeLocaleFormat: Record<CustomizeLocale, string> = {
   [LocaleDash.en_US]: 'MMMM DD, YYYY hh:mm A',
 };
 
+const customizeLocaleShortFormat: Record<CustomizeLocale, string> = {
+  [LocaleDash.zh_CN]: 'YYYY年MM月DD日',
+  [LocaleDash.zh_HK]: 'YYYY年MM月DD日',
+  [LocaleDash.en_US]: 'MMMM DD, YYYY',
+};
+
 const customizeFormatMap: Partial<Record<DateFormatType, Partial<Record<LocaleDash, string>>>> = {
   [DateFormatType.CustomizeLocaleFormat]: customizeLocaleFormat,
+  [DateFormatType.CustomizeLocaleShortFormat]: customizeLocaleShortFormat,
 };
 
 const dateCodeMap: () => Record<DateCode, dayjs.Dayjs> = () => ({

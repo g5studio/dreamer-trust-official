@@ -1,3 +1,5 @@
+import { Language } from '@shared/enums';
+
 export enum PreferredContactMethod {
   Email = 'Email',
   SMS = 'SMS',
@@ -13,6 +15,10 @@ export interface IApiEventInput {
   landline: string;
   preferredContactMethods: PreferredContactMethod;
   comments: string;
+}
+
+export interface IApiEventSearchParams {
+  language: Language;
 }
 
 export interface IApiEvent {

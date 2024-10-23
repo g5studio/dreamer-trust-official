@@ -117,9 +117,21 @@
       "title-2": "策略",
       "title-3": "研讨会。",
       "content": "参加我们专家主持的研讨会，获取有关信托和遗产规划的宝贵见解，学习保护您的财富和确保您遗产的策略。"
-    }
+    },
+    "event": {
+      "title": "研讨会活动",
+      "subTitle": "掌握信托与遗产规划"
+    },
+    "pastEvent": {
+      "title": "过去的活动",
+      "subTitle": "我们最近的聚会"
+    },
+    "reserve": "请立即回复以预留您的位置！"
   },
-  "common": {},
+  "common": {
+    "date": "日期: {date}",
+    "time": "时间: {time}"
+  },
   "setting": {
     "lang": {
       "en_US": "English",

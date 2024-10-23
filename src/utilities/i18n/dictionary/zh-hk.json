@@ -117,9 +117,21 @@
       "title-2": "策略",
       "title-3": "研討會。",
       "content": "參加我們專家主持的研討會，獲取有關信託和遺產規劃的寶貴見解，學習保護您的財富和確保您遺產的策略。"
-    }
+    },
+    "event": {
+      "title": "研討會活動",
+      "subTitle": "掌握信託與遺產規劃"
+    },
+    "pastEvent": {
+      "title": "過去的活動",
+      "subTitle": "我們最近的聚會"
+    },
+    "reserve": "請立即回覆以預留您的位置！"
   },
-  "common": {},
+  "common": {
+    "date": "日期: {date}",
+    "time": "時間: {time}"
+  },
   "setting": {
     "lang": {
       "en_US": "English",

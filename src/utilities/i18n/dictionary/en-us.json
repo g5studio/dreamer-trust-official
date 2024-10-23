@@ -117,9 +117,21 @@
       "title-2": "Strategy",
       "title-3": "Seminars.",
       "content": "Join our expert-led seminars to gain valuable insights on trust and estate planning, with strategies to protect your wealth and secure your legacy."
-    }
+    },
+    "event": {
+      "title": "Seminar Events",
+      "subTitle": "Mastering Trusts and Estate Planning"
+    },
+    "pastEvent": {
+      "title": "Past Events",
+      "subTitle": "Our Recent Gathering"
+    },
+    "reserve": "now to reserve your spot!"
   },
-  "common": {},
+  "common": {
+    "date": "Date: {date}",
+    "time": "Time: {time}"
+  },
   "setting": {
     "lang": {
       "en_US": "English",

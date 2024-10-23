@@ -18,8 +18,14 @@ html {
 body {
   font-family: 'Noto Sans', 'PingFang', 'Roboto', Helvetica, Arial, 'Microsoft JhengHei', '微軟正黑體';
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; 
+  -moz-osx-font-smoothing: grayscale;
   color: getColorVariable(--color-black-1);
+}
+
+a {
+  color: getColorVariable(--color-primary-2);
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 code {

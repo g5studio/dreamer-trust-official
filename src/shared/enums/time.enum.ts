@@ -22,6 +22,7 @@ export enum DateFormatType {
    * 時間特殊格式
    */
   CustomizeLocaleFormat = 'customize-locale',
+  CustomizeLocaleShortFormat = 'customize-short-locale',
   CustomSimpleDate = 'DD/MM/YYYY',
   CustomSimpleMonth = 'MM/YYYY',
   CustomCalendarDate = 'DD-MM-YYYY',
@@ -31,6 +32,7 @@ export enum DateFormatType {
   ShortWeekDay = 'ddd',
   PureYear = 'YYYY',
   PureMonth = 'MM',
+  PureMonthShortcut = 'MMM',
   PureDate = 'DD',
   // Record related format
   // DD MMM HH:mm
@@ -53,6 +55,7 @@ export enum DateFormatType {
   Hour = 'HH',
   // mm
   Minute = 'mm',
+  TwelveHourTime = 'hh:mm A',
 }
 
 export enum DateCode {

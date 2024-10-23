@@ -9,6 +9,8 @@ type Event = {
   startTime: TimeStamp;
   endTime: TimeStamp;
   location: string;
+  title: string;
+  description: string;
 };
 export interface IEvent extends IBaseModel<unknown, Event> {}
 
@@ -28,13 +30,15 @@ export const getEvent = (): IEvent => {
   };
 
   const initialize = (apiResponse: IApiEvent) => {
-    const { date, startTime, endTime, id, location } = apiResponse;
+    const { date, startTime, endTime, id, location, title, description } = apiResponse;
 
     updateData({
       id,
       startTime: getTimeStamp(`${date} ${startTime}`),
       endTime: getTimeStamp(`${date} ${endTime}`),
       location,
+      title,
+      description,
     });
   };
 

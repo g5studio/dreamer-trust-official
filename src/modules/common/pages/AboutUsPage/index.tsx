@@ -1,5 +1,5 @@
 import ContentLayout from '@shared/components/ContentLayout';
-import { isLargePC, isMobile, isPC } from '@shared/hooks/use-window-size';
+import { isLargePC, isMobile, isPC, isSmallMobile } from '@shared/hooks/use-window-size';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import CarouselContainer from '@shared/components/CarouselContainer';
 import { Direction, LocaleDash } from '@shared/enums';
@@ -21,7 +21,7 @@ const AboutUsPage = () => {
     <ContentLayout
       testId="AboutUsPage"
       classes={formatClasses('space-y-30 pb-30', {
-        'space-y-16 pb-16': !isPC(),
+        'space-y-16 pb-16': !isLargePC(),
       })}>
       <CarouselContainer
         classes={formatClasses({
@@ -46,6 +46,7 @@ const AboutUsPage = () => {
                 classes={formatClasses({
                   'min-w-104_25 h-75': isPC(),
                   'h-53_5 min-w-75': !isPC(),
+                  'h-auto min-w-full': isSmallMobile(),
                 })}
                 src="about-us/about-us-top-1@3x.png"
               />
