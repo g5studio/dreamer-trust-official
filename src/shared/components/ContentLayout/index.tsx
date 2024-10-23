@@ -7,7 +7,8 @@ import { closeAllOverlay } from '@shared/hooks/use-overlay';
 import { usePageCheck } from '@shared/hooks/use-page-check';
 import { isPC } from '@shared/hooks/use-window-size';
 import navigator from '@shared/hooks/use-navigator';
-import Picture from '../Picture';
+import { useLayoutContext } from '@utilities/context/layout-context';
+import Picture from '@components/Picture';
 
 interface IContentLayoutProps extends IBaseComponentProps {
   hidePadding?: boolean;
@@ -19,6 +20,8 @@ const ContentLayout = (props: IContentLayoutProps) => {
   closeAllOverlay();
   const staticPathname = navigator.pathname;
   usePageCheck({ pathname: () => staticPathname });
+
+  const [{ mainContentAreaSize }] = useLayoutContext();
 
   onMount(() => {
     Log.info({
@@ -38,10 +41,16 @@ const ContentLayout = (props: IContentLayoutProps) => {
       )}>
       {props.children}
       <Show when={isPC()}>
-        <Picture classes="z-bg min-w-screen absolute left-[50%] top-[646px] translate-x-[-50%]" src="shared/bg-1.png" />
+        <Picture classes="absolute left-[50%] top-[646px] z-bg min-w-screen translate-x-[-50%]" src="shared/bg-1.png" />
       </Show>
       <Show when={isPC()}>
-        <Picture classes="z-bg absolute right-0 top-[1887px]" src="shared/bg-2.png" />
+        <Picture
+          style={{
+            right: `-${mainContentAreaSize().left}px`,
+          }}
+          classes="absolute top-[1887px]  z-bg"
+          src="shared/bg-2.png"
+        />
       </Show>
     </section>
   );
