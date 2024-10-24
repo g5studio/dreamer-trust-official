@@ -13,13 +13,14 @@ import { formatClasses } from '@utilities/helpers/format.helper';
 import { transform } from '@utilities/helpers/time.helper';
 import { validateEmail } from '@utilities/helpers/validator.helper';
 import { CancelIcon } from '@utilities/svg-components/CancelIcon';
+import { For } from 'solid-js';
 
 export interface IRSVPDialogProps extends IBaseOverlayProps {
   eventData: IEvent['metaData'];
 }
 
 export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
-  const { register, submitForm } = useForm<keyof IApiEventInput>({
+  const { register, submitForm, fields, setValue } = useForm<keyof IApiEventInput>({
     comments: '',
     eventId: props.eventData.id,
     email: '',
@@ -27,8 +28,10 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
     mobileCountryCode: '',
     mobileNumber: '',
     name: '',
-    preferredContactMethods: '',
+    preferredContactMethods: '[]',
   });
+
+  const preferredContactMethods = () => JSON.parse(fields().preferredContactMethods.value) as PreferredContactMethod[];
 
   const {
     mutation: { mutate: postEvent },
@@ -36,12 +39,14 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
     mutation: mutationConfigs.postEvent(),
     errorHandleType: ErrorHandleType.All,
     onError: () => {},
-    onSettled: () => {},
+    onSettled: () => {
+      props.onClose();
+    },
     onSuccess: () => {},
   });
 
-  const handleOnSubmit = ({ fields }: Pick<IForm<keyof IApiEventInput>, 'fields' | 'isValid' | 'errors'>) => {
-    const { name, email, landline, mobileNumber, comments } = fields;
+  const handleOnSubmit = (formData: Pick<IForm<keyof IApiEventInput>, 'fields' | 'isValid' | 'errors'>) => {
+    const { name, email, landline, mobileNumber, comments } = formData.fields;
     postEvent({
       eventId: props.eventData.id,
       name: name.value,
@@ -49,7 +54,7 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
       mobileCountryCode: '+886',
       mobileNumber: mobileNumber.value,
       landline: landline.value,
-      preferredContactMethods: [PreferredContactMethod.Email],
+      preferredContactMethods: preferredContactMethods(),
       comments: comments.value,
     });
   };
@@ -57,7 +62,7 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
   return (
     <div
       class={formatClasses('relative rounded-8 bg-black-6', {
-        'max-w-[440px] p-6 pt-14': isMobile(),
+        'max-h-[98vh] max-w-[440px] overflow-y-auto p-6 pt-14': isMobile(),
         'max-w-[1100px] p-10': !isMobile(),
       })}>
       <button
@@ -77,45 +82,53 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
           'flex flex-row items-start space-x-20': !isMobile(),
         })}>
         <article
-          class={formatClasses('space-y-6', {
-            'shrink grow basis-1/2': !isMobile(),
+          class={formatClasses('', {
+            'shrink grow basis-1/2 space-y-6': !isMobile(),
           })}>
-          <h3 class="text-9 font-normal">RSVP.</h3>
-          <div class="space-y-2 text-start text-black-2">
-            <h5 class={formatClasses('text-xl font-bold text-black-1', { 'text-sm': isMobile() })}>
-              {props.eventData.title}
-            </h5>
-            <p class={formatClasses('text-lg', { 'text-xs': isMobile() })}>{props.eventData.description}</p>
-          </div>
-          <div class="space-y-2 text-start text-black-2">
-            <p class={formatClasses('text-lg', { 'text-xs': isMobile() })}>
-              {translate('home.top-2.location', { location: props.eventData.location })}
-            </p>
-            <p class={formatClasses('text-lg', { 'text-xs': isMobile() })}>
-              {translate('common.date', {
-                date: transform({
-                  locale: translation.language,
-                  timestamp: props.eventData.startTime,
-                  formatType: DateFormatType.CustomizeLocaleShortFormat,
-                  offset: -(new Date().getTimezoneOffset() / 60),
-                }),
-              })}
-            </p>
-            <p class={formatClasses('text-lg', { 'text-xs': isMobile() })}>
-              {translate('common.time', {
-                time: `${transform({
-                  locale: translation.language,
-                  timestamp: props.eventData.startTime,
-                  formatType: DateFormatType.TwelveHourTime,
-                  offset: -(new Date().getTimezoneOffset() / 60),
-                })} CST - ${transform({
-                  locale: translation.language,
-                  timestamp: props.eventData.endTime,
-                  formatType: DateFormatType.TwelveHourTime,
-                  offset: -(new Date().getTimezoneOffset() / 60),
-                })} CST`,
-              })}
-            </p>
+          <h3
+            class={formatClasses('font-normal', {
+              'leading-13 text-9': !isMobile(),
+              'text-7_5 font-bold leading-11': isMobile(),
+            })}>
+            RSVP.
+          </h3>
+          <div class="space-y-6">
+            <div class="space-y-2 text-start text-black-2">
+              <h5 class={formatClasses('text-xl font-bold text-black-1', { 'text-sm': isMobile() })}>
+                {props.eventData.title}
+              </h5>
+              <p class={formatClasses('text-lg', { 'text-xs': isMobile() })}>{props.eventData.description}</p>
+            </div>
+            <div class="space-y-2 text-start text-black-2">
+              <p class={formatClasses('text-lg', { 'text-xs': isMobile() })}>
+                {translate('home.top-2.location', { location: props.eventData.location })}
+              </p>
+              <p class={formatClasses('text-lg', { 'text-xs': isMobile() })}>
+                {translate('common.date', {
+                  date: transform({
+                    locale: translation.language,
+                    timestamp: props.eventData.startTime,
+                    formatType: DateFormatType.CustomizeLocaleShortFormat,
+                    offset: -(new Date().getTimezoneOffset() / 60),
+                  }),
+                })}
+              </p>
+              <p class={formatClasses('text-lg', { 'text-xs': isMobile() })}>
+                {translate('common.time', {
+                  time: `${transform({
+                    locale: translation.language,
+                    timestamp: props.eventData.startTime,
+                    formatType: DateFormatType.TwelveHourTime,
+                    offset: -(new Date().getTimezoneOffset() / 60),
+                  })} CST - ${transform({
+                    locale: translation.language,
+                    timestamp: props.eventData.endTime,
+                    formatType: DateFormatType.TwelveHourTime,
+                    offset: -(new Date().getTimezoneOffset() / 60),
+                  })} CST`,
+                })}
+              </p>
+            </div>
           </div>
         </article>
         <form
@@ -136,7 +149,6 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
                 element,
                 validators: {
                   required: (e) => !!e,
-                  format: validateEmail,
                 },
               })
             }
@@ -150,6 +162,7 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
                 element,
                 validators: {
                   required: (e) => !!e,
+                  format: validateEmail,
                 },
               })
             }
@@ -180,6 +193,44 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
               })
             }
           />
+          <fieldset class="flex w-full flex-col space-y-1">
+            <legend class={formatClasses('text-lg', { 'text-xs': isMobile() })}>
+              {translate('Preferred Contact Method')}
+            </legend>
+            <div class="flex flex-row items-center space-x-5">
+              <For each={Object.values(PreferredContactMethod)}>
+                {(method) => {
+                  const isChecked = () => preferredContactMethods().includes(method);
+                  return (
+                    <div class="flex flex-row items-center space-x-2">
+                      <button
+                        onClick={() => {
+                          setValue(
+                            'preferredContactMethods',
+                            JSON.stringify(
+                              isChecked()
+                                ? preferredContactMethods().filter((e) => e !== method)
+                                : [...preferredContactMethods(), method],
+                            ),
+                          );
+                        }}
+                        type="button"
+                        class={formatClasses('h-4 w-4 rounded-4 border-0_25 border-primary-2', {
+                          'bg-primary-2': isChecked(),
+                        })}
+                      />
+                      <span
+                        class={formatClasses('text-md leading-6', {
+                          'text-xs leading-4': isMobile(),
+                        })}>
+                        {translate(method)}
+                      </span>
+                    </div>
+                  );
+                }}
+              </For>
+            </div>
+          </fieldset>
           <FormInput
             legendI18nKey="Questions or comments"
             placeholderI18nKey="Feel free to leave any questions or comments"
@@ -193,7 +244,12 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
               })
             }
           />
-          <Button testId="rsvp-submit-btn" type="submit" onClick={() => {}} variant="primary">
+          <Button
+            testId="rsvp-submit-btn"
+            class={formatClasses({ 'text-sm': isMobile() })}
+            type="submit"
+            onClick={() => {}}
+            variant="primary">
             {translate('common.submit')}
           </Button>
         </form>

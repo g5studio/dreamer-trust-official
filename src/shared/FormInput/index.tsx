@@ -1,6 +1,8 @@
 import { IInput } from '@shared/components/Input';
 import { translate } from '@shared/hooks/use-translation';
+import { isMobile } from '@shared/hooks/use-window-size';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
+import { formatClasses } from '@utilities/helpers/format.helper';
 import { onMount } from 'solid-js';
 
 interface IFormInputProps
@@ -20,10 +22,17 @@ const FormInput = (props: IFormInputProps) => {
 
   return (
     <fieldset class="flex w-full flex-col space-y-1">
-      <legend class="text-lg">{translate(props.legendI18nKey)}</legend>
+      <legend
+        class={formatClasses('text-lg', {
+          'text-xs': isMobile(),
+        })}>
+        {translate(props.legendI18nKey)}
+      </legend>
       <div class="border-b-0_25 border-primary-2 py-2_5">
         <input
-          class="h-5 w-full text-sm"
+          class={formatClasses('h-5 w-full text-sm', {
+            'text-xs': isMobile(),
+          })}
           ref={(el) => {
             ref = el;
             if (typeof props.ref === 'function') {

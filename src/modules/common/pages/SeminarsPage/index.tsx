@@ -194,7 +194,7 @@ const SeminarsPage = () => {
                 class={formatClasses('flex w-full flex-row flex-nowrap', {
                   'space-x-6': isMobile(),
                 })}>
-                <For each={pastEvents()}>{(data) => <SeminarEventCard eventData={data} />}</For>
+                <For each={pastEvents()}>{(data) => <SeminarEventCard hideRSVP eventData={data} />}</For>
               </div>
             )}
           </CarouselContainer>

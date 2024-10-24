@@ -8,10 +8,12 @@ import { IBaseComponentProps } from '@shared/interfaces';
 import { IEvent } from '@shared/models/event.model';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { transform } from '@utilities/helpers/time.helper';
+import { Show } from 'solid-js';
 import { IRSVPDialogProps, RSVPDialog } from './RSVPDialog';
 
 interface ISeminarCardProps extends IBaseComponentProps {
   eventData: IEvent['metaData'];
+  hideRSVP?: boolean;
 }
 
 const SeminarEventCard = (props: ISeminarCardProps) => {
@@ -109,27 +111,30 @@ const SeminarEventCard = (props: ISeminarCardProps) => {
               {translate('home.top-2.location', { location: props.eventData.location })}
             </p>
           </div>
-          <p
-            class={formatClasses('flex flex-row items-center space-x-2 text-start text-lg text-black-2', {
-              'text-xs': isMobile(),
-            })}>
-            <a
-              onClick={() =>
-                toggleOverlay<IRSVPDialogProps>({
-                  type: OverlayType.Custom,
-                  action: 'open',
-                  config: {
-                    component: RSVPDialog,
-                    props: {
-                      eventData: props.eventData,
+          <Show when={!props.hideRSVP}>
+            <p
+              class={formatClasses('flex flex-row items-center space-x-2 text-start text-lg text-black-2', {
+                'text-xs': isMobile(),
+              })}>
+              <a
+                onClick={() =>
+                  toggleOverlay<IRSVPDialogProps>({
+                    type: OverlayType.Custom,
+                    action: 'open',
+                    config: {
+                      component: RSVPDialog,
+                      props: {
+                        eventData: props.eventData,
+                      },
                     },
-                  },
-                })
-              }>
-              RSVP
-            </a>
-            <span>{translate('seminars.reserve')}</span>
-          </p>
+                    containerClass: 'flex items-center justify-center',
+                  })
+                }>
+                RSVP
+              </a>
+              <span>{translate('seminars.reserve')}</span>
+            </p>
+          </Show>
         </div>
         {props.children}
       </article>

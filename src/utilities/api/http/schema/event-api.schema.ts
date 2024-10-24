@@ -3,7 +3,7 @@ import { Language } from '@shared/enums';
 export enum PreferredContactMethod {
   Email = 'Email',
   SMS = 'SMS',
-  PhoneCall = 'PhoneCall',
+  PhoneCall = 'Phone Call',
 }
 
 export interface IApiEventInput {
