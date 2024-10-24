@@ -130,7 +130,8 @@
   },
   "common": {
     "date": "日期: {date}",
-    "time": "時間: {time}"
+    "time": "時間: {time}",
+    "submit": "提交"
   },
   "setting": {
     "lang": {

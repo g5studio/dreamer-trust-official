@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { formatQueryString } from '@utilities/helpers/format.helper';
-import { IApiEvent, IApiEventSearchParams } from '../schema/event-api.schema';
+import { IApiEvent, IApiEventInput, IApiEventSearchParams } from '../schema/event-api.schema';
 import { platformClient } from '../platform-client';
 
 const root = 'event';
@@ -17,4 +17,11 @@ export const fetchEventList = async ({ language }: IApiEventSearchParams): Promi
  */
 export const fetchPastEventList = async ({ language }: IApiEventSearchParams): Promise<AxiosResponse<IApiEvent>> => {
   return platformClient.get<IApiEvent>(`${root}/past?${formatQueryString({ language })}`);
+};
+
+/**
+ * @description 報名研討會
+ */
+export const postEvent = async (params: IApiEventInput): Promise<AxiosResponse<object>> => {
+  return platformClient.post<object>(`${root}`, params);
 };

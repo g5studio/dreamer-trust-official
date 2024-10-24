@@ -130,7 +130,8 @@
   },
   "common": {
     "date": "Date: {date}",
-    "time": "Time: {time}"
+    "time": "Time: {time}",
+    "submit": "Submit"
   },
   "setting": {
     "lang": {

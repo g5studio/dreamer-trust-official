@@ -1,12 +1,14 @@
 import Picture from '@shared/components/Picture';
 import Skeleton, { SkeletonType } from '@shared/components/Skeleton';
-import { DateFormatType } from '@shared/enums';
+import { DateFormatType, OverlayType } from '@shared/enums';
+import { toggleOverlay } from '@shared/hooks/use-overlay';
 import { translate, translation } from '@shared/hooks/use-translation';
 import { isMobile } from '@shared/hooks/use-window-size';
 import { IBaseComponentProps } from '@shared/interfaces';
 import { IEvent } from '@shared/models/event.model';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { transform } from '@utilities/helpers/time.helper';
+import { IRSVPDialogProps, RSVPDialog } from './RSVPDialog';
 
 interface ISeminarCardProps extends IBaseComponentProps {
   eventData: IEvent['metaData'];
@@ -111,7 +113,21 @@ const SeminarEventCard = (props: ISeminarCardProps) => {
             class={formatClasses('flex flex-row items-center space-x-2 text-start text-lg text-black-2', {
               'text-xs': isMobile(),
             })}>
-            <a onClick={() => {}}>RSVP</a>
+            <a
+              onClick={() =>
+                toggleOverlay<IRSVPDialogProps>({
+                  type: OverlayType.Custom,
+                  action: 'open',
+                  config: {
+                    component: RSVPDialog,
+                    props: {
+                      eventData: props.eventData,
+                    },
+                  },
+                })
+              }>
+              RSVP
+            </a>
             <span>{translate('seminars.reserve')}</span>
           </p>
         </div>
