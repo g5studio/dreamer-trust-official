@@ -113,8 +113,8 @@
   },
   "seminars": {
     "top-1": {
-      "title": "財富",
-      "title-2": "策略",
+      "title": "財富策略",
+      "title-2": "",
       "title-3": "研討會。",
       "content": "參加我們專家主持的研討會，獲取有關信託和遺產規劃的寶貴見解，學習保護您的財富和確保您遺產的策略。"
     },
@@ -126,7 +126,21 @@
       "title": "過去的活動",
       "subTitle": "我們最近的聚會"
     },
-    "reserve": "請立即回覆以預留您的位置！"
+    "reserve": "請立即回覆以預留您的位置！",
+    "form": {
+      "mobile": "手機號碼",
+      "areaCode": "區號",
+      "mobilePlaceholder": "請輸入您的手機號碼",
+      "landline": "市內電話",
+      "landlinePlaceholder": "請輸入您的市內電話（如有）",
+      "method": "偏好聯絡方式",
+      "Email": "信箱",
+      "SMS": "簡訊",
+      "Phone Call": "電話",
+      "comments": "問題或意見",
+      "commentsPlaceholder": "隨時留下任何問題或意見",
+      "success": "謝謝！您的回覆已成功提交。我們期待在活動中見到您。"
+    }
   },
   "common": {
     "date": "日期: {date}",

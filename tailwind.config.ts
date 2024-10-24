@@ -91,6 +91,7 @@ const config: Config = {
       DEFAULT: '2px 2px 6px 0 rgba(0, 0, 0, 0.1)',
       header: '0px 1px 2px 0px #00000033',
       footer: '0px -1px 2px 0px #00000033',
+      modal: '2px 2px 2px 0px #00000040',
       none: 'none',
     },
     textShadow: {

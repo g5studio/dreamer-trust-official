@@ -42,8 +42,8 @@ const SeminarEventCard = (props: ISeminarCardProps) => {
       />
       <article
         class={formatClasses('bg-black-5', {
-          'pb- relative h-full w-[478px] px-6 pb-6 pt-25': !isMobile(),
-          'w-[238px] grow px-5 py-4': isMobile(),
+          'pb- relative h-full w-[478px] rounded-e-8 px-6 pb-6 pt-25': !isMobile(),
+          'w-[238px] grow rounded-b-8 px-5 py-4': isMobile(),
         })}>
         {/* 研討會日期 */}
         <div

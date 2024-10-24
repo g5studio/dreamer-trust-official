@@ -113,8 +113,8 @@
   },
   "seminars": {
     "top-1": {
-      "title": "Wealth",
-      "title-2": "Strategy",
+      "title": "Wealth Strategy",
+      "title-2": "",
       "title-3": "Seminars.",
       "content": "Join our expert-led seminars to gain valuable insights on trust and estate planning, with strategies to protect your wealth and secure your legacy."
     },
@@ -126,7 +126,21 @@
       "title": "Past Events",
       "subTitle": "Our Recent Gathering"
     },
-    "reserve": "now to reserve your spot!"
+    "reserve": "now to reserve your spot!",
+    "form": {
+      "mobile": "Mobile Number",
+      "areaCode": "Area Code",
+      "mobilePlaceholder": "Please enter your mobile number",
+      "landline": "Landline",
+      "landlinePlaceholder": "Please enter your landline (If any)",
+      "method": "Preferred Contact Method",
+      "Email": "Email",
+      "SMS": "SMS",
+      "Phone Call": "Phone Call",
+      "comments": "Questions or comments",
+      "commentsPlaceholder": "Feel free to leave any questions or comments",
+      "success": "Thank you! Your RSVP has been successfully submitted. We look forward to seeing you at the event."
+    }
   },
   "common": {
     "date": "Date: {date}",

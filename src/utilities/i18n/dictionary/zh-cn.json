@@ -113,8 +113,8 @@
   },
   "seminars": {
     "top-1": {
-      "title": "财富",
-      "title-2": "策略",
+      "title": "财富策略",
+      "title-2": "",
       "title-3": "研讨会。",
       "content": "参加我们专家主持的研讨会，获取有关信托和遗产规划的宝贵见解，学习保护您的财富和确保您遗产的策略。"
     },
@@ -126,7 +126,21 @@
       "title": "过去的活动",
       "subTitle": "我们最近的聚会"
     },
-    "reserve": "请立即回复以预留您的位置！"
+    "reserve": "请立即回复以预留您的位置！",
+    "form": {
+      "mobile": "手机号码",
+      "areaCode": "区号",
+      "mobilePlaceholder": "请输入您的手机号码",
+      "landline": "固定电话",
+      "landlinePlaceholder": "请输入您的固定电话（如有）",
+      "method": "首选联系方式",
+      "Email": "信箱",
+      "SMS": "短信",
+      "Phone Call": "电话",
+      "comments": "问题或意见",
+      "commentsPlaceholder": "随时留下任何问题或意见",
+      "success": "谢谢！您的回复已成功提交。我们期待在活动中见到您。"
+    }
   },
   "common": {
     "date": "日期: {date}",

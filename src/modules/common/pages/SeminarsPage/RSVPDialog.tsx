@@ -1,8 +1,9 @@
 import Button from '@shared/components/Button';
-import { DateFormatType, ErrorHandleType } from '@shared/enums';
+import { DateFormatType, ErrorHandleType, OverlayType } from '@shared/enums';
 import FormInput from '@shared/FormInput';
 import { createCustomizeMutation } from '@shared/hooks/create-customize-mutation';
 import { IForm, useForm } from '@shared/hooks/use-form';
+import { toggleOverlay } from '@shared/hooks/use-overlay';
 import { translate, translation } from '@shared/hooks/use-translation';
 import { isMobile } from '@shared/hooks/use-window-size';
 import { IBaseOverlay, IBaseOverlayProps } from '@shared/interfaces';
@@ -20,7 +21,7 @@ export interface IRSVPDialogProps extends IBaseOverlayProps {
 }
 
 export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
-  const { register, submitForm, fields, setValue } = useForm<keyof IApiEventInput>({
+  const { register, submitForm, fields, setValue, checkFormValid } = useForm<keyof IApiEventInput>({
     comments: '',
     eventId: props.eventData.id,
     email: '',
@@ -33,6 +34,33 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
 
   const preferredContactMethods = () => JSON.parse(fields().preferredContactMethods.value) as PreferredContactMethod[];
 
+  const toggleSuccessModal = () =>
+    toggleOverlay({
+      action: 'open',
+      type: OverlayType.Custom,
+      config: {
+        component: ({ onClose }) => (
+          <section class="shadow-modal flex w-[420px] flex-col items-center justify-center space-y-6 rounded-10 bg-black-5 px-16 py-8">
+            <p
+              class={formatClasses('text-xs', {
+                'text-lg': !isMobile(),
+              })}>
+              {translate('seminars.form.success')}
+            </p>
+            <Button
+              class={formatClasses('text-sm', {
+                'text-5_25': !isMobile(),
+              })}
+              variant="primary"
+              testId="rsvp-success-btn"
+              onClick={onClose}>
+              {translate('Close')}
+            </Button>
+          </section>
+        ),
+      },
+    });
+
   const {
     mutation: { mutate: postEvent },
   } = createCustomizeMutation<object, IApiEventInput>({
@@ -42,7 +70,7 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
     onSettled: () => {
       props.onClose();
     },
-    onSuccess: () => {},
+    onSuccess: toggleSuccessModal,
   });
 
   const handleOnSubmit = (formData: Pick<IForm<keyof IApiEventInput>, 'fields' | 'isValid' | 'errors'>) => {
@@ -168,8 +196,8 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
             }
           />
           <FormInput
-            legendI18nKey="Mobile Number"
-            placeholderI18nKey="Please enter your mobile number"
+            legendI18nKey="seminars.form.mobile"
+            placeholderI18nKey="seminars.form.mobilePlaceholder"
             register={(element) =>
               register({
                 fieldName: 'mobileNumber',
@@ -181,21 +209,18 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
             }
           />
           <FormInput
-            legendI18nKey="Landline"
-            placeholderI18nKey="Please enter your landline (If any)"
+            legendI18nKey="seminars.form.landline"
+            placeholderI18nKey="seminars.form.landlinePlaceholder"
             register={(element) =>
               register({
                 fieldName: 'landline',
                 element,
-                validators: {
-                  required: (e) => !!e,
-                },
               })
             }
           />
           <fieldset class="flex w-full flex-col space-y-1">
             <legend class={formatClasses('text-lg', { 'text-xs': isMobile() })}>
-              {translate('Preferred Contact Method')}
+              {translate('seminars.form.method')}
             </legend>
             <div class="flex flex-row items-center space-x-5">
               <For each={Object.values(PreferredContactMethod)}>
@@ -223,7 +248,7 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
                         class={formatClasses('text-md leading-6', {
                           'text-xs leading-4': isMobile(),
                         })}>
-                        {translate(method)}
+                        {translate(`seminars.form.${method}`)}
                       </span>
                     </div>
                   );
@@ -232,23 +257,29 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
             </div>
           </fieldset>
           <FormInput
-            legendI18nKey="Questions or comments"
-            placeholderI18nKey="Feel free to leave any questions or comments"
+            legendI18nKey="seminars.form.comments"
+            placeholderI18nKey="seminars.form.commentsPlaceholder"
             register={(element) =>
               register({
                 fieldName: 'comments',
                 element,
-                validators: {
-                  required: (e) => !!e,
-                },
               })
             }
           />
           <Button
+            disabled={
+              !validateEmail(fields().email.value) ||
+              !fields().name.value ||
+              !fields().mobileNumber.value ||
+              !fields().mobileCountryCode ||
+              preferredContactMethods().length === 0
+            }
             testId="rsvp-submit-btn"
-            class={formatClasses({ 'text-sm': isMobile() })}
+            class={formatClasses('text-5_25', { 'text-sm': isMobile() })}
             type="submit"
-            onClick={() => {}}
+            onClick={() => {
+              checkFormValid();
+            }}
             variant="primary">
             {translate('common.submit')}
           </Button>

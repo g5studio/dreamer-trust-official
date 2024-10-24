@@ -84,7 +84,7 @@ const SeminarsPage = () => {
                 })}>
                 <div class="flex flex-col">
                   <h1
-                    class={formatClasses('text-12 font-normal leading-14_5', {
+                    class={formatClasses('text-12 font-normal leading-14_5 tracking-[5%]', {
                       'text-16 leading-20': isLargePC(),
                     })}>
                     {translate('seminars.top-1.title')}
@@ -95,12 +95,6 @@ const SeminarsPage = () => {
                       'lg:space-x-4 xl:space-x-8':
                         translation.language !== LocaleDash.zh_HK && translation.language !== LocaleDash.zh_CN,
                     })}>
-                    <h1
-                      class={formatClasses('font-["PT_Serif"] text-12 font-normal italic leading-14_5', {
-                        'text-16 leading-20': isLargePC(),
-                      })}>
-                      {translate('seminars.top-1.title-2')}
-                    </h1>
                     <h1
                       class={formatClasses('font-["PT_Serif"] text-12 font-normal italic leading-14_5', {
                         'text-16 leading-20': isLargePC(),
