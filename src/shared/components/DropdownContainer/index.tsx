@@ -65,7 +65,7 @@ const DropdownContainer = <T = IDropdownContainerOption,>(props: IDropdownContai
         })
       }
       popoverSlot={({ openPopover, closePopover, togglePopover, isOpen }) => (
-        <div class={formatClasses('', props.menuClasses)}>
+        <div class={formatClasses('h-full w-full', props.menuClasses)}>
           <Show when={props.headerSlot}>
             {props.headerSlot?.({
               openDropdown: openPopover,

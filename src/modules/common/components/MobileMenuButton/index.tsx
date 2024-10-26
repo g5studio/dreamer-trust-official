@@ -45,7 +45,8 @@ const MobileMenuButton = (props: IMobileMenuButtonProps) => {
       childrenContainerStyle={{
         height: `${windowSize.height - headerAreaHeight()}px`,
       }}
-      childrenContainerClasses={'flex flex-col bg-black-5 mt-4 w-screen translate-x-6 text-md p-6 pt-0'}
+      childrenContainerClasses="mt-0"
+      menuClasses={'flex flex-col bg-black-5 mt-4 w-screen translate-x-6 h-full text-md p-6 pt-0'}
       footerSlot={() => (
         <section class="flex grow flex-col justify-end">
           <div class="flex flex-row items-center space-x-2 pt-4">
