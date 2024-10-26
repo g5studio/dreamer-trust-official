@@ -128,13 +128,16 @@
     },
     "reserve": "请立即回复以预留您的位置！",
     "form": {
+      "name": "姓名",
+      "namePlaceholder": "请输入您的姓名",
+      "emailPlaceholder": "请输入您的电邮",
       "mobile": "手机号码",
       "areaCode": "区号",
       "mobilePlaceholder": "请输入您的手机号码",
       "landline": "固定电话",
       "landlinePlaceholder": "请输入您的固定电话（如有）",
       "method": "首选联系方式",
-      "Email": "信箱",
+      "Email": "电邮",
       "SMS": "短信",
       "Phone Call": "电话",
       "comments": "问题或意见",
@@ -142,10 +145,59 @@
       "success": "谢谢！您的回复已成功提交。我们期待在活动中见到您。"
     }
   },
+  "contactUs": {
+    "top-1": {
+      "title": "让我们",
+      "title-2": "一起保障",
+      "title-3": "您的未来。",
+      "content": ""
+    },
+    "form": {
+      "title": "联系我们。",
+      "description": "我们随时准备回答您的问题并在每一步中指导您。今天就联系我们进行咨询，迈出保障您未来的第一步。",
+      "name": "姓名",
+      "namePlaceholder": "请输入您的姓名",
+      "email": "电邮",
+      "emailPlaceholder": "请输入您的电邮",
+      "mobile": "电话号码",
+      "areaCode": "区号",
+      "mobilePlaceholder": "请输入您的电话号码",
+      "company": "公司",
+      "companyPlaceholder": "请输入您任职公司的名称",
+      "need": "请告诉我们您的需求",
+      "needs": {
+        "TrustService": "信托服务",
+        "EstatePlanning": "遗产规划",
+        "AssetManagement": "资产管理",
+        "CorporateService": "企业服务"
+      },
+      "comments": "问题或意见",
+      "commentsPlaceholder": "例如：在新加坡建立家庭信托需要多长时间？",
+      "success": "感谢您联系我们，我们将会尽快与您联系！"
+    },
+    "location": {
+      "title": "我们的据点",
+      "sg": {
+        "title": "新加坡办公室",
+        "description": "柏盛信托（新加坡）有限公司",
+        "address": "160 Robinson Road, #31-01 SBF Center, Singapore 068914",
+        "email": "info.sg@psgptrust.com",
+        "phone": "+65 6011 1703"
+      },
+      "hk": {
+        "title": "香港办公室",
+        "description": "柏盛信托有限公司",
+        "address": "香港中环德辅道中88-98号18楼",
+        "email": "info.hk@psgptrust.com",
+        "phone": "+852 2485 8999"
+      }
+    }
+  },
   "common": {
     "date": "日期: {date}",
     "time": "时间: {time}",
-    "submit": "提交"
+    "submit": "提交",
+    "close": "关闭"
   },
   "setting": {
     "lang": {

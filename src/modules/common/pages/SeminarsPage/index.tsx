@@ -84,7 +84,7 @@ const SeminarsPage = () => {
                 })}>
                 <div class="flex flex-col">
                   <h1
-                    class={formatClasses('text-12 font-normal leading-14_5 tracking-[5%]', {
+                    class={formatClasses('text-12 font-normal leading-14_5 ', {
                       'text-16 leading-20': isLargePC(),
                     })}>
                     {translate('seminars.top-1.title')}

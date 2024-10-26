@@ -10,6 +10,8 @@ interface IArticleContainerProps extends IBaseComponentProps {
   subTitleI18nKey: I18nKey;
   firstChildrenSlot?: Slot;
   sectionClasses?: string;
+  subTitleClasses?: string;
+  sectionStyle?: IBaseComponentProps['style'];
 }
 
 const ArticleContainer = (props: IArticleContainerProps) => {
@@ -27,7 +29,9 @@ const ArticleContainer = (props: IArticleContainerProps) => {
       )}>
       {props.firstChildrenSlot?.()}
       <h5 class="text-sm text-primary-3 xl:text-5_5">{translate(props.titleI18nKey)}</h5>
-      <h1 class="text-5_5 text-primary-3 xl:text-7">{translate(props.subTitleI18nKey)}</h1>
+      <h1 class={formatClasses('text-5_5 text-primary-3 xl:text-7', props.subTitleClasses)}>
+        {translate(props.subTitleI18nKey)}
+      </h1>
       <span class="mt-2 h-2 w-8 rounded-[99px] bg-primary-3" />
       <section
         class={formatClasses(
@@ -37,7 +41,8 @@ const ArticleContainer = (props: IArticleContainerProps) => {
             'flex-col': !isPC(),
           },
           props.sectionClasses,
-        )}>
+        )}
+        style={props.sectionStyle}>
         {props.children}
       </section>
     </article>

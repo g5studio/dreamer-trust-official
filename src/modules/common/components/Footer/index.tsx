@@ -4,7 +4,7 @@ import { IBaseComponentProps } from '@shared/interfaces/base-component.interface
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { getRouteConfigByKey } from '@utilities/helpers/routes.helper';
 import { For, Show } from 'solid-js';
-import { isPC } from '@shared/hooks/use-window-size';
+import { isMobile, isPC, isTablet } from '@shared/hooks/use-window-size';
 import PrimaryLogo from '../PrimaryLogo';
 
 interface IFooterProps extends IBaseComponentProps {}
@@ -18,9 +18,11 @@ const Footer = (props: IFooterProps) => {
     <footer
       data-testid="app-footer"
       class={formatClasses(
-        'shadow-footer bg-black-6 px-26 py-18_5',
+        'bg-black-6',
         {
-          'p-6 pt-2': !isPC(),
+          'p-6 pt-2': isMobile(),
+          'px-10 py-6 pt-2': isTablet(),
+          'px-26 py-18_5 shadow-footer': isPC(),
         },
         props.classes,
       )}>

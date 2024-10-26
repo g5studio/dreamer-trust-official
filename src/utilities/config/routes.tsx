@@ -45,7 +45,7 @@ const routesConfig: Partial<Record<RouteModule, RouteConfig>> = {
         i18n: 'menu.contactUs',
         path: 'contact-us',
         key: Page.ContactUs,
-        component: lazy(() => import('@modules/common/pages/HomePage')),
+        component: lazy(() => import('@modules/common/pages/ContactUsPage')),
       },
     ],
   },

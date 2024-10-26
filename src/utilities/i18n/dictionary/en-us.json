@@ -128,6 +128,9 @@
     },
     "reserve": "now to reserve your spot!",
     "form": {
+      "name": "Name",
+      "namePlaceholder": "Please enter your name",
+      "emailPlaceholder": "Please enter your email address",
       "mobile": "Mobile Number",
       "areaCode": "Area Code",
       "mobilePlaceholder": "Please enter your mobile number",
@@ -142,10 +145,59 @@
       "success": "Thank you! Your RSVP has been successfully submitted. We look forward to seeing you at the event."
     }
   },
+  "contactUs": {
+    "top-1": {
+      "title": "Let’s Secure",
+      "title-2": "Your Future",
+      "title-3": "Together.",
+      "content": ""
+    },
+    "form": {
+      "title": "Get in Touch.",
+      "description": "We are here to answer your questions and guide you every step of the way. Reach out today for a consultation and take the first step towards securing your future.",
+      "name": "Name",
+      "namePlaceholder": "Please enter your name",
+      "email": "Email",
+      "emailPlaceholder": "Please enter your email address",
+      "mobile": "Mobile Number",
+      "areaCode": "Area Code",
+      "mobilePlaceholder": "Please enter your mobile number",
+      "company": "Company",
+      "companyPlaceholder": "Please enter your company name (Optional)",
+      "need": "Let us know your needs",
+      "needs": {
+        "TrustService": "Trust Service",
+        "EstatePlanning": "Estate Planning",
+        "AssetManagement": "Asset Management",
+        "CorporateService": "Corporate Service"
+      },
+      "comments": "Questions or comments",
+      "commentsPlaceholder": "Ex. How long does it take to establish a family trust in Singapore? ",
+      "success": "Thanks for contacting us, we will reach out to you shortly!"
+    },
+    "location": {
+      "title": "Our Locations",
+      "sg": {
+        "title": "Singapore Office",
+        "description": "PS Trust (Singapore) Pte. Limited",
+        "address": "160 Robinson Road, #31-01 SBF Center, Singapore 068914",
+        "email": "info.sg@psgptrust.com",
+        "phone": "+65 6011 1703"
+      },
+      "hk": {
+        "title": "Hong Kong Office",
+        "description": "PS Trust Limited",
+        "address": "18/F, Central 88, 88-98 Des Voeux Road Central, Central, Hong Kong",
+        "email": "info.hk@psgptrust.com",
+        "phone": "+852 2485 8999"
+      }
+    }
+  },
   "common": {
     "date": "Date: {date}",
     "time": "Time: {time}",
-    "submit": "Submit"
+    "submit": "Submit",
+    "close": "Close"
   },
   "setting": {
     "lang": {

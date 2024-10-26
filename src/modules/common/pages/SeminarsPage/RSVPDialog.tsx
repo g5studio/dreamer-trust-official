@@ -169,8 +169,8 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
           })}
           date-testid="rsvp-form">
           <FormInput
-            legendI18nKey="Name"
-            placeholderI18nKey="Please enter your name"
+            legendI18nKey="seminars.form.name"
+            placeholderI18nKey="seminars.form.namePlaceholder"
             register={(element) =>
               register({
                 fieldName: 'name',
@@ -182,8 +182,8 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
             }
           />
           <FormInput
-            legendI18nKey="Email"
-            placeholderI18nKey="Please enter your email address"
+            legendI18nKey="seminars.form.Email"
+            placeholderI18nKey="seminars.form.emailPlaceholder"
             register={(element) =>
               register({
                 fieldName: 'email',

@@ -8,6 +8,7 @@ export const assetModules: Record<
   shared: () => import('./shared'),
   home: () => import('./home'),
   'about-us': () => import('./about-us'),
+  'contact-us': () => import('./contact-us'),
   seminar: () => import('./seminar'),
   common: () => import('./common'),
 };
