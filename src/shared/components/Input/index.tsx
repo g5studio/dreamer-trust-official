@@ -11,7 +11,7 @@ import { registerDirective } from '@utilities/helpers/directive.helper';
 
 registerDirective(domProperty);
 type InputVariantType = 'normal' | 'number' | 'option' | 'password' | 'CipherInput' | 'phone';
-export interface IInput extends Omit<IBaseComponentProps, 'ref'>, JSX.InputHTMLAttributes<HTMLInputElement> {
+export interface IInputProps extends Omit<IBaseComponentProps, 'ref'>, JSX.InputHTMLAttributes<HTMLInputElement> {
   nativeProps?: JSX.InputHTMLAttributes<HTMLInputElement>;
   /**
    * 類似 Placeholder 但會有動畫轉換為 Legend
@@ -147,7 +147,7 @@ const handleComposition = (e: CompositionEvent, detectComposition?: (e: Composit
   }
 };
 
-const Input = (props: IInput) => {
+const Input = (props: IInputProps) => {
   let ref: HTMLInputElement | undefined;
   let containerRef: HTMLInputElement | undefined;
   const [hasValue, setHasValue] = createSignal(false);
@@ -255,7 +255,7 @@ const Input = (props: IInput) => {
             'bg-black-5': props.disabled,
             'bg-layer-3': !props.disabled,
           },
-          { 'whitespace-nowrap border-primary': focus() && !props.error },
+          { 'border-primary whitespace-nowrap': focus() && !props.error },
           props.classes,
         )}>
         <PseudoElement>{props.prepend?.() ?? variants[props.variant].prepend?.()}</PseudoElement>
@@ -274,7 +274,7 @@ const Input = (props: IInput) => {
             {translate(props.legendI18nKey)}
           </legend>
           <Show when={props.errorMsg}>
-            <span class="block truncate px-3_75 text-4_5 font-semibold text-red-1">{props.errorMsg}</span>
+            <span class="text-red-1 block truncate px-3_75 text-4_5 font-semibold">{props.errorMsg}</span>
           </Show>
 
           <Show when={!props.isHideInput}>
@@ -315,10 +315,10 @@ const Input = (props: IInput) => {
       <Show when={!!props.error && typeof props.error === 'string'}>
         <div
           class={customTwMerge(
-            'pointer-events-none relative h-auto text-xs leading-4_5 text-red-1',
+            'text-red-1 pointer-events-none relative h-auto text-xs leading-4_5',
             props?.errorClasses,
           )}>
-          <div class='flex items-center p-1_25 before:mr-2_5 before:inline-block before:h-1 before:w-1 before:rounded-10 before:bg-red-1 before:content-[""]'>
+          <div class='before:bg-red-1 flex items-center p-1_25 before:mr-2_5 before:inline-block before:h-1 before:w-1 before:rounded-10 before:content-[""]'>
             {props?.error}
           </div>
         </div>

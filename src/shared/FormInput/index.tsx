@@ -1,17 +1,22 @@
-import { IInput } from '@shared/components/Input';
+import { IInputProps } from '@shared/components/Input';
 import { translate } from '@shared/hooks/use-translation';
 import { isMobile } from '@shared/hooks/use-window-size';
+import { Slot } from '@shared/interfaces';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
 import { formatClasses } from '@utilities/helpers/format.helper';
-import { onMount } from 'solid-js';
+import { createSignal, onMount } from 'solid-js';
 
 interface IFormInputProps
   extends IBaseComponentProps,
-    Pick<IInput, 'legendClasses' | 'legendI18nKey' | 'placeholderI18nKey'> {
+    Pick<IInputProps, 'legendClasses' | 'legendI18nKey' | 'placeholderI18nKey'> {
   register: (el: HTMLInputElement, updateValue: ArrowFn<string, void>) => void;
+  pseudoSlot?: Slot;
+  inputClasses?: string;
 }
 
 const FormInput = (props: IFormInputProps) => {
+  const [hasValue, setHasValue] = createSignal<boolean>();
+
   let ref: HTMLInputElement | undefined;
 
   const updateValue = (value: string) => {
@@ -36,11 +41,20 @@ const FormInput = (props: IFormInputProps) => {
         })}>
         {translate(props.legendI18nKey)}
       </legend>
-      <div class="border-b-0_25 border-primary-2 py-2_5">
+      <div
+        class={formatClasses('flex flex-row items-center justify-start border-b-0_25 border-primary-2 py-2_5', {
+          'text-black-4': !hasValue(),
+        })}>
+        {props.pseudoSlot?.()}
         <input
-          class={formatClasses('h-5 w-full text-sm', {
-            'text-xs': isMobile(),
-          })}
+          onInput={(e) => setHasValue(!!e.target.value)}
+          class={formatClasses(
+            'h-5 grow text-sm',
+            {
+              'text-xs': isMobile(),
+            },
+            props.inputClasses,
+          )}
           ref={(el) => {
             ref = el;
             if (typeof props.ref === 'function') {

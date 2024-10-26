@@ -1,3 +1,4 @@
+import CountryCodeDropdown from '@modules/common/components/CountryCodeDropdown';
 import Button from '@shared/components/Button';
 import { ErrorHandleType, OverlayType } from '@shared/enums';
 import FormInput from '@shared/FormInput';
@@ -138,6 +139,7 @@ export const ContactUsForm = () => {
         <FormInput
           legendI18nKey="contactUs.form.mobile"
           placeholderI18nKey="contactUs.form.mobilePlaceholder"
+          pseudoSlot={() => <CountryCodeDropdown classes="pe-8" placeholderI18nKey="contactUs.form.areaCode" />}
           register={(element, updateValue) =>
             register({
               fieldName: 'mobileNumber',

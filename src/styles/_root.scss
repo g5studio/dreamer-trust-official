@@ -24,7 +24,7 @@ body {
 
 input {
   outline: none;
-  &:placeholder {
+  &::placeholder {
     color: var(--color-black-4);
   }
 }

@@ -3,6 +3,7 @@ import { For, JSX, Show } from 'solid-js';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { I18nKey } from '@shared/models/translation.model';
 import { clickOutside } from '@utilities/directives/click-outside-directive';
+import { formatClasses } from '@utilities/helpers/format.helper';
 import Popover, { IPopoverProps } from '../Popover';
 
 registerDirective(clickOutside);
@@ -48,6 +49,7 @@ export interface IDropdownContainerProps<T = IDropdownContainerOption>
   footerSlot?: (props: IDropdownContainerRenderProps) => JSX.Element;
   itemSlot: (props: IDropdownContainerItemRenderProps<T>) => JSX.Element;
   itemList: T[];
+  menuClasses?: string;
 }
 
 const DropdownContainer = <T = IDropdownContainerOption,>(props: IDropdownContainerProps<T>) => {
@@ -63,7 +65,7 @@ const DropdownContainer = <T = IDropdownContainerOption,>(props: IDropdownContai
         })
       }
       popoverSlot={({ openPopover, closePopover, togglePopover, isOpen }) => (
-        <>
+        <div class={formatClasses('', props.menuClasses)}>
           <Show when={props.headerSlot}>
             {props.headerSlot?.({
               openDropdown: openPopover,
@@ -91,7 +93,7 @@ const DropdownContainer = <T = IDropdownContainerOption,>(props: IDropdownContai
               isOpen,
             })}
           </Show>
-        </>
+        </div>
       )}
     />
   );
