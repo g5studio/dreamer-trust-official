@@ -94,7 +94,7 @@ const ContactUsPage = () => {
       <ContactUsForm />
       <ArticleContainer
         titleI18nKey={''}
-        subTitleI18nKey={'Our Locations'}
+        subTitleI18nKey="contactUs.location.title"
         subTitleClasses="text-[32px] font-medium"
         sectionClasses={formatClasses('flex w-full flex-col space-y-9', {
           'items-center': isPC(),
