@@ -86,11 +86,6 @@ const createCustomizeMutation = <ApiResponse, ApiRequest>({
     onSuccess: (data, variable) => {
       setState('isError', false);
       onSuccess(unwrap(data.data), variable);
-      // if (data.data.code === ServerErrorCode.None) {
-      //   onSuccess(unwrap(data.data.data), data.data.time, variable);
-      // } else if (isNeedCheckServerError()) {
-      //   handleServerError(data.data);
-      // }
     },
   }));
   return {

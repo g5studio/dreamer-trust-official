@@ -6,10 +6,16 @@ import { translate, translation } from '@shared/hooks/use-translation';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { ArrowDownLineIcon } from '@utilities/svg-components';
-import { createSignal } from 'solid-js';
+import { createSignal, onMount, Setter } from 'solid-js';
 
 interface ICountryCodeDropdownProps extends IBaseComponentProps, Pick<IInputProps, 'placeholderI18nKey'> {
   defaultOption?: CountryCodeConfig;
+  ref?: Setter<ICountryCodeDropdown | undefined>;
+  handleOnChange?: ArrowFn<CountryCodeConfig, void>;
+}
+
+export interface ICountryCodeDropdown {
+  reset: PureFun;
 }
 
 /**
@@ -18,6 +24,15 @@ interface ICountryCodeDropdownProps extends IBaseComponentProps, Pick<IInputProp
 const CountryCodeDropdown = (props: ICountryCodeDropdownProps) => {
   const [selectedOption, setSelectedOption] = createSignal<CountryCodeConfig | undefined>(props.defaultOption);
   const isEnglish = () => translation.language !== LocaleDash.zh_HK && translation.language !== LocaleDash.zh_CN;
+
+  onMount(() => {
+    props.ref?.({
+      reset: () => {
+        setSelectedOption(undefined);
+      },
+    });
+  });
+
   return (
     <div data-testid={props.testId} class={formatClasses('flex flex-row items-center', props.classes)}>
       <DropdownContainer<CountryCodeConfig>
@@ -47,6 +62,7 @@ const CountryCodeDropdown = (props: ICountryCodeDropdownProps) => {
             onClick={() => {
               closeDropdown();
               setSelectedOption(item);
+              props.handleOnChange?.(item);
             }}>
             <span class="text-nowrap">{isEnglish() ? item.englishName : item.localizedName}</span>
             <span class="text-black-4">+{item.dialingCode}</span>

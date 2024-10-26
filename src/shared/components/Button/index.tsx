@@ -1,5 +1,5 @@
 import { Show, type JSX, Accessor } from 'solid-js';
-import { customTwMerge } from '@utilities/helpers/format.helper';
+import { customTwMerge, formatClasses } from '@utilities/helpers/format.helper';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
 import Loading from '@shared/components/Loading';
 import { translate } from '@shared/hooks/use-translation';
@@ -110,7 +110,7 @@ const Button = (props: IButton) => {
       data-testid={props.testId}
       type={props.type}
       disabled={isLoading() || isDisabled()}
-      class={customTwMerge(variants[props.variant].className, props.classes)}
+      class={formatClasses(variants[props.variant].className, props.classes)}
       onClick={(e) => {
         props.onClick(e);
       }}>

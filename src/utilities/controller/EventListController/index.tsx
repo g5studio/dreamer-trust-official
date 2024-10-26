@@ -19,13 +19,15 @@ const EventListController = () => {
     })),
     errorHandleType: ErrorHandleType.None,
     onSuccess: (response: IApiEvent[]) => {
-      setEventList(
-        response.map((event) => {
-          const { metaData, initialize } = getEvent();
-          initialize(event);
-          return metaData;
-        }),
-      );
+      if (typeof response === 'object') {
+        setEventList(
+          response.map((event) => {
+            const { metaData, initialize } = getEvent();
+            initialize(event);
+            return metaData;
+          }),
+        );
+      }
     },
   });
   return <></>;

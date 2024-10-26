@@ -253,7 +253,7 @@ export const networkErrorHandler = (error: AxiosError) => {
   const status = response?.status;
   switch (status) {
     case HttpStatusCode.InternalServerError:
-      toggleErrorPopup({ errorMessage: 'error.common.10000' });
+      // toggleErrorPopup({ errorMessage: 'error.common.10000' });
       break;
     default:
       break;

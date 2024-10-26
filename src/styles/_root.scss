@@ -24,6 +24,7 @@ body {
 
 input {
   outline: none;
+  background-color: inherit;
   &::placeholder {
     color: var(--color-black-4);
   }

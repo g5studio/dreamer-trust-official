@@ -8,10 +8,11 @@ import { createSignal, onMount } from 'solid-js';
 
 interface IFormInputProps
   extends IBaseComponentProps,
-    Pick<IInputProps, 'legendClasses' | 'legendI18nKey' | 'placeholderI18nKey'> {
+    Pick<IInputProps, 'legendClasses' | 'legendI18nKey' | 'placeholderI18nKey' | 'inputmode' | 'type'> {
   register: (el: HTMLInputElement, updateValue: ArrowFn<string, void>) => void;
   pseudoSlot?: Slot;
   inputClasses?: string;
+  legendClasses?: string;
 }
 
 const FormInput = (props: IFormInputProps) => {
@@ -36,9 +37,13 @@ const FormInput = (props: IFormInputProps) => {
   return (
     <fieldset class="flex w-full flex-col space-y-1">
       <legend
-        class={formatClasses('text-lg', {
-          'text-xs': isMobile(),
-        })}>
+        class={formatClasses(
+          'text-lg',
+          {
+            'text-xs': isMobile(),
+          },
+          props.legendClasses,
+        )}>
         {translate(props.legendI18nKey)}
       </legend>
       <div
@@ -48,6 +53,7 @@ const FormInput = (props: IFormInputProps) => {
         {props.pseudoSlot?.()}
         <input
           onInput={(e) => setHasValue(!!e.target.value)}
+          onChange={(e) => setHasValue(!!e.target.value)}
           class={formatClasses(
             'h-5 grow text-sm',
             {
@@ -61,7 +67,8 @@ const FormInput = (props: IFormInputProps) => {
               props.ref(el);
             }
           }}
-          type="text"
+          type={props.type ?? 'text'}
+          inputmode={props.inputmode ?? 'text'}
           placeholder={translate(props?.placeholderI18nKey ?? '')}
         />
       </div>
