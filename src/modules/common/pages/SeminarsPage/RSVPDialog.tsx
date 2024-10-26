@@ -1,3 +1,4 @@
+import CountryCodeDropdown from '@modules/common/components/CountryCodeDropdown';
 import Button from '@shared/components/Button';
 import { DateFormatType, ErrorHandleType, OverlayType } from '@shared/enums';
 import FormInput from '@shared/FormInput';
@@ -42,19 +43,19 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
         component: ({ onClose }) => (
           <section class="shadow-modal flex w-[420px] flex-col items-center justify-center space-y-6 rounded-10 bg-black-5 px-16 py-8">
             <p
-              class={formatClasses('text-xs', {
+              class={formatClasses('text-sm', {
                 'text-lg': !isMobile(),
               })}>
               {translate('seminars.form.success')}
             </p>
             <Button
-              class={formatClasses('text-sm', {
+              classes={formatClasses('text-sm', {
                 'text-5_25': !isMobile(),
               })}
               variant="primary"
               testId="rsvp-success-btn"
               onClick={onClose}>
-              {translate('Close')}
+              {translate('common.close')}
             </Button>
           </section>
         ),
@@ -63,6 +64,7 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
 
   const {
     mutation: { mutate: postEvent },
+    isLoading,
   } = createCustomizeMutation<object, IApiEventInput>({
     mutation: mutationConfigs.postEvent(),
     errorHandleType: ErrorHandleType.All,
@@ -198,6 +200,17 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
           <FormInput
             legendI18nKey="seminars.form.mobile"
             placeholderI18nKey="seminars.form.mobilePlaceholder"
+            inputmode="numeric"
+            type="number"
+            pseudoSlot={() => (
+              <CountryCodeDropdown
+                handleOnChange={({ dialingCode }) => {
+                  setValue('mobileCountryCode', dialingCode);
+                }}
+                classes="pe-8"
+                placeholderI18nKey="seminars.form.areaCode"
+              />
+            )}
             register={(element) =>
               register({
                 fieldName: 'mobileNumber',
@@ -272,7 +285,8 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
               !fields().name.value ||
               !fields().mobileNumber.value ||
               !fields().mobileCountryCode ||
-              preferredContactMethods().length === 0
+              preferredContactMethods().length === 0 ||
+              isLoading()
             }
             testId="rsvp-submit-btn"
             class={formatClasses('text-5_25', { 'text-sm': isMobile() })}
