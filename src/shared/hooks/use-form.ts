@@ -6,6 +6,7 @@ type RegisterProps<FormField extends string> = {
   element: HTMLInputElement;
   validators?: Validate;
   checkpoint?: 'oninput' | 'onchange';
+  updateValue?: ArrowFn<string, void>;
 };
 
 export type Validate = PartialRecord<string, (input: string) => boolean>;
@@ -173,6 +174,13 @@ export const useForm = <FormField extends string>(
     const onChangeInput = () => {
       checkFieldValid(form.fields[props.fieldName]);
     };
+
+    createEffect(() => {
+      const formValue = form.fields[props.fieldName].value;
+      if (formValue !== props.element.value) {
+        props.updateValue?.(formValue);
+      }
+    });
 
     createEffect(() => {
       setForm('fields', (field) => {

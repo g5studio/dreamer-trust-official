@@ -7,15 +7,23 @@ import { onMount } from 'solid-js';
 
 interface IFormInputProps
   extends IBaseComponentProps,
-    Pick<IInput, 'register' | 'legendClasses' | 'legendI18nKey' | 'placeholderI18nKey'> {}
+    Pick<IInput, 'legendClasses' | 'legendI18nKey' | 'placeholderI18nKey'> {
+  register: (el: HTMLInputElement, updateValue: ArrowFn<string, void>) => void;
+}
 
 const FormInput = (props: IFormInputProps) => {
   let ref: HTMLInputElement | undefined;
 
+  const updateValue = (value: string) => {
+    if (ref) {
+      ref.value = value;
+    }
+  };
+
   onMount(() => {
     if (ref) {
       if (props.register) {
-        props.register(ref);
+        props.register(ref, updateValue);
       }
     }
   });

@@ -13,7 +13,7 @@ import { validateEmail } from '@utilities/helpers/validator.helper';
 import { For } from 'solid-js';
 
 export const ContactUsForm = () => {
-  const { register, submitForm, fields, setValue, checkFormValid } = useForm<keyof IApiContactUsInput>({
+  const initialFormValue = (): Record<keyof IApiContactUsInput, string> => ({
     name: '',
     company: '',
     email: '',
@@ -22,6 +22,9 @@ export const ContactUsForm = () => {
     needs: '[]',
     comments: '',
   });
+
+  const { register, submitForm, fields, setValue, checkFormValid } =
+    useForm<keyof IApiContactUsInput>(initialFormValue());
 
   const toggleSuccessModal = () =>
     toggleOverlay({
@@ -34,7 +37,7 @@ export const ContactUsForm = () => {
               class={formatClasses('text-xs', {
                 'text-lg': !isMobile(),
               })}>
-              {translate('seminars.form.success')}
+              {translate('contactUs.form.success')}
             </p>
             <Button
               class={formatClasses('text-sm', {
@@ -52,13 +55,19 @@ export const ContactUsForm = () => {
 
   const {
     mutation: { mutate: contactUs },
+    isLoading,
   } = createCustomizeMutation<object, IApiContactUsInput>({
     mutation: mutationConfigs.contactUs(),
     //! normally we need handle all error in service layer
     errorHandleType: ErrorHandleType.All,
     onError: () => {},
     onSettled: () => {},
-    onSuccess: toggleSuccessModal,
+    onSuccess: () => {
+      Object.keys(initialFormValue()).forEach((key: keyof IApiContactUsInput) => {
+        setValue(key, initialFormValue()[key]);
+      });
+      toggleSuccessModal();
+    },
   });
 
   const needs = () => JSON.parse(fields().needs.value) as Need[];
@@ -98,25 +107,27 @@ export const ContactUsForm = () => {
         })}
         date-testid="rsvp-form">
         <FormInput
-          legendI18nKey="Name"
-          placeholderI18nKey="Please enter your name"
-          register={(element) =>
+          legendI18nKey="contactUs.form.name"
+          placeholderI18nKey="contactUs.form.namePlaceholder"
+          register={(element, updateValue) =>
             register({
               fieldName: 'name',
               element,
               validators: {
                 required: (e) => !!e,
               },
+              updateValue,
             })
           }
         />
         <FormInput
-          legendI18nKey="Email"
-          placeholderI18nKey="Please enter your email address"
-          register={(element) =>
+          legendI18nKey="contactUs.form.email"
+          placeholderI18nKey="contactUs.form.emailPlaceholder"
+          register={(element, updateValue) =>
             register({
               fieldName: 'email',
               element,
+              updateValue,
               validators: {
                 required: (e) => !!e,
                 format: validateEmail,
@@ -125,12 +136,13 @@ export const ContactUsForm = () => {
           }
         />
         <FormInput
-          legendI18nKey="seminars.form.mobile"
-          placeholderI18nKey="seminars.form.mobilePlaceholder"
-          register={(element) =>
+          legendI18nKey="contactUs.form.mobile"
+          placeholderI18nKey="contactUs.form.mobilePlaceholder"
+          register={(element, updateValue) =>
             register({
               fieldName: 'mobileNumber',
               element,
+              updateValue,
               validators: {
                 required: (e) => !!e,
               },
@@ -138,20 +150,24 @@ export const ContactUsForm = () => {
           }
         />
         <FormInput
-          legendI18nKey="seminars.form.landline"
-          placeholderI18nKey="seminars.form.landlinePlaceholder"
-          register={(element) =>
+          legendI18nKey="contactUs.form.company"
+          placeholderI18nKey="contactUs.form.companyPlaceholder"
+          register={(element, updateValue) =>
             register({
               fieldName: 'company',
               element,
+              updateValue,
+              validators: {
+                required: (e) => !!e,
+              },
             })
           }
         />
         <fieldset class="flex w-full flex-col space-y-1">
           <legend class={formatClasses('text-lg', { 'text-xs': isMobile() })}>
-            {translate('seminars.form.method')}
+            {translate('contactUs.form.need')}
           </legend>
-          <div class="flex flex-row items-center space-x-5">
+          <div class={formatClasses('flex flex-row flex-wrap gap-4')}>
             <For each={Object.values(Need)}>
               {(method) => {
                 const isChecked = () => needs().includes(method);
@@ -173,7 +189,7 @@ export const ContactUsForm = () => {
                       class={formatClasses('text-md leading-6', {
                         'text-xs leading-4': isMobile(),
                       })}>
-                      {translate(`seminars.form.${method}`)}
+                      {translate(`contactUs.form.needs.${method}`)}
                     </span>
                   </div>
                 );
@@ -182,12 +198,13 @@ export const ContactUsForm = () => {
           </div>
         </fieldset>
         <FormInput
-          legendI18nKey="seminars.form.comments"
-          placeholderI18nKey="seminars.form.commentsPlaceholder"
-          register={(element) =>
+          legendI18nKey="contactUs.form.comments"
+          placeholderI18nKey="contactUs.form.commentsPlaceholder"
+          register={(element, updateValue) =>
             register({
               fieldName: 'comments',
               element,
+              updateValue,
             })
           }
         />
@@ -197,7 +214,8 @@ export const ContactUsForm = () => {
             !fields().name.value ||
             !fields().mobileNumber.value ||
             !fields().mobileCountryCode ||
-            needs().length === 0
+            needs().length === 0 ||
+            isLoading()
           }
           testId="rsvp-submit-btn"
           class={formatClasses('text-5_25', { 'text-sm': isMobile() })}
