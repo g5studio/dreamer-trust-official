@@ -13,8 +13,14 @@ import { IApiEvent } from '@utilities/api/http/schema/event-api.schema';
 import { queryConfigs } from '@utilities/api/solid-query';
 import { useEventListContext } from '@utilities/context/event-list-context';
 import { formatClasses, formatLanguage } from '@utilities/helpers/format.helper';
-import { createEffect, createMemo, For, Show } from 'solid-js';
-import SeminarEventCard from './SeminarEventCard';
+import { createEffect, createMemo, Show } from 'solid-js';
+import { domProperty } from '@utilities/directives/dom-property-directive';
+import { registerDirective } from '@utilities/helpers/directive.helper';
+import { pan } from '@utilities/directives/pan-directive';
+import EventList from './EventList';
+
+registerDirective(domProperty);
+registerDirective(pan);
 
 const SeminarsPage = () => {
   const [{ eventList, haveEvents }] = useEventListContext();
@@ -121,37 +127,7 @@ const SeminarsPage = () => {
           sectionClasses="w-full"
           titleI18nKey="seminars.event.title"
           subTitleI18nKey="seminars.event.subTitle">
-          <CarouselContainer
-            replayMode="forward"
-            classes="w-full"
-            containerClasses="w-full"
-            testId="seminars-event-carousel"
-            offset={isMobile() ? '238px' : '100%'}
-            maxLength={eventList().length}
-            direction={Direction.Horizontal}
-            sliderSlot={(currentIndex, changeIndex) => (
-              <ul class="mt-10 flex flex-row items-center justify-center space-x-6">
-                <For each={eventList()}>
-                  {(_, id) => (
-                    <li
-                      class={formatClasses('h-4 w-4 rounded-circle bg-black-4', {
-                        'bg-black-3': currentIndex() === id(),
-                      })}>
-                      <button onClick={() => changeIndex(id())} class="h-full w-full" type="button" />
-                    </li>
-                  )}
-                </For>
-              </ul>
-            )}>
-            {() => (
-              <div
-                class={formatClasses('flex w-full flex-row flex-nowrap', {
-                  'space-x-6': isMobile(),
-                })}>
-                <For each={eventList()}>{(data) => <SeminarEventCard eventData={data} />}</For>
-              </div>
-            )}
-          </CarouselContainer>
+          <EventList events={eventList} testId="seminars-event-carousel" />
         </ArticleContainer>
       </Show>
       {/* 過去的活動 */}
@@ -161,37 +137,7 @@ const SeminarsPage = () => {
           sectionClasses="w-full"
           titleI18nKey="seminars.pastEvent.title"
           subTitleI18nKey="seminars.pastEvent.subTitle">
-          <CarouselContainer
-            replayMode="forward"
-            classes="w-full"
-            containerClasses="w-full"
-            testId="seminars-past-event-carousel"
-            offset={isMobile() ? '238px' : '100%'}
-            maxLength={pastEvents().length}
-            direction={Direction.Horizontal}
-            sliderSlot={(currentIndex, changeIndex) => (
-              <ul class="mt-10 flex flex-row items-center justify-center space-x-6">
-                <For each={pastEvents()}>
-                  {(_, id) => (
-                    <li
-                      class={formatClasses('h-4 w-4 rounded-circle bg-black-4', {
-                        'bg-black-3': currentIndex() === id(),
-                      })}>
-                      <button onClick={() => changeIndex(id())} class="h-full w-full" type="button" />
-                    </li>
-                  )}
-                </For>
-              </ul>
-            )}>
-            {() => (
-              <div
-                class={formatClasses('flex w-full flex-row flex-nowrap', {
-                  'space-x-6': isMobile(),
-                })}>
-                <For each={pastEvents()}>{(data) => <SeminarEventCard hideRSVP eventData={data} />}</For>
-              </div>
-            )}
-          </CarouselContainer>
+          <EventList testId="seminars-past-event-carousel" events={pastEvents} />
         </ArticleContainer>
       </Show>
     </ContentLayout>
