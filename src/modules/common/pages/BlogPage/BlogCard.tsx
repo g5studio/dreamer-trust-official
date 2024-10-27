@@ -7,24 +7,28 @@ import { formatClasses } from '@utilities/helpers/format.helper';
 import { IBlog } from '@modules/common/models/blog.model';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { insertHtml } from '@utilities/directives/insert-html-directive';
+import { Show } from 'solid-js';
+import SkeletonContainer from '@shared/components/SkeletonContainer';
 
 registerDirective(insertHtml);
 
-interface ISeminarCardProps extends IBaseComponentProps {
-  blogData: IBlog['metaData'];
-}
+type MockSeminarCardProps = {
+  isLoading: true;
+};
 
-const BlogCard = (props: ISeminarCardProps) => {
+type RealSeminarCardProps = {
+  isLoading: false;
+  blogData: IBlog['metaData'];
+};
+
+type SeminarCardProps = (MockSeminarCardProps | RealSeminarCardProps) & IBaseComponentProps;
+
+const BlogCard = (props: SeminarCardProps) => {
   return (
     <section class={formatClasses('relative flex flex-col', props.classes)}>
-      <Picture
-        src={props.blogData.mainImageUrl}
-        pictureClasses="flex grow"
-        classes={formatClasses('w-[238px]', {
-          'w-[298px]': isTablet(),
-          'w-[354px]': isPC(),
-        })}
-        fallbackSlot={() => (
+      <Show
+        when={!props.isLoading}
+        fallback={
           <Skeleton
             type={SkeletonType.Rect}
             classes={formatClasses('h-[149px] w-[238px]', {
@@ -32,8 +36,29 @@ const BlogCard = (props: ISeminarCardProps) => {
               'h-[219px] w-[354px]': isPC(),
             })}
           />
+        }>
+        {!props.isLoading ? (
+          <Picture
+            src={props.blogData.mainImageUrl}
+            pictureClasses="flex grow"
+            classes={formatClasses('w-[238px]', {
+              'w-[298px]': isTablet(),
+              'w-[354px]': isPC(),
+            })}
+            fallbackSlot={() => (
+              <Skeleton
+                type={SkeletonType.Rect}
+                classes={formatClasses('h-[149px] w-[238px]', {
+                  'h-[219px] w-[298px]': isTablet(),
+                  'h-[219px] w-[354px]': isPC(),
+                })}
+              />
+            )}
+          />
+        ) : (
+          <></>
         )}
-      />
+      </Show>
       {/* 部落格內容 */}
       <article
         class={formatClasses('w-[238px] grow rounded-b-8 bg-black-5 px-5 py-4', {
@@ -42,28 +67,52 @@ const BlogCard = (props: ISeminarCardProps) => {
         })}>
         <div class={formatClasses('space-y-2_5')}>
           <div class="space-y-2 text-start text-black-2">
-            <h5 class={formatClasses('text-xxl', { 'text-md': isMobile() })}>{props.blogData.title}</h5>
+            <SkeletonContainer
+              showSkeleton={props.isLoading}
+              skeletonSlot={() => <Skeleton type={SkeletonType.Text} classes="min-h-4 w-full" />}>
+              <h5 class={formatClasses('text-xxl', { 'text-md': isMobile() })}>
+                {!props.isLoading ? props.blogData.title : ''}
+              </h5>
+            </SkeletonContainer>
             <div
               class={formatClasses('overflow-hidden text-lg', {
                 'max-h-[127px]  text-xs': isMobile(),
                 'max-h-[187px]': !isMobile(),
               })}>
-              <div
-                use:insertHtml={{
-                  testId: `blog-${props.blogData.id}-content`,
-                  html: props.blogData.content,
-                  position: 'beforebegin',
-                  classes: 'reset',
-                }}
-              />
+              <SkeletonContainer
+                showSkeleton={props.isLoading}
+                skeletonSlot={() => (
+                  <Skeleton
+                    type={SkeletonType.Rect}
+                    classes={formatClasses({
+                      'min-h-[127px] min-w-full': isMobile(),
+                      'min-h-[187px] min-w-full': !isMobile(),
+                    })}
+                  />
+                )}>
+                {!props.isLoading ? (
+                  <div
+                    use:insertHtml={{
+                      testId: `blog-${props.blogData.id}-content`,
+                      html: props.blogData.content,
+                      position: 'beforebegin',
+                      classes: 'reset',
+                    }}
+                  />
+                ) : (
+                  <></>
+                )}
+              </SkeletonContainer>
             </div>
           </div>
-          <p
-            class={formatClasses('flex flex-row items-center space-x-2 text-start text-lg text-black-2', {
-              'text-xs': isMobile(),
-            })}>
-            <a onClick={() => {}}>{translate('blog.blogs.learnMore')}</a>
-          </p>
+          <Show when={!props.isLoading}>
+            <p
+              class={formatClasses('flex flex-row items-center space-x-2 text-start text-lg text-black-2', {
+                'text-xs': isMobile(),
+              })}>
+              <a onClick={() => {}}>{translate('blog.blogs.learnMore')}</a>
+            </p>
+          </Show>
         </div>
         {props.children}
       </article>

@@ -4,14 +4,18 @@ import ContentLayout from '@shared/components/ContentLayout';
 import Picture from '@shared/components/Picture';
 import { Direction, ErrorHandleType, Language, LocaleDash } from '@shared/enums';
 import { translate, translation } from '@shared/hooks/use-translation';
-import { isLargePC, isMobile, isPC, isSmallMobile } from '@shared/hooks/use-window-size';
+import windowSize, { isLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
 import { formatClasses, formatLanguage } from '@utilities/helpers/format.helper';
 import { createCustomizeQuery } from '@shared/hooks/create-customize-query';
 import { createQuery } from '@tanstack/solid-query';
 import { queryConfigs } from '@utilities/api/solid-query';
 import { IApiBlog } from '@utilities/api/http/schema/blog.schema';
-import { createMemo } from 'solid-js';
+import { createMemo, createSignal, For, Show } from 'solid-js';
 import { getBlog } from '@modules/common/models/blog.model';
+import { IApiQuestion } from '@utilities/api/http/schema/faq.schema';
+import SkeletonContainer from '@shared/components/SkeletonContainer';
+import { ArrowDownLineIcon } from '@utilities/svg-components';
+import Skeleton, { SkeletonType } from '@shared/components/Skeleton';
 import BlogList from './BlogList';
 
 /**
@@ -21,10 +25,19 @@ import BlogList from './BlogList';
  * @external https://www.figma.com/design/Yu8CUgYbtdP8V5GyEvdYSR/01_Website-Exploration?node-id=836-7468&t=UultcfFnQgaafJob-4 (Mobile)
  */
 const BlogPage = () => {
+  const language = () => formatLanguage(translation.language) ?? Language.zh_CN;
+
   const queryBlogList = createCustomizeQuery<IApiBlog[]>({
     query: createQuery(() => ({
-      ...queryConfigs.fetchBlogList({ language: formatLanguage(translation.language) ?? Language.zh_CN }),
+      ...queryConfigs.fetchBlogList({ language: language() }),
     })),
+    errorHandleType: ErrorHandleType.None,
+    onSuccess: () => {},
+    onError: () => {},
+  });
+
+  const queryQuestionList = createCustomizeQuery<IApiQuestion[]>({
+    query: createQuery(() => ({ ...queryConfigs.fetchQuestionList({ language: language() }) })),
     errorHandleType: ErrorHandleType.None,
     onSuccess: () => {},
     onError: () => {},
@@ -38,6 +51,23 @@ const BlogPage = () => {
         return metaData;
       }) ?? [],
   );
+
+  const questions = createMemo(() =>
+    queryQuestionList.isLoading
+      ? Array.from({ length: 5 }).map(() => ({ question: '', answer: '' }))
+      : queryQuestionList?.data?.data ?? [],
+  );
+
+  /**
+   * 平板版型較小畫面時，top區域圖片需縮小避免爆版
+   * @description 扣除預設平板間隔100px後是否不足最小圖片寬度
+   */
+  const shouldDynamicAdjustTopImageWidth = () => isTablet() && windowSize.width - 80 - 527 < 417;
+  /**
+   * 平板版型較小畫面時，top區域圖片需縮小避免爆版
+   * @description 總寬度 - 容器padding - 文案區域 - 最小間隔
+   */
+  const dynamicTopImageWidth = () => (windowSize.width - 80 - 427 - 40 < 417 ? windowSize.width - 80 - 427 - 40 : 417);
 
   return (
     <ContentLayout
@@ -61,6 +91,7 @@ const BlogPage = () => {
             <section
               class={formatClasses('flex min-w-full', {
                 'flex-row items-center justify-center space-x-25': !isMobile(),
+                'justify-between space-x-0': !isMobile() && shouldDynamicAdjustTopImageWidth(),
                 'flex-col-reverse justify-start': isMobile(),
               })}>
               <Picture
@@ -69,15 +100,17 @@ const BlogPage = () => {
                   'px-7': isSmallMobile(),
                 })}
                 classes={formatClasses({
-                  'h-75 min-w-104_25': !isMobile(),
+                  'h-75 min-w-104_25': !isMobile() && !shouldDynamicAdjustTopImageWidth(),
                   'h-53_5 min-w-75': isMobile(),
                   'h-auto min-w-full': isSmallMobile(),
                 })}
                 src="blog/blog-top@3x.png"
+                width={shouldDynamicAdjustTopImageWidth() ? dynamicTopImageWidth() : undefined}
               />
               <article
                 class={formatClasses('w-full space-y-4', {
-                  'max-w-[522px]': !isMobile(),
+                  'max-w-[427px]': isTablet(),
+                  'max-w-[517px]': isPC(),
                   'p-6': isMobile(),
                 })}>
                 <div class="flex flex-col">
@@ -112,11 +145,64 @@ const BlogPage = () => {
           </div>
         )}
       </CarouselContainer>
-      <ArticleContainer subTitleI18nKey="blog.questions.subTitle" titleI18nKey="">
-        <div />
+      <ArticleContainer
+        subTitleI18nKey="blog.questions.subTitle"
+        titleI18nKey=""
+        sectionClasses="w-full flex justify-center items-center">
+        <ul
+          class={formatClasses({
+            'w-[808px] space-y-6': !isMobile(),
+            'w-full': windowSize.width <= 808 + 48,
+            'w-full space-y-4': isMobile(),
+          })}>
+          <For each={questions()}>
+            {({ question, answer }) => {
+              const [isExpand, setIsExpand] = createSignal<boolean>(false);
+              return (
+                <li
+                  class={formatClasses('flex w-full flex-col border-b-0_25  border-black-4 text-start', {
+                    'pb-4': isMobile(),
+                    'pb-6': !isMobile(),
+                  })}>
+                  <div class={formatClasses('flex w-full flex-row items-center space-x-4')}>
+                    <button
+                      disabled={queryQuestionList.isLoading}
+                      class={formatClasses('flex h-6 w-6 items-center justify-center', {
+                        '-rotate-90': !isExpand(),
+                      })}
+                      type="button"
+                      onClick={() => setIsExpand((pre) => !pre)}>
+                      <ArrowDownLineIcon />
+                    </button>
+                    <SkeletonContainer
+                      showSkeleton={queryQuestionList.isLoading}
+                      skeletonSlot={() => <Skeleton type={SkeletonType.Text} classes="min-h-5_5 w-full" />}>
+                      <p
+                        class={formatClasses('w-full', {
+                          'leading-5_5': isMobile(),
+                          'text-5_5': !isMobile(),
+                        })}>
+                        {question}
+                      </p>
+                    </SkeletonContainer>
+                  </div>
+                  <Show when={isExpand()}>
+                    <p
+                      class={formatClasses('w-full text-black-2', {
+                        'mt-4 text-sm leading-5_5': isMobile(),
+                        'mt-6 text-5_5 text-lg': !isMobile(),
+                      })}>
+                      {answer}
+                    </p>
+                  </Show>
+                </li>
+              );
+            }}
+          </For>
+        </ul>
       </ArticleContainer>
       <ArticleContainer subTitleI18nKey="blog.blogs.subTitle" titleI18nKey="blog.blogs.title" sectionClasses="w-full">
-        <BlogList blogs={blogs} />
+        <BlogList isLoading={queryBlogList.isLoading} blogs={blogs} />
       </ArticleContainer>
     </ContentLayout>
   );

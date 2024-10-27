@@ -48,7 +48,7 @@ const CountryCodeDropdown = (props: ICountryCodeDropdownProps) => {
             })}>
             <span>{selectedOption()?.dialingCode ?? translate(props.placeholderI18nKey)}</span>
             <ArrowDownLineIcon
-              fillClasses="fill-black-4"
+              fillClasses="stroke-black-4"
               classes={formatClasses('w-4', {
                 'rotate-180': isOpen(),
               })}
