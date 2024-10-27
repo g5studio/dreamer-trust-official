@@ -1,5 +1,5 @@
 import { translate } from '@shared/hooks/use-translation';
-import { isPC } from '@shared/hooks/use-window-size';
+import { isMobile, isPC, isTablet } from '@shared/hooks/use-window-size';
 import { Slot } from '@shared/interfaces';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
 import { I18nKey } from '@shared/models/translation.model';
@@ -22,15 +22,29 @@ const ArticleContainer = (props: IArticleContainerProps) => {
       class={formatClasses(
         'relative flex flex-col items-center text-center text-center',
         {
-          'px-12': isPC(),
-          'px-6': !isPC(),
+          'px-10': isTablet(),
+          'px-6': isMobile(),
         },
         props.classes,
       )}>
       {props.firstChildrenSlot?.()}
       <div class="space-y-4">
-        <h5 class="text-sm text-primary-3 xl:text-5_5">{translate(props.titleI18nKey)}</h5>
-        <h1 class={formatClasses('text-5_5 text-primary-3 xl:text-7', props.subTitleClasses)}>
+        <h5
+          class={formatClasses(' text-primary-3 ', {
+            'text-sm': isMobile(),
+            'text-5_5': !isMobile(),
+          })}>
+          {translate(props.titleI18nKey)}
+        </h5>
+        <h1
+          class={formatClasses(
+            'text-primary-3',
+            {
+              'text-5_5': isMobile(),
+              'text-7': !isMobile(),
+            },
+            props.subTitleClasses,
+          )}>
           {translate(props.subTitleI18nKey)}
         </h1>
       </div>

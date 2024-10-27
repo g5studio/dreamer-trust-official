@@ -3,7 +3,7 @@ import Skeleton, { SkeletonType } from '@shared/components/Skeleton';
 import { DateFormatType, OverlayType } from '@shared/enums';
 import { toggleOverlay } from '@shared/hooks/use-overlay';
 import { translate, translation } from '@shared/hooks/use-translation';
-import { isLargePC, isMobile } from '@shared/hooks/use-window-size';
+import { isLargePC, isMobile, isPC, isTablet } from '@shared/hooks/use-window-size';
 import { IBaseComponentProps } from '@shared/interfaces';
 import { IEvent } from '@shared/models/event.model';
 import { formatClasses } from '@utilities/helpers/format.helper';
@@ -54,10 +54,12 @@ const SeminarEventCard = (props: ISeminarCardProps) => {
           />
         )}
       />
+      {/* 研討會內容 */}
       <article
         class={formatClasses('bg-black-5', {
-          'pb- relative h-full min-w-[478px] rounded-e-8 px-6 pb-6 pt-25': !isMobile(),
-          'w-[478px]': isLargePC(),
+          'pb- relative h-full rounded-e-8 px-6 pb-6 pt-25': !isMobile(),
+          'w-[461px] min-w-[461px]': isTablet(),
+          'w-[478px] min-w-[478px]': isPC(),
           'w-[238px] grow rounded-b-8 px-5 py-4': isMobile(),
         })}>
         {/* 研討會日期 */}

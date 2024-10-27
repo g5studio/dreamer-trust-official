@@ -15,6 +15,7 @@ registerDirective(gestureScroll);
 
 type Props = {
   events: Accessor<IEvent['metaData'][]>;
+  hideRSVP?: boolean;
 } & IBaseComponentProps;
 
 /**
@@ -26,7 +27,9 @@ type Props = {
  */
 const EventList = (props: Props) => {
   const eventList = createMemo(() =>
-    children(() => <For each={props.events()}>{(data) => <SeminarEventCard hideRSVP eventData={data} />}</For>),
+    children(() => (
+      <For each={props.events()}>{(data) => <SeminarEventCard hideRSVP={props.hideRSVP} eventData={data} />}</For>
+    )),
   );
   return (
     <Show
