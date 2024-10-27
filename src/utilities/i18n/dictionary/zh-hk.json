@@ -193,6 +193,22 @@
       }
     }
   },
+  "blog": {
+    "top-1": {
+      "title": "讓我們了解",
+      "title-2": "信託。",
+      "content": "請造訪我們的常見問題以獲取答案，並訪問我們的部落格以獲取有關信託服務和財務規劃的專家見解。"
+    },
+    "questions": {
+      "title": "",
+      "subTitle": "常見問題"
+    },
+    "blogs": {
+      "title": "好文共享",
+      "subTitle": "專家見解與建議",
+      "learnMore": "了解更多"
+    }
+  },
   "common": {
     "date": "日期: {date}",
     "time": "時間: {time}",

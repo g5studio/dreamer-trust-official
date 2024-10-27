@@ -193,6 +193,22 @@
       }
     }
   },
+  "blog": {
+    "top-1": {
+      "title": "Let’s Talk About",
+      "title-2": "Trust.",
+      "content": "Visit our FAQ for answers and our blog for expert insights on trust services and financial planning."
+    },
+    "questions": {
+      "title": "",
+      "subTitle": "Frequently Asked Questions"
+    },
+    "blogs": {
+      "title": "Blog Posts",
+      "subTitle": "Expert Insights and Tips",
+      "learnMore": "Learn More"
+    }
+  },
   "common": {
     "date": "Date: {date}",
     "time": "Time: {time}",

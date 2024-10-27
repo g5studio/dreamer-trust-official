@@ -2,7 +2,6 @@ import CarouselContainer from '@shared/components/CarouselContainer';
 import { Direction } from '@shared/enums';
 import { isMobile } from '@shared/hooks/use-window-size';
 import { IEvent } from '@shared/models/event.model';
-import { domProperty } from '@utilities/directives/dom-property-directive';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { Show, For, Accessor, children, createMemo } from 'solid-js';
@@ -10,7 +9,6 @@ import { gestureScroll } from '@utilities/directives/gesture-scroll-directive';
 import { IBaseComponentProps } from '@shared/interfaces';
 import SeminarEventCard from './SeminarEventCard';
 
-registerDirective(domProperty);
 registerDirective(gestureScroll);
 
 type Props = {

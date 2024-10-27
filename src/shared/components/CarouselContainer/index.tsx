@@ -53,6 +53,7 @@ interface ICarouselContainerProps
   maxLength: number;
   direction: Extract<Direction, Direction.Horizontal | Direction.Vertical>;
   containerClasses?: string;
+  contentClasses?: string;
   defaultIndex?: number;
   /**
    * 幻燈片位移距離
@@ -316,7 +317,7 @@ const CarouselContainer = (props: Props) => {
           mergedProps.containerClasses,
         )}>
         <section
-          class="relative h-full w-full"
+          class={formatClasses('relative h-full w-full', mergedProps.contentClasses)}
           data-testid={`${mergedProps.testId}-contents`}
           style={
             mergedProps.animation === 'slide'

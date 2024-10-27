@@ -11,4 +11,5 @@ export const assetModules: Record<
   'contact-us': () => import('./contact-us'),
   seminar: () => import('./seminar'),
   common: () => import('./common'),
+  blog: () => import('./blog'),
 };
