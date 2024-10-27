@@ -3,12 +3,13 @@ import Skeleton, { SkeletonType } from '@shared/components/Skeleton';
 import { DateFormatType, OverlayType } from '@shared/enums';
 import { toggleOverlay } from '@shared/hooks/use-overlay';
 import { translate, translation } from '@shared/hooks/use-translation';
-import { isMobile } from '@shared/hooks/use-window-size';
+import { isLargePC, isMobile } from '@shared/hooks/use-window-size';
 import { IBaseComponentProps } from '@shared/interfaces';
 import { IEvent } from '@shared/models/event.model';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { transform } from '@utilities/helpers/time.helper';
 import { Show } from 'solid-js';
+import { useLayoutContext } from '@utilities/context/layout-context';
 import { IRSVPDialogProps, RSVPDialog } from './RSVPDialog';
 
 interface ISeminarCardProps extends IBaseComponentProps {
@@ -17,6 +18,7 @@ interface ISeminarCardProps extends IBaseComponentProps {
 }
 
 const SeminarEventCard = (props: ISeminarCardProps) => {
+  const [{ mainContentAreaSize }] = useLayoutContext();
   return (
     <section
       class={formatClasses(
@@ -26,10 +28,17 @@ const SeminarEventCard = (props: ISeminarCardProps) => {
           'relative flex-col': isMobile(),
         },
         props.classes,
-      )}>
+      )}
+      style={{
+        padding: isLargePC() ? `${(mainContentAreaSize().width - 96 - 1114) / 2}px` : undefined,
+      }}>
       <Picture
         src={isMobile() ? 'seminar/seminar-events-1-sm@3x.png' : 'seminar/seminar-events-1@3x.png'}
-        classes={formatClasses({ 'h-[441px]': !isMobile(), 'w-[238px]': isMobile() })}
+        pictureClasses="flex grow"
+        classes={formatClasses({
+          'h-[441px] grow object-cover object-left': !isMobile(),
+          'w-[238px]': isMobile(),
+        })}
         fallbackSlot={() => (
           <Skeleton
             type={SkeletonType.Rect}
@@ -42,7 +51,8 @@ const SeminarEventCard = (props: ISeminarCardProps) => {
       />
       <article
         class={formatClasses('bg-black-5', {
-          'pb- relative h-full w-[478px] rounded-e-8 px-6 pb-6 pt-25': !isMobile(),
+          'pb- relative h-full min-w-[478px] rounded-e-8 px-6 pb-6 pt-25': !isMobile(),
+          'w-[478px]': isLargePC(),
           'w-[238px] grow rounded-b-8 px-5 py-4': isMobile(),
         })}>
         {/* 研討會日期 */}

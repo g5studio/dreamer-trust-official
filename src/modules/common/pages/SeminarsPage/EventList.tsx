@@ -37,6 +37,7 @@ const EventList = (props: Props) => {
         </div>
       }>
       <CarouselContainer
+        playTime={Infinity}
         replayMode="forward"
         classes="w-full"
         containerClasses="w-full"
