@@ -31,8 +31,10 @@ const ContactUsPage = () => {
       <CarouselContainer
         classes={formatClasses({
           'flex h-[544px] w-full items-center justify-center px-10': !isMobile(),
-          'px-10 pb-13 pt-6': isMobile(),
+          'px-6 pt-5': isMobile(),
+          'px-5 pt-7_5': isSmallMobile(),
         })}
+        containerClasses={formatClasses({ 'w-full': !isMobile() && !isLargePC() })}
         replayMode="forward"
         testId="seminars-top-carousel"
         maxLength={1}
@@ -47,28 +49,29 @@ const ContactUsPage = () => {
               <Picture
                 pictureClasses={formatClasses({
                   'item-center mt-12 flex justify-center': isMobile(),
+                  'px-7': isSmallMobile(),
                 })}
                 classes={formatClasses({
-                  'h-75 min-w-104_25': isPC(),
-                  'h-53_5 min-w-75': !isPC(),
+                  'h-75 min-w-104_25': !isMobile(),
+                  'h-53_5 min-w-75': isMobile(),
                   'h-auto min-w-full': isSmallMobile(),
                 })}
                 src="contact-us/contact-us-top@3x.png"
               />
               <article
                 class={formatClasses('w-full space-y-4', {
-                  'w-145': isPC(),
+                  'p-6': isMobile(),
                 })}>
                 <div class="flex flex-col">
                   <h1
                     class={formatClasses('text-12 font-normal leading-14_5 ', {
-                      'text-16 leading-20': isPC(),
+                      'text-16 leading-20': !isMobile(),
                     })}>
                     {translate('contactUs.top-1.title')}
                   </h1>
                   <h1
                     class={formatClasses('text-12 font-normal leading-14_5 ', {
-                      'text-16 leading-20': isPC(),
+                      'text-16 leading-20': !isMobile(),
                     })}>
                     {translate('contactUs.top-1.title-2')}
                   </h1>
@@ -80,7 +83,7 @@ const ContactUsPage = () => {
                     })}>
                     <h1
                       class={formatClasses('font-["PT_Serif"] text-12 font-normal italic leading-14_5', {
-                        'text-16 leading-20': isPC(),
+                        'text-16 leading-20': !isMobile(),
                       })}>
                       {translate('contactUs.top-1.title-3')}
                     </h1>

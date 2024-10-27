@@ -24,6 +24,9 @@ window.addEventListener('resize', onWindowResize);
 
 export default windowSize;
 
+/**
+ * @description <= 393px
+ */
 export const isSmallMobile = () => windowSize.width <= 393;
 
 /**

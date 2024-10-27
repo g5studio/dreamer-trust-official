@@ -28,10 +28,12 @@ const ArticleContainer = (props: IArticleContainerProps) => {
         props.classes,
       )}>
       {props.firstChildrenSlot?.()}
-      <h5 class="text-sm text-primary-3 xl:text-5_5">{translate(props.titleI18nKey)}</h5>
-      <h1 class={formatClasses('text-5_5 text-primary-3 xl:text-7', props.subTitleClasses)}>
-        {translate(props.subTitleI18nKey)}
-      </h1>
+      <div class="space-y-4">
+        <h5 class="text-sm text-primary-3 xl:text-5_5">{translate(props.titleI18nKey)}</h5>
+        <h1 class={formatClasses('text-5_5 text-primary-3 xl:text-7', props.subTitleClasses)}>
+          {translate(props.subTitleI18nKey)}
+        </h1>
+      </div>
       <span class="mt-2 h-2 w-8 rounded-[99px] bg-primary-3" />
       <section
         class={formatClasses(
