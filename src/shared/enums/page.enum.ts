@@ -28,4 +28,5 @@ export enum Page {
   InsightsUpdates,
   Seminar,
   ContactUs,
+  BlogDetail,
 }

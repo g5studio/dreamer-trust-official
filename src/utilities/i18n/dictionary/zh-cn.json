@@ -213,7 +213,8 @@
     "date": "日期: {date}",
     "time": "时间: {time}",
     "submit": "提交",
-    "close": "关闭"
+    "close": "关闭",
+    "back": "返回"
   },
   "setting": {
     "lang": {

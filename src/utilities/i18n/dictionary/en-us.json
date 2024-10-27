@@ -213,7 +213,8 @@
     "date": "Date: {date}",
     "time": "Time: {time}",
     "submit": "Submit",
-    "close": "Close"
+    "close": "Close",
+    "back": "Back"
   },
   "setting": {
     "lang": {

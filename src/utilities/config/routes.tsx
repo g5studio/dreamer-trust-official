@@ -34,6 +34,13 @@ const routesConfig: Partial<Record<RouteModule, RouteConfig>> = {
         path: 'insights-and-updates',
         key: Page.InsightsUpdates,
         component: lazy(() => import('@modules/common/pages/BlogPage')),
+        children: [
+          {
+            path: 'blog/:id',
+            key: Page.BlogDetail,
+            component: lazy(() => import('@modules/common/pages/BlogDetailPage')),
+          },
+        ],
       },
       {
         i18n: 'menu.seminar',

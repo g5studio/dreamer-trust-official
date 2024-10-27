@@ -9,6 +9,8 @@ import { registerDirective } from '@utilities/helpers/directive.helper';
 import { insertHtml } from '@utilities/directives/insert-html-directive';
 import { Show } from 'solid-js';
 import SkeletonContainer from '@shared/components/SkeletonContainer';
+import { useNavigate } from '@shared/hooks/use-navigate';
+import { Page } from '@shared/enums';
 
 registerDirective(insertHtml);
 
@@ -24,6 +26,7 @@ type RealSeminarCardProps = {
 type SeminarCardProps = (MockSeminarCardProps | RealSeminarCardProps) & IBaseComponentProps;
 
 const BlogCard = (props: SeminarCardProps) => {
+  const navigate = useNavigate();
   return (
     <section class={formatClasses('relative flex flex-col', props.classes)}>
       <Show
@@ -76,7 +79,7 @@ const BlogCard = (props: SeminarCardProps) => {
             </SkeletonContainer>
             <div
               class={formatClasses('overflow-hidden text-lg', {
-                'max-h-[127px]  text-xs': isMobile(),
+                'max-h-[127px] text-xs': isMobile(),
                 'max-h-[187px]': !isMobile(),
               })}>
               <SkeletonContainer
@@ -110,7 +113,9 @@ const BlogCard = (props: SeminarCardProps) => {
               class={formatClasses('flex flex-row items-center space-x-2 text-start text-lg text-black-2', {
                 'text-xs': isMobile(),
               })}>
-              <a onClick={() => {}}>{translate('blog.blogs.learnMore')}</a>
+              <a onClick={() => navigate()[Page.BlogDetail]({ id: !props.isLoading ? props.blogData.id : '' })}>
+                {translate('blog.blogs.learnMore')}
+              </a>
             </p>
           </Show>
         </div>
