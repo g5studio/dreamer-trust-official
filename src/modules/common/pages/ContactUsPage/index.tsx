@@ -3,7 +3,7 @@ import ContentLayout from '@shared/components/ContentLayout';
 import Picture from '@shared/components/Picture';
 import { Direction, LocaleDash } from '@shared/enums';
 import { translate, translation } from '@shared/hooks/use-translation';
-import { isLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
+import windowSize, { isLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import ArticleContainer from '@shared/components/ArticleContainer';
 import AddressIcon from '@utilities/svg-components/common/AddressIcon';
@@ -21,6 +21,17 @@ const ContactUsPage = () => {
   const [hkOfficeWidth, setHKOfficeWidth] = createSignal<number>(0);
 
   const tabletOfficeWidth = () => (sgOfficeWidth() > hkOfficeWidth() ? sgOfficeWidth() : hkOfficeWidth());
+
+  /**
+   * 平板版型較小畫面時，top區域圖片需縮小避免爆版
+   * @description 扣除預設平板間隔100px後是否不足最小圖片寬度
+   */
+  const shouldDynamicAdjustTopImageWidth = () => isTablet() && windowSize.width - 80 - 492 < 417;
+  /**
+   * 平板版型較小畫面時，top區域圖片需縮小避免爆版
+   * @description 總寬度 - 容器padding - 文案區域 - 最小間隔
+   */
+  const dynamicTopImageWidth = () => (windowSize.width - 80 - 392 - 40 < 417 ? windowSize.width - 80 - 392 - 40 : 417);
 
   return (
     <ContentLayout
@@ -44,6 +55,7 @@ const ContactUsPage = () => {
             <section
               class={formatClasses('flex min-w-full', {
                 'flex-row items-center justify-center space-x-25': !isMobile(),
+                'justify-between space-x-0': !isMobile() && shouldDynamicAdjustTopImageWidth(),
                 'flex-col-reverse justify-start': isMobile(),
               })}>
               <Picture
@@ -52,14 +64,16 @@ const ContactUsPage = () => {
                   'px-7': isSmallMobile(),
                 })}
                 classes={formatClasses({
-                  'h-75 min-w-104_25': !isMobile(),
+                  'h-75 min-w-104_25': !isMobile() && !shouldDynamicAdjustTopImageWidth(),
                   'h-53_5 min-w-75': isMobile(),
                   'h-auto min-w-full': isSmallMobile(),
                 })}
                 src="contact-us/contact-us-top@3x.png"
+                width={shouldDynamicAdjustTopImageWidth() ? dynamicTopImageWidth() : undefined}
               />
               <article
-                class={formatClasses('w-full space-y-4', {
+                class={formatClasses('space-y-4', {
+                  'min-w-[392px]': !isMobile(),
                   'p-6': isMobile(),
                 })}>
                 <div class="flex flex-col">
