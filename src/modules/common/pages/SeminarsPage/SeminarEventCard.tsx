@@ -19,6 +19,10 @@ interface ISeminarCardProps extends IBaseComponentProps {
 
 const SeminarEventCard = (props: ISeminarCardProps) => {
   const [{ mainContentAreaSize }] = useLayoutContext();
+  /**
+   * @description 大pc版為配合輪播元件，需動態調整padding x維持總寬度在1114px
+   */
+  const dynamicPaddingX = () => (isLargePC() ? `${(mainContentAreaSize().width - 96 - 1114) / 2}px` : undefined);
   return (
     <section
       class={formatClasses(
@@ -30,7 +34,8 @@ const SeminarEventCard = (props: ISeminarCardProps) => {
         props.classes,
       )}
       style={{
-        padding: isLargePC() ? `${(mainContentAreaSize().width - 96 - 1114) / 2}px` : undefined,
+        'padding-left': dynamicPaddingX(),
+        'padding-right': dynamicPaddingX(),
       }}>
       <Picture
         src={isMobile() ? 'seminar/seminar-events-1-sm@3x.png' : 'seminar/seminar-events-1@3x.png'}
