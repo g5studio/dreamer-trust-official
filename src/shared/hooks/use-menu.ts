@@ -10,7 +10,8 @@ export type MenuItem = {
 };
 
 export const useMenu = () => {
-  const { isAboutPage, isSolutionsPage, isInsightsUpdatesPage, isSeminarPage, isContactUsPage } = usePageCheck();
+  const { isAboutPage, isSolutionsPage, isInsightsUpdatesPage, isSeminarPage, isContactUsPage, isBlogDetailPage } =
+    usePageCheck();
   const [{ haveEvents }] = useEventListContext();
   const navigate = useNavigate();
   const menuItems = (): MenuItem[] => [
@@ -27,7 +28,7 @@ export const useMenu = () => {
     {
       key: Page.InsightsUpdates,
       handleOnClick: navigate()[Page.InsightsUpdates],
-      isActive: isInsightsUpdatesPage,
+      isActive: () => isInsightsUpdatesPage() || isBlogDetailPage(),
     },
     ...(haveEvents()
       ? [

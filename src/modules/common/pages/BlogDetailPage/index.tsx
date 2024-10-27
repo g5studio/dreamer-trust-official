@@ -103,7 +103,7 @@ const BlogDetailPage = () => {
               testId: `blog-${metaData.id}-content`,
               html: metaData.content,
               position: 'beforebegin',
-              classes: 'reset',
+              classes: 'reset blog',
             }}
           />
         </div>

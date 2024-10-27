@@ -21,6 +21,8 @@ interface IPageCheckHook {
   isSeminarPage: CheckFn;
   /** 是否為聯繫我們頁 */
   isContactUsPage: CheckFn;
+  /** 是否為部落格文章 */
+  isBlogDetailPage: CheckFn;
 }
 
 const usePlatformPageCheck = ({
@@ -38,6 +40,7 @@ const usePlatformPageCheck = ({
     isInsightsUpdatesPage: () => currentPage() === Page.InsightsUpdates,
     isSeminarPage: () => currentPage() === Page.Seminar,
     isContactUsPage: () => currentPage() === Page.ContactUs,
+    isBlogDetailPage: () => currentPage() === Page.BlogDetail,
   };
 };
 
@@ -68,6 +71,7 @@ export const usePageCheck = (args?: PageCheckHookArgs): IPageCheckHook => {
     isInsightsUpdatesPage,
     isSeminarPage,
     isContactUsPage,
+    isBlogDetailPage,
   } = usePlatformPageCheck({ currentRoute, currentPage });
 
   return {
@@ -80,5 +84,6 @@ export const usePageCheck = (args?: PageCheckHookArgs): IPageCheckHook => {
     isInsightsUpdatesPage,
     isSeminarPage,
     isContactUsPage,
+    isBlogDetailPage,
   };
 };
