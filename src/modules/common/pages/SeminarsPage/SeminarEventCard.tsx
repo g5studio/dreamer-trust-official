@@ -3,7 +3,7 @@ import Skeleton, { SkeletonType } from '@shared/components/Skeleton';
 import { DateFormatType, OverlayType } from '@shared/enums';
 import { toggleOverlay } from '@shared/hooks/use-overlay';
 import { translate, translation } from '@shared/hooks/use-translation';
-import { isLargePC, isMobile, isPC, isTablet } from '@shared/hooks/use-window-size';
+import { isMobile, isPC, isTablet } from '@shared/hooks/use-window-size';
 import { IBaseComponentProps } from '@shared/interfaces';
 import { IEvent } from '@shared/models/event.model';
 import { formatClasses } from '@utilities/helpers/format.helper';
@@ -20,9 +20,9 @@ interface ISeminarCardProps extends IBaseComponentProps {
 const SeminarEventCard = (props: ISeminarCardProps) => {
   const [{ mainContentAreaSize }] = useLayoutContext();
   /**
-   * @description 大pc版為配合輪播元件，需動態調整padding x維持總寬度在1114px
+   * @description pc版為配合輪播元件，需動態調整padding x維持總寬度在1114px
    */
-  const dynamicPaddingX = () => (isLargePC() ? `${(mainContentAreaSize().width - 96 - 1114) / 2}px` : undefined);
+  const dynamicPaddingX = () => (isPC() ? (mainContentAreaSize().width - 96 - 1114) / 2 : 0);
   return (
     <section
       class={formatClasses(
@@ -34,8 +34,8 @@ const SeminarEventCard = (props: ISeminarCardProps) => {
         props.classes,
       )}
       style={{
-        'padding-left': dynamicPaddingX(),
-        'padding-right': dynamicPaddingX(),
+        'padding-left': dynamicPaddingX() ? `${dynamicPaddingX() > 40 ? dynamicPaddingX() : 40}px` : undefined,
+        'padding-right': dynamicPaddingX() ? `${dynamicPaddingX() > 40 ? dynamicPaddingX() : 40}px` : undefined,
       }}>
       <Picture
         src={isMobile() ? 'seminar/seminar-events-1-sm@3x.png' : 'seminar/seminar-events-1@3x.png'}
