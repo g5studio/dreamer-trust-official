@@ -44,16 +44,19 @@ const BlogCard = (props: ISeminarCardProps) => {
           <div class="space-y-2 text-start text-black-2">
             <h5 class={formatClasses('text-xxl', { 'text-md': isMobile() })}>{props.blogData.title}</h5>
             <div
-              use:insertHtml={{
-                testId: `blog-${props.blogData.id}-content`,
-                html: props.blogData.content,
-                position: 'beforebegin',
-                classes: formatClasses('overflow-hidden text-lg', {
-                  'max-h-[127px]  text-xs': isMobile(),
-                  'max-h-[187px]': !isMobile(),
-                }),
-              }}
-            />
+              class={formatClasses('overflow-hidden text-lg', {
+                'max-h-[127px]  text-xs': isMobile(),
+                'max-h-[187px]': !isMobile(),
+              })}>
+              <div
+                use:insertHtml={{
+                  testId: `blog-${props.blogData.id}-content`,
+                  html: props.blogData.content,
+                  position: 'beforebegin',
+                  classes: 'reset',
+                }}
+              />
+            </div>
           </div>
           <p
             class={formatClasses('flex flex-row items-center space-x-2 text-start text-lg text-black-2', {
