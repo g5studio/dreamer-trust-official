@@ -243,6 +243,7 @@ export const ContactUsForm = () => {
             !validateEmail(fields().email.value) ||
             !fields().name.value ||
             !fields().mobileNumber.value ||
+            !fields().company.value ||
             !fields().mobileCountryCode.value ||
             needs().length === 0 ||
             isLoading()

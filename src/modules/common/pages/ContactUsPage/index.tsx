@@ -167,14 +167,14 @@ const ContactUsPage = () => {
                     'mt-4 space-y-2 text-xs': isMobile(),
                   })}>
                   <div class="flex flex-row space-x-4">
-                    <AddressIcon classes="h-5 min-w-5" />
+                    <AddressIcon classes="mt-0_75 h-5 min-w-5" />
                     <span>{translate(`contactUs.location.${code}.address`)}</span>
                   </div>
-                  <div class="flex flex-row space-x-4">
+                  <div class="flex flex-row items-center space-x-4">
                     <PhoneIcon />
                     <span>{translate(`contactUs.location.${code}.phone`)}</span>
                   </div>
-                  <div class="flex flex-row space-x-4">
+                  <div class="flex flex-row items-center space-x-4">
                     <EmailIcon />
                     <span>{translate(`contactUs.location.${code}.email`)}</span>
                   </div>
