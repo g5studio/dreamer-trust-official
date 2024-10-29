@@ -5,7 +5,7 @@ import { DateFormatType, ErrorHandleType, Language } from '@shared/enums';
 import { createCustomizeQuery } from '@shared/hooks/create-customize-query';
 import { back } from '@shared/hooks/use-navigator';
 import { translate, translation } from '@shared/hooks/use-translation';
-import { isLargePC, isMobile } from '@shared/hooks/use-window-size';
+import { isMobile, isPC } from '@shared/hooks/use-window-size';
 import { useParams } from '@solidjs/router';
 import { createQuery } from '@tanstack/solid-query';
 import { IApiBlog } from '@utilities/api/http/schema/blog.schema';
@@ -54,8 +54,9 @@ const BlogDetailPage = () => {
   return (
     <ContentLayout
       testId="BlogDetailPage"
-      classes={formatClasses('space-y-20 px-0 pb-20 ', {
-        'space-y-16 px-10 pb-16': !isLargePC(),
+      classes={formatClasses('px-10', {
+        'space-y-20 pb-20': isPC(),
+        'space-y-16 pb-16': !isPC(),
         'px-6': isMobile(),
       })}>
       <Show when={metaData.id}>

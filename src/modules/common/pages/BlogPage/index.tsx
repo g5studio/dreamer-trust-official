@@ -73,7 +73,7 @@ const BlogPage = () => {
     <ContentLayout
       testId="BlogPage"
       classes={formatClasses('space-y-30 pb-30', {
-        'space-y-16 pb-16': !isLargePC(),
+        'space-y-16 pb-16': !isPC(),
       })}>
       <CarouselContainer
         classes={formatClasses({

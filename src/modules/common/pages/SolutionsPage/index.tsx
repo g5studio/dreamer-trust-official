@@ -6,10 +6,13 @@ import Skeleton, { SkeletonType } from '@shared/components/Skeleton';
 import { Direction, LocaleDash } from '@shared/enums';
 import { translate, translation } from '@shared/hooks/use-translation';
 import windowSize, { isLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
+import { useLayoutContext } from '@utilities/context/layout-context';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { For, Show } from 'solid-js';
 
 const SolutionsPage = () => {
+  const [{ mainScrollRef }] = useLayoutContext();
+
   /**
    * 平板版型較小畫面時，top區域圖片需縮小避免爆版
    * @description 扣除預設平板間隔100px後是否不足最小圖片寬度
@@ -41,11 +44,13 @@ const SolutionsPage = () => {
     },
   ];
 
+  const [{ mainContentAreaSize }] = useLayoutContext();
+
   return (
     <ContentLayout
       testId="SolutionsPage"
-      classes={formatClasses('space-y-30 pb-30', {
-        'space-y-16 pb-16': !isLargePC(),
+      classes={formatClasses('relative space-y-30 pb-30', {
+        'space-y-16 pb-16': !isPC(),
       })}>
       <CarouselContainer
         classes={formatClasses({
@@ -252,6 +257,19 @@ const SolutionsPage = () => {
           </article>
         )}
       </For>
+      <button
+        type="button"
+        onClick={() => mainScrollRef()?.scrollTo({ top: 0, behavior: 'smooth' })}
+        class="absolute flex h-[65px] w-[65px] items-center justify-center rounded-circle bg-black-6"
+        style={{
+          right: `${isPC() && mainContentAreaSize().left > 40 ? 0 : 40}px`,
+          bottom: isPC() ? '45px' : '-30px',
+          'box-shadow': '0px 0px 5px 2px #00000040',
+        }}>
+        <svg width="34" height="19" viewBox="0 0 34 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 17L17 2L2 17" stroke="#222222" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
     </ContentLayout>
   );
 };
