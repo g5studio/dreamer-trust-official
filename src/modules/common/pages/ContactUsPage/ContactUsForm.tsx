@@ -35,7 +35,7 @@ export const ContactUsForm = () => {
       type: OverlayType.Custom,
       config: {
         component: ({ onClose }) => (
-          <section class="shadow-modal flex w-[420px] flex-col items-center justify-center space-y-6 rounded-10 bg-black-5 px-16 py-8">
+          <section class="flex w-[420px] flex-col items-center justify-center space-y-6 rounded-10 bg-black-5 px-16 py-8 shadow-modal">
             <p
               class={formatClasses('text-sm', {
                 'text-lg': !isMobile(),
@@ -185,9 +185,6 @@ export const ContactUsForm = () => {
               fieldName: 'company',
               element,
               updateValue,
-              validators: {
-                required: (e) => !!e,
-              },
             })
           }
         />
@@ -243,7 +240,6 @@ export const ContactUsForm = () => {
             !validateEmail(fields().email.value) ||
             !fields().name.value ||
             !fields().mobileNumber.value ||
-            !fields().company.value ||
             !fields().mobileCountryCode.value ||
             needs().length === 0 ||
             isLoading()
