@@ -152,6 +152,7 @@ export const ContactUsForm = () => {
           inputClasses={formatClasses({ 'text-md': isMobile() })}
           legendI18nKey="contactUs.form.mobile"
           placeholderI18nKey="contactUs.form.mobilePlaceholder"
+          banCodes={['e']}
           inputmode="numeric"
           type="number"
           pseudoSlot={() => (

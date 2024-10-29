@@ -13,6 +13,7 @@ interface IFormInputProps
   pseudoSlot?: Slot;
   inputClasses?: string;
   legendClasses?: string;
+  banCodes?: KeyboardEvent['key'][];
 }
 
 const FormInput = (props: IFormInputProps) => {
@@ -52,7 +53,14 @@ const FormInput = (props: IFormInputProps) => {
         })}>
         {props.pseudoSlot?.()}
         <input
-          onInput={(e) => setHasValue(!!e.target.value)}
+          onKeyDown={(e) => {
+            if ((props.banCodes ?? []).includes(e.key)) {
+              e.preventDefault();
+            }
+          }}
+          onInput={(e) => {
+            setHasValue(!!e.target.value);
+          }}
           onChange={(e) => setHasValue(!!e.target.value)}
           class={formatClasses(
             'h-5 grow text-sm',
