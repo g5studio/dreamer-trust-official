@@ -44,7 +44,7 @@ const BlogCard = (props: SeminarCardProps) => {
           <Picture
             src={props.blogData.mainImageUrl}
             pictureClasses="flex grow"
-            classes={formatClasses('w-[238px]', {
+            classes={formatClasses('w-[238px] rounded-t-8', {
               'w-[298px]': isTablet(),
               'w-[354px]': isPC(),
             })}

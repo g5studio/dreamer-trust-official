@@ -41,7 +41,7 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
       type: OverlayType.Custom,
       config: {
         component: ({ onClose }) => (
-          <section class="shadow-modal flex w-[420px] flex-col items-center justify-center space-y-6 rounded-10 bg-black-5 px-16 py-8">
+          <section class="flex w-[420px] flex-col items-center justify-center space-y-6 rounded-10 bg-black-5 px-16 py-8 shadow-modal">
             <p
               class={formatClasses('text-sm', {
                 'text-lg': !isMobile(),
@@ -201,6 +201,7 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
             legendI18nKey="seminars.form.mobile"
             placeholderI18nKey="seminars.form.mobilePlaceholder"
             inputmode="numeric"
+            banCodes={['e']}
             type="number"
             pseudoSlot={() => (
               <CountryCodeDropdown
