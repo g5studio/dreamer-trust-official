@@ -12,4 +12,5 @@ export const assetModules: Record<
   seminar: () => import('./seminar'),
   common: () => import('./common'),
   blog: () => import('./blog'),
+  solutions: () => import('./solutions'),
 };

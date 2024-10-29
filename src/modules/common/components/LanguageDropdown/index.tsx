@@ -17,7 +17,10 @@ const LanguageDropdown = (props: ILanguageDropdownProps) => {
     <DropdownContainer<LocaleDash>
       testId={props.testId}
       triggerSlot={({ toggleDropdown }) => (
-        <button class="flex h-full flex-row items-center space-x-2 text-black-3" type="button" onClick={toggleDropdown}>
+        <button
+          class="flex h-full flex-row items-center space-x-2 text-nowrap text-black-3"
+          type="button"
+          onClick={toggleDropdown}>
           <LanguageSettingIcon fillClasses="fill-black-3" />
           <span>{translate(`setting.lang.${formatLocale(translation.language)}`)}</span>
           <ArrowDownIcon fillClasses="fill-black-3" />

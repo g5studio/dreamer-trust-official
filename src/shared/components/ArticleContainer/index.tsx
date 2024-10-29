@@ -4,6 +4,7 @@ import { Slot } from '@shared/interfaces';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
 import { I18nKey } from '@shared/models/translation.model';
 import { formatClasses } from '@utilities/helpers/format.helper';
+import { Show } from 'solid-js';
 
 interface IArticleContainerProps extends IBaseComponentProps {
   titleI18nKey: I18nKey;
@@ -29,24 +30,28 @@ const ArticleContainer = (props: IArticleContainerProps) => {
       )}>
       {props.firstChildrenSlot?.()}
       <div class="space-y-4">
-        <h5
-          class={formatClasses(' text-primary-3 ', {
-            'text-sm': isMobile(),
-            'text-5_5': !isMobile(),
-          })}>
-          {translate(props.titleI18nKey)}
-        </h5>
-        <h1
-          class={formatClasses(
-            'text-primary-3',
-            {
-              'text-5_5': isMobile(),
-              'text-7': !isMobile(),
-            },
-            props.subTitleClasses,
-          )}>
-          {translate(props.subTitleI18nKey)}
-        </h1>
+        <Show when={props.titleI18nKey}>
+          <h5
+            class={formatClasses(' text-primary-3 ', {
+              'text-sm': isMobile(),
+              'text-5_5': !isMobile(),
+            })}>
+            {translate(props.titleI18nKey)}
+          </h5>
+        </Show>
+        <Show when={props.subTitleI18nKey}>
+          <h1
+            class={formatClasses(
+              'text-primary-3',
+              {
+                'text-5_5': isMobile(),
+                'text-7': !isMobile(),
+              },
+              props.subTitleClasses,
+            )}>
+            {translate(props.subTitleI18nKey)}
+          </h1>
+        </Show>
       </div>
       <span class="mt-2 h-2 w-8 rounded-[99px] bg-primary-3" />
       <section

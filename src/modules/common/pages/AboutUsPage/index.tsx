@@ -44,7 +44,7 @@ const AboutUsPage = () => {
                   'item-center mt-12 flex justify-center': isMobile(),
                 })}
                 classes={formatClasses({
-                  'min-w-104_25 h-75': isPC(),
+                  'h-75 min-w-104_25': isPC(),
                   'h-53_5 min-w-75': !isPC(),
                   'h-auto min-w-full': isSmallMobile(),
                 })}
@@ -56,7 +56,7 @@ const AboutUsPage = () => {
                 })}>
                 <div class="flex flex-col">
                   <h1
-                    class={formatClasses('text-12 leading-14_5 font-normal', {
+                    class={formatClasses('text-12 font-normal leading-14_5', {
                       'text-16 leading-20': isLargePC(),
                     })}>
                     {translate('aboutUs.top-1.title')}
@@ -68,15 +68,21 @@ const AboutUsPage = () => {
                         translation.language !== LocaleDash.zh_HK && translation.language !== LocaleDash.zh_CN,
                     })}>
                     <h1
-                      class={formatClasses('text-12 leading-14_5 font-["PT_Serif"] font-normal italic', {
-                        'text-16 leading-20': isLargePC(),
-                      })}>
+                      class={formatClasses(
+                        'font-["PT_Serif"] text-12 font-normal italic leading-14_5 tracking-[3.2px]',
+                        {
+                          'text-16 leading-20': isLargePC(),
+                        },
+                      )}>
                       {translate('aboutUs.top-1.title-2')}
                     </h1>
                     <h1
-                      class={formatClasses('text-12 leading-14_5 font-["PT_Serif"] font-normal italic', {
-                        'text-16 leading-20': isLargePC(),
-                      })}>
+                      class={formatClasses(
+                        'font-["PT_Serif"] text-12 font-normal italic leading-14_5 tracking-[3.2px]',
+                        {
+                          'text-16 leading-20': isLargePC(),
+                        },
+                      )}>
                       {translate('aboutUs.top-1.title-3')}
                     </h1>
                   </div>
@@ -130,9 +136,12 @@ const AboutUsPage = () => {
               'h-full px-26 py-34': isPC(),
             })}>
             <h2
-              class={formatClasses('flex flex-row items-center space-x-3 font-["PT_Serif"] text-8 font-normal italic', {
-                'text-xxl': !isPC(),
-              })}>
+              class={formatClasses(
+                'flex flex-row items-center space-x-3 font-["PT_Serif"] text-8 font-normal italic tracking-[3.2px]',
+                {
+                  'text-xxl': !isPC(),
+                },
+              )}>
               <span class="h-0_5 w-10 rounded-16 bg-black-6" />
               <span>{translate('aboutUs.introduce.title')}</span>
             </h2>

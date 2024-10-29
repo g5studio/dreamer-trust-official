@@ -209,6 +209,90 @@
       "learnMore": "Learn More"
     }
   },
+  "solutions": {
+    "top-1": {
+      "title": "We Provide.",
+      "title-2": "Solutions",
+      "content": "We provide comprehensive trust services, tailored to your unique needs and asset protection."
+    },
+    "description": {
+      "title": "",
+      "subTitle": "Focused on solving your challenges, Rather than selling services.",
+      "content": "At Dreamer Group, we focus on solving your unique challenges, not just selling products. We offer customizable trust solutions designed to meet your specific needs, ensuring that your goals and legacy are always our priority."
+    },
+    "our-solutions": {
+      "title": "Our Solutions",
+      "subTitle": "Solutions Crafted to Fit Your Goals"
+    },
+    "trust-solution": {
+      "title": "Trust Solutions",
+      "subTitle": "Whether for personal, family, or business needs, our trust services are customized to fit your unique goals.",
+      "article-1": {
+        "title": "Personal / Family Trust",
+        "content": "A family trust, also known as a family trust fund or discretionary trust, is a legal arrangement designed to hold and manage assets for the benefit of family members."
+      },
+      "article-2": {
+        "title": "Investment Trust",
+        "content": "An investment trust is a type of trust in which the settlor invests in a diversified portfolio of assets."
+      },
+      "article-3": {
+        "title": "Property Trust",
+        "content": "A Real Estate Property Trust is a specialized type of trust designed to hold, manage, and sometimes develop real estate properties for the benefit of its beneficiaries."
+      },
+      "article-4": {
+        "title": "Insurance Trust",
+        "content": "An insurance trust is a specialized trust created to hold and manage life insurance policies for the benefit of designated beneficiaries."
+      },
+      "article-5": {
+        "title": "Business Value Protection Trust (BVPT)",
+        "content": "A Business Value Protection Trust is a specialized trust designed to safeguard the value of a closely-held business and ensure its continuity in the event of certain triggering events."
+      },
+      "article-6": {
+        "title": "Charitable Trust",
+        "content": "A charitable trust is a type of trust established for the purpose of benefiting charitable organizations or purposes. "
+      },
+      "article-7": {
+        "title": "Foreign Grantor Trust",
+        "content": "A foreign grantor trust is a type of trust established under the laws of a foreign country by a non-U.S. person, also known as a non-resident alien individual or foreign grantor. "
+      }
+    },
+    "estate-planning": {
+      "title": "Estate Planning",
+      "subTitle": "Plan for the future with customized strategies that protect your assets and your loved ones.",
+      "article-1": {
+        "title": "Will Writing",
+        "content": "A will, also known as a last will and testament, is a legal document that enables an individual, known as the testator or testatrix, to outline how their assets and properties should be distributed upon their death."
+      },
+      "article-2": {
+        "title": "Probate Administration ",
+        "content": "Probate administration is the legal process through which a deceased person's assets are distributed and their affairs are settled under the supervision of the probate court."
+      }
+    },
+    "asset-management": {
+      "title": "Asset Management.",
+      "subTitle": "Ensure your financial legacy endures with expert investment and wealth preservation solutions.",
+      "article-1": {
+        "title": "Family Office",
+        "content": "A Family Office for high-net-worth individuals (HNWIs) is a specialized wealth management firm focused on overseeing the financial affairs, investments, and legacy planning of affluent families."
+      },
+      "article-2": {
+        "title": "Private Trust Company (PTC)",
+        "content": "A Private Trust Company setup involves the creation of a specialized entity, established by the founder, to serve as the trustee of a family trust and manage ownership of the family’s assets and businesses."
+      },
+      "article-3": {
+        "title": "Escrow Agent ",
+        "content": "An Escrow Agent Service refers to a tripartite legal arrangement in which funds, assets, or documents are agreed by the contracting parties to be deposited for safekeeping under the trust or custody arrangement of a neutral 3rd party, the escrow agent. "
+      }
+    },
+    "corporate-service": {
+      "title": "Corporate Service",
+      "subTitle": "Track and manage company’s ownership structure, including shares, options, and other equity interests.",
+      "article-1": {
+        "title": "Cap Table",
+        "content": "A Cap Table, or Capitalization Table, is a comprehensive document that tracks a company's financing history and equity distribution. It provides a visual representation of who has invested in the company, the amounts raised in each financing round, and the percentage ownership of each investor."
+      }
+    }
+  },
   "common": {
     "date": "Date: {date}",
     "time": "Time: {time}",

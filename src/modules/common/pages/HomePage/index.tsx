@@ -69,20 +69,20 @@ const HomePage = () => {
                 <div class="flex flex-col">
                   <div class="flex flex-col md:flex-row">
                     <h1
-                      class={formatClasses('text-16 leading-20 font-normal', {
+                      class={formatClasses('text-16 font-normal leading-20', {
                         'text-12 leading-14_5': !isPC(),
                       })}>
                       {translate('home.top-1.title')}
                     </h1>
                     <h1
-                      class={formatClasses('text-16 leading-20 font-normal', {
+                      class={formatClasses('text-16 font-normal leading-20', {
                         'text-12 leading-14_5': !isPC(),
                       })}>
                       {translate('home.top-1.title-2')}
                     </h1>
                   </div>
                   <h1
-                    class={formatClasses('text-16 leading-20 font-["PT_Serif"] font-normal italic', {
+                    class={formatClasses('font-["PT_Serif"] text-16 font-normal italic leading-20 tracking-[3.2px]', {
                       'text-12 leading-14_5': !isPC(),
                     })}>
                     {translate('home.top-1.subTitle')}
@@ -110,7 +110,7 @@ const HomePage = () => {
                 <Picture
                   classes={formatClasses({
                     'h-136 min-w-190': isPC(),
-                    'min-h-63 mt-6 w-full ': !isPC(),
+                    'mt-6 min-h-63 w-full ': !isPC(),
                   })}
                   src="home/home-top-2@3x.png"
                 />
@@ -120,13 +120,13 @@ const HomePage = () => {
                   })}>
                   <div class="flex flex-col">
                     <h1
-                      class={formatClasses('text-16 leading-20 font-normal', {
+                      class={formatClasses('text-16 font-normal leading-20', {
                         'text-12 leading-14_5': !isPC(),
                       })}>
                       {translate('home.top-2.title')}
                     </h1>
                     <h1
-                      class={formatClasses('text-16 leading-20 font-["PT_Serif"] font-normal italic', {
+                      class={formatClasses('font-["PT_Serif"] text-16 font-normal italic leading-20 tracking-[3.2px]', {
                         'text-12 leading-14_5': !isPC(),
                       })}>
                       {translate('home.top-2.subTitle')}
@@ -173,13 +173,13 @@ const HomePage = () => {
                 })}>
                 <div class="flex flex-col">
                   <h1
-                    class={formatClasses('text-16 leading-20 font-normal', {
+                    class={formatClasses('text-16 font-normal leading-20', {
                       'text-12 leading-14_5': !isPC(),
                     })}>
                     {translate('home.top-3.title')}
                   </h1>
                   <h1
-                    class={formatClasses('text-16 leading-20 font-["PT_Serif"] font-normal italic', {
+                    class={formatClasses('font-["PT_Serif"] text-16 font-normal italic leading-20 tracking-[3.2px]', {
                       'text-12 leading-14_5': !isPC(),
                     })}>
                     {translate('home.top-3.subTitle')}

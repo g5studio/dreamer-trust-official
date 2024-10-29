@@ -27,7 +27,7 @@ const routesConfig: Partial<Record<RouteModule, RouteConfig>> = {
         i18n: 'menu.ourSolutions',
         path: 'solutions',
         key: Page.Solutions,
-        component: lazy(() => import('@modules/common/pages/HomePage')),
+        component: lazy(() => import('@modules/common/pages/SolutionsPage')),
       },
       {
         i18n: 'menu.insightsUpdates',

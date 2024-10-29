@@ -35,11 +35,15 @@ const Footer = (props: IFooterProps) => {
             'flex-row items-center justify-between': isPC(),
           })}>
           <Show when={isPC()}>
-            <PrimaryLogo classes="h-19_25" />
+            <PrimaryLogo
+              classes={formatClasses('h-19_25', {
+                'min-w-[178px]': isPC(),
+              })}
+            />
           </Show>
           <ul
             class={formatClasses('flex flex-col text-sm font-bold  text-primary-2', {
-              'flex-row items-center space-x-15 text-lg': isPC(),
+              'no-scrollbar flex-row items-center space-x-15 overflow-x-auto text-lg': isPC(),
             })}>
             <For each={menuItems()}>
               {({ key, handleOnClick }) => (
