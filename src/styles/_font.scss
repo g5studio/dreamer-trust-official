@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap');
+
+@font-face {
+  font-family: 'customize-simplified-zh';
+  src: local('Noto Sans SC'), local('PingFang SC'), local('Microsoft YaHei'), local('Arial');
+  unicode-range: U+4E00-9FFF;
+}
+
+@font-face {
+  font-family: 'customize-simplified-zh';
+  src: local('Noto Sans'), local('Roboto'), local('Arial'), local('San Serif');
+  unicode-range: U+00-024F;
+}
+
+@font-face {
+  font-family: 'customize-traditional-zh';
+  src: local('Noto Sans TC'), local('PingFang TC'), local('Microsoft jhenghei'), local('Arial');
+  unicode-range: U+4E00-9FFF;
+}
+
+@font-face {
+  font-family: 'customize-traditional-zh';
+  src: local('Noto Sans'), local('Roboto'), local('Arial'), local('San Serif');
+  unicode-range: U+00-024F;
+}

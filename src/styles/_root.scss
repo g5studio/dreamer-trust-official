@@ -20,6 +20,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: getColorVariable(--color-black-1);
+  &:lang(en-us) {
+    .special-title {
+      letter-spacing: 3.2px;
+      font-style: italic;
+      font-family: 'PT Serif', 'Roboto Serif', 'Source Serif Pro', 'Serif';
+    }
+  }
+  &:lang(zh-cn) {
+    font-family: 'customize-simplified-zh' !important;
+  }
+  &:lang(zh-hk) {
+    font-family: 'customize-traditional-zh' !important;
+  }
 }
 
 input {

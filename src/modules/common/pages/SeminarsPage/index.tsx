@@ -94,7 +94,7 @@ const SeminarsPage = () => {
                 })}>
                 <div class="flex flex-col">
                   <h1
-                    class={formatClasses('text-12 font-normal leading-14_5 ', {
+                    class={formatClasses('text-12 font-normal leading-14_5 tracking-[3.2px]', {
                       'text-16 leading-20': !isMobile(),
                     })}>
                     {translate('seminars.top-1.title')}
@@ -106,12 +106,9 @@ const SeminarsPage = () => {
                         translation.language !== LocaleDash.zh_HK && translation.language !== LocaleDash.zh_CN,
                     })}>
                     <h1
-                      class={formatClasses(
-                        'font-["PT_Serif"] text-12 font-normal italic leading-14_5 tracking-[3.2px]',
-                        {
-                          'text-16 leading-20': !isMobile(),
-                        },
-                      )}>
+                      class={formatClasses('special-title text-12 font-normal italic leading-14_5 tracking-[3.2px]', {
+                        'text-16 leading-20': !isMobile(),
+                      })}>
                       {translate('seminars.top-1.title-3')}
                     </h1>
                   </div>

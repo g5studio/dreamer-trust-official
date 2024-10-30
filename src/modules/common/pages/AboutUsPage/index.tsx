@@ -56,7 +56,7 @@ const AboutUsPage = () => {
                 })}>
                 <div class="flex flex-col">
                   <h1
-                    class={formatClasses('text-12 font-normal leading-14_5', {
+                    class={formatClasses('text-12 font-normal leading-14_5 tracking-[3.2px]', {
                       'text-16 leading-20': isLargePC(),
                     })}>
                     {translate('aboutUs.top-1.title')}
@@ -68,21 +68,15 @@ const AboutUsPage = () => {
                         translation.language !== LocaleDash.zh_HK && translation.language !== LocaleDash.zh_CN,
                     })}>
                     <h1
-                      class={formatClasses(
-                        'font-["PT_Serif"] text-12 font-normal italic leading-14_5 tracking-[3.2px]',
-                        {
-                          'text-16 leading-20': isLargePC(),
-                        },
-                      )}>
+                      class={formatClasses('special-title text-12 font-normal italic leading-14_5 tracking-[3.2px]', {
+                        'text-16 leading-20': isLargePC(),
+                      })}>
                       {translate('aboutUs.top-1.title-2')}
                     </h1>
                     <h1
-                      class={formatClasses(
-                        'font-["PT_Serif"] text-12 font-normal italic leading-14_5 tracking-[3.2px]',
-                        {
-                          'text-16 leading-20': isLargePC(),
-                        },
-                      )}>
+                      class={formatClasses('special-title text-12 font-normal italic leading-14_5 tracking-[3.2px]', {
+                        'text-16 leading-20': isLargePC(),
+                      })}>
                       {translate('aboutUs.top-1.title-3')}
                     </h1>
                   </div>
@@ -137,7 +131,7 @@ const AboutUsPage = () => {
             })}>
             <h2
               class={formatClasses(
-                'flex flex-row items-center space-x-3 font-["PT_Serif"] text-8 font-normal italic tracking-[3.2px]',
+                'special-title flex flex-row items-center space-x-3 text-8 font-normal italic tracking-[3.2px]',
                 {
                   'text-xxl': !isPC(),
                 },
