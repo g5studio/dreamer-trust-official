@@ -31,7 +31,7 @@
       "title": "Our Solutions",
       "subTitle": "Solutions Crafted to Fit Your Goals",
       "solution-1": {
-        "title": "Trust Services",
+        "title": "Trust Solutions",
         "content": "Our comprehensive trust services cover personal, family, investment, property, insurance, business value protection, charitable, foreign grantor solutions."
       },
       "solution-2": {
@@ -67,7 +67,7 @@
     },
     "introduce": {
       "title": "Expertise You Can Trust",
-      "content": "Our mission at Dreamer Trust is to safeguard our clients' financial futures by providing expert trust management, estate planning, and asset protection services. We are dedicated to upholding the highest ethical standards, delivering transparent communication, and prioritizing the best interests of our clients in every decision we make."
+      "content": "Our mission at Dreamer Group is to safeguard our clients' financial futures by providing expert trust management, estate planning, and asset protection services. We are dedicated to upholding the highest ethical standards, delivering transparent communication, and prioritizing the best interests of our clients in every decision we make."
     },
     "ourValue": {
       "title": "Our Value",
@@ -166,7 +166,7 @@
       "companyPlaceholder": "Please enter your company name (Optional)",
       "need": "Let us know your needs",
       "needs": {
-        "TrustService": "Trust Service",
+        "TrustService": "Trust Solutions",
         "EstatePlanning": "Estate Planning",
         "AssetManagement": "Asset Management",
         "CorporateService": "Corporate Service"
