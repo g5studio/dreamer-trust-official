@@ -124,7 +124,7 @@ const Picture = (props: IPictureProps) => {
         alt={props.alt}
         class={formatClasses(props.classes, {
           'cursor-pointer': !!props.onClick,
-          visible: isLoaded(),
+          hidden: !isLoaded(),
         })}
         loading={props.lazy ? 'lazy' : 'eager'}
         style={props.style}

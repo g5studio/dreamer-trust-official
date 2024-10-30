@@ -38,18 +38,21 @@ const SeminarEventCard = (props: ISeminarCardProps) => {
         'padding-right': dynamicPaddingX() ? `${dynamicPaddingX() > 40 ? dynamicPaddingX() : 40}px` : undefined,
       }}>
       <Picture
-        src={isMobile() ? 'seminar/seminar-events-1-sm@3x.png' : 'seminar/seminar-events-1@3x.png'}
+        src={
+          props.eventData.imageUrl ??
+          (isMobile() ? 'seminar/seminar-events-1-sm@3x.png' : 'seminar/seminar-events-1@3x.png')
+        }
         pictureClasses="flex grow"
-        classes={formatClasses({
-          'h-[441px] grow object-cover object-left': !isMobile(),
-          'w-[238px]': isMobile(),
+        classes={formatClasses('grow object-cover object-left', {
+          'h-[441px] rounded-s-8': !isMobile(),
+          'h-[150px] w-[238px] rounded-t-8': isMobile(),
         })}
         fallbackSlot={() => (
           <Skeleton
             type={SkeletonType.Rect}
             classes={formatClasses({
-              'h-[441px] w-[636px]': !isMobile(),
-              'h-[149px] w-[238px]': isMobile(),
+              'h-[441px] w-[636px] rounded-s-8': !isMobile(),
+              'h-[150px] w-[238px] rounded-t-8': isMobile(),
             })}
           />
         )}

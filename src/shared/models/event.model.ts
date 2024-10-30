@@ -11,6 +11,7 @@ type Event = {
   location: string;
   title: string;
   description: string;
+  imageUrl: string;
 };
 export interface IEvent extends IBaseModel<unknown, Event> {}
 
@@ -30,7 +31,7 @@ export const getEvent = (): IEvent => {
   };
 
   const initialize = (apiResponse: IApiEvent) => {
-    const { date, startTime, endTime, id, location, title, description } = apiResponse;
+    const { date, startTime, endTime, id, location, title, description, imageUrl } = apiResponse;
 
     updateData({
       id,
@@ -39,6 +40,7 @@ export const getEvent = (): IEvent => {
       location,
       title,
       description,
+      imageUrl,
     });
   };
 

@@ -29,4 +29,5 @@ export interface IApiEvent {
   date: string;
   startTime: string;
   endTime: string;
+  imageUrl: string;
 }
