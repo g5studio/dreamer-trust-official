@@ -201,7 +201,11 @@ const BlogPage = () => {
           </For>
         </ul>
       </ArticleContainer>
-      <ArticleContainer subTitleI18nKey="blog.blogs.subTitle" titleI18nKey="blog.blogs.title" sectionClasses="w-full">
+      <ArticleContainer
+        subTitleI18nKey="blog.blogs.subTitle"
+        titleI18nKey="blog.blogs.title"
+        classes="px-0"
+        sectionClasses="w-full">
         <BlogList isLoading={queryBlogList.isLoading} blogs={blogs} />
       </ArticleContainer>
     </ContentLayout>

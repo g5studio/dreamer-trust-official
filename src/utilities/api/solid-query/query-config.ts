@@ -1,4 +1,5 @@
 import { translation } from '@shared/hooks/use-translation';
+import { oneMinuteWithMileSeconds } from '@shared/constants/time.constants';
 import { fetchEventList, fetchPastEventList } from '../http/endpoint/event-api.endpoint';
 import { IApiEventSearchParams } from '../http/schema/event-api.schema';
 import { fetchBlog, fetchBlogList } from '../http/endpoint/blog-api.endpoint';
@@ -26,13 +27,15 @@ export const queryConfigs = {
   [Query.FetchBlogList]: (params: IApiBlogListSearchParams) => ({
     queryKey: ['blog', 'list', translation.language],
     queryFn: () => fetchBlogList(params),
+    staleTime: oneMinuteWithMileSeconds * 30,
   }),
   [Query.FetchBlog]: (params: IApiBlogSearchParams) => ({
-    queryKey: ['blog', 'list', params.id, translation.language],
+    queryKey: ['blog', params.id, translation.language],
     queryFn: () => fetchBlog(params),
   }),
   [Query.FetchQuestionList]: (params: IApiQuestionListSearchParams) => ({
     queryKey: ['question', 'list', translation.language],
     queryFn: () => fetchQuestionList(params),
+    staleTime: oneMinuteWithMileSeconds * 30,
   }),
 };

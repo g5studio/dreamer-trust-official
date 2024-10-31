@@ -131,69 +131,71 @@ const HomePage = () => {
               />
             </section>
             {/* 研討會 */}
-            <section
-              class={formatClasses('flex min-w-full', {
-                'flex-row items-start justify-center space-x-25': !isMobile(),
-                'flex-col-reverse justify-start': isMobile(),
-              })}>
-              <Picture
-                pictureClasses={formatClasses({
-                  'item-center mt-12 flex justify-center': isMobile(),
-                  'px-7': isSmallMobile(),
-                })}
-                classes={formatClasses(' object-cover', {
-                  'h-[544px] object-left': !isMobile(),
-                  'h-[252px] min-w-full object-top': isMobile(),
-                })}
-                src={firstEvent()?.imageUrl ?? 'home/home-top-2@3x.png'}
-              />
-              <article
-                class={formatClasses('space-y-4', {
-                  'min-w-[462px] pt-20': !isMobile(),
-                  'p-6 pb-0': isMobile(),
+            <Show when={haveEvents()}>
+              <section
+                class={formatClasses('flex min-w-full', {
+                  'flex-row items-start justify-center space-x-25': !isMobile(),
+                  'flex-col-reverse justify-start': isMobile(),
                 })}>
-                <div class="flex flex-col">
-                  <h1
-                    class={formatClasses('text-16 font-normal leading-20 tracking-[3.2px]', {
-                      'text-12 leading-14_5': !isPC(),
-                    })}>
-                    {translate('home.top-2.title')}
-                  </h1>
-                  <h1
-                    class={formatClasses('special-title text-16 font-normal italic leading-20 tracking-[3.2px]', {
-                      'text-12 leading-14_5': !isPC(),
-                    })}>
-                    {translate('home.top-2.subTitle')}
-                  </h1>
-                </div>
-                <div class="space-y-2">
-                  <p class="text-lg font-bold leading-7">{firstEvent()?.title}</p>
-                  <div>
-                    <p>
-                      {translate('home.top-2.time', {
-                        dateTime: transform({
-                          locale: translation.language,
-                          timestamp: firstEvent()!.startTime,
-                          formatType: DateFormatType.CustomizeLocaleFormat,
-                          offset: -(new Date().getTimezoneOffset() / 60),
-                        }),
-                      })}
-                      <span> CST</span>
-                    </p>
-                    <p>{translate('home.top-2.location', { location: firstEvent()!.location })}</p>
+                <Picture
+                  pictureClasses={formatClasses({
+                    'item-center mt-12 flex justify-center': isMobile(),
+                    'px-7': isSmallMobile(),
+                  })}
+                  classes={formatClasses(' object-cover', {
+                    'h-[544px] object-left': !isMobile(),
+                    'h-[252px] min-w-full object-top': isMobile(),
+                  })}
+                  src={firstEvent()?.imageUrl ?? 'home/home-top-2@3x.png'}
+                />
+                <article
+                  class={formatClasses('space-y-4', {
+                    'min-w-[462px] pt-20': !isMobile(),
+                    'p-6 pb-0': isMobile(),
+                  })}>
+                  <div class="flex flex-col">
+                    <h1
+                      class={formatClasses('text-16 font-normal leading-20 tracking-[3.2px]', {
+                        'text-12 leading-14_5': !isPC(),
+                      })}>
+                      {translate('home.top-2.title')}
+                    </h1>
+                    <h1
+                      class={formatClasses('special-title text-16 font-normal italic leading-20 tracking-[3.2px]', {
+                        'text-12 leading-14_5': !isPC(),
+                      })}>
+                      {translate('home.top-2.subTitle')}
+                    </h1>
                   </div>
-                </div>
-                <Button
-                  class="mt-6"
-                  testId="home-event-detail-btn"
-                  onClick={() => {
-                    navigate()[Page.Seminar]();
-                  }}
-                  variant="primary">
-                  {translate('home.top-2.details')}
-                </Button>
-              </article>
-            </section>
+                  <div class="space-y-2">
+                    <p class="text-lg font-bold leading-7">{firstEvent()?.title}</p>
+                    <div>
+                      <p>
+                        {translate('home.top-2.time', {
+                          dateTime: transform({
+                            locale: translation.language,
+                            timestamp: firstEvent()!.startTime,
+                            formatType: DateFormatType.CustomizeLocaleFormat,
+                            offset: -(new Date().getTimezoneOffset() / 60),
+                          }),
+                        })}
+                        <span> CST</span>
+                      </p>
+                      <p>{translate('home.top-2.location', { location: firstEvent()!.location })}</p>
+                    </div>
+                  </div>
+                  <Button
+                    class="mt-6"
+                    testId="home-event-detail-btn"
+                    onClick={() => {
+                      navigate()[Page.Seminar]();
+                    }}
+                    variant="primary">
+                    {translate('home.top-2.details')}
+                  </Button>
+                </article>
+              </section>
+            </Show>
             {/* 解決方案 */}
             <section
               class={formatClasses('flex min-w-full', {

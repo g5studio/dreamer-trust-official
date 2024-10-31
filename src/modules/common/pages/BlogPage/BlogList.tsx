@@ -1,19 +1,15 @@
 import CarouselContainer from '@shared/components/CarouselContainer';
 import { Direction } from '@shared/enums';
-import { isLargePC, isMobile, isPC } from '@shared/hooks/use-window-size';
+import { isMobile } from '@shared/hooks/use-window-size';
 import { domProperty, DomPropertyCbParams } from '@utilities/directives/dom-property-directive';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { Show, For, Accessor, createSignal } from 'solid-js';
-import { gestureScroll } from '@utilities/directives/gesture-scroll-directive';
 import { IBaseComponentProps } from '@shared/interfaces';
 import { IBlog } from '@modules/common/models/blog.model';
-import { mouseScroll } from '@utilities/directives/mouse-scroll-directive';
 import BlogCard from './BlogCard';
 
 registerDirective(domProperty);
-registerDirective(gestureScroll);
-registerDirective(mouseScroll);
 
 type Props = {
   blogs: Accessor<IBlog['metaData'][]>;
@@ -51,7 +47,7 @@ const BlogList = (props: Props) => {
     <Show
       when={!props.isLoading}
       fallback={
-        <div class="no-scrollbar w-full overflow-x-auto" use:gestureScroll={{}}>
+        <div class="no-scrollbar w-full overflow-x-auto">
           <div class="flex w-fit w-full flex-row flex-nowrap space-x-6">
             {<For each={Array.from({ length: 3 })}>{() => <BlogCard isLoading />}</For>}
           </div>
@@ -60,9 +56,22 @@ const BlogList = (props: Props) => {
       <Show
         when={!isMobile()}
         fallback={
-          <div class="no-scrollbar w-full overflow-x-auto" use:gestureScroll={{}}>
-            <div class="flex w-fit w-full flex-row flex-nowrap space-x-6">
-              {<For each={props.blogs()}>{(data) => <BlogCard isLoading={false} blogData={data} />}</For>}
+          <div class="no-scrollbar w-full overflow-x-auto">
+            <div class={formatClasses('flex w-fit w-full flex-row flex-nowrap space-x-6')}>
+              {
+                <For each={props.blogs()}>
+                  {(data, index) => (
+                    <BlogCard
+                      classes={formatClasses({
+                        'pl-6': index() === 0,
+                        'pr-6': index() === props.blogs().length - 1,
+                      })}
+                      isLoading={false}
+                      blogData={data}
+                    />
+                  )}
+                </For>
+              }
             </div>
           </div>
         }>
@@ -96,13 +105,10 @@ const BlogList = (props: Props) => {
               {(group) => {
                 const [containerWidth, setContainerWidth] = createSignal<number>(0);
                 const [blogsWidth, setBlogsWidth] = createSignal<number>(0);
-                const isOverflow = () => containerWidth() - blogsWidth() < 80;
+                const isOverflow = () => containerWidth() < blogsWidth();
                 return (
                   <div
-                    class={formatClasses('w-full min-w-full', {
-                      'px-10': isPC(),
-                      'px-[149px]': isLargePC(),
-                    })}
+                    class={formatClasses('w-full min-w-full')}
                     use:domProperty={{
                       keyList: ['domRectWidth'],
                       cb: ([width]: DomPropertyCbParams<['domRectWidth']>) => {
@@ -110,7 +116,6 @@ const BlogList = (props: Props) => {
                       },
                     }}>
                     <div
-                      use:mouseScroll={{}}
                       use:domProperty={{
                         keyList: ['domRectWidth'],
                         cb: ([width]: DomPropertyCbParams<['domRectWidth']>) => {
@@ -122,7 +127,18 @@ const BlogList = (props: Props) => {
                         class={formatClasses('flex w-fit min-w-full flex-row flex-nowrap space-x-6', {
                           'justify-center': !isOverflow(),
                         })}>
-                        <For each={group}>{(blog) => <BlogCard isLoading={false} blogData={blog} />}</For>
+                        <For each={group}>
+                          {(blog, index) => (
+                            <BlogCard
+                              classes={formatClasses({
+                                'ps-10': index() === 0,
+                                'pr-10': index() === props.blogs().length - 1,
+                              })}
+                              isLoading={false}
+                              blogData={blog}
+                            />
+                          )}
+                        </For>
                       </div>
                     </div>
                   </div>

@@ -2,14 +2,10 @@ import CarouselContainer from '@shared/components/CarouselContainer';
 import { Direction } from '@shared/enums';
 import { isMobile } from '@shared/hooks/use-window-size';
 import { IEvent } from '@shared/models/event.model';
-import { registerDirective } from '@utilities/helpers/directive.helper';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { Show, For, Accessor, children, createMemo } from 'solid-js';
-import { gestureScroll } from '@utilities/directives/gesture-scroll-directive';
 import { IBaseComponentProps } from '@shared/interfaces';
 import SeminarEventCard from './SeminarEventCard';
-
-registerDirective(gestureScroll);
 
 type Props = {
   events: Accessor<IEvent['metaData'][]>;
@@ -33,7 +29,7 @@ const EventList = (props: Props) => {
     <Show
       when={!isMobile()}
       fallback={
-        <div class="no-scrollbar w-full overflow-x-auto" use:gestureScroll={{}}>
+        <div class="no-scrollbar w-full overflow-x-auto">
           <div
             class={formatClasses('flex w-fit w-full flex-row flex-nowrap space-x-6', {
               'justify-center': props.events().length < 3,

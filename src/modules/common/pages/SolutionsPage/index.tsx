@@ -158,7 +158,7 @@ const SolutionsPage = () => {
                 <h5
                   class={formatClasses('text-nowrap text-black-2', {
                     'text-sm': !isPC(),
-                    'text-5_5 font-bold': isPC(),
+                    'text-5_5': isPC(),
                   })}>
                   {translate(`home.solutions.solution-${index}.title`)}
                 </h5>
@@ -189,7 +189,7 @@ const SolutionsPage = () => {
                   'flex-1': isTablet(),
                 })}>
                 <h1
-                  class={formatClasses({
+                  class={formatClasses('font-normal', {
                     'text-9': isPC(),
                     'text-7_5': !isPC(),
                   })}>
