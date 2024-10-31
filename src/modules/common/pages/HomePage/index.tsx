@@ -6,7 +6,7 @@ import Picture from '@shared/components/Picture';
 import { DateFormatType, Direction, Page } from '@shared/enums';
 import { useNavigate } from '@shared/hooks/use-navigate';
 import { translate, translation } from '@shared/hooks/use-translation';
-import { isPC } from '@shared/hooks/use-window-size';
+import windowSize, { isLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
 import { useEventListContext } from '@utilities/context/event-list-context';
 import { useLayoutContext } from '@utilities/context/layout-context';
 import { formatClasses } from '@utilities/helpers/format.helper';
@@ -23,6 +23,17 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   /**
+   * 平板版型較小畫面時，top區域圖片需縮小避免爆版
+   * @description 扣除預設平板間隔100px後是否不足最小圖片寬度
+   */
+  const shouldDynamicAdjustTopImageWidth = () => isTablet() && windowSize.width - 80 - (417 + 100) < 417;
+  /**
+   * 平板版型較小畫面時，文章需縮小避免爆版
+   * @description 總寬度 - 容器padding - 圖案寬度 - 最小間隔
+   */
+  const dynamicTopArticleWidth = () => windowSize.width - 80 - 417 - 40;
+
+  /**
    * @description 無研討會資料時不顯示研討會輪播區塊
    */
   const carouselCount = () => (haveEvents() ? 3 : 2);
@@ -35,10 +46,13 @@ const HomePage = () => {
       })}>
       <CarouselContainer
         classes={formatClasses({
-          'px-10 pb-13 pt-6': !isPC(),
+          'flex w-full flex-col items-center justify-center': !isMobile(),
+          'px-6 pt-5': isMobile(),
+          'px-5 pt-7_5': isSmallMobile(),
         })}
+        containerClasses={formatClasses({ 'w-full': !isMobile() && !isLargePC() })}
         replayMode="forward"
-        testId="home-page-top-carousel"
+        testId="home-top-carousel"
         maxLength={carouselCount()}
         direction={Direction.Horizontal}
         sliderSlot={(currentIndex, changeIndex) => (
@@ -56,18 +70,26 @@ const HomePage = () => {
           </ul>
         )}>
         {() => (
-          <div class="flex w-full flex-row flex-nowrap">
+          <div class="flex w-full grow flex-row flex-nowrap">
+            {/* Top 1 */}
             <section
               class={formatClasses('flex min-w-full', {
-                'flex-row justify-center space-x-25 py-30_5': isPC(),
-                'flex-col justify-start space-y-12': !isPC(),
+                'flex-row items-center justify-center space-x-25 px-10': !isMobile(),
+                'justify-between space-x-0': !isMobile() && shouldDynamicAdjustTopImageWidth(),
+                'flex-col justify-start': isMobile(),
               })}>
               <article
-                class={formatClasses('w-full space-y-4', {
-                  'w-145': isPC(),
+                style={{
+                  'max-width': shouldDynamicAdjustTopImageWidth() ? `${dynamicTopArticleWidth()}px` : undefined,
+                }}
+                class={formatClasses('space-y-4', {
+                  'p-6 pb-0': isMobile(),
                 })}>
                 <div class="flex flex-col">
-                  <div class="flex flex-col md:flex-row">
+                  <div
+                    class={formatClasses('flex flex-col', {
+                      'flex-row': isPC(),
+                    })}>
                     <h1
                       class={formatClasses('text-16 font-normal leading-20 tracking-[3.2px]', {
                         'text-12 leading-14_5': !isPC(),
@@ -88,88 +110,100 @@ const HomePage = () => {
                     {translate('home.top-1.subTitle')}
                   </h1>
                 </div>
-                <p class="text-lg leading-7">{translate('home.top-1.content')}</p>
+                <p
+                  class={formatClasses('text-lg leading-7', {
+                    'text-md': isMobile(),
+                  })}>
+                  {translate('home.top-1.content')}
+                </p>
               </article>
               <Picture
                 pictureClasses={formatClasses({
-                  'border-box w-full px-6': !isPC(),
+                  'item-center mt-12 flex justify-center': isMobile(),
+                  'px-7': isSmallMobile(),
                 })}
                 classes={formatClasses({
-                  'h-75': isPC(),
+                  'h-75 min-w-104_25': !isMobile(),
+                  'h-53_5 min-w-75': isMobile(),
+                  'h-auto min-w-full': isSmallMobile(),
                 })}
                 src="home/home-top-1@3x.png"
               />
             </section>
-            {/* 研討會資訊 */}
-            <Show when={haveEvents()}>
-              <section
-                class={formatClasses('flex min-w-full ', {
-                  'flex-row justify-center space-x-25': isPC(),
-                  'flex-col-reverse justify-end': !isPC(),
-                })}>
-                <Picture
-                  classes={formatClasses({
-                    'h-136 min-w-190': isPC(),
-                    'mt-6 min-h-63 w-full ': !isPC(),
-                  })}
-                  src="home/home-top-2@3x.png"
-                />
-                <article
-                  class={formatClasses('w-full space-y-4', {
-                    'grow py-22_5': isPC(),
-                  })}>
-                  <div class="flex flex-col">
-                    <h1
-                      class={formatClasses('text-16 font-normal leading-20 tracking-[3.2px]', {
-                        'text-12 leading-14_5': !isPC(),
-                      })}>
-                      {translate('home.top-2.title')}
-                    </h1>
-                    <h1
-                      class={formatClasses('special-title text-16 font-normal italic leading-20 tracking-[3.2px]', {
-                        'text-12 leading-14_5': !isPC(),
-                      })}>
-                      {translate('home.top-2.subTitle')}
-                    </h1>
-                  </div>
-                  <div class="space-y-2">
-                    <p class="text-lg font-bold leading-7">{translate('home.top-2.content')}</p>
-                    <div>
-                      <p>
-                        {translate('home.top-2.time', {
-                          dateTime: transform({
-                            locale: translation.language,
-                            timestamp: firstEvent()!.startTime,
-                            formatType: DateFormatType.CustomizeLocaleFormat,
-                            offset: -(new Date().getTimezoneOffset() / 60),
-                          }),
-                        })}
-                        <span> CST</span>
-                      </p>
-                      <p>{translate('home.top-2.location', { location: firstEvent()!.location })}</p>
-                    </div>
-                  </div>
-                  <Button
-                    class="mt-6"
-                    testId="home-event-detail-btn"
-                    onClick={() => {
-                      navigate()[Page.Seminar]();
-                    }}
-                    variant="primary">
-                    {translate('home.top-2.details')}
-                  </Button>
-                </article>
-              </section>
-            </Show>
-            {/* 我們的方案 */}
+            {/* 研討會 */}
             <section
-              class={formatClasses('flex min-w-full ', {
-                'flex-row justify-center space-x-25': isPC(),
-                'flex-col justify-start space-y-6': !isPC(),
+              class={formatClasses('flex min-w-full', {
+                'flex-row items-start justify-center space-x-25': !isMobile(),
+                'flex-col-reverse justify-start': isMobile(),
+              })}>
+              <Picture
+                pictureClasses={formatClasses({
+                  'item-center mt-12 flex justify-center': isMobile(),
+                  'px-7': isSmallMobile(),
+                })}
+                classes={formatClasses(' object-cover', {
+                  'h-[544px] object-left': !isMobile(),
+                  'h-[252px] min-w-full object-top': isMobile(),
+                })}
+                src={firstEvent()?.imageUrl ?? 'home/home-top-2@3x.png'}
+              />
+              <article
+                class={formatClasses('space-y-4', {
+                  'min-w-[462px] pt-20': !isMobile(),
+                  'p-6 pb-0': isMobile(),
+                })}>
+                <div class="flex flex-col">
+                  <h1
+                    class={formatClasses('text-16 font-normal leading-20 tracking-[3.2px]', {
+                      'text-12 leading-14_5': !isPC(),
+                    })}>
+                    {translate('home.top-2.title')}
+                  </h1>
+                  <h1
+                    class={formatClasses('special-title text-16 font-normal italic leading-20 tracking-[3.2px]', {
+                      'text-12 leading-14_5': !isPC(),
+                    })}>
+                    {translate('home.top-2.subTitle')}
+                  </h1>
+                </div>
+                <div class="space-y-2">
+                  <p class="text-lg font-bold leading-7">{firstEvent()?.title}</p>
+                  <div>
+                    <p>
+                      {translate('home.top-2.time', {
+                        dateTime: transform({
+                          locale: translation.language,
+                          timestamp: firstEvent()!.startTime,
+                          formatType: DateFormatType.CustomizeLocaleFormat,
+                          offset: -(new Date().getTimezoneOffset() / 60),
+                        }),
+                      })}
+                      <span> CST</span>
+                    </p>
+                    <p>{translate('home.top-2.location', { location: firstEvent()!.location })}</p>
+                  </div>
+                </div>
+                <Button
+                  class="mt-6"
+                  testId="home-event-detail-btn"
+                  onClick={() => {
+                    navigate()[Page.Seminar]();
+                  }}
+                  variant="primary">
+                  {translate('home.top-2.details')}
+                </Button>
+              </article>
+            </section>
+            {/* 解決方案 */}
+            <section
+              class={formatClasses('flex min-w-full', {
+                'flex-row items-start justify-center space-x-25': !isMobile(),
+                'flex-col justify-start': isMobile(),
               })}>
               <article
-                class={formatClasses('w-full space-y-4', {
-                  'grow px-25 py-22_5': isPC(),
+                class={formatClasses('space-y-4', {
+                  'min-w-[462px] pl-10 pt-20': !isMobile(),
+                  'p-6 pb-0': isMobile(),
                 })}>
                 <div class="flex flex-col">
                   <h1
@@ -199,9 +233,13 @@ const HomePage = () => {
                 </div>
               </article>
               <Picture
-                classes={formatClasses({
-                  'h-136 min-w-190': isPC(),
-                  'min-h-63 w-full ': !isPC(),
+                pictureClasses={formatClasses({
+                  'item-center mt-12 flex justify-center': isMobile(),
+                  'px-7': isSmallMobile(),
+                })}
+                classes={formatClasses(' object-cover', {
+                  'h-[544px] object-center': !isMobile(),
+                  'h-[252px] min-w-full object-top': isMobile(),
                 })}
                 src="home/home-top-3@3x.png"
               />
@@ -214,9 +252,10 @@ const HomePage = () => {
         ref={setSolutionRef}
         titleI18nKey="home.solutions.title"
         subTitleI18nKey="home.solutions.subTitle"
-        sectionClasses={formatClasses({
-          'space-x-6': isPC(),
-          'space-y-6': !isPC(),
+        sectionClasses={formatClasses('grid gap-6', {
+          'grid-cols-4': isPC(),
+          'grid-cols-2': isTablet(),
+          'grid-cols-1': isMobile(),
         })}
         firstChildrenSlot={() => (
           <Show when={isPC()}>
@@ -234,13 +273,19 @@ const HomePage = () => {
         )}>
         <For each={Array.from({ length: 4 }).map((_, i) => i + 1)}>
           {(index) => (
-            <article class={formatClasses('shrink grow basis-1/4 rounded-8 bg-black-5 pb-3')}>
+            <article
+              class={formatClasses('rounded-8 bg-black-5 pb-6', {
+                'max-w-[318px]': isMobile(),
+              })}>
               <Picture src={`home/solution-${index}@3x.png`} classes="w-full" />
-              <section class="px-6_5 pt-3">
-                <h5 class={formatClasses('text-5_5', { 'text-lg': !isPC() })}>
+              <section class="px-6_5 pt-6">
+                <h5 class={formatClasses('text-5_5', { 'text-sm text-black-2': !isPC() })}>
                   {translate(`home.solutions.solution-${index}.title`)}
                 </h5>
-                <p class="mt-2_5 text-start text-lg text-black-2">
+                <p
+                  class={formatClasses('mt-2_5 text-start text-lg text-black-2', {
+                    'text-xs': !isPC(),
+                  })}>
                   {translate(`home.solutions.solution-${index}.content`)}
                 </p>
               </section>
@@ -252,13 +297,14 @@ const HomePage = () => {
       <ArticleContainer
         titleI18nKey="home.advantages.title"
         subTitleI18nKey="home.advantages.subTitle"
-        sectionClasses={formatClasses({
-          'space-x-40': isPC(),
-          'space-y-10': !isPC(),
+        sectionClasses={formatClasses('grid', {
+          'grid-cols-2 gap-40': isPC(),
+          'grid-cols-2 gap-10': isTablet(),
+          'grid-cols-1 gap-10': isMobile(),
         })}>
         <For each={Array.from({ length: 2 }).map((_, i) => i + 1)}>
           {(index) => (
-            <article class="flex w-55 flex-col items-center space-y-10">
+            <article class="flex w-[307px] flex-col items-center space-y-10">
               <Switch>
                 <Match when={index === 1}>
                   <AdvantageOneIcon />
@@ -267,7 +313,12 @@ const HomePage = () => {
                   <AdvantageTwoIcon />
                 </Match>
               </Switch>
-              <p class="text-lg text-black-1">{translate(`home.advantages.advantage-${index}.content`)}</p>
+              <p
+                class={formatClasses('text-lg text-black-1', {
+                  'text-sm': !isPC(),
+                })}>
+                {translate(`home.advantages.advantage-${index}.content`)}
+              </p>
             </article>
           )}
         </For>
