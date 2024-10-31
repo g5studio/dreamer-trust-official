@@ -32,6 +32,8 @@ const availablePageList: AvailablePage[] = [
   Page.Seminar,
   Page.Solutions,
   Page.BlogDetail,
+  Page.Terms,
+  Page.Policy,
 ];
 
 export const useNavigate = (): Accessor<NavigateHook> => {

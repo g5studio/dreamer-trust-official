@@ -54,6 +54,16 @@ const routesConfig: Partial<Record<RouteModule, RouteConfig>> = {
         key: Page.ContactUs,
         component: lazy(() => import('@modules/common/pages/ContactUsPage')),
       },
+      {
+        path: 'terms-of-use',
+        key: Page.Terms,
+        component: lazy(() => import('@modules/common/pages/TermsOfUsePage')),
+      },
+      {
+        path: 'privacy-policy',
+        key: Page.Policy,
+        component: lazy(() => import('@modules/common/pages/PrivacyPolicyPage')),
+      },
     ],
   },
 };

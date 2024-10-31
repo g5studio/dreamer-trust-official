@@ -1,0 +1,20 @@
+// !class for specific component or page should follow BEM rule
+.page-terms-of-use {
+  &__terms-container {
+    ol {
+      list-style: number;
+      list-style-position: outside;
+      margin-left: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    ul {
+      list-style: lower-roman;
+      list-style-position: outside;
+      margin-left: 1.5rem;
+      padding-left: 1.5rem;
+      ul {
+        list-style: lower-alpha;
+      }
+    }
+  }
+}

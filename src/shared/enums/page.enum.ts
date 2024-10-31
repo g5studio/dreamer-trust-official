@@ -29,4 +29,6 @@ export enum Page {
   Seminar,
   ContactUs,
   BlogDetail,
+  Terms,
+  Policy,
 }
