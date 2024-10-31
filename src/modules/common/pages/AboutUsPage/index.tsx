@@ -1,9 +1,9 @@
 import ContentLayout from '@shared/components/ContentLayout';
-import { isLargePC, isMobile, isPC, isSmallMobile } from '@shared/hooks/use-window-size';
+import windowSize, { isLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import CarouselContainer from '@shared/components/CarouselContainer';
-import { Direction, LocaleDash } from '@shared/enums';
-import { translate, translation } from '@shared/hooks/use-translation';
+import { Direction } from '@shared/enums';
+import { translate } from '@shared/hooks/use-translation';
 import Picture from '@shared/components/Picture';
 import { createSignal, For } from 'solid-js';
 import { registerDirective } from '@utilities/helpers/directive.helper';
@@ -17,6 +17,18 @@ registerDirective(domProperty);
 
 const AboutUsPage = () => {
   const [articleSize, setArticleSize] = createSignal<DomSize>();
+
+  /**
+   * 平板版型較小畫面時，top區域圖片需縮小避免爆版
+   * @description 扣除預設平板間隔100px後是否不足最小圖片寬度
+   */
+  const shouldDynamicAdjustTopImageWidth = () => isTablet() && windowSize.width - 80 - 516 < 417;
+  /**
+   * 平板版型較小畫面時，top區域圖片需縮小避免爆版
+   * @description 總寬度 - 容器padding - 文案區域 - 最小間隔
+   */
+  const dynamicTopImageWidth = () => (windowSize.width - 80 - 416 - 40 < 417 ? windowSize.width - 80 - 416 - 40 : 417);
+
   return (
     <ContentLayout
       testId="AboutUsPage"
@@ -26,10 +38,12 @@ const AboutUsPage = () => {
       <CarouselContainer
         classes={formatClasses({
           'flex h-[544px] w-full items-center justify-center px-10': !isMobile(),
-          'px-10 pb-13 pt-6': isMobile(),
+          'px-6 pt-5': isMobile(),
+          'px-5 pt-7_5': isSmallMobile(),
         })}
+        containerClasses={formatClasses({ 'w-full': !isMobile() && !isLargePC() })}
         replayMode="forward"
-        testId="about-us-page-top-carousel"
+        testId="about-us-top-carousel"
         maxLength={1}
         direction={Direction.Horizontal}>
         {() => (
@@ -37,53 +51,45 @@ const AboutUsPage = () => {
             <section
               class={formatClasses('flex min-w-full', {
                 'flex-row items-center justify-center space-x-25': !isMobile(),
+                'justify-between space-x-0': !isMobile() && shouldDynamicAdjustTopImageWidth(),
                 'flex-col-reverse justify-start': isMobile(),
               })}>
               <Picture
                 pictureClasses={formatClasses({
                   'item-center mt-12 flex justify-center': isMobile(),
+                  'px-7': isSmallMobile(),
                 })}
                 classes={formatClasses({
-                  'h-75 min-w-104_25': isPC(),
-                  'h-53_5 min-w-75': !isPC(),
+                  'h-75 min-w-104_25': !isMobile() && !shouldDynamicAdjustTopImageWidth(),
+                  'h-53_5 min-w-75': isMobile(),
                   'h-auto min-w-full': isSmallMobile(),
                 })}
                 src="about-us/about-us-top-1@3x.png"
+                width={shouldDynamicAdjustTopImageWidth() ? dynamicTopImageWidth() : undefined}
               />
               <article
                 class={formatClasses('w-full space-y-4', {
-                  'w-145': isPC(),
+                  'max-w-[416px]': isTablet(),
+                  'max-w-[512px]': isPC(),
+                  'p-6 pb-0': isMobile(),
                 })}>
                 <div class="flex flex-col">
                   <h1
                     class={formatClasses('text-12 font-normal leading-14_5 tracking-[3.2px]', {
-                      'text-16 leading-20': isLargePC(),
+                      'text-16 leading-20': !isMobile(),
                     })}>
                     {translate('aboutUs.top-1.title')}
                   </h1>
-                  <div
-                    class={formatClasses('flex flex-col', {
-                      'flex-row': isPC(),
-                      'lg:space-x-4 xl:space-x-8':
-                        translation.language !== LocaleDash.zh_HK && translation.language !== LocaleDash.zh_CN,
+                  <h1
+                    class={formatClasses('special-title text-12 font-normal italic leading-14_5 tracking-[3.2px]', {
+                      'text-16 leading-20': !isMobile(),
                     })}>
-                    <h1
-                      class={formatClasses('special-title text-12 font-normal italic leading-14_5 tracking-[3.2px]', {
-                        'text-16 leading-20': isLargePC(),
-                      })}>
-                      {translate('aboutUs.top-1.title-2')}
-                    </h1>
-                    <h1
-                      class={formatClasses('special-title text-12 font-normal italic leading-14_5 tracking-[3.2px]', {
-                        'text-16 leading-20': isLargePC(),
-                      })}>
-                      {translate('aboutUs.top-1.title-3')}
-                    </h1>
-                  </div>
+                    {translate('aboutUs.top-1.title-2')}
+                  </h1>
                 </div>
                 <p
                   class={formatClasses('text-lg leading-7', {
-                    'text-md': !isPC(),
+                    'text-md': isMobile(),
                   })}>
                   {translate('aboutUs.top-1.content')}
                 </p>
@@ -93,7 +99,10 @@ const AboutUsPage = () => {
         )}
       </CarouselContainer>
       {/* 值得信賴的專業知識 */}
-      <section class="flex flex-col items-center xl:flex-row xl:px-31_5">
+      <section
+        class={formatClasses('flex flex-col items-center', {
+          'w- flex-row': !isMobile(),
+        })}>
         <Picture
           classes={formatClasses({
             'h-[546px]': isPC(),
@@ -152,18 +161,26 @@ const AboutUsPage = () => {
       <ArticleContainer
         titleI18nKey="aboutUs.ourValue.title"
         subTitleI18nKey="aboutUs.ourValue.subTitle"
-        sectionClasses={formatClasses({
-          'grid grid-cols-3 gap-20': isPC(),
-          'space-y-10': !isPC(),
+        sectionClasses={formatClasses('grid', {
+          'px-14': isMobile() && !isSmallMobile(),
+          'grid-cols-3 gap-20 px-10': isPC(),
+          'grid-cols-3 gap-10': isTablet(),
+          'grid-cols-1 gap-10': isMobile(),
         })}>
         <For each={['integrity', 'clientCentric', 'trustworthy', 'compliance', 'accountability', 'excellence']}>
           {(key) => (
             <article class={formatClasses('space-y-4')}>
               <h5
-                class={formatClasses('border-b-0_25 border-black-3 pb-4 text-start text-5_5', { 'text-sm': !isPC() })}>
+                class={formatClasses('border-b-0_25 border-black-3 pb-4 text-start text-5_5', {
+                  'text-sm': isMobile(),
+                })}>
                 {translate(`aboutUs.ourValue.${key}.title`)}
               </h5>
-              <p class="mt-2_5 text-start text-xs text-black-2 xl:text-lg">
+              <p
+                class={formatClasses('mt-2_5 text-start', {
+                  'text-xs': isMobile(),
+                  'text-lg': !isMobile(),
+                })}>
                 {translate(`aboutUs.ourValue.${key}.content`)}
               </p>
             </article>
@@ -174,17 +191,24 @@ const AboutUsPage = () => {
       <ArticleContainer
         titleI18nKey="aboutUs.ourMission.title"
         subTitleI18nKey="aboutUs.ourMission.subTitle"
-        sectionClasses={formatClasses({
-          'grid grid-cols-3 gap-24': isPC(),
-          'space-y-6': !isPC(),
+        sectionClasses={formatClasses('grid', {
+          'grid-cols-3 gap-24 px-10': isPC(),
+          'grid-cols-3 gap-10': isTablet(),
+          'grid-cols-1 gap-6': isMobile(),
         })}>
         <For each={[OurMissionOneIcon, OurMissionTwoIcon, OurMissionThreeIcon]}>
           {(Icon, index) => (
-            <article class={formatClasses('flex flex-col items-center  space-y-10', { 'space-y-2': !isPC() })}>
+            <article
+              class={formatClasses('flex max-w-[312px] flex-col items-center space-y-10', {
+                'space-y-2': !isPC(),
+              })}>
               <div class="flex h-31_5 w-31_5 items-center justify-center">
                 <Icon />
               </div>
-              <p class="text-start text-xs text-black-2 xl:text-lg">
+              <p
+                class={formatClasses('text-start text-xs', {
+                  'text-center text-lg': !isMobile(),
+                })}>
                 {translate(`aboutUs.ourMission.mission-${index() + 1}.content`)}
               </p>
             </article>

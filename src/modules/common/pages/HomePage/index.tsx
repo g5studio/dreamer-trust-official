@@ -202,7 +202,7 @@ const HomePage = () => {
               })}>
               <article
                 class={formatClasses('space-y-4', {
-                  'min-w-[462px] pl-10 pt-20': !isMobile(),
+                  'w-[462px] min-w-[462px] pl-10 pt-20': !isMobile(),
                   'p-6 pb-0': isMobile(),
                 })}>
                 <div class="flex flex-col">
@@ -241,7 +241,7 @@ const HomePage = () => {
                   'h-[544px] object-center': !isMobile(),
                   'h-[252px] min-w-full object-top': isMobile(),
                 })}
-                src="home/home-top-3@3x.png"
+                src={isMobile() ? 'home/home-top-3-sm@3x.png' : 'home/home-top-3@3x.png'}
               />
             </section>
           </div>

@@ -140,7 +140,7 @@ const ContactUsPage = () => {
               })}>
               <Picture
                 classes={formatClasses({ 'w-[350px] min-w-[350px]': !isMobile(), 'max-h-[200px] w-full': isMobile() })}
-                src={`contact-us/office-${code}@3x.png`}
+                src={isMobile() ? `contact-us/office-${code}-sm@3x.png` : `contact-us/office-${code}@3x.png`}
               />
               <div
                 class={formatClasses('flex flex-col text-start', {
