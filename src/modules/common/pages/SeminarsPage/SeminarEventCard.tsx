@@ -42,8 +42,7 @@ const SeminarEventCard = (props: ISeminarCardProps) => {
           props.eventData.imageUrl ??
           (isMobile() ? 'seminar/seminar-events-1-sm@3x.png' : 'seminar/seminar-events-1@3x.png')
         }
-        pictureClasses="flex grow"
-        classes={formatClasses('grow object-cover object-left', {
+        classes={formatClasses('object-cover object-left', {
           'h-[441px] rounded-s-8': !isMobile(),
           'h-[150px] w-[238px] rounded-t-8': isMobile(),
         })}

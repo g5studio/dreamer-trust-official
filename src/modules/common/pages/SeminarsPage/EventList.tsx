@@ -34,7 +34,12 @@ const EventList = (props: Props) => {
       when={!isMobile()}
       fallback={
         <div class="no-scrollbar w-full overflow-x-auto" use:gestureScroll={{}}>
-          <div class="flex w-fit w-full flex-row flex-nowrap space-x-6">{eventList()()}</div>
+          <div
+            class={formatClasses('flex w-fit w-full flex-row flex-nowrap space-x-6', {
+              'justify-center': props.events().length < 3,
+            })}>
+            {eventList()()}
+          </div>
         </div>
       }>
       <CarouselContainer
