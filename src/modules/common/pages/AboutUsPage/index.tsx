@@ -100,49 +100,48 @@ const AboutUsPage = () => {
       </CarouselContainer>
       {/* 值得信賴的專業知識 */}
       <section
-        class={formatClasses('flex flex-col items-center', {
-          'w- flex-row': !isMobile(),
+        class={formatClasses('flex flex-row', {
+          'px-11': !isMobile() && windowSize.width < 1187,
+          'mx-auto max-w-[1187px]': isPC(),
+          'flex-col': isMobile(),
         })}>
         <Picture
-          classes={formatClasses({
-            'h-[546px]': isPC(),
+          classes={formatClasses('object-cover', {
+            'h-[546px] w-[511px]': !isMobile(),
+            'min-w-[511px]': isPC(),
           })}
-          src={isPC() ? 'about-us/trust-introduction@3x.png' : 'about-us/trust-introduction-sm@3x.png'}
+          src={isMobile() ? 'about-us/trust-introduction-sm@3x.png' : 'about-us/trust-introduction@3x.png'}
         />
-        <div
-          class={formatClasses('relative', {
-            'w-full': !isPC(),
+        <article
+          use:domProperty={{
+            keyList: ['domRectHeight', 'domRectWidth', 'domRectTop', 'domRectLeft'],
+            cb: ([height, width, left, top]: DomPropertyCbParams<
+              ['domRectHeight', 'domRectWidth', 'domRectTop', 'domRectLeft']
+            >) => {
+              setArticleSize({ height, width, left, top });
+            },
+          }}
+          class={formatClasses('relative flex overflow-hidden ', {
+            'min-w-[540px] items-center justify-center rounded-e-8': !isMobile(),
+            'px-26': isPC(),
+            'max-w-[540px] px-20': isTablet(),
+            'min-h-[224px] p-6': isMobile(),
           })}>
           <Picture
-            pictureClasses="w-full"
-            classes={formatClasses({
-              'h-[546px]': isPC(),
-              'w-full': !isPC(),
-            })}
             style={{
-              height: isPC() ? 'auto' : `${articleSize()?.height}px`,
+              'min-height': `${articleSize()?.height}px`,
             }}
-            src={isPC() ? 'about-us/section-bg@3x.png' : 'about-us/section-bg-sm@3x.png'}
+            height={articleSize()?.height}
+            pictureClasses="absolute top-0 left-0 z-bg"
+            classes={formatClasses('object-cover')}
+            src={!isMobile() ? 'about-us/section-bg@3x.png' : 'about-us/section-bg-sm@3x.png'}
           />
-          <article
-            use:domProperty={{
-              keyList: ['domRectHeight', 'domRectWidth', 'domRectTop', 'domRectLeft'],
-              cb: ([height, width, left, top]: DomPropertyCbParams<
-                ['domRectHeight', 'domRectWidth', 'domRectTop', 'domRectLeft']
-              >) => {
-                setArticleSize({ height, width, left, top });
-              },
-              enabled: !isPC(),
-            }}
-            class={formatClasses('absolute left-0 top-0 z-normal w-full space-y-9 text-black-6', {
-              'p-6': !isPC(),
-              'h-full px-26 py-34': isPC(),
-            })}>
+          <section class="flex flex-col space-y-9 text-black-6">
             <h2
               class={formatClasses(
-                'special-title flex flex-row items-center space-x-3 text-8 font-normal italic tracking-[3.2px]',
+                'special-title flex flex-row items-center space-x-3 text-8 font-normal italic tracking-normal',
                 {
-                  'text-xxl': !isPC(),
+                  'text-xxl': isMobile(),
                 },
               )}>
               <span class="h-0_5 w-10 rounded-16 bg-black-6" />
@@ -150,12 +149,12 @@ const AboutUsPage = () => {
             </h2>
             <p
               class={formatClasses('text-lg', {
-                'text-xs': !isPC(),
+                'text-xs': isMobile(),
               })}>
               {translate('aboutUs.introduce.content')}
             </p>
-          </article>
-        </div>
+          </section>
+        </article>
       </section>
       {/* 我們的價值 */}
       <ArticleContainer
