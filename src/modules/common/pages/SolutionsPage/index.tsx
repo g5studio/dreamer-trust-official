@@ -236,14 +236,14 @@ const SolutionsPage = () => {
                 fallbackSlot={() => (
                   <Skeleton
                     type={SkeletonType.Rect}
-                    classes={formatClasses({
+                    classes={formatClasses('px-6', {
                       'mb-6 h-[223px] w-[440px]': isMobile(),
                       'h-[261px] w-[510px]': isTablet(),
                       'h-[341px] w-[660px]': isPC(),
                     })}
                   />
                 )}
-                classes={formatClasses({
+                classes={formatClasses('px-6', {
                   'mb-6 w-[440px]': isMobile(),
                   'w-[510px]': isTablet(),
                   'w-[660px]': isPC(),
