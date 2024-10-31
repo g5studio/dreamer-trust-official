@@ -88,7 +88,9 @@ const Footer = (props: IFooterProps) => {
                 class={formatClasses('border-r-0_25 border-black-1 pr-12', {
                   'pr-6': !isPC(),
                 })}>
-                <button type="button">Privacy Policy</button>
+                <button onClick={() => navigate()[Page.Policy]()} type="button">
+                  {translate('policy.title')}
+                </button>
               </li>
               <li
                 class={formatClasses('pl-12', {

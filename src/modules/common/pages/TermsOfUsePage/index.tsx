@@ -13,6 +13,7 @@ registerDirective(insertHtml);
 
 const TermsOfUsePage = () => (
   <ContentLayout
+    isSimplePage
     classes={formatClasses('px-6', {
       '[max-w-1712px] space-y-12 py-20': isPC(),
       'space-y-12 py-16': !isPC(),
@@ -41,6 +42,7 @@ const TermsOfUsePage = () => (
               locale: translation.language,
               timestamp: getTimeStamp('2024-06-25'),
               formatType: DateFormatType.CustomizeLocaleShortFormat,
+              offset: -(new Date().getTimezoneOffset() / 60),
             }),
           })}
         </span>
@@ -50,6 +52,7 @@ const TermsOfUsePage = () => (
               locale: translation.language,
               timestamp: getTimeStamp('2024-06-25'),
               formatType: DateFormatType.CustomizeLocaleShortFormat,
+              offset: -(new Date().getTimezoneOffset() / 60),
             }),
           })}
         </span>

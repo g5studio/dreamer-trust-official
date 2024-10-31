@@ -40,10 +40,10 @@ const ContentLayout = (props: IContentLayoutProps) => {
         props.classes,
       )}>
       {props.children}
-      <Show when={isPC()}>
+      <Show when={isPC() && !props.isSimplePage}>
         <Picture classes="absolute left-[50%] top-[646px] z-bg min-w-screen translate-x-[-50%]" src="shared/bg-1.png" />
       </Show>
-      <Show when={isPC()}>
+      <Show when={isPC() && !props.isSimplePage}>
         <Picture
           style={{
             right: `-${mainContentAreaSize().left}px`,
