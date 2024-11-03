@@ -6,7 +6,7 @@ import { createCustomizeMutation } from '@shared/hooks/create-customize-mutation
 import { IForm, useForm } from '@shared/hooks/use-form';
 import { toggleOverlay } from '@shared/hooks/use-overlay';
 import { translate, translation } from '@shared/hooks/use-translation';
-import { isMobile } from '@shared/hooks/use-window-size';
+import { isMobile, isPC, isTablet } from '@shared/hooks/use-window-size';
 import { IBaseOverlay, IBaseOverlayProps } from '@shared/interfaces';
 import { IEvent } from '@shared/models/event.model';
 import { IApiEventInput, PreferredContactMethod } from '@utilities/api/http/schema/event-api.schema';
@@ -93,7 +93,9 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
     <div
       class={formatClasses('relative rounded-8 bg-black-6', {
         'max-h-[98vh] max-w-[440px] overflow-y-auto p-6 pt-14': isMobile(),
-        'max-w-[1100px] p-10': !isMobile(),
+        'p-10': !isMobile(),
+        'max-w-[calc(93.75vw)] p-10': isTablet(),
+        'max-w-[1100px]': isPC(),
       })}>
       <button
         type="button"
