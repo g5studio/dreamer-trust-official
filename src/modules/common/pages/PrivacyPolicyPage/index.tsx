@@ -109,10 +109,10 @@ const PrivacyPolicyPage = () => (
           <li>{translate('policy.content-23')}</li>
           <li>
             {translate('policy.content-24')}
-            <ul>
+            <ol>
               <li>{translate('terms.content-25')}</li>
               <li>{translate('terms.content-26')}</li>
-            </ul>
+            </ol>
           </li>
         </ol>
       </section>
@@ -150,14 +150,14 @@ const PrivacyPolicyPage = () => (
           })}>
           <li>
             {translate('policy.content-31')}
-            <ul>
+            <ol>
               <li>{translate('policy.content-32')}</li>
               <li>{translate('policy.content-33')}</li>
               <li>{translate('policy.content-34')}</li>
               <li>{translate('policy.content-35')}</li>
               <li>{translate('policy.content-36')}</li>
               <li>{translate('policy.content-37')}</li>
-            </ul>
+            </ol>
           </li>
           <li>{translate('policy.content-38')}</li>
         </ol>
@@ -179,12 +179,12 @@ const PrivacyPolicyPage = () => (
           <li>{translate('policy.content-40')}</li>
           <li>
             {translate('policy.content-41')}
-            <ul>
+            <ol>
               <li>{translate('policy.content-42')}</li>
               <li>{translate('policy.content-43')}</li>
               <li>{translate('policy.content-44')}</li>
               <li>{translate('policy.content-45')}</li>
-            </ul>
+            </ol>
           </li>
         </ol>
       </section>
@@ -231,13 +231,13 @@ const PrivacyPolicyPage = () => (
           })}>
           <li>
             {translate('policy.content-52')}
-            <ul>
+            <ol>
               <li>{translate('policy.content-53')}</li>
               <li>{translate('policy.content-54')}</li>
               <li>{translate('policy.content-55')}</li>
               <li>{translate('policy.content-56')}</li>
               <li>{translate('policy.content-57')}</li>
-            </ul>
+            </ol>
           </li>
           <li>{translate('policy.content-58')}</li>
         </ol>
@@ -256,10 +256,10 @@ const PrivacyPolicyPage = () => (
           })}>
           <li>
             {translate('policy.content-60')}
-            <ul>
+            <ol>
               <li>{translate('policy.content-61')}</li>
               <li>{translate('policy.content-62')}</li>
-            </ul>
+            </ol>
           </li>
         </ol>
         {/* （三）公開披露 */}
@@ -277,11 +277,11 @@ const PrivacyPolicyPage = () => (
           })}>
           <li>
             {translate('policy.content-64')}
-            <ul>
+            <ol>
               <li>{translate('policy.content-65')}</li>
               <li>{translate('policy.content-66')}</li>
               <li>{translate('policy.content-67')}</li>
-            </ul>
+            </ol>
           </li>
         </ol>
         {/* （四） 共享、轉讓、公開披露個人信息時事先徵得授權同意的例外 */}
@@ -351,7 +351,7 @@ const PrivacyPolicyPage = () => (
           })}>
           <li>
             {translate('policy.content-84')}
-            <ul>
+            <ol>
               <li>{translate('policy.content-85')}</li>
               <li>{translate('policy.content-86')}</li>
               <li>{translate('policy.content-87')}</li>
@@ -359,7 +359,7 @@ const PrivacyPolicyPage = () => (
               <li>{translate('policy.content-89')}</li>
               <li>{translate('policy.content-90')}</li>
               <li>{translate('policy.content-91')}</li>
-            </ul>
+            </ol>
           </li>
           <li>{translate('policy.content-92')}</li>
           <li>{translate('policy.content-93')}</li>

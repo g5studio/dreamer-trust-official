@@ -2,10 +2,28 @@
 .page-privacy-policy {
   &__terms-container {
     ol {
-      list-style: number;
       list-style-position: outside;
       margin-left: 1.5rem;
       padding-left: 1.5rem;
+    }
+    & > ol {
+      list-style: number;
+      & > li {
+        counter-increment: chapter;
+        counter-reset: section;
+        & > ol {
+          padding-left: 1.75rem;
+          & > li {
+            counter-increment: section;
+            position: relative;
+            &::before {
+              position: absolute;
+              left: -1.75rem;
+              content: counter(chapter) '.' counter(section);
+            }
+          }
+        }
+      }
     }
     ul {
       list-style: lower-roman;
