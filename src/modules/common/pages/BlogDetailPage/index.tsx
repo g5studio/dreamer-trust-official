@@ -5,7 +5,7 @@ import { DateFormatType, ErrorHandleType, Language } from '@shared/enums';
 import { createCustomizeQuery } from '@shared/hooks/create-customize-query';
 import { back } from '@shared/hooks/use-navigator';
 import { translate, translation } from '@shared/hooks/use-translation';
-import { isMobile, isPC } from '@shared/hooks/use-window-size';
+import { isMobile, isPC, isTablet } from '@shared/hooks/use-window-size';
 import { useParams } from '@solidjs/router';
 import { createQuery } from '@tanstack/solid-query';
 import { IApiBlog } from '@utilities/api/http/schema/blog.schema';
@@ -16,6 +16,8 @@ import { formatClasses, formatLanguage } from '@utilities/helpers/format.helper'
 import { transform } from '@utilities/helpers/time.helper';
 import { ArrowDownLineIcon } from '@utilities/svg-components';
 import { createEffect, on, Show } from 'solid-js';
+
+import styles from './index.module.scss';
 
 registerDirective(insertHtml);
 
@@ -54,11 +56,15 @@ const BlogDetailPage = () => {
   return (
     <ContentLayout
       testId="BlogDetailPage"
-      classes={formatClasses('px-10', {
-        'space-y-20 pb-20': isPC(),
-        'space-y-16 pb-16': !isPC(),
-        'px-6': isMobile(),
-      })}>
+      classes={formatClasses(
+        {
+          'space-y-20 pb-20': isPC(),
+          'space-y-16 pb-16': !isPC(),
+          'px-10': isTablet(),
+          'px-6': isMobile(),
+        },
+        styles['page-blog-detail__container'],
+      )}>
       <Show when={metaData.id}>
         <div class={formatClasses('space-y-4', { 'py-6': isMobile(), 'pt-20': !isMobile() })}>
           <nav class="flex flex-row items-center space-x-2">
@@ -86,7 +92,9 @@ const BlogDetailPage = () => {
               'text-sm': isMobile(),
               'text-5_5': !isMobile(),
             })}>
-            <p>{metaData.author}</p>
+            <p>
+              {translate('blog.blogs.writtenBy')} {metaData.author}
+            </p>
             <p>
               {transform({
                 locale: translation.language,
@@ -104,7 +112,7 @@ const BlogDetailPage = () => {
               testId: `blog-${metaData.id}-content`,
               html: metaData.content,
               position: 'beforebegin',
-              classes: 'reset blog',
+              classes: formatClasses('reset', styles['page-blog-detail__article']),
             }}
           />
         </div>

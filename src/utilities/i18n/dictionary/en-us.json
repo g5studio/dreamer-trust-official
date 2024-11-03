@@ -205,7 +205,8 @@
     "blogs": {
       "title": "Blog Posts",
       "subTitle": "Expert Insights and Tips",
-      "learnMore": "Learn More"
+      "learnMore": "Learn More",
+      "writtenBy": "Written by"
     }
   },
   "solutions": {

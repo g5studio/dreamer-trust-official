@@ -205,7 +205,8 @@
     "blogs": {
       "title": "好文共享",
       "subTitle": "專家見解與建議",
-      "learnMore": "了解更多"
+      "learnMore": "了解更多",
+      "writtenBy": "作者"
     }
   },
   "solutions": {
