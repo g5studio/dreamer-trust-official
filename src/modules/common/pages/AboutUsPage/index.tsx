@@ -107,7 +107,7 @@ const AboutUsPage = () => {
         })}>
         <Picture
           classes={formatClasses('object-cover', {
-            'h-[546px]': !isMobile(),
+            'h-[546px] rounded-s-8': !isMobile(),
           })}
           src={isMobile() ? 'about-us/trust-introduction-sm@3x.png' : 'about-us/trust-introduction@3x.png'}
           style={{
@@ -132,7 +132,7 @@ const AboutUsPage = () => {
           class={formatClasses('relative flex overflow-hidden ', {
             'items-center justify-center rounded-e-8': !isMobile(),
             'px-26': isPC(),
-            'max-w-[540px] px-20': isTablet(),
+            'w-[540px] min-w-[540px] px-20': isTablet(),
             'w-[677px] min-w-[677px]': isPC(),
             'min-h-[224px] p-6': isMobile(),
           })}>
