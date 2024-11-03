@@ -1,6 +1,6 @@
 import CarouselContainer from '@shared/components/CarouselContainer';
 import { Direction } from '@shared/enums';
-import { isMobile } from '@shared/hooks/use-window-size';
+import { isMobile, isPC } from '@shared/hooks/use-window-size';
 import { domProperty, DomPropertyCbParams } from '@utilities/directives/dom-property-directive';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { formatClasses } from '@utilities/helpers/format.helper';
@@ -48,7 +48,10 @@ const BlogList = (props: Props) => {
       when={!props.isLoading}
       fallback={
         <div class="no-scrollbar w-full overflow-x-auto">
-          <div class="flex w-fit w-full flex-row flex-nowrap space-x-6">
+          <div
+            class={formatClasses('flex w-fit w-full flex-row flex-nowrap space-x-6', {
+              'space-x-10': isPC(),
+            })}>
             {<For each={Array.from({ length: 3 })}>{() => <BlogCard isLoading />}</For>}
           </div>
         </div>
@@ -116,23 +119,25 @@ const BlogList = (props: Props) => {
                       },
                     }}>
                     <div
-                      use:domProperty={{
-                        keyList: ['domRectWidth'],
-                        cb: ([width]: DomPropertyCbParams<['domRectWidth']>) => {
-                          setBlogsWidth(width);
-                        },
-                      }}
-                      class={formatClasses('no-scrollbar overflow-x-auto')}>
+                      class={formatClasses('no-scrollbar flex min-w-full overflow-x-auto', {
+                        'justify-center': !isOverflow(),
+                      })}>
                       <div
-                        class={formatClasses('flex w-fit min-w-full flex-row flex-nowrap space-x-6', {
-                          'justify-center': !isOverflow(),
+                        use:domProperty={{
+                          keyList: ['domRectWidth'],
+                          cb: ([width]: DomPropertyCbParams<['domRectWidth']>) => {
+                            setBlogsWidth(width);
+                          },
+                        }}
+                        class={formatClasses('flex w-fit flex-row flex-nowrap space-x-6', {
+                          'space-x-10': isPC(),
                         })}>
                         <For each={group}>
                           {(blog, index) => (
                             <BlogCard
                               classes={formatClasses({
-                                'ps-10': index() === 0,
-                                'pr-10': index() === props.blogs().length - 1,
+                                'ps-10': index() === 0 && isOverflow(),
+                                'pr-10': index() === props.blogs().length - 1 && isOverflow(),
                               })}
                               isLoading={false}
                               blogData={blog}
