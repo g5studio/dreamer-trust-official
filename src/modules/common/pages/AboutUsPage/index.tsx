@@ -107,10 +107,18 @@ const AboutUsPage = () => {
         })}>
         <Picture
           classes={formatClasses('object-cover', {
-            'h-[546px] w-[511px]': !isMobile(),
-            'min-w-[511px]': isPC(),
+            'h-[546px]': !isMobile(),
           })}
           src={isMobile() ? 'about-us/trust-introduction-sm@3x.png' : 'about-us/trust-introduction@3x.png'}
+          style={{
+            'min-width': !isMobile()
+              ? `${
+                  (windowSize.width < 1187 ? windowSize.width : 1187) -
+                  (windowSize.width < 1187 ? 88 : 0) -
+                  (articleSize()?.width ?? 0)
+                }px`
+              : undefined,
+          }}
         />
         <article
           use:domProperty={{
@@ -122,9 +130,10 @@ const AboutUsPage = () => {
             },
           }}
           class={formatClasses('relative flex overflow-hidden ', {
-            'min-w-[540px] items-center justify-center rounded-e-8': !isMobile(),
+            'items-center justify-center rounded-e-8': !isMobile(),
             'px-26': isPC(),
             'max-w-[540px] px-20': isTablet(),
+            'w-[677px] min-w-[677px]': isPC(),
             'min-h-[224px] p-6': isMobile(),
           })}>
           <Picture
@@ -161,6 +170,7 @@ const AboutUsPage = () => {
         titleI18nKey="aboutUs.ourValue.title"
         subTitleI18nKey="aboutUs.ourValue.subTitle"
         sectionClasses={formatClasses('grid', {
+          'mx-auto max-w-[1187px]': isPC(),
           'px-14': isMobile() && !isSmallMobile(),
           'grid-cols-3 gap-20 px-10': isPC(),
           'grid-cols-3 gap-10': isTablet(),
@@ -191,6 +201,7 @@ const AboutUsPage = () => {
         titleI18nKey="aboutUs.ourMission.title"
         subTitleI18nKey="aboutUs.ourMission.subTitle"
         sectionClasses={formatClasses('grid', {
+          'mx-auto max-w-[1187px]': isPC(),
           'grid-cols-3 gap-24 px-10': isPC(),
           'grid-cols-3 gap-10': isTablet(),
           'grid-cols-1 gap-6': isMobile(),
