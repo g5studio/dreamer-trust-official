@@ -43,10 +43,9 @@ const BlogCard = (props: SeminarCardProps) => {
         {!props.isLoading ? (
           <Picture
             src={props.blogData.mainImageUrl}
-            pictureClasses="flex grow"
-            classes={formatClasses('w-[238px] rounded-t-8', {
-              'w-[298px]': isTablet(),
-              'w-[354px]': isPC(),
+            classes={formatClasses('h-[149px] w-[238px] rounded-t-8 object-cover object-top', {
+              'h-[219px] w-[298px]': isTablet(),
+              'h-[219px] w-[354px]': isPC(),
             })}
             fallbackSlot={() => (
               <Skeleton
