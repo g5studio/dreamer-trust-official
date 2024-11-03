@@ -13,6 +13,7 @@ export interface IApiEventInput {
   mobileCountryCode: string;
   mobileNumber: string;
   landline: string;
+  landlineCountryCode: string;
   preferredContactMethods: PreferredContactMethod[];
   comments: string;
 }

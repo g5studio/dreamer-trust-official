@@ -27,6 +27,7 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
     eventId: props.eventData.id,
     email: '',
     landline: '',
+    landlineCountryCode: '',
     mobileCountryCode: '',
     mobileNumber: '',
     name: '',
@@ -76,13 +77,14 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
   });
 
   const handleOnSubmit = (formData: Pick<IForm<keyof IApiEventInput>, 'fields' | 'isValid' | 'errors'>) => {
-    const { name, email, landline, mobileNumber, comments } = formData.fields;
+    const { name, email, landline, mobileNumber, comments, mobileCountryCode, landlineCountryCode } = formData.fields;
     postEvent({
       eventId: props.eventData.id,
       name: name.value,
       email: email.value,
-      mobileCountryCode: '+886',
+      mobileCountryCode: mobileCountryCode.value,
       mobileNumber: mobileNumber.value,
+      landlineCountryCode: landlineCountryCode.value,
       landline: landline.value,
       preferredContactMethods: preferredContactMethods(),
       comments: comments.value,
@@ -227,6 +229,15 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
           <FormInput
             legendI18nKey="seminars.form.landline"
             placeholderI18nKey="seminars.form.landlinePlaceholder"
+            pseudoSlot={() => (
+              <CountryCodeDropdown
+                handleOnChange={({ dialingCode }) => {
+                  setValue('landlineCountryCode', dialingCode);
+                }}
+                classes="pe-8"
+                placeholderI18nKey="seminars.form.areaCode"
+              />
+            )}
             register={(element) =>
               register({
                 fieldName: 'landline',
@@ -287,7 +298,9 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
               !validateEmail(fields().email.value) ||
               !fields().name.value ||
               !fields().mobileNumber.value ||
-              !fields().mobileCountryCode ||
+              !fields().mobileCountryCode.value ||
+              (!!fields().landline.value && !fields().landlineCountryCode.value) ||
+              (!fields().landline.value && !!fields().landlineCountryCode.value) ||
               preferredContactMethods().length === 0 ||
               isLoading()
             }
