@@ -255,6 +255,7 @@ const HomePage = () => {
         titleI18nKey="home.solutions.title"
         subTitleI18nKey="home.solutions.subTitle"
         sectionClasses={formatClasses('grid gap-6', {
+          'mx-auto max-w-[660px]': isTablet(),
           'grid-cols-4': isPC(),
           'grid-cols-2': isTablet(),
           'grid-cols-1': isMobile(),
@@ -300,6 +301,7 @@ const HomePage = () => {
         titleI18nKey="home.advantages.title"
         subTitleI18nKey="home.advantages.subTitle"
         sectionClasses={formatClasses('grid', {
+          'mx-auto max-w-[660px]': isTablet(),
           'grid-cols-2 gap-40': isPC(),
           'grid-cols-2 gap-10': isTablet(),
           'grid-cols-1 gap-10': isMobile(),
