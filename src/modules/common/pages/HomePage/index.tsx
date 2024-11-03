@@ -53,7 +53,6 @@ const HomePage = () => {
         containerClasses={formatClasses('h-full', { 'w-full': !isMobile() && !isXLargePC() })}
         replayMode="forward"
         animation="fade"
-        playTime={Infinity}
         testId="home-top-carousel"
         maxLength={carouselCount()}
         direction={Direction.Horizontal}
