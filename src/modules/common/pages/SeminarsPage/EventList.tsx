@@ -3,9 +3,13 @@ import { Direction } from '@shared/enums';
 import { isMobile } from '@shared/hooks/use-window-size';
 import { IEvent } from '@shared/models/event.model';
 import { formatClasses } from '@utilities/helpers/format.helper';
-import { Show, For, Accessor, children, createMemo } from 'solid-js';
+import { Show, For, Accessor, children, createMemo, createSignal } from 'solid-js';
 import { IBaseComponentProps } from '@shared/interfaces';
+import { registerDirective } from '@utilities/helpers/directive.helper';
+import { domProperty, DomPropertyCbParams } from '@utilities/directives/dom-property-directive';
 import SeminarEventCard from './SeminarEventCard';
+
+registerDirective(domProperty);
 
 type Props = {
   events: Accessor<IEvent['metaData'][]>;
@@ -25,19 +29,41 @@ const EventList = (props: Props) => {
       <For each={props.events()}>{(data) => <SeminarEventCard hideRSVP={props.hideRSVP} eventData={data} />}</For>
     )),
   );
-  return (
-    <Show
-      when={!isMobile()}
-      fallback={
-        <div class="no-scrollbar w-full overflow-x-auto">
+
+  const Slider = () => {
+    const [containerWidth, setContainerWidth] = createSignal<number>(0);
+    const [listWidth, setListWidth] = createSignal<number>(0);
+    const isOverflow = () => containerWidth() < listWidth();
+    return (
+      <div
+        class={formatClasses('w-full min-w-full')}
+        use:domProperty={{
+          keyList: ['domRectWidth'],
+          cb: ([width]: DomPropertyCbParams<['domRectWidth']>) => {
+            setContainerWidth(width);
+          },
+        }}>
+        <div
+          use:domProperty={{
+            keyList: ['domRectWidth'],
+            cb: ([width]: DomPropertyCbParams<['domRectWidth']>) => {
+              setListWidth(width);
+            },
+          }}
+          class={formatClasses('no-scrollbar overflow-x-auto')}>
           <div
-            class={formatClasses('flex w-fit w-full flex-row flex-nowrap space-x-6', {
-              'justify-center': props.events().length < 3,
+            class={formatClasses('flex w-fit min-w-full flex-row flex-nowrap space-x-6', {
+              'justify-center': !isOverflow(),
             })}>
             {eventList()()}
           </div>
         </div>
-      }>
+      </div>
+    );
+  };
+
+  return (
+    <Show when={!isMobile()} fallback={<Slider />}>
       <CarouselContainer
         playTime={Infinity}
         replayMode="forward"
@@ -47,18 +73,20 @@ const EventList = (props: Props) => {
         maxLength={props.events().length}
         direction={Direction.Horizontal}
         sliderSlot={(currentIndex, changeIndex) => (
-          <ul class="mt-10 flex flex-row items-center justify-center space-x-6">
-            <For each={props.events()}>
-              {(_, id) => (
-                <li
-                  class={formatClasses('h-4 w-4 rounded-circle bg-black-4', {
-                    'bg-black-3': currentIndex() === id(),
-                  })}>
-                  <button onClick={() => changeIndex(id())} class="h-full w-full" type="button" />
-                </li>
-              )}
-            </For>
-          </ul>
+          <Show when={props.events().length > 0}>
+            <ul class="mt-10 flex flex-row items-center justify-center space-x-6">
+              <For each={props.events()}>
+                {(_, id) => (
+                  <li
+                    class={formatClasses('h-4 w-4 rounded-circle bg-black-4', {
+                      'bg-black-3': currentIndex() === id(),
+                    })}>
+                    <button onClick={() => changeIndex(id())} class="h-full w-full" type="button" />
+                  </li>
+                )}
+              </For>
+            </ul>
+          </Show>
         )}>
         {() => <div class={formatClasses('flex w-full flex-row flex-nowrap')}>{eventList()()}</div>}
       </CarouselContainer>
