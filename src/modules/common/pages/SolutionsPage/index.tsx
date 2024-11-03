@@ -170,14 +170,14 @@ const SolutionsPage = () => {
         {({ key, chapter, pictureUrl }) => (
           <article
             class={formatClasses('flex flex-col items-center', {
-              'space-y-9': isPC(),
+              'mx-auto max-w-[1184px] space-y-9': isPC(),
               'space-y-6': !isPC(),
             })}>
             <section
               class={formatClasses('w-full', {
-                'flex flex-row items-start px-10': !isMobile(),
+                'flex flex-row items-start': !isMobile(),
                 'space-x-20': isPC(),
-                'space-x-6': isTablet(),
+                'space-x-6 px-10': isTablet(),
                 'space-y-6 px-6': isMobile(),
               })}>
               <div
