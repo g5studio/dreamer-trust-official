@@ -44,8 +44,6 @@ const SolutionsPage = () => {
     },
   ];
 
-  const [{ mainContentAreaSize }] = useLayoutContext();
-
   return (
     <ContentLayout
       testId="SolutionsPage"
@@ -257,10 +255,8 @@ const SolutionsPage = () => {
       <button
         type="button"
         onClick={() => mainScrollRef()?.scrollTo({ top: 0, behavior: 'smooth' })}
-        class="absolute flex h-[65px] w-[65px] items-center justify-center rounded-circle bg-black-6"
+        class="fixed bottom-10 right-10 flex h-[55px] w-[55px] items-center justify-center rounded-circle bg-black-6"
         style={{
-          right: `${isPC() && mainContentAreaSize().left > 40 ? 0 : 40}px`,
-          bottom: isPC() ? '45px' : '-30px',
           'box-shadow': '0px 0px 5px 2px #00000040',
         }}>
         <svg width="34" height="19" viewBox="0 0 34 19" fill="none" xmlns="http://www.w3.org/2000/svg">
