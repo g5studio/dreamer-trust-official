@@ -46,12 +46,14 @@ const HomePage = () => {
       })}>
       <CarouselContainer
         classes={formatClasses({
-          'flex w-full flex-col items-center justify-center': !isMobile(),
+          'flex h-[576px] w-full flex-col items-center justify-center': !isMobile(),
           'px-6 pt-5': isMobile(),
           'px-5 pt-7_5': isSmallMobile(),
         })}
-        containerClasses={formatClasses({ 'w-full': !isMobile() && !isXLargePC() })}
+        containerClasses={formatClasses('h-full', { 'w-full': !isMobile() && !isXLargePC() })}
         replayMode="forward"
+        animation="fade"
+        playTime={Infinity}
         testId="home-top-carousel"
         maxLength={carouselCount()}
         direction={Direction.Horizontal}
@@ -70,11 +72,11 @@ const HomePage = () => {
           </ul>
         )}>
         {() => (
-          <div class="flex w-full grow flex-row flex-nowrap">
+          <>
             {/* Top 1 */}
             <section
               class={formatClasses('flex min-w-full', {
-                'flex-row items-center justify-center space-x-25 px-10': !isMobile(),
+                'h-[544px] flex-row items-center justify-center space-x-25 px-10': !isMobile(),
                 'justify-between space-x-0': !isMobile() && shouldDynamicAdjustTopImageWidth(),
                 'flex-col justify-start': isMobile(),
               })}>
@@ -246,7 +248,7 @@ const HomePage = () => {
                 src={isMobile() ? 'home/home-top-3-sm@3x.png' : 'home/home-top-3@3x.png'}
               />
             </section>
-          </div>
+          </>
         )}
       </CarouselContainer>
       {/* 我們的解決方案 */}

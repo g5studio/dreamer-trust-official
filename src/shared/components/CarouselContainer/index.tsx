@@ -19,7 +19,7 @@ import {
 
 import { Direction } from '@shared/enums';
 import { registerDirective } from '@utilities/helpers/directive.helper';
-import { domProperty } from '@utilities/directives/dom-property-directive';
+import { domProperty, DomPropertyCbParams } from '@utilities/directives/dom-property-directive';
 import OutViewContainer from '../OutViewContainer';
 
 registerDirective(domProperty);
@@ -246,6 +246,7 @@ const useCarouselAction = ({ props, setCurrentIndex }: { props: Props; setCurren
  */
 const CarouselContainer = (props: Props) => {
   const [currentIndex, setCurrentIndex] = createSignal<number>(props.defaultIndex ?? 0);
+  const [fadeModeHeight, setFadeModeHeight] = createSignal<number>(0);
 
   const mergedProps: Props = mergeProps(
     {
@@ -327,7 +328,9 @@ const CarouselContainer = (props: Props) => {
                     mergedProps.direction === Direction.Horizontal ? 'X' : 'Y'
                   }(calc(-${offset()}))`,
                 }
-              : {}
+              : {
+                  'min-height': fadeModeHeight() > 0 ? `${fadeModeHeight()}px` : undefined,
+                }
           }
           onTransitionEnd={handleTransitionEnd}>
           <Switch>
@@ -366,11 +369,20 @@ const CarouselContainer = (props: Props) => {
                 <For<HTMLElement[], JSXElement> each={childrenSnapshot() as HTMLElement[]}>
                   {(e, index) => (
                     <div
-                      class={formatClasses('absolute left-0 top-0 z-cover', {
+                      use:domProperty={{
+                        keyList: ['domRectHeight'],
+                        cb: ([height]: DomPropertyCbParams<['domRectHeight']>) => {
+                          if (fadeModeHeight() < height) {
+                            setFadeModeHeight(height);
+                          }
+                        },
+                      }}
+                      class={formatClasses('absolute left-0 top-0 z-cover w-full', {
                         'z-canvas opacity-100': index() === current(),
                         'opacity-0': index() !== current(),
                       })}
                       style={{
+                        height: fadeModeHeight() > 0 ? `${fadeModeHeight()}px` : 'fit-content',
                         transition: `${mergedProps.transition! / 1000}s`,
                       }}>
                       {e}
