@@ -2,53 +2,38 @@ import ArticleContainer from '@shared/components/ArticleContainer';
 import CarouselContainer from '@shared/components/CarouselContainer';
 import ContentLayout from '@shared/components/ContentLayout';
 import Picture from '@shared/components/Picture';
-import { Direction, ErrorHandleType, Language, LocaleDash, Page } from '@shared/enums';
-import { createCustomizeQuery } from '@shared/hooks/create-customize-query';
+import { Direction, LocaleDash, Page } from '@shared/enums';
 import { useNavigate } from '@shared/hooks/use-navigate';
 import { translate, translation } from '@shared/hooks/use-translation';
 import { isLargePC, isMobile, isPC, isSmallMobile } from '@shared/hooks/use-window-size';
-import { getEvent } from '@shared/models/event.model';
-import { createQuery } from '@tanstack/solid-query';
-import { IApiEvent } from '@utilities/api/http/schema/event-api.schema';
-import { queryConfigs } from '@utilities/api/solid-query';
 import { useEventListContext } from '@utilities/context/event-list-context';
-import { formatClasses, formatLanguage } from '@utilities/helpers/format.helper';
-import { createEffect, createMemo, Show } from 'solid-js';
+import { formatClasses } from '@utilities/helpers/format.helper';
+import { createEffect, Show } from 'solid-js';
 import { domProperty } from '@utilities/directives/dom-property-directive';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { pan } from '@utilities/directives/pan-directive';
+import { queryClient, queryConfigs } from '@utilities/api/solid-query';
 import EventList from './EventList';
 
 registerDirective(domProperty);
 registerDirective(pan);
 
 const SeminarsPage = () => {
-  const [{ eventList, haveEvents }] = useEventListContext();
+  const [{ eventList, pastEventList, haveEvents, eventParams }] = useEventListContext();
   const navigate = useNavigate();
-
-  const queryPastEvent = createCustomizeQuery<IApiEvent[]>({
-    query: createQuery(() => ({
-      ...queryConfigs.fetchPastEventList({ language: formatLanguage(translation.language) ?? Language.zh_CN }),
-    })),
-    //! normally we need ignore all default error handler when load page initial data
-    errorHandleType: ErrorHandleType.None,
-    onSuccess: () => {},
-    onError: () => {},
-  });
-
-  const pastEvents = createMemo(
-    () =>
-      queryPastEvent.data?.data.map((_) => {
-        const { initialize, metaData } = getEvent();
-        initialize(_);
-        return metaData;
-      }) ?? [],
-  );
 
   createEffect(() => {
     if (!haveEvents()) {
       navigate()[Page.Home]();
     }
+  });
+
+  void queryClient.invalidateQueries({
+    queryKey: queryConfigs.fetchEventList(eventParams()).queryKey,
+  });
+
+  void queryClient.invalidateQueries({
+    queryKey: queryConfigs.fetchPastEventList(eventParams()).queryKey,
   });
 
   return (
@@ -125,7 +110,7 @@ const SeminarsPage = () => {
         )}
       </CarouselContainer>
       {/* 研討會活動 */}
-      <Show when={haveEvents()}>
+      <Show when={!!eventList().length}>
         <ArticleContainer
           classes="w-full"
           sectionClasses="w-full"
@@ -135,13 +120,13 @@ const SeminarsPage = () => {
         </ArticleContainer>
       </Show>
       {/* 過去的活動 */}
-      <Show when={!!pastEvents().length}>
+      <Show when={!!pastEventList().length}>
         <ArticleContainer
           classes="w-full"
           sectionClasses="w-full"
           titleI18nKey="seminars.pastEvent.title"
           subTitleI18nKey="seminars.pastEvent.subTitle">
-          <EventList testId="seminars-past-event-carousel" hideRSVP events={pastEvents} />
+          <EventList testId="seminars-past-event-carousel" hideRSVP events={pastEventList} />
         </ArticleContainer>
       </Show>
     </ContentLayout>
