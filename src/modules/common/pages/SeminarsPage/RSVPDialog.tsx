@@ -94,7 +94,7 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
       class={formatClasses('relative rounded-8 bg-black-6', {
         'max-h-[98vh] max-w-[440px] overflow-y-auto p-6 pt-14': isMobile(),
         'p-10': !isMobile(),
-        'max-w-[calc(93.75vw)] p-10': isTablet(),
+        'max-w-[calc(93.75vw)]': isTablet(),
         'max-w-[1100px]': isPC(),
       })}>
       <button

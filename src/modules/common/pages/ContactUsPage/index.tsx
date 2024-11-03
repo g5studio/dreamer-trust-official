@@ -112,7 +112,6 @@ const ContactUsPage = () => {
       <ArticleContainer
         titleI18nKey={''}
         subTitleI18nKey="contactUs.location.title"
-        subTitleClasses="text-[32px] font-medium"
         sectionClasses={formatClasses('flex w-full flex-col space-y-9', {
           'items-center': isPC(),
         })}
