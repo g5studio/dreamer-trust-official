@@ -3,8 +3,12 @@ import { isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-windo
 import { Slot } from '@shared/interfaces';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
 import { I18nKey } from '@shared/models/translation.model';
+import { inView } from '@utilities/directives/in-view-directive';
+import { registerDirective } from '@utilities/helpers/directive.helper';
 import { formatClasses } from '@utilities/helpers/format.helper';
-import { Show } from 'solid-js';
+import { createSignal, Show } from 'solid-js';
+
+registerDirective(inView);
 
 interface IArticleContainerProps extends IBaseComponentProps {
   titleI18nKey: I18nKey;
@@ -16,8 +20,14 @@ interface IArticleContainerProps extends IBaseComponentProps {
 }
 
 const ArticleContainer = (props: IArticleContainerProps) => {
+  const [animationStart, setAnimationStart] = createSignal<boolean>(false);
   return (
     <article
+      use:inView={{
+        onEnter: () => {
+          setAnimationStart(true);
+        },
+      }}
       ref={props.ref}
       data-testid={props.testId}
       class={formatClasses(
@@ -25,6 +35,7 @@ const ArticleContainer = (props: IArticleContainerProps) => {
         {
           'px-10': isTablet(),
           'px-6': isMobile(),
+          'animation-fade-in-bottom': animationStart(),
         },
         props.classes,
       )}>

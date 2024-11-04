@@ -3,6 +3,7 @@ import Button from '@shared/components/Button';
 import CarouselContainer from '@shared/components/CarouselContainer';
 import ContentLayout from '@shared/components/ContentLayout';
 import Picture from '@shared/components/Picture';
+import { oneSecondWithMileSeconds } from '@shared/constants/time.constants';
 import { DateFormatType, Direction, Page } from '@shared/enums';
 import { useNavigate } from '@shared/hooks/use-navigate';
 import { translate, translation } from '@shared/hooks/use-translation';
@@ -55,6 +56,7 @@ const HomePage = () => {
         animation="fade"
         testId="home-top-carousel"
         maxLength={carouselCount()}
+        transition={oneSecondWithMileSeconds}
         direction={Direction.Horizontal}
         sliderSlot={(currentIndex, changeIndex) => (
           <ul class="mt-4 flex flex-row items-center justify-center space-x-6">
