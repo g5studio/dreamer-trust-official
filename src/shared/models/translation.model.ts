@@ -39,7 +39,7 @@ export interface ITranslation extends IBaseModel<IApiI18nSnapshot, TranslationPr
 }
 
 const browserLocaleDashMap: PartialRecord<LocaleDash, string[]> = {
-  [LocaleDash.en_US]: ['en-NZ', 'en-AU', 'en-GB', 'en-US', 'en-CA', 'en-us'],
+  [LocaleDash.en_US]: ['en-NZ', 'en-AU', 'en-GB', 'en-US', 'en-CA', 'en-us', 'en'],
   [LocaleDash.id_ID]: ['id-ID', 'id-id', 'id'],
   [LocaleDash.ms_MY]: ['ms-MY', 'ms-my', 'ms'],
   [LocaleDash.vi_VN]: ['vi-VN', 'vi-vn', 'vi'],
@@ -60,8 +60,9 @@ export const getTranslation = (): ITranslation => {
     ({
       dictionary: {},
       language:
-        getLocalStorage(LocalStorageItem.Language) ?? getBrowserLocale(getWindow().navigator.language.toLowerCase()),
-      // ?? LocaleDash[systemInfo()?.lang],
+        getLocalStorage(LocalStorageItem.Language) ??
+        getBrowserLocale(getWindow().navigator.language.toLowerCase()) ??
+        LocaleDash.en_US,
     }) as TranslationProps;
 
   const [metaData, setData] = createStore<TranslationProps>(initialData());
