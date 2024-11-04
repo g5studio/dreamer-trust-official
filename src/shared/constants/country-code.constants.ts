@@ -1,6 +1,8 @@
 import { IsoCode } from '@shared/enums';
 
-export type CountryCodeConfig = {
+export type CountryCodeConfig = CountryOptionConfig | DefaultOptionConfig;
+
+type CountryOptionConfig = {
   code: IsoCode;
   dialingCode: string;
   id: string;
@@ -9,7 +11,14 @@ export type CountryCodeConfig = {
   nativeName: string;
 };
 
+type DefaultOptionConfig = {
+  id: undefined;
+};
+
 export const countryCodeList: CountryCodeConfig[] = [
+  {
+    id: undefined,
+  },
   {
     code: IsoCode.AD,
     dialingCode: '376',

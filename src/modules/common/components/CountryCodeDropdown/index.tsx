@@ -4,12 +4,14 @@ import { CountryCodeConfig, countryCodeList } from '@shared/constants/country-co
 import { LocaleDash } from '@shared/enums';
 import { translate, translation } from '@shared/hooks/use-translation';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
+import { I18nKey } from '@shared/models/translation.model';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { ArrowDownLineIcon } from '@utilities/svg-components';
-import { createSignal, onMount, Setter } from 'solid-js';
+import { createSignal, onMount, Setter, Show } from 'solid-js';
 
 interface ICountryCodeDropdownProps extends IBaseComponentProps, Pick<IInputProps, 'placeholderI18nKey'> {
   defaultOption?: CountryCodeConfig;
+  defaultOptionI18n?: I18nKey;
   ref?: Setter<ICountryCodeDropdown | undefined>;
   handleOnChange?: ArrowFn<CountryCodeConfig, void>;
 }
@@ -44,9 +46,9 @@ const CountryCodeDropdown = (props: ICountryCodeDropdownProps) => {
             type="button"
             onClick={toggleDropdown}
             class={formatClasses('flex flex-row items-center space-x-2 text-sm text-black-1', {
-              'text-black-4': !selectedOption()?.dialingCode,
+              'text-black-4': !selectedOption()?.id,
             })}>
-            <span>{selectedOption()?.dialingCode ?? translate(props.placeholderI18nKey)}</span>
+            <span>{selectedOption()?.id ?? translate(props.placeholderI18nKey)}</span>
             <ArrowDownLineIcon
               fillClasses="stroke-black-4"
               classes={formatClasses('w-4', {
@@ -64,8 +66,14 @@ const CountryCodeDropdown = (props: ICountryCodeDropdownProps) => {
               setSelectedOption(item);
               props.handleOnChange?.(item);
             }}>
-            <span class="text-nowrap">{isEnglish() ? item.englishName : item.localizedName}</span>
-            <span class="text-black-4">+{item.dialingCode}</span>
+            <Show when={item.id} fallback={<span>{translate(props.defaultOptionI18n)}</span>}>
+              {item.id && (
+                <>
+                  <span class="text-nowrap">{isEnglish() ? item.englishName : item.localizedName}</span>
+                  <span class="text-black-4">+{item.dialingCode}</span>
+                </>
+              )}
+            </Show>
           </button>
         )}
       />

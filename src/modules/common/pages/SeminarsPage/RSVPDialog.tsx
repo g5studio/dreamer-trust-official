@@ -209,8 +209,13 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
             type="number"
             pseudoSlot={() => (
               <CountryCodeDropdown
-                handleOnChange={({ dialingCode }) => {
-                  setValue('mobileCountryCode', dialingCode);
+                defaultOptionI18n="seminars.form.areaCode"
+                handleOnChange={(option) => {
+                  if (option.id) {
+                    setValue('mobileCountryCode', option.dialingCode);
+                  } else {
+                    setValue('mobileCountryCode', '');
+                  }
                 }}
                 classes="pe-8"
                 placeholderI18nKey="seminars.form.areaCode"
@@ -231,8 +236,13 @@ export const RSVPDialog = (props: IRSVPDialogProps & IBaseOverlay) => {
             placeholderI18nKey="seminars.form.landlinePlaceholder"
             pseudoSlot={() => (
               <CountryCodeDropdown
-                handleOnChange={({ dialingCode }) => {
-                  setValue('landlineCountryCode', dialingCode);
+                defaultOptionI18n="seminars.form.areaCode"
+                handleOnChange={(option) => {
+                  if (option.id) {
+                    setValue('landlineCountryCode', option.dialingCode);
+                  } else {
+                    setValue('landlineCountryCode', '');
+                  }
                 }}
                 classes="pe-8"
                 placeholderI18nKey="seminars.form.areaCode"

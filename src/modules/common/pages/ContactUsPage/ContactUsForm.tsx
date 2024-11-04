@@ -157,9 +157,14 @@ export const ContactUsForm = () => {
           type="number"
           pseudoSlot={() => (
             <CountryCodeDropdown
+              defaultOptionI18n="contactUs.form.areaCode"
               ref={setCountryCodeRef}
-              handleOnChange={({ dialingCode }) => {
-                setValue('mobileCountryCode', dialingCode);
+              handleOnChange={(option) => {
+                if (option.id) {
+                  setValue('mobileCountryCode', option.dialingCode);
+                } else {
+                  setValue('mobileCountryCode', '');
+                }
               }}
               classes="pe-8"
               placeholderI18nKey="contactUs.form.areaCode"
