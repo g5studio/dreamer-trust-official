@@ -272,7 +272,12 @@ const CarouselContainer = (props: Props) => {
   });
 
   const current = () => currentIndex();
-  const childrenSnapshot = createMemo(() => children(() => mergedProps.children()).toArray() ?? []);
+  const childrenSnapshot = createMemo(
+    () =>
+      children(() => mergedProps.children())
+        .toArray()
+        .filter((e) => !!e) ?? [],
+  );
   const offset = () => getOffset(mergedProps, current);
 
   const isFirst = () =>
