@@ -7,7 +7,12 @@ import { For, Show } from 'solid-js';
 import { isMobile, isPC, isTablet } from '@shared/hooks/use-window-size';
 import { useNavigate } from '@shared/hooks/use-navigate';
 import { Page } from '@shared/enums';
+import { useLayoutContext } from '@utilities/context/layout-context';
+import { registerDirective } from '@utilities/helpers/directive.helper';
+import { domProperty, DomPropertyCbParams } from '@utilities/directives/dom-property-directive';
 import PrimaryLogo from '../PrimaryLogo';
+
+registerDirective(domProperty);
 
 interface IFooterProps extends IBaseComponentProps {}
 
@@ -17,8 +22,15 @@ interface IFooterProps extends IBaseComponentProps {}
 const Footer = (props: IFooterProps) => {
   const { menuItems } = useMenu();
   const navigate = useNavigate();
+  const [, { setFooterAreaHeight }] = useLayoutContext();
   return (
     <footer
+      use:domProperty={{
+        keyList: ['domRectHeight'],
+        cb: ([height]: DomPropertyCbParams<['domRectHeight']>) => {
+          setFooterAreaHeight(height);
+        },
+      }}
       data-testid="app-footer"
       class={formatClasses(
         'bg-black-6',

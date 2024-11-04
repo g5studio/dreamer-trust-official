@@ -21,7 +21,7 @@ const ContentLayout = (props: IContentLayoutProps) => {
   const staticPathname = navigator.pathname;
   usePageCheck({ pathname: () => staticPathname });
 
-  const [{ mainContentAreaSize }] = useLayoutContext();
+  const [{ mainContentAreaSize, headerAreaHeight, footerAreaHeight }] = useLayoutContext();
 
   onMount(() => {
     Log.info({
@@ -43,7 +43,12 @@ const ContentLayout = (props: IContentLayoutProps) => {
       <Show when={isPC() && !props.isSimplePage}>
         <Picture classes="absolute left-[50%] top-[646px] z-bg min-w-screen translate-x-[-50%]" src="shared/bg-1.png" />
       </Show>
-      <Show when={isPC() && !props.isSimplePage}>
+      <Show
+        when={
+          isPC() &&
+          !props.isSimplePage &&
+          headerAreaHeight() + mainContentAreaSize().height + footerAreaHeight() >= 2446
+        }>
         <Picture
           style={{
             right: `-${mainContentAreaSize().left}px`,

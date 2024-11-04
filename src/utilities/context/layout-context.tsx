@@ -14,9 +14,9 @@ export type Theme = Extract<SystemTheme, SystemTheme.Dark | SystemTheme.Light>;
 export type LayoutContextValue = {
   /**
    * 頁面實際內容之外的header高度
-   * @description 體育內頁的header是存在實際內容中，並非真正的header
    */
   headerAreaHeight: Accessor<number>;
+  footerAreaHeight: Accessor<number>;
   /**
    * 主要滾動軸
    */
@@ -49,6 +49,7 @@ export type LayoutContextSetter = {
   setContentLayoutRef: Setter<HTMLElement | undefined>;
   setTheme: Setter<Theme>;
   setMainContentAreaSize: Setter<DomSize>;
+  setFooterAreaHeight: Setter<number>;
 };
 
 type ContextType = [LayoutContextValue, LayoutContextSetter];
@@ -76,6 +77,7 @@ const useContentLayout = (): Pick<LayoutContextSetter, 'setContentLayoutRef' | '
 export const LayoutProvider = (props: IBaseComponentProps) => {
   const [theme, setTheme] = createSignal<Theme>(SystemTheme.Light);
   const [headerAreaHeight, setHeaderAreaHeight] = createSignal(0);
+  const [footerAreaHeight, setFooterAreaHeight] = createSignal(0);
   const [mainScrollRef, setMainScrollRef] = createSignal<LayoutScrollRef>();
   const [containerSize, setContainerSize] = createSignal<DomSize>({
     height: 0,
@@ -101,6 +103,7 @@ export const LayoutProvider = (props: IBaseComponentProps) => {
       contentLayoutRef,
       theme,
       mainContentAreaSize,
+      footerAreaHeight,
     },
     {
       setHeaderAreaHeight,
@@ -110,6 +113,7 @@ export const LayoutProvider = (props: IBaseComponentProps) => {
       setContentLayoutRef,
       setTheme,
       setMainContentAreaSize,
+      setFooterAreaHeight,
     },
   ];
 
