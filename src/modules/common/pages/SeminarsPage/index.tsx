@@ -112,7 +112,7 @@ const SeminarsPage = () => {
       {/* 研討會活動 */}
       <Show when={!!eventList().length}>
         <ArticleContainer
-          classes="w-full"
+          classes="w-full px-0"
           sectionClasses="w-full"
           titleI18nKey="seminars.event.title"
           subTitleI18nKey="seminars.event.subTitle">
@@ -122,7 +122,7 @@ const SeminarsPage = () => {
       {/* 過去的活動 */}
       <Show when={!!pastEventList().length}>
         <ArticleContainer
-          classes="w-full"
+          classes="w-full px-0"
           sectionClasses="w-full"
           titleI18nKey="seminars.pastEvent.title"
           subTitleI18nKey="seminars.pastEvent.subTitle">

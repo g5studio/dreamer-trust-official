@@ -3,7 +3,7 @@ import { Direction } from '@shared/enums';
 import { isMobile } from '@shared/hooks/use-window-size';
 import { IEvent } from '@shared/models/event.model';
 import { formatClasses } from '@utilities/helpers/format.helper';
-import { Show, For, Accessor, children, createMemo, createSignal } from 'solid-js';
+import { Show, For, Accessor, createSignal } from 'solid-js';
 import { IBaseComponentProps } from '@shared/interfaces';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { domProperty, DomPropertyCbParams } from '@utilities/directives/dom-property-directive';
@@ -24,12 +24,6 @@ type Props = {
  * @external http://devops.psgp.com/DefaultCollection/ESOP/_workitems/edit/15791
  */
 const EventList = (props: Props) => {
-  const eventList = createMemo(() =>
-    children(() => (
-      <For each={props.events()}>{(data) => <SeminarEventCard hideRSVP={props.hideRSVP} eventData={data} />}</For>
-    )),
-  );
-
   const Slider = () => {
     const [containerWidth, setContainerWidth] = createSignal<number>(0);
     const [listWidth, setListWidth] = createSignal<number>(0);
@@ -43,19 +37,28 @@ const EventList = (props: Props) => {
             setContainerWidth(width);
           },
         }}>
-        <div
-          use:domProperty={{
-            keyList: ['domRectWidth'],
-            cb: ([width]: DomPropertyCbParams<['domRectWidth']>) => {
-              setListWidth(width);
-            },
-          }}
-          class={formatClasses('no-scrollbar overflow-x-auto')}>
+        <div class={formatClasses('no-scrollbar overflow-x-auto')}>
           <div
+            use:domProperty={{
+              keyList: ['domRectWidth'],
+              cb: ([width]: DomPropertyCbParams<['domRectWidth']>) => {
+                setListWidth(width);
+              },
+            }}
             class={formatClasses('flex w-fit min-w-full flex-row flex-nowrap space-x-6', {
               'justify-center': !isOverflow(),
             })}>
-            {eventList()()}
+            <For each={props.events()}>
+              {(data, index) => (
+                <div
+                  class={formatClasses('flex flex-col', {
+                    'ps-10': index() === 0 && isOverflow(),
+                    'pr-10': index() === props.events().length - 1 && isOverflow(),
+                  })}>
+                  <SeminarEventCard classes="grow" hideRSVP={props.hideRSVP} eventData={data} />
+                </div>
+              )}
+            </For>
           </div>
         </div>
       </div>
@@ -88,7 +91,11 @@ const EventList = (props: Props) => {
             </ul>
           </Show>
         )}>
-        {() => <div class={formatClasses('flex w-full flex-row flex-nowrap')}>{eventList()()}</div>}
+        {() => (
+          <div class={formatClasses('flex w-full flex-row flex-nowrap')}>
+            <For each={props.events()}>{(data) => <SeminarEventCard hideRSVP={props.hideRSVP} eventData={data} />}</For>
+          </div>
+        )}
       </CarouselContainer>
     </Show>
   );
