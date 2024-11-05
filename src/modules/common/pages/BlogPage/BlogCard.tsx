@@ -43,7 +43,7 @@ const BlogCard = (props: SeminarCardProps) => {
         {!props.isLoading ? (
           <Picture
             src={props.blogData.mainImageUrl}
-            classes={formatClasses('h-[149px] w-[238px] rounded-t-8 object-cover object-top', {
+            classes={formatClasses('h-[149px] w-[238px] rounded-t-8 object-cover object-center', {
               'h-[219px] w-[298px]': isTablet(),
               'h-[219px] w-[354px]': isPC(),
             })}
