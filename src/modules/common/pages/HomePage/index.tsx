@@ -19,7 +19,7 @@ import { createSignal, For, Match, Show, Switch } from 'solid-js';
 const HomePage = () => {
   const [solutionRef, setSolutionRef] = createSignal<HTMLElement>();
   const [{ mainScrollRef, headerAreaHeight }] = useLayoutContext();
-  const [{ firstEvent, haveEvents }] = useEventListContext();
+  const [{ firstEvent, eventList }] = useEventListContext();
   const navigate = useNavigate();
 
   /**
@@ -36,7 +36,7 @@ const HomePage = () => {
   /**
    * @description 無研討會資料時不顯示研討會輪播區塊
    */
-  const carouselCount = () => (haveEvents() ? 3 : 2);
+  const carouselCount = () => (eventList().length > 0 ? 3 : 2);
 
   return (
     <ContentLayout
@@ -131,7 +131,7 @@ const HomePage = () => {
               />
             </section>
             {/* 研討會 */}
-            <Show when={haveEvents()}>
+            <Show when={eventList().length > 0}>
               <section
                 class={formatClasses('flex min-w-full', {
                   'flex-row items-start justify-center space-x-25': !isMobile(),
@@ -256,7 +256,7 @@ const HomePage = () => {
         subTitleI18nKey="home.solutions.subTitle"
         sectionClasses={formatClasses('grid gap-6', {
           'mx-auto max-w-[660px]': isTablet(),
-          'grid-cols-4': isPC(),
+          'no-scrollbar flex w-full flex-row flex-nowrap justify-start overflow-x-auto': isPC(),
           'grid-cols-2': isTablet(),
           'grid-cols-1': isMobile(),
         })}
@@ -277,8 +277,10 @@ const HomePage = () => {
         <For each={Array.from({ length: 4 }).map((_, i) => i + 1)}>
           {(index) => (
             <article
-              class={formatClasses('rounded-8 bg-black-5 pb-6', {
-                'max-w-[318px]': isMobile(),
+              class={formatClasses('w-[318px] rounded-8 bg-black-5 pb-6', {
+                'min-w-[318px] grow': isPC(),
+                'ms-6': index === 1 && isPC(),
+                'me-6': index === 4 && isPC(),
               })}>
               <Picture src={`home/solution-${index}@3x.png`} classes="w-full" />
               <section class="px-6_5 pt-6">
