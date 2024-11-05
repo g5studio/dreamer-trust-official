@@ -370,7 +370,7 @@ const CarouselContainer = (props: Props) => {
             </Match>
             <Match when={mergedProps.animation === 'fade'}>
               <>
-                <div class="invisible">{children(() => mergedProps.children()).toArray()[0]}</div>
+                <div class="invisible" style={{ 'min-height': `${fadeModeHeight()}px` }} />
                 <For<HTMLElement[], JSXElement> each={childrenSnapshot() as HTMLElement[]}>
                   {(e, index) => (
                     <div
@@ -382,7 +382,7 @@ const CarouselContainer = (props: Props) => {
                           }
                         },
                       }}
-                      class={formatClasses('absolute left-0 top-0 z-cover w-full', {
+                      class={formatClasses('absolute left-0 top-0 z-cover h-fit w-full', {
                         'z-canvas opacity-100': index() === current(),
                         'opacity-0': index() !== current(),
                       })}
