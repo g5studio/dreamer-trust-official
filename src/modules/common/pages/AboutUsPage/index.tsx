@@ -178,10 +178,10 @@ const AboutUsPage = () => {
         })}>
         <For each={['integrity', 'clientCentric', 'trustworthy', 'compliance', 'accountability', 'excellence']}>
           {(key) => (
-            <article class={formatClasses('space-y-4')}>
+            <article class={formatClasses('space-y-4', { 'space-y-2': isMobile() })}>
               <h5
                 class={formatClasses('border-b-0_25 border-black-3 pb-4 text-start text-5_5', {
-                  'text-sm': isMobile(),
+                  'pb-2 text-sm': isMobile(),
                 })}>
                 {translate(`aboutUs.ourValue.${key}.title`)}
               </h5>
