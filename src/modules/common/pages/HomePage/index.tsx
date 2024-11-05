@@ -19,7 +19,7 @@ import { createSignal, For, Match, Show, Switch } from 'solid-js';
 const HomePage = () => {
   const [solutionRef, setSolutionRef] = createSignal<HTMLElement>();
   const [{ mainScrollRef, headerAreaHeight }] = useLayoutContext();
-  const [{ firstEvent, eventList }] = useEventListContext();
+  const [{ firstEvent }] = useEventListContext();
   const navigate = useNavigate();
 
   /**
@@ -36,7 +36,7 @@ const HomePage = () => {
   /**
    * @description 無研討會資料時不顯示研討會輪播區塊
    */
-  const carouselCount = () => (eventList().length > 0 ? 3 : 2);
+  const carouselCount = () => (firstEvent()?.id ? 3 : 2);
 
   return (
     <ContentLayout
@@ -131,7 +131,7 @@ const HomePage = () => {
               />
             </section>
             {/* 研討會 */}
-            <Show when={eventList().length > 0}>
+            <Show when={firstEvent()?.id}>
               <section
                 class={formatClasses('flex min-w-full', {
                   'flex-row items-start justify-center space-x-25': !isMobile(),
