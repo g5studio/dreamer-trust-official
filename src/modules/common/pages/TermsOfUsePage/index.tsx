@@ -1,7 +1,7 @@
 import ContentLayout from '@shared/components/ContentLayout';
 import { DateFormatType } from '@shared/enums';
 import { translate, translation } from '@shared/hooks/use-translation';
-import { isPC } from '@shared/hooks/use-window-size';
+import { isLargePC, isPC } from '@shared/hooks/use-window-size';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { getTimeStamp, transform } from '@utilities/helpers/time.helper';
 import { registerDirective } from '@utilities/helpers/directive.helper';
@@ -15,7 +15,8 @@ const TermsOfUsePage = () => (
   <ContentLayout
     isSimplePage
     classes={formatClasses('px-6', {
-      '[max-w-1712px] space-y-12 py-20': isPC(),
+      'space-y-12 px-35 py-20': isPC(),
+      'px-26': isLargePC(),
       'space-y-12 py-16': !isPC(),
     })}
     testId="TermsOfUsePage">

@@ -3,10 +3,12 @@ import Header from '@modules/common/components/Header';
 import OverlayContainer from '@modules/common/components/OverlayContainer';
 import NestRoute from '@shared/components/NestRoute';
 import { RouteModule } from '@shared/enums';
+import { usePageCheck } from '@shared/hooks/use-page-check';
 import { Route, Routes } from '@solidjs/router';
 import { useLayoutContext } from '@utilities/context/layout-context';
 import { domProperty, DomPropertyCbParams } from '@utilities/directives/dom-property-directive';
 import { registerDirective } from '@utilities/helpers/directive.helper';
+import { formatClasses } from '@utilities/helpers/format.helper';
 import { getRoutesConfig } from '@utilities/helpers/routes.helper';
 import { Component, createMemo, For, onMount, Show } from 'solid-js';
 import 'styles/_index.scss';
@@ -15,6 +17,7 @@ registerDirective(domProperty);
 
 const App: Component = () => {
   const [, { setMainScrollRef, setMainContentAreaSize }] = useLayoutContext();
+  const { currentRoute } = usePageCheck();
 
   const isRouteReady = () => Object.values(getRoutesConfig()).length > 0;
 
@@ -47,7 +50,9 @@ const App: Component = () => {
             setMainContentAreaSize({ height, width, top, left });
           },
         }}
-        class="main-container flex w-full grow flex-col">
+        class={formatClasses('flex w-full grow flex-col', {
+          'main-container': !currentRoute()?.disableMainContainer,
+        })}>
         <Routes>
           <Show when={isRouteReady()}>
             <For each={routesMap()}>{(config) => <Route path={config.path} component={config.component} />}</For>
