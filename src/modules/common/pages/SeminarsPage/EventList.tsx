@@ -1,6 +1,6 @@
 import CarouselContainer from '@shared/components/CarouselContainer';
 import { Direction } from '@shared/enums';
-import { isMobile } from '@shared/hooks/use-window-size';
+import { isMobile, isTablet } from '@shared/hooks/use-window-size';
 import { IEvent } from '@shared/models/event.model';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { Show, For, Accessor, createSignal } from 'solid-js';
@@ -70,7 +70,9 @@ const EventList = (props: Props) => {
       <CarouselContainer
         playTime={Infinity}
         replayMode="forward"
-        classes="w-full"
+        classes={formatClasses('w-full', {
+          'px-10': isTablet(),
+        })}
         containerClasses="w-full"
         testId={props.testId ?? 'event-carousel'}
         maxLength={props.events().length}
