@@ -3,7 +3,7 @@ import { translate, translation } from '@shared/hooks/use-translation';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { insertHtml } from '@utilities/directives/insert-html-directive';
 import { formatClasses } from '@utilities/helpers/format.helper';
-import { isLargePC, isPC } from '@shared/hooks/use-window-size';
+import { isXLargePC, isPC } from '@shared/hooks/use-window-size';
 import { getTimeStamp, transform } from '@utilities/helpers/time.helper';
 import { DateFormatType } from '@shared/enums';
 import style from './index.module.scss';
@@ -15,7 +15,7 @@ const PrivacyPolicyPage = () => (
     isSimplePage
     classes={formatClasses('px-6', {
       'space-y-12 px-35 py-20': isPC(),
-      'px-26': isLargePC(),
+      'px-26': isXLargePC(),
       'space-y-12 py-16': !isPC(),
     })}
     testId="PrivacyPolicyPage">

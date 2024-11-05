@@ -6,7 +6,7 @@ import Picture from '@shared/components/Picture';
 import { DateFormatType, Direction, Page } from '@shared/enums';
 import { useNavigate } from '@shared/hooks/use-navigate';
 import { translate, translation } from '@shared/hooks/use-translation';
-import windowSize, { isLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
+import windowSize, { isXLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
 import { useEventListContext } from '@utilities/context/event-list-context';
 import { useLayoutContext } from '@utilities/context/layout-context';
 import { formatClasses } from '@utilities/helpers/format.helper';
@@ -50,7 +50,7 @@ const HomePage = () => {
           'px-6 pt-5': isMobile(),
           'px-5 pt-7_5': isSmallMobile(),
         })}
-        containerClasses={formatClasses({ 'w-full': !isMobile() && !isLargePC() })}
+        containerClasses={formatClasses({ 'w-full': !isMobile() && !isXLargePC() })}
         replayMode="forward"
         testId="home-top-carousel"
         maxLength={carouselCount()}

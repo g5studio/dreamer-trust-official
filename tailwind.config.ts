@@ -9,7 +9,7 @@ const config: Config = {
       sm: '393px',
       md: '768px',
       lg: '1024px',
-      xl: '1344px',
+      xl: '1440px',
     },
     fontSize: {
       // !due to twMerge cannot detect the custom key, if you added any custom key, please add it to utilities/helpers/format.helper.ts

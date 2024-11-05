@@ -5,7 +5,7 @@ import Picture from '@shared/components/Picture';
 import Skeleton, { SkeletonType } from '@shared/components/Skeleton';
 import { Direction, LocaleDash } from '@shared/enums';
 import { translate, translation } from '@shared/hooks/use-translation';
-import windowSize, { isLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
+import windowSize, { isXLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
 import { useLayoutContext } from '@utilities/context/layout-context';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { For, Show } from 'solid-js';
@@ -56,7 +56,7 @@ const SolutionsPage = () => {
           'px-6 pt-5': isMobile(),
           'px-5 pt-7_5': isSmallMobile(),
         })}
-        containerClasses={formatClasses({ 'w-full': !isMobile() && !isLargePC() })}
+        containerClasses={formatClasses({ 'w-full': !isMobile() && !isXLargePC() })}
         replayMode="forward"
         testId="solutions-top-carousel"
         maxLength={1}
@@ -122,19 +122,19 @@ const SolutionsPage = () => {
       </CarouselContainer>
       <ArticleContainer
         classes={formatClasses({
-          'max-w-[610px]': isLargePC(),
+          'max-w-[610px]': isXLargePC(),
           'mx-auto max-w-[632px]': !isMobile(),
         })}
         subTitleI18nKey="solutions.description.subTitle"
         titleI18nKey=""
         sectionClasses="mt-4"
         subTitleClasses={formatClasses('font-normal text-black-1', {
-          'leading-13 text-9': isLargePC(),
+          'leading-13 text-9': isXLargePC(),
           'text-7_5': !isPC(),
         })}>
         <p
           class={formatClasses('', {
-            'text-lg': isLargePC(),
+            'text-lg': isXLargePC(),
             'text-xs': !isPC(),
           })}>
           {translate('solutions.description.content')}

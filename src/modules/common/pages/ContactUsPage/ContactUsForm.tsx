@@ -6,7 +6,7 @@ import { createCustomizeMutation } from '@shared/hooks/create-customize-mutation
 import { IForm, useForm } from '@shared/hooks/use-form';
 import { toggleOverlay } from '@shared/hooks/use-overlay';
 import { translate } from '@shared/hooks/use-translation';
-import { isMobile, isPC, isTablet } from '@shared/hooks/use-window-size';
+import { isLargePC, isMobile, isPC, isTablet } from '@shared/hooks/use-window-size';
 import { IApiContactUsInput, Need } from '@utilities/api/http/schema/contact-us-api.schema';
 import { mutationConfigs } from '@utilities/api/solid-query';
 import { formatClasses } from '@utilities/helpers/format.helper';
@@ -92,8 +92,11 @@ export const ContactUsForm = () => {
   return (
     <div
       class={formatClasses('h-full w-full', {
+        'mx-auto flex flex-row items-start space-x-20': !isMobile(),
+        'max-w-[1020px]': !isLargePC() && isPC(),
+        'px-10': isTablet(),
         'space-y-20 px-6': isMobile(),
-        'flex flex-row items-start space-x-20 px-10': !isMobile(),
+        'max-w-[1344px] px-14': isLargePC(),
       })}>
       <article
         class={formatClasses('space-y-6 text-start text-black-2', {

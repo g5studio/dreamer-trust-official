@@ -1,5 +1,5 @@
 import ContentLayout from '@shared/components/ContentLayout';
-import windowSize, { isLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
+import windowSize, { isXLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import CarouselContainer from '@shared/components/CarouselContainer';
 import { Direction } from '@shared/enums';
@@ -41,7 +41,7 @@ const AboutUsPage = () => {
           'px-6 pt-5': isMobile(),
           'px-5 pt-7_5': isSmallMobile(),
         })}
-        containerClasses={formatClasses({ 'w-full': !isMobile() && !isLargePC() })}
+        containerClasses={formatClasses({ 'w-full': !isMobile() && !isXLargePC() })}
         replayMode="forward"
         testId="about-us-top-carousel"
         maxLength={1}

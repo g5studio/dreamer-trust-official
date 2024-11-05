@@ -4,7 +4,7 @@ import ContentLayout from '@shared/components/ContentLayout';
 import Picture from '@shared/components/Picture';
 import { Direction, ErrorHandleType, Language, LocaleDash } from '@shared/enums';
 import { translate, translation } from '@shared/hooks/use-translation';
-import windowSize, { isLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
+import windowSize, { isXLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
 import { formatClasses, formatLanguage } from '@utilities/helpers/format.helper';
 import { createCustomizeQuery } from '@shared/hooks/create-customize-query';
 import { createQuery } from '@tanstack/solid-query';
@@ -81,7 +81,7 @@ const BlogPage = () => {
           'px-6 pt-5': isMobile(),
           'px-5 pt-7_5': isSmallMobile(),
         })}
-        containerClasses={formatClasses({ 'w-full': !isMobile() && !isLargePC() })}
+        containerClasses={formatClasses({ 'w-full': !isMobile() && !isXLargePC() })}
         replayMode="forward"
         testId="blog-top-carousel"
         maxLength={1}

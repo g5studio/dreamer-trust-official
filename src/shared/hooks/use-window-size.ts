@@ -47,6 +47,11 @@ export const isPad = () => isTablet() && windowSize.width >= 900;
 export const isPC = () => windowSize.breakpoint === Breakpoint.XLarge;
 
 /**
- * @description >= 1800px
+ * @description > 1440px
  */
-export const isLargePC = () => windowSize.width >= 1800;
+export const isLargePC = () => windowSize.width > 1440;
+
+/**
+ * @description > 1800px
+ */
+export const isXLargePC = () => windowSize.width > 1800;

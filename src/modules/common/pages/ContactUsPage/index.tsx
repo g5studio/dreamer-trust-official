@@ -3,7 +3,7 @@ import ContentLayout from '@shared/components/ContentLayout';
 import Picture from '@shared/components/Picture';
 import { Direction, LocaleDash } from '@shared/enums';
 import { translate, translation } from '@shared/hooks/use-translation';
-import windowSize, { isLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
+import windowSize, { isXLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import ArticleContainer from '@shared/components/ArticleContainer';
 import AddressIcon from '@utilities/svg-components/common/AddressIcon';
@@ -45,7 +45,7 @@ const ContactUsPage = () => {
           'px-6 pt-5': isMobile(),
           'px-5 pt-7_5': isSmallMobile(),
         })}
-        containerClasses={formatClasses({ 'w-full': !isMobile() && !isLargePC() })}
+        containerClasses={formatClasses({ 'w-full': !isMobile() && !isXLargePC() })}
         replayMode="forward"
         testId="seminars-top-carousel"
         maxLength={1}

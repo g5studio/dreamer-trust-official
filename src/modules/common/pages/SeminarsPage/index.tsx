@@ -5,7 +5,7 @@ import Picture from '@shared/components/Picture';
 import { Direction, LocaleDash, Page } from '@shared/enums';
 import { useNavigate } from '@shared/hooks/use-navigate';
 import { translate, translation } from '@shared/hooks/use-translation';
-import { isLargePC, isMobile, isPC, isSmallMobile } from '@shared/hooks/use-window-size';
+import { isXLargePC, isMobile, isPC, isSmallMobile } from '@shared/hooks/use-window-size';
 import { useEventListContext } from '@utilities/context/event-list-context';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { createEffect, Show } from 'solid-js';
@@ -48,7 +48,7 @@ const SeminarsPage = () => {
           'px-6 pt-5': isMobile(),
           'px-5 pt-7_5': isSmallMobile(),
         })}
-        containerClasses={formatClasses({ 'w-full': !isMobile() && !isLargePC() })}
+        containerClasses={formatClasses({ 'w-full': !isMobile() && !isXLargePC() })}
         replayMode="forward"
         testId="seminars-top-carousel"
         maxLength={1}
