@@ -1,5 +1,5 @@
 import { translate } from '@shared/hooks/use-translation';
-import { isMobile, isPC, isTablet } from '@shared/hooks/use-window-size';
+import { isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
 import { Slot } from '@shared/interfaces';
 import { IBaseComponentProps } from '@shared/interfaces/base-component.interface';
 import { I18nKey } from '@shared/models/translation.model';
@@ -44,6 +44,7 @@ const ArticleContainer = (props: IArticleContainerProps) => {
             class={formatClasses(
               'text-primary-3',
               {
+                'px-6': isSmallMobile(),
                 'text-5_5': isMobile(),
                 'text-7': !isMobile(),
               },
