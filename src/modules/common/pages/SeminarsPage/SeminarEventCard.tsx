@@ -1,6 +1,6 @@
 import Picture from '@shared/components/Picture';
 import Skeleton, { SkeletonType } from '@shared/components/Skeleton';
-import { DateFormatType, OverlayType } from '@shared/enums';
+import { DateFormatType, LocaleDash, OverlayType } from '@shared/enums';
 import { toggleOverlay } from '@shared/hooks/use-overlay';
 import { translate, translation } from '@shared/hooks/use-translation';
 import { isMobile, isPC, isTablet } from '@shared/hooks/use-window-size';
@@ -114,12 +114,12 @@ const SeminarEventCard = (props: ISeminarCardProps) => {
             <p class={formatClasses('text-lg', { 'text-xs': isMobile() })}>
               {translate('common.time', {
                 time: `${transform({
-                  locale: translation.language,
+                  locale: LocaleDash.en_US,
                   timestamp: props.eventData.startTime,
                   formatType: DateFormatType.TwelveHourTime,
                   offset: -(new Date().getTimezoneOffset() / 60),
                 })} CST - ${transform({
-                  locale: translation.language,
+                  locale: LocaleDash.en_US,
                   timestamp: props.eventData.endTime,
                   formatType: DateFormatType.TwelveHourTime,
                   offset: -(new Date().getTimezoneOffset() / 60),
