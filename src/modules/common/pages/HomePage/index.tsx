@@ -51,7 +51,7 @@ const HomePage = () => {
           'px-6 pt-5': isMobile(),
           'px-5 pt-7_5': isSmallMobile(),
         })}
-        containerClasses={formatClasses('h-full', { 'w-full': !isMobile() && !isXLargePC() })}
+        containerClasses={formatClasses({ 'w-full': !isMobile() && !isXLargePC() })}
         replayMode="forward"
         animation="fade"
         testId="home-top-carousel"
