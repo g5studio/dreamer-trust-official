@@ -1,4 +1,5 @@
-import { createSignal } from 'solid-js';
+import { createSignal, onCleanup } from 'solid-js';
+import { oneSecondWithMileSeconds } from '@shared/constants/time.constants';
 import { useRaf } from './use-raf';
 
 export interface IAnimationConfig {
@@ -48,3 +49,47 @@ export function useAnimation(accessor: () => IAnimationConfig) {
   useRaf(() => update);
   return value;
 }
+
+type Props = {
+  length: number;
+  /**
+   * @default 0.3s
+   */
+  interval?: number;
+};
+
+export const use1By1FadeInAnimation = ({ length, interval = 0.3 * oneSecondWithMileSeconds }: Props) => {
+  const [animationStartList, setAnimationStartList] = createSignal<boolean[]>(Array.from({ length }).map(() => false));
+
+  let timer: NodeJS.Timeout | undefined;
+
+  const setNextStart = () => {
+    const currentIndex = animationStartList().findLastIndex((e) => !!e) + 1;
+    setAnimationStartList((pre) => {
+      const temp = [...pre];
+      temp[currentIndex] = true;
+      return temp;
+    });
+  };
+
+  const start = () => {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    setNextStart();
+    timer = setTimeout(() => {
+      start();
+    }, interval);
+  };
+
+  onCleanup(() => {
+    if (timer) {
+      clearTimeout(timer);
+    }
+  });
+
+  return {
+    start,
+    animationStartList,
+  };
+};

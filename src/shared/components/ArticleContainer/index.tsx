@@ -1,3 +1,4 @@
+import { oneSecondWithMileSeconds } from '@shared/constants/time.constants';
 import { translate } from '@shared/hooks/use-translation';
 import { isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
 import { Slot } from '@shared/interfaces';
@@ -31,7 +32,7 @@ const ArticleContainer = (props: IArticleContainerProps) => {
     if (animationStart()) {
       timer = setTimeout(() => {
         props.onChildrenFideIn?.();
-      }, 1000);
+      }, 0.3 * oneSecondWithMileSeconds);
     }
     onCleanup(() => {
       if (timer) {

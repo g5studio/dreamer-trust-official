@@ -5,6 +5,7 @@ import ContentLayout from '@shared/components/ContentLayout';
 import Picture from '@shared/components/Picture';
 import { oneSecondWithMileSeconds } from '@shared/constants/time.constants';
 import { DateFormatType, Direction, Page } from '@shared/enums';
+import { use1By1FadeInAnimation } from '@shared/hooks/use-animation';
 import { useNavigate } from '@shared/hooks/use-navigate';
 import { translate, translation } from '@shared/hooks/use-translation';
 import windowSize, { isXLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
@@ -18,6 +19,12 @@ import DoubleArrowDownIcon from '@utilities/svg-components/shared/DoubleArrowDow
 import { createSignal, For, Match, Show, Switch } from 'solid-js';
 
 const HomePage = () => {
+  const { start: startSolutionAnimation, animationStartList: solutionAnimationList } = use1By1FadeInAnimation({
+    length: 4,
+  });
+  const { start: startAdvantageAnimation, animationStartList: advantageAnimationList } = use1By1FadeInAnimation({
+    length: 4,
+  });
   const [solutionRef, setSolutionRef] = createSignal<HTMLElement>();
   const [{ mainScrollRef, headerAreaHeight }] = useLayoutContext();
   const [{ firstEvent }] = useEventListContext();
@@ -254,10 +261,15 @@ const HomePage = () => {
       </CarouselContainer>
       {/* 我們的解決方案 */}
       <ArticleContainer
+        onChildrenFideIn={() => {
+          if (!isMobile()) {
+            startSolutionAnimation();
+          }
+        }}
         ref={setSolutionRef}
         titleI18nKey="home.solutions.title"
         subTitleI18nKey="home.solutions.subTitle"
-        sectionClasses={formatClasses('grid gap-6', {
+        sectionClasses={formatClasses('grid gap-6 overflow-y-hidden', {
           'mx-auto max-w-[660px]': isTablet(),
           'no-scrollbar flex w-full flex-row flex-nowrap justify-start overflow-x-auto': isPC(),
           'grid-cols-2': isTablet(),
@@ -280,10 +292,15 @@ const HomePage = () => {
         <For each={Array.from({ length: 4 }).map((_, i) => i + 1)}>
           {(index) => (
             <article
+              style={{
+                'animation-duration': '1.2s',
+              }}
               class={formatClasses('w-[318px] rounded-8 bg-black-5 pb-6', {
                 'min-w-[318px] grow': isPC(),
                 'ms-6': index === 1 && isPC(),
                 'me-6': index === 4 && isPC(),
+                'opacity-0': !isMobile(),
+                'animation-fade-in-bottom opacity-1': !isMobile() && solutionAnimationList()[index - 1],
               })}>
               <Picture src={`home/solution-${index}@3x.png`} classes="w-full" />
               <section class="px-6_5 pt-6">
@@ -303,6 +320,11 @@ const HomePage = () => {
       </ArticleContainer>
       {/* 我們的優勢 */}
       <ArticleContainer
+        onChildrenFideIn={() => {
+          if (!isMobile()) {
+            startAdvantageAnimation();
+          }
+        }}
         titleI18nKey="home.advantages.title"
         subTitleI18nKey="home.advantages.subTitle"
         sectionClasses={formatClasses('grid', {
@@ -313,7 +335,14 @@ const HomePage = () => {
         })}>
         <For each={Array.from({ length: 2 }).map((_, i) => i + 1)}>
           {(index) => (
-            <article class="flex w-[307px] flex-col items-center space-y-10">
+            <article
+              style={{
+                'animation-duration': '0.7s',
+              }}
+              class={formatClasses('flex w-[307px] flex-col items-center space-y-10', {
+                'opacity-0': !isMobile(),
+                'animation-fade-in-bottom opacity-1': !isMobile() && advantageAnimationList()[index - 1],
+              })}>
               <Switch>
                 <Match when={index === 1}>
                   <AdvantageOneIcon />
