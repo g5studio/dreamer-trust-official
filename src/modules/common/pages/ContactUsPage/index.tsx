@@ -138,7 +138,10 @@ const ContactUsPage = () => {
                 'flex-col space-y-6': isMobile(),
               })}>
               <Picture
-                classes={formatClasses({ 'w-[350px] min-w-[350px]': !isMobile(), 'max-h-[200px] w-full': isMobile() })}
+                classes={formatClasses({
+                  'w-[350px] min-w-[350px]': !isMobile(),
+                  'max-h-[200px] w-full object-cover object-center': isMobile(),
+                })}
                 src={isMobile() ? `contact-us/office-${code}-sm@3x.png` : `contact-us/office-${code}@3x.png`}
               />
               <div
