@@ -58,7 +58,9 @@ export class Translation implements Pick<ITranslation, 'changeLanguage' | 'trans
    */
   public changeLanguage(language: LocaleDash): void {
     setLocalStorage(LocalStorageItem.Language, language);
-    document.getElementsByTagName('html')[0]?.setAttribute('lang', language);
+    document
+      .getElementsByTagName('html')[0]
+      ?.setAttribute('lang', language === LocaleDash.zh_HK ? 'zh-hant' : language);
     this.language = language;
   }
 
