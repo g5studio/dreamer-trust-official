@@ -2,6 +2,7 @@ import { LocalStorageItem, LocaleDash } from '@shared/enums';
 import { Dictionary } from '@shared/interfaces';
 import { IBaseModel } from '@shared/interfaces/base-model.interface';
 import { mergeDictionary } from '@utilities/helpers/intl.helper';
+import { Log } from '@utilities/helpers/log.helper';
 import { getLocalStorage, setLocalStorage } from '@utilities/helpers/storage.helper';
 import { getWindow } from '@utilities/helpers/window.helper';
 import localDictionary from '@utilities/i18n/dictionary';
@@ -87,6 +88,15 @@ export const getTranslation = (): ITranslation => {
   };
 
   const translate = (i18nKey: I18nKey, params: TranslationParams = {}) => {
+    Log.info({
+      msg: 'for daniel computer',
+      params: {
+        i18nKey,
+        dictionary: metaData.dictionary,
+        language: metaData.language,
+        localDictionary,
+      },
+    });
     if (typeof i18nKey === 'function') {
       return i18nKey(metaData.dictionary);
     }

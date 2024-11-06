@@ -29,7 +29,7 @@ const Header = (props: IBaseComponentProps) => {
       }}
       data-testid="app-header"
       class={formatClasses(
-        'h-20 bg-black-6 px-12 py-4 text-lg shadow-header',
+        'h-20 bg-black-6 py-4 text-lg shadow-header',
         {
           'h-15 px-6': !isPC(),
         },
@@ -37,7 +37,7 @@ const Header = (props: IBaseComponentProps) => {
       )}>
       <section
         class={formatClasses('flex h-full w-full flex-row justify-between space-x-5', {
-          'main-container': isPC(),
+          'mx-auto max-w-[1344px] px-14': isPC(),
         })}>
         <div
           class="flex h-full flex-row space-x-12"
