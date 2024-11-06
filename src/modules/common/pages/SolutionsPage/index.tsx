@@ -4,13 +4,99 @@ import ContentLayout from '@shared/components/ContentLayout';
 import Picture from '@shared/components/Picture';
 import Skeleton, { SkeletonType } from '@shared/components/Skeleton';
 import { Direction, LocaleDash } from '@shared/enums';
+import { use1By1FadeInAnimation } from '@shared/hooks/use-animation';
 import { translate, translation } from '@shared/hooks/use-translation';
 import windowSize, { isXLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
 import { useLayoutContext } from '@utilities/context/layout-context';
+import { inView } from '@utilities/directives/in-view-directive';
+import { registerDirective } from '@utilities/helpers/directive.helper';
 import { formatClasses } from '@utilities/helpers/format.helper';
-import { For, Show } from 'solid-js';
+import { Accessor, createSignal, For, Show } from 'solid-js';
+
+registerDirective(inView);
+
+type Article = 'trust-solution' | 'estate-planning' | 'asset-management' | 'corporate-service';
+
+const useAnimationControl = () => {
+  const [articleAnimationStart, setArticleAnimationStart] = createSignal<boolean>(false);
+  const [trustAnimationStart, setTrustAnimationStart] = createSignal<boolean>(false);
+  const [estatePlanAnimationStart, setEstatePlanAnimationStart] = createSignal<boolean>(false);
+  const [assetManageAnimationStart, setAssetManageAnimationStart] = createSignal<boolean>(false);
+  const [serviceAnimationStart, setServiceAnimationStart] = createSignal<boolean>(false);
+  const { start: startOurSolutionsAnimation, animationStartList: ourSolutionsAnimationList } = use1By1FadeInAnimation({
+    length: 4,
+    batchNumbers: isTablet() ? 2 : 1,
+  });
+
+  const articleAnimationClasses = () =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': articleAnimationStart() && !isMobile(),
+    });
+
+  const trustAnimationClasses = () =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': trustAnimationStart() && !isMobile(),
+    });
+  const estatePlanAnimationClasses = () =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': estatePlanAnimationStart() && !isMobile(),
+    });
+  const assetManageAnimationClasses = () =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': assetManageAnimationStart() && !isMobile(),
+    });
+  const serviceAnimationClasses = () =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': serviceAnimationStart() && !isMobile(),
+    });
+
+  const ourSolutionsAnimationClasses = (index: number) =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': !isMobile() && ourSolutionsAnimationList()[index],
+    });
+
+  const articleListAnimation = (): Record<Article, { start: PureFun; animationClasses: Accessor<string> }> => ({
+    'asset-management': {
+      start: () => setAssetManageAnimationStart(true),
+      animationClasses: assetManageAnimationClasses,
+    },
+    'corporate-service': {
+      start: () => setServiceAnimationStart(true),
+      animationClasses: serviceAnimationClasses,
+    },
+    'estate-planning': {
+      start: () => setEstatePlanAnimationStart(true),
+      animationClasses: estatePlanAnimationClasses,
+    },
+    'trust-solution': {
+      start: () => setTrustAnimationStart(true),
+      animationClasses: trustAnimationClasses,
+    },
+  });
+
+  return {
+    setArticleAnimationStart,
+    articleAnimationClasses,
+    startOurSolutionsAnimation,
+    ourSolutionsAnimationClasses,
+    articleListAnimation,
+  };
+};
 
 const SolutionsPage = () => {
+  const {
+    setArticleAnimationStart,
+    startOurSolutionsAnimation,
+    articleAnimationClasses,
+    ourSolutionsAnimationClasses,
+    articleListAnimation,
+  } = useAnimationControl();
   const [{ mainScrollRef }] = useLayoutContext();
 
   /**
@@ -121,6 +207,11 @@ const SolutionsPage = () => {
         )}
       </CarouselContainer>
       <ArticleContainer
+        onChildrenFideIn={() => {
+          if (!isMobile()) {
+            setArticleAnimationStart(true);
+          }
+        }}
         classes={formatClasses({
           'max-w-[610px]': isXLargePC(),
           'mx-auto max-w-[632px]': !isMobile(),
@@ -133,14 +224,23 @@ const SolutionsPage = () => {
           'text-7_5': !isPC(),
         })}>
         <p
-          class={formatClasses('', {
-            'text-lg': isXLargePC(),
-            'text-xs': !isPC(),
-          })}>
+          class={formatClasses(
+            '',
+            {
+              'text-lg': isXLargePC(),
+              'text-xs': !isPC(),
+            },
+            articleAnimationClasses(),
+          )}>
           {translate('solutions.description.content')}
         </p>
       </ArticleContainer>
       <ArticleContainer
+        onChildrenFideIn={() => {
+          if (!isMobile()) {
+            startOurSolutionsAnimation();
+          }
+        }}
         subTitleI18nKey="solutions.our-solutions.subTitle"
         titleI18nKey="solutions.our-solutions.title"
         sectionClasses={formatClasses('grid', {
@@ -150,7 +250,11 @@ const SolutionsPage = () => {
         })}>
         <For each={Array.from({ length: 4 }).map((_, i) => i + 1)}>
           {(index) => (
-            <article class={formatClasses('w-[318px] min-w-[318px] rounded-8 bg-black-5')}>
+            <article
+              class={formatClasses(
+                'w-[318px] min-w-[318px] rounded-8 bg-black-5',
+                ourSolutionsAnimationClasses(index - 1),
+              )}>
               <Picture src={`home/solution-${index}@3x.png`} classes={formatClasses('w-[318px] min-w-[318px]')} />
               <section class="p-6">
                 <h5
@@ -169,10 +273,18 @@ const SolutionsPage = () => {
       <For each={articleList()}>
         {({ key, chapter, pictureUrl }) => (
           <article
-            class={formatClasses('flex flex-col items-center', {
-              'mx-auto max-w-[1184px] space-y-9': isPC(),
-              'space-y-6': !isPC(),
-            })}>
+            use:inView={{
+              threshold: 0.3,
+              onEnter: articleListAnimation()[key as Article].start,
+            }}
+            class={formatClasses(
+              'flex flex-col items-center',
+              {
+                'mx-auto max-w-[1184px] space-y-9': isPC(),
+                'space-y-6': !isPC(),
+              },
+              articleListAnimation()[key as Article].animationClasses(),
+            )}>
             <section
               class={formatClasses('w-full', {
                 'flex flex-row items-start': !isMobile(),
