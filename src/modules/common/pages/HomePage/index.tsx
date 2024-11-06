@@ -21,9 +21,11 @@ import { createSignal, For, Match, Show, Switch } from 'solid-js';
 const HomePage = () => {
   const { start: startSolutionAnimation, animationStartList: solutionAnimationList } = use1By1FadeInAnimation({
     length: 4,
+    batchNumbers: isTablet() ? 2 : 1,
   });
   const { start: startAdvantageAnimation, animationStartList: advantageAnimationList } = use1By1FadeInAnimation({
     length: 4,
+    batchNumbers: isTablet() ? 2 : 1,
   });
   const [solutionRef, setSolutionRef] = createSignal<HTMLElement>();
   const [{ mainScrollRef, headerAreaHeight }] = useLayoutContext();

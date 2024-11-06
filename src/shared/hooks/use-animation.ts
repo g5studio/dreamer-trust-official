@@ -56,9 +56,18 @@ type Props = {
    * @default 0.3s
    */
   interval?: number;
+  /**
+   * @description 每次推進數量
+   * @default 1
+   */
+  batchNumbers?: number;
 };
 
-export const use1By1FadeInAnimation = ({ length, interval = 0.3 * oneSecondWithMileSeconds }: Props) => {
+export const use1By1FadeInAnimation = ({
+  length,
+  interval = 0.3 * oneSecondWithMileSeconds,
+  batchNumbers = 1,
+}: Props) => {
   const [animationStartList, setAnimationStartList] = createSignal<boolean[]>(Array.from({ length }).map(() => false));
 
   let timer: NodeJS.Timeout | undefined;
@@ -67,7 +76,9 @@ export const use1By1FadeInAnimation = ({ length, interval = 0.3 * oneSecondWithM
     const currentIndex = animationStartList().findLastIndex((e) => !!e) + 1;
     setAnimationStartList((pre) => {
       const temp = [...pre];
-      temp[currentIndex] = true;
+      for (let i = 0; i < batchNumbers; i++) {
+        temp[currentIndex + i] = true;
+      }
       return temp;
     });
   };
