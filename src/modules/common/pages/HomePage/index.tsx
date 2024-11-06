@@ -25,7 +25,6 @@ const HomePage = () => {
   });
   const { start: startAdvantageAnimation, animationStartList: advantageAnimationList } = use1By1FadeInAnimation({
     length: 4,
-    batchNumbers: isTablet() ? 2 : 1,
   });
   const [solutionRef, setSolutionRef] = createSignal<HTMLElement>();
   const [{ mainScrollRef, headerAreaHeight }] = useLayoutContext();

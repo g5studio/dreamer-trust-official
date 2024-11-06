@@ -27,7 +27,6 @@ const useAnimationControl = () => {
 
   const { start: startOurMissionAnimation, animationStartList: ourMissionAnimationList } = use1By1FadeInAnimation({
     length: 3,
-    batchNumbers: 3,
   });
 
   const articleAnimationClasses = () =>
