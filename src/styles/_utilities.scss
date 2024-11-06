@@ -72,7 +72,7 @@
   .animation {
     @each $animation in $animations {
       &-#{$animation} {
-        animation: #{$animation} 0.5s forwards;
+        animation: #{$animation} 1.2s forwards;
         @include generateStyleByPseudoClass {
           animation: #{$animation} 0.5s forwards;
         }

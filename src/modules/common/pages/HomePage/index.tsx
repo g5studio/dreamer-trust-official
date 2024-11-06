@@ -294,9 +294,6 @@ const HomePage = () => {
         <For each={Array.from({ length: 4 }).map((_, i) => i + 1)}>
           {(index) => (
             <article
-              style={{
-                'animation-duration': '1.2s',
-              }}
               class={formatClasses('w-[318px] rounded-8 bg-black-5 pb-6', {
                 'min-w-[318px] grow': isPC(),
                 'ms-6': index === 1 && isPC(),

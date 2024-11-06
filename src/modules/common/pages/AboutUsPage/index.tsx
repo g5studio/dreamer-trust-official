@@ -12,12 +12,65 @@ import ArticleContainer from '@shared/components/ArticleContainer';
 import OurMissionOneIcon from '@utilities/svg-components/common/OurMissionOneIcon';
 import OurMissionTwoIcon from '@utilities/svg-components/common/OurMissionTwoIcon';
 import OurMissionThreeIcon from '@utilities/svg-components/common/OurMissionThreeIcon';
+import { inView } from '@utilities/directives/in-view-directive';
+import { use1By1FadeInAnimation } from '@shared/hooks/use-animation';
 
 registerDirective(domProperty);
+registerDirective(inView);
+
+const useAnimationControl = () => {
+  const [articleAnimationStart, setArticleAnimationStart] = createSignal<boolean>(false);
+  const { start: startOurValueAnimation, animationStartList: ourValueAnimationList } = use1By1FadeInAnimation({
+    length: 6,
+    batchNumbers: 3,
+  });
+
+  const { start: startOurMissionAnimation, animationStartList: ourMissionAnimationList } = use1By1FadeInAnimation({
+    length: 3,
+    batchNumbers: 3,
+  });
+
+  const articleAnimationClasses = () =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': articleAnimationStart() && !isMobile(),
+    });
+
+  const ourValueAnimationClasses = (index: number) =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': !isMobile() && ourValueAnimationList()[index],
+    });
+
+  const ourMissionAnimationClasses = (index: number) =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': !isMobile() && ourMissionAnimationList()[index],
+    });
+
+  return {
+    articleAnimationStart,
+    setArticleAnimationStart,
+    articleAnimationClasses,
+    ourValueAnimationList,
+    startOurValueAnimation,
+    startOurMissionAnimation,
+    ourMissionAnimationList,
+    ourMissionAnimationClasses,
+    ourValueAnimationClasses,
+  };
+};
 
 const AboutUsPage = () => {
   const [articleSize, setArticleSize] = createSignal<DomSize>();
-
+  const {
+    setArticleAnimationStart,
+    articleAnimationClasses,
+    startOurValueAnimation,
+    startOurMissionAnimation,
+    ourMissionAnimationClasses,
+    ourValueAnimationClasses,
+  } = useAnimationControl();
   /**
    * 平板版型較小畫面時，top區域圖片需縮小避免爆版
    * @description 扣除預設平板間隔100px後是否不足最小圖片寬度
@@ -100,11 +153,21 @@ const AboutUsPage = () => {
       </CarouselContainer>
       {/* 值得信賴的專業知識 */}
       <section
-        class={formatClasses('flex flex-row', {
-          'px-11': !isMobile() && windowSize.width < 1187,
-          'mx-auto max-w-[1187px]': isPC(),
-          'flex-col': isMobile(),
-        })}>
+        use:inView={{
+          threshold: 0.3,
+          onEnter: () => {
+            setArticleAnimationStart(true);
+          },
+        }}
+        class={formatClasses(
+          'flex flex-row',
+          {
+            'px-11': !isMobile() && windowSize.width < 1187,
+            'mx-auto max-w-[1187px]': isPC(),
+            'flex-col': isMobile(),
+          },
+          articleAnimationClasses(),
+        )}>
         <Picture
           classes={formatClasses('object-cover', {
             'h-[546px] rounded-s-8': !isMobile(),
@@ -167,6 +230,11 @@ const AboutUsPage = () => {
       </section>
       {/* 我們的價值 */}
       <ArticleContainer
+        onChildrenFideIn={() => {
+          if (!isMobile()) {
+            startOurValueAnimation();
+          }
+        }}
         titleI18nKey="aboutUs.ourValue.title"
         subTitleI18nKey="aboutUs.ourValue.subTitle"
         sectionClasses={formatClasses('grid', {
@@ -177,8 +245,8 @@ const AboutUsPage = () => {
           'grid-cols-1 gap-10': isMobile(),
         })}>
         <For each={['integrity', 'clientCentric', 'trustworthy', 'compliance', 'accountability', 'excellence']}>
-          {(key) => (
-            <article class={formatClasses('space-y-4', { 'space-y-2': isMobile() })}>
+          {(key, index) => (
+            <article class={formatClasses('space-y-4', { 'space-y-2': isMobile() }, ourValueAnimationClasses(index()))}>
               <h5
                 class={formatClasses('border-b-0_25 border-black-3 pb-4 text-start text-5_5', {
                   'pb-2 text-sm': isMobile(),
@@ -198,6 +266,11 @@ const AboutUsPage = () => {
       </ArticleContainer>
       {/* 我們的使命 */}
       <ArticleContainer
+        onChildrenFideIn={() => {
+          if (!isMobile()) {
+            startOurMissionAnimation();
+          }
+        }}
         titleI18nKey="aboutUs.ourMission.title"
         subTitleI18nKey="aboutUs.ourMission.subTitle"
         sectionClasses={formatClasses('grid', {
@@ -209,9 +282,13 @@ const AboutUsPage = () => {
         <For each={[OurMissionOneIcon, OurMissionTwoIcon, OurMissionThreeIcon]}>
           {(Icon, index) => (
             <article
-              class={formatClasses('flex max-w-[312px] flex-col items-center space-y-10', {
-                'space-y-2': !isPC(),
-              })}>
+              class={formatClasses(
+                'flex max-w-[312px] flex-col items-center space-y-10',
+                {
+                  'space-y-2': !isPC(),
+                },
+                ourMissionAnimationClasses(index()),
+              )}>
               <div class="flex h-31_5 w-31_5 items-center justify-center">
                 <Icon />
               </div>

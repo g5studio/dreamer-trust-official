@@ -64,10 +64,7 @@ const ArticleContainer = (props: IArticleContainerProps) => {
         class={formatClasses('flex flex-col items-center space-y-4', {
           'opacity-0': !isMobile(),
           'animation-fade-in-bottom opacity-1': animationStart() && !isMobile(),
-        })}
-        style={{
-          'animation-duration': '1.2s',
-        }}>
+        })}>
         <div class={formatClasses('space-y-4')}>
           <Show when={props.titleI18nKey}>
             <h5
