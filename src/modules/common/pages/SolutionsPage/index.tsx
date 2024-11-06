@@ -244,7 +244,8 @@ const SolutionsPage = () => {
         subTitleI18nKey="solutions.our-solutions.subTitle"
         titleI18nKey="solutions.our-solutions.title"
         sectionClasses={formatClasses('grid', {
-          'no-scrollbar mx-auto flex max-w-full flex-row justify-start space-x-6 overflow-x-auto px-6': isPC(),
+          'no-scrollbar mx-auto flex max-w-full flex-row justify-start space-x-6 overflow-x-auto overflow-y-hidden px-6':
+            isPC(),
           'grid-cols-2 gap-6': isTablet(),
           'grid-cols-1 gap-6': isMobile(),
         })}>
