@@ -79,7 +79,6 @@ const BlogList = (props: Props) => {
           </div>
         }>
         <CarouselContainer
-          playTime={Infinity}
           replayMode="forward"
           classes="w-full"
           contentClasses="flex flex-row items-center"
