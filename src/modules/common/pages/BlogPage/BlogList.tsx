@@ -14,6 +14,7 @@ registerDirective(domProperty);
 type Props = {
   blogs: Accessor<IBlog['metaData'][]>;
   isLoading: boolean;
+  blogAnimationClasses: ArrowFn<number, string>;
 } & IBaseComponentProps;
 
 const maxCols = 3;
@@ -43,11 +44,12 @@ const BlogList = (props: Props) => {
       },
       [[]] as IBlog['metaData'][][],
     );
+
   return (
     <Show
       when={!props.isLoading}
       fallback={
-        <div class="no-scrollbar w-full overflow-x-auto">
+        <div class="no-scrollbar w-full overflow-x-auto overflow-y-hidden">
           <div
             class={formatClasses('flex w-fit w-full flex-row flex-nowrap space-x-6', {
               'space-x-10': isPC(),
@@ -59,7 +61,7 @@ const BlogList = (props: Props) => {
       <Show
         when={!isMobile()}
         fallback={
-          <div class="no-scrollbar w-full overflow-x-auto">
+          <div class="no-scrollbar w-full overflow-x-auto overflow-y-hidden">
             <div class={formatClasses('flex w-fit w-full flex-row flex-nowrap space-x-6')}>
               {
                 <For each={props.blogs()}>
@@ -118,7 +120,7 @@ const BlogList = (props: Props) => {
                       },
                     }}>
                     <div
-                      class={formatClasses('no-scrollbar flex min-w-full overflow-x-auto', {
+                      class={formatClasses('no-scrollbar flex min-w-full overflow-x-auto overflow-y-hidden', {
                         'justify-center': !isOverflow(),
                       })}>
                       <div
@@ -134,10 +136,13 @@ const BlogList = (props: Props) => {
                         <For each={group}>
                           {(blog, index) => (
                             <BlogCard
-                              classes={formatClasses({
-                                'ps-10': index() === 0 && isOverflow(),
-                                'pr-10': index() === props.blogs().length - 1 && isOverflow(),
-                              })}
+                              classes={formatClasses(
+                                {
+                                  'ps-10': index() === 0 && isOverflow(),
+                                  'pr-10': index() === props.blogs().length - 1 && isOverflow(),
+                                },
+                                props.blogAnimationClasses(index()),
+                              )}
                               isLoading={false}
                               blogData={blog}
                             />

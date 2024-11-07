@@ -16,7 +16,34 @@ import { IApiQuestion } from '@utilities/api/http/schema/faq.schema';
 import SkeletonContainer from '@shared/components/SkeletonContainer';
 import { ArrowDownLineIcon } from '@utilities/svg-components';
 import Skeleton, { SkeletonType } from '@shared/components/Skeleton';
+import { use1By1FadeInAnimation } from '@shared/hooks/use-animation';
 import BlogList from './BlogList';
+
+const useAnimationControl = () => {
+  const [questionsAnimationStart, setQuestionsAnimationStart] = createSignal<boolean>(false);
+  const { start: startBlogsAnimation, animationStartList: blogsAnimationList } = use1By1FadeInAnimation({
+    length: 3,
+  });
+
+  const questionsAnimationClasses = () =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': questionsAnimationStart() && !isMobile(),
+    });
+
+  const blogsAnimationClasses = (index: number) =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': !isMobile() && blogsAnimationList()[index],
+    });
+
+  return {
+    setQuestionsAnimationStart,
+    questionsAnimationClasses,
+    startBlogsAnimation,
+    blogsAnimationClasses,
+  };
+};
 
 /**
  * @description 洞察更新頁面
@@ -26,7 +53,8 @@ import BlogList from './BlogList';
  */
 const BlogPage = () => {
   const language = () => formatLanguage(translation.language) ?? Language.zh_CN;
-
+  const { setQuestionsAnimationStart, questionsAnimationClasses, startBlogsAnimation, blogsAnimationClasses } =
+    useAnimationControl();
   const queryBlogList = createCustomizeQuery<IApiBlog[]>({
     query: createQuery(() => ({
       ...queryConfigs.fetchBlogList({ language: language() }),
@@ -146,15 +174,23 @@ const BlogPage = () => {
         )}
       </CarouselContainer>
       <ArticleContainer
+        onChildrenFideIn={() => {
+          if (!isMobile()) {
+            setQuestionsAnimationStart(true);
+          }
+        }}
         subTitleI18nKey="blog.questions.subTitle"
         titleI18nKey=""
         sectionClasses="w-full flex justify-center items-center">
         <ul
-          class={formatClasses({
-            'w-[808px] space-y-6': !isMobile(),
-            'w-full': windowSize.width <= 808 + 48,
-            'w-full space-y-4': isMobile(),
-          })}>
+          class={formatClasses(
+            {
+              'w-[808px] space-y-6': !isMobile(),
+              'w-full': windowSize.width <= 808 + 48,
+              'w-full space-y-4': isMobile(),
+            },
+            questionsAnimationClasses(),
+          )}>
           <For each={questions()}>
             {({ question, answer }) => {
               const [isExpand, setIsExpand] = createSignal<boolean>(false);
@@ -202,11 +238,16 @@ const BlogPage = () => {
         </ul>
       </ArticleContainer>
       <ArticleContainer
+        onChildrenFideIn={() => {
+          if (!isMobile()) {
+            startBlogsAnimation();
+          }
+        }}
         subTitleI18nKey="blog.blogs.subTitle"
         titleI18nKey="blog.blogs.title"
         classes="px-0"
         sectionClasses="w-full">
-        <BlogList isLoading={queryBlogList.isLoading} blogs={blogs} />
+        <BlogList blogAnimationClasses={blogsAnimationClasses} isLoading={queryBlogList.isLoading} blogs={blogs} />
       </ArticleContainer>
     </ContentLayout>
   );
