@@ -68,7 +68,6 @@ const EventList = (props: Props) => {
   return (
     <Show when={!isMobile()} fallback={<Slider />}>
       <CarouselContainer
-        playTime={Infinity}
         replayMode="forward"
         classes={formatClasses('w-full', {
           'px-10': isTablet(),
