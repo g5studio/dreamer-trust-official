@@ -10,6 +10,11 @@ import { Page } from '@shared/enums';
 import { useLayoutContext } from '@utilities/context/layout-context';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { domProperty, DomPropertyCbParams } from '@utilities/directives/dom-property-directive';
+import FacebookIcon from '@utilities/svg-components/common/FacebookIcon';
+import InstagramIcon from '@utilities/svg-components/common/InstagramIcon';
+import LineIcon from '@utilities/svg-components/common/LineIcon';
+import YoutubeIcon from '@utilities/svg-components/common/YoutubeIcon';
+
 import PrimaryLogo from '../PrimaryLogo';
 
 registerDirective(domProperty);
@@ -73,6 +78,23 @@ const Footer = (props: IFooterProps) => {
               )}
             </For>
           </ul>
+        </div>
+        <div
+          class={formatClasses('flex flex-row items-center justify-start space-x-6', {
+            'justify-end': isPC(),
+          })}>
+          <a href="https://www.facebook.com/dreamergrouptw/">
+            <FacebookIcon />
+          </a>
+          <a href="https://www.instagram.com/dreamergptw/">
+            <InstagramIcon />
+          </a>
+          <a href="https://page.line.me/486jkidl">
+            <LineIcon />
+          </a>
+          <a href=" https://www.youtube.com/@dreamergptw">
+            <YoutubeIcon />
+          </a>
         </div>
         <div class={formatClasses('flex flex-col space-y-6')}>
           <article
