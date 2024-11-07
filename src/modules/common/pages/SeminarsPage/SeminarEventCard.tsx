@@ -146,7 +146,9 @@ const SeminarEventCard = (props: ISeminarCardProps) => {
                         eventData: props.eventData,
                       },
                     },
-                    containerClass: 'flex items-center justify-center',
+                    containerClass: formatClasses('flex items-center justify-center', {
+                      'flex-row items-start py-18': isMobile(),
+                    }),
                   })
                 }>
                 RSVP
