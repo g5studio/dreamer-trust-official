@@ -8,7 +8,7 @@ import { DateFormatType, Direction, Page } from '@shared/enums';
 import { use1By1FadeInAnimation } from '@shared/hooks/use-animation';
 import { useNavigate } from '@shared/hooks/use-navigate';
 import { translate, translation } from '@shared/hooks/use-translation';
-import windowSize, { isXLargePC, isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
+import windowSize, { isMobile, isPC, isSmallMobile, isTablet } from '@shared/hooks/use-window-size';
 import { useEventListContext } from '@utilities/context/event-list-context';
 import { useLayoutContext } from '@utilities/context/layout-context';
 import { formatClasses } from '@utilities/helpers/format.helper';
@@ -56,10 +56,9 @@ const HomePage = () => {
       <CarouselContainer
         classes={formatClasses({
           'flex h-[576px] w-full flex-col items-center justify-center': !isMobile(),
-          'px-6 pt-5': isMobile(),
-          'px-5 pt-7_5': isSmallMobile(),
+          'p-6': isMobile(),
         })}
-        containerClasses={formatClasses({ 'w-full': !isMobile() && !isXLargePC() })}
+        containerClasses={formatClasses({ 'w-full': !isMobile() })}
         replayMode="forward"
         animation="fade"
         testId="home-top-carousel"
@@ -93,9 +92,7 @@ const HomePage = () => {
                 style={{
                   'max-width': shouldDynamicAdjustTopImageWidth() ? `${dynamicTopArticleWidth()}px` : undefined,
                 }}
-                class={formatClasses('space-y-4', {
-                  'p-6 pb-0': isMobile(),
-                })}>
+                class={formatClasses('space-y-4')}>
                 <div class="flex flex-col">
                   <div
                     class={formatClasses('flex flex-col', {
@@ -131,7 +128,6 @@ const HomePage = () => {
               <Picture
                 pictureClasses={formatClasses({
                   'item-center mt-12 flex justify-center': isMobile(),
-                  'px-7': isSmallMobile(),
                 })}
                 classes={formatClasses({
                   'h-75 min-w-104_25': !isMobile(),
@@ -150,8 +146,7 @@ const HomePage = () => {
                 })}>
                 <Picture
                   pictureClasses={formatClasses({
-                    'item-center mt-12 flex justify-center': isMobile(),
-                    'px-7': isSmallMobile(),
+                    'item-center mt-6 flex justify-center': isMobile(),
                   })}
                   classes={formatClasses(' object-cover', {
                     'h-[544px] object-left': !isMobile(),
@@ -216,7 +211,6 @@ const HomePage = () => {
               <article
                 class={formatClasses('space-y-4', {
                   'w-[462px] min-w-[462px] pl-10 pt-20': !isMobile(),
-                  'p-6 pb-0': isMobile(),
                 })}>
                 <div class="flex flex-col">
                   <h1
@@ -247,8 +241,7 @@ const HomePage = () => {
               </article>
               <Picture
                 pictureClasses={formatClasses({
-                  'item-center mt-12 flex justify-center': isMobile(),
-                  'px-7': isSmallMobile(),
+                  'item-center mt-6 flex justify-center': isMobile(),
                 })}
                 classes={formatClasses(' object-cover', {
                   'h-[544px] object-center': !isMobile(),
