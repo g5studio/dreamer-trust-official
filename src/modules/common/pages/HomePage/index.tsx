@@ -256,7 +256,7 @@ const HomePage = () => {
         subTitleI18nKey="home.solutions.subTitle"
         sectionClasses={formatClasses('grid gap-6', {
           'mx-auto max-w-[660px]': isTablet(),
-          'no-scrollbar flex w-full flex-row flex-nowrap justify-start overflow-x-auto': isPC(),
+          'no-scrollbar mx-auto flex max-w-full flex-row flex-nowrap justify-start overflow-x-auto': isPC(),
           'grid-cols-2': isTablet(),
           'grid-cols-1': isMobile(),
         })}
