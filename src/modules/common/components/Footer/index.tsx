@@ -15,6 +15,7 @@ import InstagramIcon from '@utilities/svg-components/common/InstagramIcon';
 import LineIcon from '@utilities/svg-components/common/LineIcon';
 import YoutubeIcon from '@utilities/svg-components/common/YoutubeIcon';
 
+import LinkedInIcon from '@utilities/svg-components/common/LinkedInIcon';
 import PrimaryLogo from '../PrimaryLogo';
 
 registerDirective(domProperty);
@@ -83,17 +84,20 @@ const Footer = (props: IFooterProps) => {
           class={formatClasses('flex flex-row items-center justify-start space-x-6', {
             'justify-end': isPC(),
           })}>
-          <a href="https://www.facebook.com/dreamergrouptw/">
+          <a target="_blank" href="https://www.facebook.com/dreamergrouptw/">
             <FacebookIcon />
           </a>
-          <a href="https://www.instagram.com/dreamergptw/">
+          <a target="_blank" href="https://www.instagram.com/dreamergptw/">
             <InstagramIcon />
           </a>
-          <a href="https://page.line.me/486jkidl">
+          <a target="_blank" href="https://page.line.me/486jkidl">
             <LineIcon />
           </a>
-          <a href=" https://www.youtube.com/@dreamergptw">
+          <a target="_blank" href="https://www.youtube.com/@dreamergptw">
             <YoutubeIcon />
+          </a>
+          <a target="_blank" href="https://www.linkedin.com/feed/">
+            <LinkedInIcon />
           </a>
         </div>
         <div class={formatClasses('flex flex-col space-y-6')}>
