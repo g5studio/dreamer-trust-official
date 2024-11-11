@@ -21,9 +21,10 @@ const ContentLayout = (props: IContentLayoutProps) => {
   const staticPathname = navigator.pathname;
   usePageCheck({ pathname: () => staticPathname });
 
-  const [{ mainContentAreaSize, headerAreaHeight, footerAreaHeight }] = useLayoutContext();
+  const [{ mainContentAreaSize, headerAreaHeight, footerAreaHeight, mainScrollRef }] = useLayoutContext();
 
   onMount(() => {
+    mainScrollRef()?.scrollTo({ top: 0 });
     Log.info({
       msg: `${props.testId} mounted`,
     });

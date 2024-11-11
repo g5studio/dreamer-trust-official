@@ -12,14 +12,44 @@ import EmailIcon from '@utilities/svg-components/common/EmailIcon';
 import { createSignal, For } from 'solid-js';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { domProperty, DomPropertyCbParams } from '@utilities/directives/dom-property-directive';
+import { use1By1FadeInAnimation } from '@shared/hooks/use-animation';
+import { inView } from '@utilities/directives/in-view-directive';
 import { ContactUsForm } from './ContactUsForm';
 
 registerDirective(domProperty);
+registerDirective(inView);
+
+const useAnimationControl = () => {
+  const [formAnimationStart, setFormAnimationStart] = createSignal<boolean>(false);
+  const { start: startLocationsAnimation, animationStartList: locationsAnimationList } = use1By1FadeInAnimation({
+    length: 2,
+  });
+
+  const formAnimationClasses = () =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': formAnimationStart() && !isMobile(),
+    });
+
+  const locationsAnimationClasses = (index: number) =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': !isMobile() && locationsAnimationList()[index],
+    });
+
+  return {
+    setFormAnimationStart,
+    formAnimationClasses,
+    startLocationsAnimation,
+    locationsAnimationClasses,
+  };
+};
 
 const ContactUsPage = () => {
   const [sgOfficeWidth, setSGOfficeWidth] = createSignal<number>(0);
   const [hkOfficeWidth, setHKOfficeWidth] = createSignal<number>(0);
-
+  const { setFormAnimationStart, formAnimationClasses, startLocationsAnimation, locationsAnimationClasses } =
+    useAnimationControl();
   const tabletOfficeWidth = () => (sgOfficeWidth() > hkOfficeWidth() ? sgOfficeWidth() : hkOfficeWidth());
 
   /**
@@ -108,8 +138,22 @@ const ContactUsPage = () => {
           </div>
         )}
       </CarouselContainer>
-      <ContactUsForm />
+      <div
+        class={formatClasses('h-full w-full', formAnimationClasses())}
+        use:inView={{
+          threshold: 0.3,
+          onEnter: () => {
+            setFormAnimationStart(true);
+          },
+        }}>
+        <ContactUsForm />
+      </div>
       <ArticleContainer
+        onChildrenFideIn={() => {
+          if (!isMobile()) {
+            startLocationsAnimation();
+          }
+        }}
         titleI18nKey={''}
         subTitleI18nKey="contactUs.location.title"
         sectionClasses={formatClasses('flex w-full flex-col space-y-9', {
@@ -119,7 +163,7 @@ const ContactUsPage = () => {
           'padding-left': isTablet() ? `calc((100% - ${tabletOfficeWidth()}px)/2)` : undefined,
         }}>
         <For each={['sg', 'hk']}>
-          {(code) => (
+          {(code, index) => (
             <section
               use:domProperty={{
                 keyList: ['domRectWidth'],
@@ -131,12 +175,16 @@ const ContactUsPage = () => {
                   }
                 },
               }}
-              class={formatClasses('flex', {
-                'flex-row items-end space-x-14': !isMobile(),
-                'w-[796px]': isPC(),
-                'w-fit': isTablet(),
-                'flex-col space-y-6': isMobile(),
-              })}>
+              class={formatClasses(
+                'flex',
+                {
+                  'flex-row items-end space-x-14': !isMobile(),
+                  'w-[796px]': isPC(),
+                  'w-fit': isTablet(),
+                  'flex-col space-y-6': isMobile(),
+                },
+                locationsAnimationClasses(index()),
+              )}>
               <Picture
                 classes={formatClasses({
                   'w-[350px] min-w-[350px]': !isMobile(),

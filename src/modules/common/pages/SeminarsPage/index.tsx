@@ -8,7 +8,7 @@ import { translate, translation } from '@shared/hooks/use-translation';
 import { isXLargePC, isMobile, isPC, isSmallMobile } from '@shared/hooks/use-window-size';
 import { useEventListContext } from '@utilities/context/event-list-context';
 import { formatClasses } from '@utilities/helpers/format.helper';
-import { createEffect, Show } from 'solid-js';
+import { createEffect, createSignal, Show } from 'solid-js';
 import { domProperty } from '@utilities/directives/dom-property-directive';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { pan } from '@utilities/directives/pan-directive';
@@ -18,8 +18,38 @@ import EventList from './EventList';
 registerDirective(domProperty);
 registerDirective(pan);
 
+const useAnimationControl = () => {
+  const [eventListAnimationStart, setEventListAnimationStart] = createSignal<boolean>(false);
+  const [pastEventListAnimationStart, setPastEventListAnimationStart] = createSignal<boolean>(false);
+
+  const eventListAnimationClasses = () =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': eventListAnimationStart() && !isMobile(),
+    });
+
+  const pastEventListAnimationClasses = () =>
+    formatClasses({
+      'opacity-0': !isMobile(),
+      'animation-fade-in-bottom opacity-1': pastEventListAnimationStart() && !isMobile(),
+    });
+
+  return {
+    setEventListAnimationStart,
+    setPastEventListAnimationStart,
+    eventListAnimationClasses,
+    pastEventListAnimationClasses,
+  };
+};
+
 const SeminarsPage = () => {
   const [{ eventList, pastEventList, haveEvents, eventParams }] = useEventListContext();
+  const {
+    setEventListAnimationStart,
+    setPastEventListAnimationStart,
+    eventListAnimationClasses,
+    pastEventListAnimationClasses,
+  } = useAnimationControl();
   const navigate = useNavigate();
 
   createEffect(() => {
@@ -112,21 +142,35 @@ const SeminarsPage = () => {
       {/* 研討會活動 */}
       <Show when={!!eventList().length}>
         <ArticleContainer
+          onChildrenFideIn={() => {
+            if (!isMobile()) {
+              setEventListAnimationStart(true);
+            }
+          }}
           classes="w-full px-0"
           sectionClasses="w-full"
           titleI18nKey="seminars.event.title"
           subTitleI18nKey="seminars.event.subTitle">
-          <EventList events={eventList} testId="seminars-event-carousel" />
+          <div class={formatClasses('w-full', eventListAnimationClasses())}>
+            <EventList events={eventList} testId="seminars-event-carousel" />
+          </div>
         </ArticleContainer>
       </Show>
       {/* 過去的活動 */}
       <Show when={!!pastEventList().length}>
         <ArticleContainer
+          onChildrenFideIn={() => {
+            if (!isMobile()) {
+              setPastEventListAnimationStart(true);
+            }
+          }}
           classes="w-full px-0"
           sectionClasses="w-full"
           titleI18nKey="seminars.pastEvent.title"
           subTitleI18nKey="seminars.pastEvent.subTitle">
-          <EventList testId="seminars-past-event-carousel" hideRSVP events={pastEventList} />
+          <div class={formatClasses('w-full', pastEventListAnimationClasses())}>
+            <EventList testId="seminars-past-event-carousel" hideRSVP events={pastEventList} />
+          </div>
         </ArticleContainer>
       </Show>
     </ContentLayout>
