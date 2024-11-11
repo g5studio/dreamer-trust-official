@@ -7,6 +7,7 @@ import { Show, For, Accessor, createSignal } from 'solid-js';
 import { IBaseComponentProps } from '@shared/interfaces';
 import { registerDirective } from '@utilities/helpers/directive.helper';
 import { domProperty, DomPropertyCbParams } from '@utilities/directives/dom-property-directive';
+import { oneSecondWithMileSeconds } from '@shared/constants/time.constants';
 import SeminarEventCard from './SeminarEventCard';
 
 registerDirective(domProperty);
@@ -74,6 +75,8 @@ const EventList = (props: Props) => {
         })}
         containerClasses="w-full"
         testId={props.testId ?? 'event-carousel'}
+        playTime={6 * oneSecondWithMileSeconds}
+        transition={oneSecondWithMileSeconds}
         maxLength={props.events().length}
         direction={Direction.Horizontal}
         sliderSlot={(currentIndex, changeIndex) => (

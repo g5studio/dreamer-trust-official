@@ -7,6 +7,7 @@ import { formatClasses } from '@utilities/helpers/format.helper';
 import { Show, For, Accessor, createSignal } from 'solid-js';
 import { IBaseComponentProps } from '@shared/interfaces';
 import { IBlog } from '@modules/common/models/blog.model';
+import { oneSecondWithMileSeconds } from '@shared/constants/time.constants';
 import BlogCard from './BlogCard';
 
 registerDirective(domProperty);
@@ -85,6 +86,8 @@ const BlogList = (props: Props) => {
           classes="w-full"
           contentClasses="flex flex-row items-center"
           containerClasses={formatClasses('w-full')}
+          playTime={6 * oneSecondWithMileSeconds}
+          transition={oneSecondWithMileSeconds}
           testId="seminars-event-carousel"
           maxLength={blogDataGroup().length}
           direction={Direction.Horizontal}

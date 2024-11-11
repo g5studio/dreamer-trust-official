@@ -63,6 +63,7 @@ const HomePage = () => {
         animation="fade"
         testId="home-top-carousel"
         maxLength={carouselCount()}
+        playTime={6 * oneSecondWithMileSeconds}
         transition={oneSecondWithMileSeconds}
         direction={Direction.Horizontal}
         sliderSlot={(currentIndex, changeIndex) => (
