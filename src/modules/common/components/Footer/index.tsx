@@ -43,13 +43,14 @@ const Footer = (props: IFooterProps) => {
         {
           'p-6 pt-2': isMobile(),
           'px-10 py-6 pt-2': isTablet(),
-          'px-26 py-18_5 shadow-footer': isPC(),
+          'shadow-footer': isPC(),
         },
         props.classes,
       )}>
       <section
-        class={formatClasses('main-container box-border flex h-full w-full flex-col space-y-12', {
+        class={formatClasses('box-border flex h-full w-full flex-col space-y-12', {
           'space-y-4': !isPC(),
+          'mx-auto max-w-[1344px] px-14 py-20': isPC(),
         })}>
         <div
           class={formatClasses('flex flex-col', {
