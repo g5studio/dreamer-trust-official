@@ -52,7 +52,7 @@ const browserLocaleDashMap: PartialRecord<LocaleDash, string[]> = {
   [LocaleDash.pt_PT]: ['pt-PT', 'pt-BR', 'pt-pt', 'pt'],
 };
 
-const getBrowserLocale = (browserLocale: string): LocaleDash | undefined =>
+export const getBrowserLocale = (browserLocale: string): LocaleDash | undefined =>
   Object.values(LocaleDash).find((locale) => browserLocaleDashMap[locale]?.includes(browserLocale));
 
 export const getTranslation = (): ITranslation => {

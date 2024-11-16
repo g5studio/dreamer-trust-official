@@ -8,6 +8,7 @@ import { preloadRoutes } from '@utilities/config/routes';
 import { LayoutProvider } from '@utilities/context/layout-context';
 import OnlineStatusController from '@utilities/controller/OnlineStatusController';
 import EventListController from '@utilities/controller/EventListController';
+import MutationObserverController from '@shared/components/MutationObserverController';
 import { EventListProvider } from '@utilities/context/event-list-context';
 
 import App from './App';
@@ -34,6 +35,7 @@ if (root) {
               <ThemeController />
               <OnlineStatusController />
               <EventListController />
+              <MutationObserverController />
               <App />
             </QueryClientProvider>
           </Router>
