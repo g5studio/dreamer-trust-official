@@ -14,7 +14,9 @@ const MutationObserverController = () => {
       if (attributeName === 'lang') {
         const newLanguage = rootElement.getAttribute('lang');
         if (newLanguage) {
-          changeLanguage(getBrowserLocale(newLanguage) ?? LocaleDash.en_US);
+          changeLanguage(
+            getBrowserLocale(newLanguage === 'zh-hant' ? LocaleDash.zh_HK : newLanguage) ?? LocaleDash.en_US,
+          );
         }
       }
     }),
