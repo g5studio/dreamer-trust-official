@@ -7,7 +7,7 @@ import { IBaseComponentProps } from '@shared/interfaces/base-component.interface
 import { I18nKey } from '@shared/models/translation.model';
 import { formatClasses } from '@utilities/helpers/format.helper';
 import { ArrowDownLineIcon } from '@utilities/svg-components';
-import { createSignal, onMount, Setter, Show } from 'solid-js';
+import { Accessor, createSignal, onMount, Setter, Show } from 'solid-js';
 
 interface ICountryCodeDropdownProps extends IBaseComponentProps, Pick<IInputProps, 'placeholderI18nKey'> {
   defaultOption?: CountryCodeConfig;
@@ -26,6 +26,14 @@ export interface ICountryCodeDropdown {
 const CountryCodeDropdown = (props: ICountryCodeDropdownProps) => {
   const [selectedOption, setSelectedOption] = createSignal<CountryCodeConfig | undefined>(props.defaultOption);
   const isEnglish = () => translation.language !== LocaleDash.zh_HK && translation.language !== LocaleDash.zh_CN;
+
+  const displayText: Accessor<string> = () => {
+    const option = selectedOption();
+    if (option?.id) {
+      return option.dialingCode;
+    }
+    return translate(props.placeholderI18nKey);
+  };
 
   onMount(() => {
     props.ref?.({
@@ -48,7 +56,7 @@ const CountryCodeDropdown = (props: ICountryCodeDropdownProps) => {
             class={formatClasses('flex flex-row items-center space-x-2 text-sm text-black-1', {
               'text-black-4': !selectedOption()?.id,
             })}>
-            <span>{selectedOption()?.id ?? translate(props.placeholderI18nKey)}</span>
+            <span>{displayText()}</span>
             <ArrowDownLineIcon
               fillClasses="stroke-black-4"
               classes={formatClasses('w-4', {
